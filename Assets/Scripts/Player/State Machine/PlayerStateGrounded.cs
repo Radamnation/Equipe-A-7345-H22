@@ -21,7 +21,7 @@ public class PlayerStateGrounded : IPlayerState
         float moveX = context.Input.DirX * context.Input.MoveFactor.Value;
         float moveZ = context.Input.DirZ * context.Input.MoveFactor.Value;
 
-        Vector3 movement = context.transform.right * moveX + context.transform.forward * moveZ;
+        Vector3 movement = context.transform.right * moveX + context.transform.up * context.Rb.velocity.y + context.transform.forward * moveZ;
         context.Rb.velocity = movement;
     }
 
