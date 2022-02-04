@@ -55,6 +55,31 @@ public class PlayerStateGrounded : IPlayerState
             context.Input.FireMainWeapon = false;
 
             // EVENT GO HERE
+            if (context.WeaponHolder.MainFireRateDelay <= 0 && context.WeaponHolder.MainReloadDelay <= 0)
+            {
+                if (context.Weapons.EquippedMainWeapon.Shoot())
+                {
+                    Debug.Log($" {context.Weapons.EquippedMainWeapon.WeaponName} ... FIRED");
+
+                    context.WeaponHolder.MainFireRateDelay = context.Weapons.EquippedMainWeapon.FiringRate;
+                    if (context.Weapons.EquippedMainWeapon.Projectile != null)
+                    {
+                        context.WeaponHolder.ShootProjectile(context.Weapons.EquippedMainWeapon.Projectile);
+                    }
+                    else
+                    {
+                        if (context.Weapons.EquippedMainWeapon.Spread > 0)
+                        {
+                            context.WeaponHolder.ShootMultipleRayCasts(10, context.Weapons.EquippedMainWeapon.Spread);
+                        }
+                        else
+                        {
+                            context.WeaponHolder.ShootRayCast();
+                        }
+                    }
+                    context.MainWeaponHasShot.Invoke();
+                }
+            }
         }
     }
 
@@ -68,6 +93,24 @@ public class PlayerStateGrounded : IPlayerState
             context.Input.FireOptionalWeapon = false;
 
             // EVENT GO HERE
+            if (context.WeaponHolder.SecondaryFireRateDelay <= 0)
+            {
+                if (context.Weapons.EquippedSecondaryWeapon.Shoot())
+                {
+                    Debug.Log($" {context.Weapons.EquippedSecondaryWeapon.WeaponName} ... FIRED");
+
+                    context.WeaponHolder.SecondaryFireRateDelay = context.Weapons.EquippedSecondaryWeapon.FiringRate;
+                    if (context.Weapons.EquippedSecondaryWeapon.Projectile != null)
+                    {
+                        context.WeaponHolder.ShootProjectile(context.Weapons.EquippedSecondaryWeapon.Projectile);
+                    }
+                    else
+                    {
+                        context.WeaponHolder.ShootRayCast();
+                    }
+                    context.SecondaryWeaponHasShot.Invoke();
+                }
+            }
         }
     }
 
@@ -81,6 +124,9 @@ public class PlayerStateGrounded : IPlayerState
             context.Input.WeaponOne = false;
 
             // EVENT GO HERE
+            context.Weapons.EquippedMainWeapon = context.Weapons.CarriedMainWeapons[0];
+            Debug.Log($"MAIN WEAPON CHANGED TO ... {context.Weapons.EquippedMainWeapon.WeaponName}");
+            context.MainWeaponHasChanged.Invoke();
         }
         else if (context.Input.WeaponTwo)       // WEAPON TWO
         {
@@ -90,6 +136,9 @@ public class PlayerStateGrounded : IPlayerState
             context.Input.WeaponTwo = false;
 
             // EVENT GO HERE
+            context.Weapons.EquippedMainWeapon = context.Weapons.CarriedMainWeapons[1];
+            Debug.Log($"MAIN WEAPON CHANGED TO ... {context.Weapons.EquippedMainWeapon.WeaponName}");
+            context.MainWeaponHasChanged.Invoke();
         }
         else if (context.Input.WeaponScrollBackward)       // WEAPON SCROLL <=
         {
@@ -99,6 +148,12 @@ public class PlayerStateGrounded : IPlayerState
             context.Input.WeaponScrollBackward = false;
 
             // EVENT GO HERE
+            var index = context.Weapons.CarriedMainWeapons.IndexOf(context.Weapons.EquippedMainWeapon) - 1;
+            if (index < 0)
+                index = context.Weapons.CarriedMainWeapons.Count - 1;
+            context.Weapons.EquippedMainWeapon = context.Weapons.CarriedMainWeapons[index];
+            Debug.Log($"MAIN WEAPON CHANGED TO ... {context.Weapons.EquippedMainWeapon.WeaponName}");
+            context.MainWeaponHasChanged.Invoke();
         }
         else if (context.Input.WeaponScrollForward)       // WEAPON SCROLL =>
         {
@@ -108,6 +163,12 @@ public class PlayerStateGrounded : IPlayerState
             context.Input.WeaponScrollForward = false;
 
             // EVENT GO HERE
+            var index = context.Weapons.CarriedMainWeapons.IndexOf(context.Weapons.EquippedMainWeapon) + 1;
+            if (index > context.Weapons.CarriedMainWeapons.Count - 1)
+                index = 0;
+            context.Weapons.EquippedMainWeapon = context.Weapons.CarriedMainWeapons[index];
+            Debug.Log($"MAIN WEAPON CHANGED TO ... {context.Weapons.EquippedMainWeapon.WeaponName}");
+            context.MainWeaponHasChanged.Invoke();
         }
     }
 
@@ -121,6 +182,15 @@ public class PlayerStateGrounded : IPlayerState
             context.Input.Reload = false;
 
             // EVENT GO HERE
+            if (context.WeaponHolder.MainReloadDelay <= 0)
+            {
+                if (context.Weapons.EquippedMainWeapon.Reload())
+                {
+                    Debug.Log($" {context.Weapons.EquippedMainWeapon.WeaponName} ... RELOADED");
+                    context.MainWeaponHasReloaded.Invoke();
+                    context.WeaponHolder.MainReloadDelay = context.Weapons.EquippedMainWeapon.ReloadTime;
+                }
+            }
         }
     }
     #endregion
@@ -167,6 +237,10 @@ public class PlayerStateGrounded : IPlayerState
         OnLook(context);
         OnMove(context);
         OnJump(context);
+        
+        // Added to have player position known to everything
+        context.PlayerTransform.Transform = context.transform;
+
 
         OnFireWeaponMain(context);
         OnFireWeaponOptional(context);

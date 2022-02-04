@@ -222,6 +222,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceGround: 0.3
   distanceInteractible: 0.75
+  weapons: {fileID: 11400000, guid: a281a8a3b05e1994aa74255a14e2dd2e, type: 2}
+  weaponHolder: {fileID: 0}
+  playerTransform: {fileID: 11400000, guid: bb659ba3eaf28be498f4674f9cbb480c, type: 2}
   maskGround:
     serializedVersion: 2
     m_Bits: 64

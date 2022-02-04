@@ -17,6 +17,9 @@ public class PlayerContext : MonoBehaviour
 
     [Header("Weapons")]
     // CURRENT WEAPON & MORE GO HERE
+    [SerializeField] private WeaponsInventorySO weapons;
+    [SerializeField] private WeaponHolder weaponHolder;
+    [SerializeField] private TransformSO playerTransform;
 
     [Header("Rigidbody & Colliders")]
     [SerializeField] LayerMask maskGround;
@@ -29,9 +32,11 @@ public class PlayerContext : MonoBehaviour
     [SerializeField] private Animator anim;
 
 
-    //[Header("Events")]
-    // EVENTS GO HERE
-
+    [Header("Events")]
+    [SerializeField] private UnityEvent mainWeaponHasShot;
+    [SerializeField] private UnityEvent mainWeaponHasReloaded;
+    [SerializeField] private UnityEvent mainWeaponHasChanged;
+    [SerializeField] private UnityEvent secondaryWeaponHasShot;
 
     // SECTION - Property ===================================================================
     #region REGION - PROPERTY
@@ -39,12 +44,21 @@ public class PlayerContext : MonoBehaviour
     public float DistanceInteractible { get => distanceInteractible; }
     public bool IsDebugOn { get => isDebugOn; set => isDebugOn = value; }
 
+    public WeaponsInventorySO Weapons { get => weapons; set => weapons = value; }
+    public WeaponHolder WeaponHolder { get => weaponHolder; set => weaponHolder = value; }
+    public TransformSO PlayerTransform { get => playerTransform; set => playerTransform = value; }
+
     public LayerMask MaskGround { get => maskGround; }
     public Rigidbody Rb { get => rb; set => rb = value; }
 
     public PlayerInputSO Input { get => input; set => input = value; }
 
     public Animator Anim { get => anim; set => anim = value; }
+    
+    public UnityEvent MainWeaponHasShot { get => mainWeaponHasShot; set => mainWeaponHasShot = value; }
+    public UnityEvent MainWeaponHasReloaded { get => mainWeaponHasReloaded; set => mainWeaponHasReloaded = value; }
+    public UnityEvent MainWeaponHasChanged { get => mainWeaponHasChanged; set => mainWeaponHasChanged = value; }
+    public UnityEvent SecondaryWeaponHasShot { get => secondaryWeaponHasShot; set => secondaryWeaponHasShot = value; }
 
     #endregion
 
