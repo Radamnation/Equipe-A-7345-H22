@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62355733d51508349b066ba42d18111e, type: 3}
+  m_Name: GrenadeSO
+  m_EditorClassIdentifier: 
+  weaponName: Grenade
+  weaponDescription: Explosion Damage
+  currencyValue: 5
+  currentAmmo: 0
+  maxAmmo: 0
+  currentClip: 3
+  maxClip: 3
+  firingRate: 3
+  reloadTime: 0
+  damage: 50
+  projectile: {fileID: 6912852400933906267, guid: a7eca7a43babbf445857475fcbb97c1e, type: 3}
+  weaponUISprite: {fileID: 0}
+  weaponPlayerSprite: {fileID: 0}
+  animator: {fileID: 0}
