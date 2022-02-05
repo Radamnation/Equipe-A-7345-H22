@@ -6,9 +6,6 @@ using UnityEngine.Events;
 public class LivingEntityContext : MonoBehaviour
 {
     // SECTION - Field =========================================================
-    public bool takedamage = false; // TEST PURPOSE
-
-
     [Header("Health")]
     [SerializeField] private FloatReference maxHP;
     [SerializeField] private FloatReference currentHP;
@@ -31,15 +28,6 @@ public class LivingEntityContext : MonoBehaviour
     private void Start()
     {
         Heal();
-    }
-
-    private void FixedUpdate()
-    {
-        if (takedamage) // TEST PURPOSE
-        {
-            takedamage = false;
-            TakeDamage(1.0f);
-        }
     }
 
 
