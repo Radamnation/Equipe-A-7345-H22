@@ -30,6 +30,11 @@ public class PlayerStateDead : IPlayerState
 
     public IPlayerState OnStateExit(PlayerContext context)
     {
+        Debug.Log("AAAA");
+        // Revive!
+        if (!context.LivingEntityContext.IsDead)
+            return new PlayerStateGrounded();
+
         return this;
     }
 }
