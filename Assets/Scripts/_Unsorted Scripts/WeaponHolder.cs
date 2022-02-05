@@ -34,10 +34,10 @@ public class WeaponHolder : MonoBehaviour
         Physics.Raycast(transform.position, transform.forward, out hit, 1000);
         Debug.Log(hit.collider.name + " was hit");
         var newBulletHole = Instantiate(bulletHole, hit.point + hit.normal * 0.001f, Quaternion.LookRotation(hit.normal, Vector3.up));
-        //if (hit.collider.GetComponent<LivingEntity>() != null)
-        //{
-        //    hit.collider.GetComponent<LivingEntity>().TakeDamage();
-        //}
+        if (hit.collider.GetComponent<LivingEntityContext>() != null)
+        {
+            hit.collider.GetComponent<LivingEntityContext>().TakeDamage(1.0f);
+        }
     }
 
     public void ShootMultipleRayCasts(int hits, float spread)
@@ -49,10 +49,10 @@ public class WeaponHolder : MonoBehaviour
             Physics.Raycast(transform.position, transform.forward + spreadDirection, out hit, 1000);
             Debug.Log(hit.collider.name + " was hit");
             var newBulletHole = Instantiate(bulletHole, hit.point + hit.normal * 0.001f, Quaternion.LookRotation(hit.normal, Vector3.up));
-            //if (hit.collider.GetComponent<LivingEntity>() != null)
-            //{
-            //    hit.collider.GetComponent<LivingEntity>().TakeDamage();
-            //}
+            if (hit.collider.GetComponent<LivingEntityContext>() != null)
+            {
+                hit.collider.GetComponent<LivingEntityContext>().TakeDamage(1.0f);
+            }
         }
     }
 }

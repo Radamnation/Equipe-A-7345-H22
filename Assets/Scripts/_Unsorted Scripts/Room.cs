@@ -19,6 +19,8 @@ public class Room : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        yHeight--; // TO BE DELETED
+
         floorPrefab = biomeInformation.floorPrefab;
         wallPrefab = biomeInformation.wallPrefab;
         ceilingPrefab = biomeInformation.ceilingPrefab;
