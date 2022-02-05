@@ -8,27 +8,13 @@ public class PlayerStateAirborne : IPlayerState
     #region REGION - Movement
     public void OnLook(PlayerContext context)
     {
-        float lookY = context.Input.LookY * context.Input.MouseSensitivity.Value;
-
-        Vector3 rotationValues = Vector3.up * lookY;
-
-        context.transform.Rotate(rotationValues);
+        context.OnDefaultLookBehaviour();
     }
 
     public void OnMove(PlayerContext context)
     {
         // Movement
-        float moveX = context.Input.DirX * context.Input.MoveFactor.Value;
-        float moveZ = context.Input.DirZ * context.Input.MoveFactor.Value;
-
-        Vector3 movement = context.transform.right * moveX + 
-                            context.transform.up * context.Rb.velocity.y +
-                            context.transform.forward * moveZ;
-
-        context.Rb.velocity = movement;
-
-        // Animator
-        // SET ANIMATOR HERE
+        context.OnDefaultMovementBehaviour();
     }
 
     public void OnJump(PlayerContext context) { }
@@ -39,9 +25,6 @@ public class PlayerStateAirborne : IPlayerState
     {
         if (context.Input.FireMainWeapon)
         {
-            Debug.Log($" {context.name} ... FIRE MAIN");
-
-
             context.Input.FireMainWeapon = false;
 
             // EVENT GO HERE
@@ -52,9 +35,6 @@ public class PlayerStateAirborne : IPlayerState
     {
         if (context.Input.FireOptionalWeapon)
         {
-            Debug.Log($" {context.name} ... FIRE OPTIONAL");
-
-
             context.Input.FireOptionalWeapon = false;
 
             // EVENT GO HERE
@@ -118,18 +98,26 @@ public class PlayerStateAirborne : IPlayerState
     #region REGION - Misc
     public void OnInteract(PlayerContext context)
     {
+        // Note
+        //      - Whole method may need Encapsulation after completing [Interactable.cs]
+
+        RaycastHit hit = context.TryRayCastInteractable();
+        context.InteractCanvasHandler.SetActive(hit);
+
         if (context.Input.Interact)
         {
-            Debug.Log($" {context.name} ... INTERACT");
-
-
             context.Input.Interact = false;
 
-            // NOTE
-            //      - condition only as a temporary template
-            if (StaticRayCaster.IsTouching(context.transform.position, context.transform.forward, context.DistanceInteractible, context.MaskGround, context.IsDebugOn).transform)
+            if (hit.transform != null)
             {
-                // EVENT GO HERE
+                hit.transform.GetComponent<Interactable>().OnInteraction();
+
+                // NOTE FOR ITERATION
+                //      - Method bellow accepts a boolean for valid or invalid interaction with interactable object
+                //      - I think that the best course of action would be a boolean passed through OnInteraction()
+                //        ... The boolean would be inside of the [Interactable.cs] class for logical access to the object...
+                //        ... context.InteractCanvasHandler.SetVisualCue(hit.transform.GetComponent<Interactable>().OnInteraction());
+                context.InteractCanvasHandler.SetVisualCue();
             }
         }
     }
@@ -138,9 +126,6 @@ public class PlayerStateAirborne : IPlayerState
     {
         if (context.Input.ShowMap)
         {
-            Debug.Log($" {context.name} ... SHOW MAP");
-
-
             context.Input.ShowMap = false;
 
             // EVENT GO HERE
@@ -168,12 +153,12 @@ public class PlayerStateAirborne : IPlayerState
 
     public IPlayerState OnStateExit(PlayerContext context)
     {
+        // Dead
+        if (context.LivingEntityContext.IsDead)
+            return new PlayerStateDead();
+
         // Grounded
-        if (StaticRayCaster.IsTouching(context.transform.position,
-                                        -context.transform.up,
-                                         context.DistanceGround,
-                                         context.MaskGround,
-                                         context.IsDebugOn).transform)
+        if (context.TryRayCastGround().transform)
             return new PlayerStateGrounded();
           
         return this;
