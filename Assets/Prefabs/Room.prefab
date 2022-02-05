@@ -47,4 +47,4 @@ MonoBehaviour:
   xDimension: 15
   zDimension: 15
   yHeight: 1
-  biomeInformation: {fileID: 11400000, guid: cb8eb284da1aeea4f8336560d3f87a1e, type: 2}
+  biomeInformation: {fileID: 11400000, guid: 4ec9ab5ce5955d24db9be8c61e8c1ab9, type: 2}
