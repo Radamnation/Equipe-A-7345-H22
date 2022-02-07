@@ -9,7 +9,7 @@ public interface IPlayerState
     public void OnMove(PlayerContext context);
 
     public void OnFireWeaponMain(PlayerContext context);
-    public void OnFireWeaponOptional(PlayerContext context);
+    public void OnFireWeaponSecondary(PlayerContext context);
     public void OnWeaponChange(PlayerContext context);
     public void OnWeaponReload(PlayerContext context);
 

@@ -11,7 +11,7 @@ public class PlayerStateDead : IPlayerState
     // Weapon --------------------
     public void OnFireWeaponMain(PlayerContext context) { }
 
-    public void OnFireWeaponOptional(PlayerContext context) { }
+    public void OnFireWeaponSecondary(PlayerContext context) { }
 
     public void OnWeaponChange(PlayerContext context) { }
 
@@ -30,11 +30,6 @@ public class PlayerStateDead : IPlayerState
 
     public IPlayerState OnStateExit(PlayerContext context)
     {
-        Debug.Log("AAAA");
-        // Revive!
-        if (!context.LivingEntityContext.IsDead)
-            return new PlayerStateGrounded();
-
         return this;
     }
 }

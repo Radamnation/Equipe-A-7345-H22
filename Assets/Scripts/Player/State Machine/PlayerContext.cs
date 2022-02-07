@@ -74,6 +74,9 @@ public class PlayerContext : MonoBehaviour
     {
         currState = new PlayerStateGrounded();
         oldState = currState;
+
+        // TO BE DELETED
+        livingEntityContext.FullHeal();
     }
 
     private void FixedUpdate()
@@ -117,7 +120,8 @@ public class PlayerContext : MonoBehaviour
         return StaticRayCaster.IsLineCastTouching(transform.position, transform.forward, distanceInteractible, GameManager.instance.interactableMask, isDebugOn);
     }
 
-    public void OnDefaultMovementBehaviour(float stateDependantModifier = 1.0f)
+    #region REGION - Movement
+    public void OnDefaultMovement(float stateDependantModifier = 1.0f)
     {
         float moveX = input.DirX * input.MoveFactor.Value;
         float moveZ = input.DirZ * input.MoveFactor.Value;
@@ -130,7 +134,7 @@ public class PlayerContext : MonoBehaviour
         rb.velocity = movement;
     }
 
-    public void OnDefaultLookBehaviour()
+    public void OnDefaultLook()
     {
         float lookY = input.LookY * input.MouseSensitivity.Value;
 
@@ -138,9 +142,166 @@ public class PlayerContext : MonoBehaviour
 
         transform.Rotate(rotationValues);
     }
+    #endregion
 
-    public void OnDefaultInteractBehaviour()
+    #region REGION - Weapon
+    public void OnDefaultFireWeaponMain()
     {
+        if (input.FireMainWeapon)
+        {
+            input.FireMainWeapon = false;
 
+
+            if (weaponHolder.MainFireRateDelay <= 0 && weaponHolder.MainReloadDelay <= 0)
+            {
+                if (weapons.EquippedMainWeapon.Shoot())
+                {
+                    Debug.Log($" {weapons.EquippedMainWeapon.WeaponName} ... FIRED");
+
+                    weaponHolder.MainFireRateDelay = weapons.EquippedMainWeapon.FiringRate;
+                    if (weapons.EquippedMainWeapon.Projectile != null)
+                    {
+                        weaponHolder.ShootProjectile(weapons.EquippedMainWeapon.Projectile);
+                    }
+                    else
+                    {
+                        if (weapons.EquippedMainWeapon.Spread > 0)
+                        {
+                            weaponHolder.ShootMultipleRayCasts(10, weapons.EquippedMainWeapon.Spread);
+                        }
+                        else
+                        {
+                            weaponHolder.ShootRayCast();
+                        }
+                    }
+                    mainWeaponHasShot.Invoke();
+                }
+            }
+        }
     }
+
+    public void OnDefaultFireWeaponSecondary()
+    {
+        if (input.FireSecondaryWeapon)
+        {
+            input.FireSecondaryWeapon = false;
+
+            if (weaponHolder.SecondaryFireRateDelay <= 0)
+            {
+                if (weapons.EquippedSecondaryWeapon.Shoot())
+                {
+                    Debug.Log($" {weapons.EquippedSecondaryWeapon.WeaponName} ... FIRED");
+
+                    weaponHolder.SecondaryFireRateDelay = weapons.EquippedSecondaryWeapon.FiringRate;
+                    if (weapons.EquippedSecondaryWeapon.Projectile != null)
+                    {
+                        weaponHolder.ShootProjectile(weapons.EquippedSecondaryWeapon.Projectile);
+                    }
+                    else
+                    {
+                        weaponHolder.ShootRayCast();
+                    }
+                    secondaryWeaponHasShot.Invoke();
+                }
+            }
+        }
+    }
+
+    public void OnDefaultWeaponChange()
+    {
+        if (input.WeaponOne)            // WEAPON ONE
+        {
+            input.WeaponOne = false;
+
+            // EVENT GO HERE
+            weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[0];
+            Debug.Log($"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
+            mainWeaponHasChanged.Invoke();
+        }
+        else if (input.WeaponTwo)       // WEAPON TWO
+        {
+            input.WeaponTwo = false;
+
+            // EVENT GO HERE
+            weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[1];
+            Debug.Log($"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
+            mainWeaponHasChanged.Invoke();
+        }
+        else if (input.WeaponScrollBackward)       // WEAPON SCROLL <=
+        {
+            input.WeaponScrollBackward = false;
+
+            // EVENT GO HERE
+            var index = weapons.CarriedMainWeapons.IndexOf(weapons.EquippedMainWeapon) - 1;
+            if (index < 0)
+                index = weapons.CarriedMainWeapons.Count - 1;
+            weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[index];
+            Debug.Log($"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
+            mainWeaponHasChanged.Invoke();
+        }
+        else if (input.WeaponScrollForward)       // WEAPON SCROLL =>
+        {
+            input.WeaponScrollForward = false;
+
+            // EVENT GO HERE
+            var index = weapons.CarriedMainWeapons.IndexOf(weapons.EquippedMainWeapon) + 1;
+            if (index > weapons.CarriedMainWeapons.Count - 1)
+                index = 0;
+            weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[index];
+            Debug.Log($"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
+            mainWeaponHasChanged.Invoke();
+        }
+    }
+
+    public void OnWeaponReload()
+    {
+        if (input.Reload)
+        {
+            input.Reload = false;
+
+            // EVENT GO HERE
+            if (weaponHolder.MainReloadDelay <= 0)
+            {
+                if (weapons.EquippedMainWeapon.Reload())
+                {
+                    Debug.Log($" {weapons.EquippedMainWeapon.WeaponName} ... RELOADED");
+                    mainWeaponHasReloaded.Invoke();
+                    weaponHolder.MainReloadDelay = weapons.EquippedMainWeapon.ReloadTime;
+                }
+            }
+        }
+    }
+    #endregion
+
+    #region REGION - Misc
+    public void OnDefaultInteract(RaycastHit hit)
+    {
+        if (input.Interact)
+        {
+            input.Interact = false;
+
+            if (hit.transform != null)
+            {
+                hit.transform.GetComponent<Interactable>().OnInteraction();
+
+                // NOTE FOR ITERATION
+                //      - Method bellow accepts a boolean for valid or invalid interaction with interactable object
+                //      - I think that the best course of action would be a boolean passed through OnInteraction()
+                //        ... The boolean would be inside of the [Interactable.cs] class for logical access to the object...
+                //        ... context.InteractCanvasHandler.SetVisualCue(hit.transform.GetComponent<Interactable>().OnInteraction());
+                interactCanvasHandler.SetVisualCue();
+            }
+        }
+    }
+
+    public void OnDefaultShowMap()
+    {
+        if (input.ShowMap)
+        {
+            input.ShowMap = false;
+
+            // EVENT GO HERE
+        }
+    }
+    #endregion
 }

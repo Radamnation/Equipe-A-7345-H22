@@ -29,7 +29,7 @@ public class PlayerInputSO : ScriptableObject
     public bool Jump { get; set; }
     public bool Reload { get; set; }
     public bool Interact { get; set; }
-    public bool FireOptionalWeapon { get; set; }
+    public bool FireSecondaryWeapon { get; set; }
 
     // Option --------------------
     public bool ShowMap { get; set; }

@@ -15,9 +15,9 @@ MonoBehaviour:
   weaponName: Shotgun
   weaponDescription: Pumping Action
   currencyValue: 25
-  currentAmmo: 36
+  currentAmmo: 40
   maxAmmo: 40
-  currentClip: 2
+  currentClip: 4
   maxClip: 4
   firingRate: 0.5
   reloadTime: 3

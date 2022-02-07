@@ -268,7 +268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c90645798fce34449b0614fcef0538ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  takedamage: 0
   maxHP:
     UseConstant: 0
     ConstantValue: 0
@@ -823,7 +822,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7782332, y: 1}
+    m_SensorSize: {x: 1.7767653, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1100,7 +1099,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9006906171333024188, guid: 55fbbda838bfb4c468521a3207e9aab3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9006906171582968379, guid: 55fbbda838bfb4c468521a3207e9aab3, type: 3}
       propertyPath: m_Color.a

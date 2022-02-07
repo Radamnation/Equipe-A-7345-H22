@@ -27,27 +27,21 @@ public class LivingEntityContext : MonoBehaviour
     // SECTION - Method - Unity Specific =========================================================
     private void Start()
     {
-        Heal();
+        FullHeal();
     }
 
 
     // SECTION - Method - Context Specific =========================================================
-    public void Heal()
+    public void FullHeal()
     {
-        currentHP.ConstantValue = maxHP.Value;
+        currentHP.Value = maxHP.Value;
     }
-
 
     public void TakeDamage(float damage)
     {
         if (currentHP.Value > 0.0f)
         {
-            float tempHp = currentHP.Value - damage;
-
-            if (currentHP.UseConstant)
-                currentHP.ConstantValue = (tempHp < 0) ? 0 : tempHp;
-            else
-                currentHP.Variable.Value = (tempHp < 0) ? 0 : tempHp;
+            currentHP.Value -= damage;
 
             // On Death
             if (IsDead)

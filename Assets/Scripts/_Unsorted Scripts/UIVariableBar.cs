@@ -15,7 +15,7 @@ public class UIVariableBar : MonoBehaviour
 
     public void UpdateValue()
     {
-        imageValue.fillAmount = currentValue.Variable.Value / maxValue.Variable.Value;
-        textValue.text = currentValue.Variable.Value + " / " + maxValue.Variable.Value;
+        imageValue.fillAmount = currentValue.Value / maxValue.Value;
+        textValue.text = currentValue.Value + " / " + maxValue.Value;
     }
 }

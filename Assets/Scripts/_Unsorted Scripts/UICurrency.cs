@@ -13,6 +13,6 @@ public class UICurrency : MonoBehaviour
 
     public void UpdateValue()
     {
-        textValue.text = currentValue.Variable.Value.ToString();
+        textValue.text = currentValue.Value.ToString();
     }
 }

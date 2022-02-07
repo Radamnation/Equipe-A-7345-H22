@@ -2,18 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* REFERENCE if change of mind for delegation setup
+if (context.Input.FireMainWeapon)
+{
+    context.Input.FireMainWeapon = false;
+    // EVENT GOES HERE
+}
+*/
+
 public class PlayerStateGrounded : IPlayerState
 {
     // SECTION - Method - State Specific =========================================================
     #region REGION - Movement
     public void OnLook(PlayerContext context)
     {
-        context.OnDefaultLookBehaviour();
+        context.OnDefaultLook();
     }
 
     public void OnMove(PlayerContext context)
     {
-        context.OnDefaultMovementBehaviour();
+        context.OnDefaultMovement();
     }
 
     public void OnJump(PlayerContext context)
@@ -36,168 +44,43 @@ public class PlayerStateGrounded : IPlayerState
     #region REGION - Weapon
     public void OnFireWeaponMain(PlayerContext context)
     {
-        if (context.Input.FireMainWeapon)
-        {
-            context.Input.FireMainWeapon = false;
-
-            // EVENT GO HERE
-            if (context.WeaponHolder.MainFireRateDelay <= 0 && context.WeaponHolder.MainReloadDelay <= 0)
-            {
-                if (context.Weapons.EquippedMainWeapon.Shoot())
-                {
-                    Debug.Log($" {context.Weapons.EquippedMainWeapon.WeaponName} ... FIRED");
-
-                    context.WeaponHolder.MainFireRateDelay = context.Weapons.EquippedMainWeapon.FiringRate;
-                    if (context.Weapons.EquippedMainWeapon.Projectile != null)
-                    {
-                        context.WeaponHolder.ShootProjectile(context.Weapons.EquippedMainWeapon.Projectile);
-                    }
-                    else
-                    {
-                        if (context.Weapons.EquippedMainWeapon.Spread > 0)
-                        {
-                            context.WeaponHolder.ShootMultipleRayCasts(10, context.Weapons.EquippedMainWeapon.Spread);
-                        }
-                        else
-                        {
-                            context.WeaponHolder.ShootRayCast();
-                        }
-                    }
-                    context.MainWeaponHasShot.Invoke();
-                }
-            }
-        }
+        // EVENT GO HERE
+        context.OnDefaultFireWeaponMain();
     }
 
-    public void OnFireWeaponOptional(PlayerContext context)
+    public void OnFireWeaponSecondary(PlayerContext context)
     {
-        if (context.Input.FireOptionalWeapon)
-        {
-            context.Input.FireOptionalWeapon = false;
-
-            // EVENT GO HERE
-            if (context.WeaponHolder.SecondaryFireRateDelay <= 0)
-            {
-                if (context.Weapons.EquippedSecondaryWeapon.Shoot())
-                {
-                    Debug.Log($" {context.Weapons.EquippedSecondaryWeapon.WeaponName} ... FIRED");
-
-                    context.WeaponHolder.SecondaryFireRateDelay = context.Weapons.EquippedSecondaryWeapon.FiringRate;
-                    if (context.Weapons.EquippedSecondaryWeapon.Projectile != null)
-                    {
-                        context.WeaponHolder.ShootProjectile(context.Weapons.EquippedSecondaryWeapon.Projectile);
-                    }
-                    else
-                    {
-                        context.WeaponHolder.ShootRayCast();
-                    }
-                    context.SecondaryWeaponHasShot.Invoke();
-                }
-            }
-        }
+        // EVENT GO HERE
+        context.OnDefaultFireWeaponSecondary();
     }
 
     public void OnWeaponChange(PlayerContext context)
     {
-        if (context.Input.WeaponOne)            // WEAPON ONE
-        {
-            context.Input.WeaponOne = false;
-
-            // EVENT GO HERE
-            context.Weapons.EquippedMainWeapon = context.Weapons.CarriedMainWeapons[0];
-            Debug.Log($"MAIN WEAPON CHANGED TO ... {context.Weapons.EquippedMainWeapon.WeaponName}");
-            context.MainWeaponHasChanged.Invoke();
-        }
-        else if (context.Input.WeaponTwo)       // WEAPON TWO
-        {
-            context.Input.WeaponTwo = false;
-
-            // EVENT GO HERE
-            context.Weapons.EquippedMainWeapon = context.Weapons.CarriedMainWeapons[1];
-            Debug.Log($"MAIN WEAPON CHANGED TO ... {context.Weapons.EquippedMainWeapon.WeaponName}");
-            context.MainWeaponHasChanged.Invoke();
-        }
-        else if (context.Input.WeaponScrollBackward)       // WEAPON SCROLL <=
-        {
-            context.Input.WeaponScrollBackward = false;
-
-            // EVENT GO HERE
-            var index = context.Weapons.CarriedMainWeapons.IndexOf(context.Weapons.EquippedMainWeapon) - 1;
-            if (index < 0)
-                index = context.Weapons.CarriedMainWeapons.Count - 1;
-            context.Weapons.EquippedMainWeapon = context.Weapons.CarriedMainWeapons[index];
-            Debug.Log($"MAIN WEAPON CHANGED TO ... {context.Weapons.EquippedMainWeapon.WeaponName}");
-            context.MainWeaponHasChanged.Invoke();
-        }
-        else if (context.Input.WeaponScrollForward)       // WEAPON SCROLL =>
-        {
-            context.Input.WeaponScrollForward = false;
-
-            // EVENT GO HERE
-            var index = context.Weapons.CarriedMainWeapons.IndexOf(context.Weapons.EquippedMainWeapon) + 1;
-            if (index > context.Weapons.CarriedMainWeapons.Count - 1)
-                index = 0;
-            context.Weapons.EquippedMainWeapon = context.Weapons.CarriedMainWeapons[index];
-            Debug.Log($"MAIN WEAPON CHANGED TO ... {context.Weapons.EquippedMainWeapon.WeaponName}");
-            context.MainWeaponHasChanged.Invoke();
-        }
+        // EVENT GO HERE
+        context.OnDefaultWeaponChange();
     }
 
     public void OnWeaponReload(PlayerContext context)
     {
-        if (context.Input.Reload)
-        {
-            context.Input.Reload = false;
-
-            // EVENT GO HERE
-            if (context.WeaponHolder.MainReloadDelay <= 0)
-            {
-                if (context.Weapons.EquippedMainWeapon.Reload())
-                {
-                    Debug.Log($" {context.Weapons.EquippedMainWeapon.WeaponName} ... RELOADED");
-                    context.MainWeaponHasReloaded.Invoke();
-                    context.WeaponHolder.MainReloadDelay = context.Weapons.EquippedMainWeapon.ReloadTime;
-                }
-            }
-        }
+        // EVENT GO HERE
+        context.OnWeaponReload();
     }
     #endregion
 
     #region REGION - Misc
     public void OnInteract(PlayerContext context)
     {
-        // Note
-        //      - Whole method may need Encapsulation after completing [Interactable.cs]
-
+        // Set Interactable GUI feedback
         RaycastHit hit = context.TryRayCastInteractable();
         context.InteractCanvasHandler.SetActive(hit);
 
-        if (context.Input.Interact)
-        {
-            context.Input.Interact = false;
-        
-            if (hit.transform != null)
-            {
-                hit.transform.GetComponent<Interactable>().OnInteraction();
-
-                // NOTE FOR ITERATION
-                //      - Method bellow accepts a boolean for valid or invalid interaction with interactable object
-                //      - I think that the best course of action would be a boolean passed through OnInteraction()
-                //        ... The boolean would be inside of the [Interactable.cs] class for logical access to the object...
-                //        ... context.InteractCanvasHandler.SetVisualCue(hit.transform.GetComponent<Interactable>().OnInteraction());
-                context.InteractCanvasHandler.SetVisualCue();
-            }
-        }
+        // EVENT GO HERE
+        context.OnDefaultInteract(hit);
     }
 
     public void OnShowMap(PlayerContext context)
     {
-        if (context.Input.ShowMap)
-        {
-            context.Input.ShowMap = false;
-
-            // EVENT GO HERE
-        }
+        context.OnDefaultShowMap();
     }
     #endregion
 
@@ -215,7 +98,7 @@ public class PlayerStateGrounded : IPlayerState
 
 
         OnFireWeaponMain(context);
-        OnFireWeaponOptional(context);
+        OnFireWeaponSecondary(context);
         OnWeaponChange(context);
         OnWeaponReload(context);
 

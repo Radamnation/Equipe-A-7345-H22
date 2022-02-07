@@ -82,11 +82,11 @@ public class PlayerInputController : MonoBehaviour
 
     public void OnFireOptionalWeapon(InputAction.CallbackContext cbc)
     {
-        input.FireOptionalWeapon = cbc.performed;
+        input.FireSecondaryWeapon = cbc.performed;
 
         // Debugger
         if (debugDico["Fire Optional Debug"])
-            if(input.FireOptionalWeapon)
+            if(input.FireSecondaryWeapon)
                 Debug.Log($" {gameObject.name} ... FIRE OPTIONAL");
     }
 

@@ -8,13 +8,13 @@ public class PlayerStateAirborne : IPlayerState
     #region REGION - Movement
     public void OnLook(PlayerContext context)
     {
-        context.OnDefaultLookBehaviour();
+        context.OnDefaultLook();
     }
 
     public void OnMove(PlayerContext context)
     {
         // Movement
-        context.OnDefaultMovementBehaviour();
+        context.OnDefaultMovement();
     }
 
     public void OnJump(PlayerContext context) { }
@@ -23,113 +23,43 @@ public class PlayerStateAirborne : IPlayerState
     #region REGION - Weapon
     public void OnFireWeaponMain(PlayerContext context)
     {
-        if (context.Input.FireMainWeapon)
-        {
-            context.Input.FireMainWeapon = false;
-
-            // EVENT GO HERE
-        }
+        // EVENT GO HERE
+        context.OnDefaultFireWeaponMain();
     }
 
-    public void OnFireWeaponOptional(PlayerContext context)
+    public void OnFireWeaponSecondary(PlayerContext context)
     {
-        if (context.Input.FireOptionalWeapon)
-        {
-            context.Input.FireOptionalWeapon = false;
-
-            // EVENT GO HERE
-        }
+        // EVENT GO HERE
+        context.OnDefaultFireWeaponSecondary();
     }
 
     public void OnWeaponChange(PlayerContext context)
     {
-        if (context.Input.WeaponOne)            // WEAPON ONE
-        {
-            Debug.Log($" {context.name} ... CHANGE WEAPON ONE");
-
-
-            context.Input.WeaponOne = false;
-
-            // EVENT GO HERE
-        }
-        else if (context.Input.WeaponTwo)       // WEAPON TWO
-        {
-            Debug.Log($" {context.name} ... CHANGE WEAPON TWO");
-
-
-            context.Input.WeaponTwo = false;
-
-            // EVENT GO HERE
-        }
-        else if (context.Input.WeaponScrollBackward)       // WEAPON SCROLL <=
-        {
-            Debug.Log($" {context.name} ... CHANGE WEAPON SCROLL <=");
-
-
-            context.Input.WeaponScrollBackward = false;
-
-            // EVENT GO HERE
-        }
-        else if (context.Input.WeaponScrollForward)       // WEAPON SCROLL =>
-        {
-            Debug.Log($" {context.name} ... CHANGE WEAPON SCROLL =>");
-
-
-            context.Input.WeaponScrollForward = false;
-
-            // EVENT GO HERE
-        }
+        // EVENT GO HERE
+        context.OnDefaultWeaponChange();
     }
 
     public void OnWeaponReload(PlayerContext context)
     {
-        if (context.Input.Reload)
-        {
-            Debug.Log($" {context.name} ... RELOAD");
-
-
-            context.Input.Reload = false;
-
-            // EVENT GO HERE
-        }
+        // EVENT GO HERE
+        context.OnWeaponReload();
     }
     #endregion
 
     #region REGION - Misc
     public void OnInteract(PlayerContext context)
     {
-        // Note
-        //      - Whole method may need Encapsulation after completing [Interactable.cs]
-
+        // Set Interactable GUI feedback
         RaycastHit hit = context.TryRayCastInteractable();
         context.InteractCanvasHandler.SetActive(hit);
 
-        if (context.Input.Interact)
-        {
-            context.Input.Interact = false;
-
-            if (hit.transform != null)
-            {
-                hit.transform.GetComponent<Interactable>().OnInteraction();
-
-                // NOTE FOR ITERATION
-                //      - Method bellow accepts a boolean for valid or invalid interaction with interactable object
-                //      - I think that the best course of action would be a boolean passed through OnInteraction()
-                //        ... The boolean would be inside of the [Interactable.cs] class for logical access to the object...
-                //        ... context.InteractCanvasHandler.SetVisualCue(hit.transform.GetComponent<Interactable>().OnInteraction());
-                context.InteractCanvasHandler.SetVisualCue();
-            }
-        }
+        // EVENT GO HERE
+        context.OnDefaultInteract(hit);
     }
 
     public void OnShowMap(PlayerContext context)
     {
-        if (context.Input.ShowMap)
-        {
-            context.Input.ShowMap = false;
-
-            // EVENT GO HERE
-        }
+        context.OnDefaultShowMap();
     }
     #endregion
 
@@ -143,7 +73,7 @@ public class PlayerStateAirborne : IPlayerState
         //OnJump(context);
 
         OnFireWeaponMain(context);
-        OnFireWeaponOptional(context);
+        OnFireWeaponSecondary(context);
         OnWeaponChange(context);
         OnWeaponReload(context);
 
