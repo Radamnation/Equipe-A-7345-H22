@@ -33,10 +33,13 @@ public class WeaponHolder : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(transform.position, transform.forward, out hit, 1000);
         Debug.Log(hit.collider.name + " was hit");
-        var newBulletHole = Instantiate(bulletHole, hit.point + hit.normal * 0.001f, Quaternion.LookRotation(hit.normal, Vector3.up));
         if (hit.collider.GetComponent<LivingEntityContext>() != null)
         {
             hit.collider.GetComponent<LivingEntityContext>().TakeDamage(1.0f);
+        }
+        else
+        {
+            var newBulletHole = Instantiate(bulletHole, hit.point + hit.normal * 0.001f, Quaternion.LookRotation(hit.normal, Vector3.up));
         }
     }
 
@@ -48,10 +51,13 @@ public class WeaponHolder : MonoBehaviour
             var spreadDirection = new Vector3(0, Random.Range(-spread, spread), Random.Range(-spread, spread));
             Physics.Raycast(transform.position, transform.forward + spreadDirection, out hit, 1000);
             Debug.Log(hit.collider.name + " was hit");
-            var newBulletHole = Instantiate(bulletHole, hit.point + hit.normal * 0.001f, Quaternion.LookRotation(hit.normal, Vector3.up));
             if (hit.collider.GetComponent<LivingEntityContext>() != null)
             {
                 hit.collider.GetComponent<LivingEntityContext>().TakeDamage(1.0f);
+            }
+            else
+            {
+                var newBulletHole = Instantiate(bulletHole, hit.point + hit.normal * 0.001f, Quaternion.LookRotation(hit.normal, Vector3.up));
             }
         }
     }

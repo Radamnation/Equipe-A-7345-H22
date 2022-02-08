@@ -38,8 +38,8 @@ public class DoorBlock : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        OpenDoor();
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    OpenDoor();
+    //}
 }
