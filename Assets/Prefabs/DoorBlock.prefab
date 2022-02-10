@@ -163,6 +163,7 @@ MonoBehaviour:
   isSecret: 0
   wallPrefab: {fileID: 0}
   door: {fileID: 9018724002037173851}
+  doorCollider: {fileID: 9018724002037173849}
 --- !u!95 &199257001791624004
 Animator:
   serializedVersion: 4
@@ -1604,7 +1605,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Size: {x: 1, y: 3, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &137854453737433965
 MonoBehaviour:
@@ -1624,6 +1625,18 @@ MonoBehaviour:
       - m_Target: {fileID: 199257001791624005}
         m_TargetAssemblyTypeName: DoorBlock, Assembly-CSharp
         m_MethodName: OpenDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 199257001791624005}
+        m_TargetAssemblyTypeName: DoorBlock, Assembly-CSharp
+        m_MethodName: InitiateRoom
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
