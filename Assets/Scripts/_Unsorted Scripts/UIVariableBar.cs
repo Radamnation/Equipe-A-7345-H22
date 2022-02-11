@@ -13,6 +13,11 @@ public class UIVariableBar : MonoBehaviour
     [SerializeField] private Image imageValue;
     [SerializeField] private TextMeshProUGUI textValue;
 
+    private void Start()
+    {
+        UpdateValue();
+    }
+
     public void UpdateValue()
     {
         imageValue.fillAmount = currentValue.Value / maxValue.Value;
