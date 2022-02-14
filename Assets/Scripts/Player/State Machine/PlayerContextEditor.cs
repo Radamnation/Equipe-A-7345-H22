@@ -8,6 +8,9 @@ public class PlayerContextEditor : Editor
     private float btnWidth;
     private float btnHeight;
 
+    private const float minBtnWidth = 120.0f;
+    private const float minBtnHeight = 30.0f;
+
 
     // SECTION - Method =========================================================
     public void OnEnable()
@@ -31,7 +34,9 @@ public class PlayerContextEditor : Editor
             (
                 GUILayout.Button($"Debugger : {((PlayerContext)target).IsDebugOn}", 
                 GUILayout.Width(btnWidth), 
-                GUILayout.Height(btnHeight))
+                GUILayout.Height(btnHeight),
+                GUILayout.MinWidth(minBtnWidth),
+                GUILayout.MinHeight(minBtnHeight))
             ) 
             ((PlayerContext)target).IsDebugOn = !((PlayerContext)target).IsDebugOn;
 

@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using Cinemachine;
 
 public class PlayerContext : MonoBehaviour
 {
@@ -110,6 +107,7 @@ public class PlayerContext : MonoBehaviour
 
 
     // SECTION - Method - Utility ===================================================================
+    // NOTE : Decouple in its own script?
     public RaycastHit TryRayCastGround() // Only purpose is to aleviate eye bleeding
     {
         return StaticRayCaster.IsLineCastTouching(transform.position, -transform.up, DistanceGround, GameManager.instance.groundMask, IsDebugOn);
@@ -282,14 +280,13 @@ public class PlayerContext : MonoBehaviour
 
             if (hit.transform != null)
             {
-                hit.transform.GetComponent<Interactable>().OnInteraction();
+                Interactable interactable = hit.transform.GetComponent<Interactable>();
 
-                // NOTE FOR ITERATION
-                //      - Method bellow accepts a boolean for valid or invalid interaction with interactable object
-                //      - I think that the best course of action would be a boolean passed through OnInteraction()
-                //        ... The boolean would be inside of the [Interactable.cs] class for logical access to the object...
-                //        ... context.InteractCanvasHandler.SetVisualCue(hit.transform.GetComponent<Interactable>().OnInteraction());
-                interactCanvasHandler.SetVisualCue();
+                // Canvas visual cue
+                interactCanvasHandler.SetVisualCue(interactable.IsInteractable);
+
+                // Event launch
+                interactable.OnInteraction();
             }
         }
     }
