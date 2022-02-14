@@ -13,6 +13,9 @@ public class PlayerInputControllerEditor : Editor
     private const int minColumnQty = 1;
     private const int maxColumnQty = 3;
 
+    private const float minBtnWidth = 90.0f;
+    private const float minBtnHeight = 30.0f;
+
     private float btnWidthAll;
     private float btnHeightAll;
 
@@ -57,7 +60,9 @@ public class PlayerInputControllerEditor : Editor
         (
             GUILayout.Button($"Debug ALL\n {myTarget.OnDebugAll}",
             GUILayout.Width(btnWidthAll),
-            GUILayout.Height(btnHeightAll))
+            GUILayout.Height(btnHeightAll),
+            GUILayout.MinWidth(minBtnWidth),
+            GUILayout.MinHeight(minBtnHeight))
         )
             myTarget.SetAllDebuggers(myTarget.OnDebugAll);
         GUILayout.FlexibleSpace(); // Fill with empty space =>
@@ -114,7 +119,9 @@ public class PlayerInputControllerEditor : Editor
                             (
                             GUILayout.Button($"{key}\n {value}",
                             GUILayout.Width(btnWidthSingle),
-                            GUILayout.Height(btnHeightSingle))
+                            GUILayout.Height(btnHeightSingle),
+                            GUILayout.MinWidth(minBtnWidth),
+                            GUILayout.MinHeight(minBtnHeight))
                             )
                                 myTarget.debugDico[key] = !myTarget.debugDico[key];
                             index++;

@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using Cinemachine;
 
 public class PlayerContext : MonoBehaviour
 {
@@ -110,6 +107,7 @@ public class PlayerContext : MonoBehaviour
 
 
     // SECTION - Method - Utility ===================================================================
+    // NOTE : Decouple in its own script?
     public RaycastHit TryRayCastGround() // Only purpose is to aleviate eye bleeding
     {
         return StaticRayCaster.IsLineCastTouching(transform.position, -transform.up, DistanceGround, GameManager.instance.groundMask, IsDebugOn);

@@ -276,7 +276,8 @@ MonoBehaviour:
     UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 0d4b3e70ac3975747a53808160286be2, type: 2}
-  anim: {fileID: 0}
+  visualCueTimer: 0.14
+  anim: {fileID: 1990362425418368984}
   deathAnimStr: 
   takeDmgAnimStr: 
   onTakeDamageEvents:
@@ -822,7 +823,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7767653, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
