@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PhysicalProjectile : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class PhysicalProjectile : MonoBehaviour
 
     [SerializeField] private bool asExplosionTimer;
     [SerializeField] private float explosionTimer;
+
+    [SerializeField] private UnityEvent onDeathEvents;
 
     protected Rigidbody myRigidbody;
 
@@ -52,7 +55,7 @@ public class PhysicalProjectile : MonoBehaviour
             }
             else
             {
-                Destroy(gameObject);
+                Death();
             }
         }
     }
@@ -61,6 +64,11 @@ public class PhysicalProjectile : MonoBehaviour
     {
         if (!explodeOnImpact) return;
 
-        Destroy(gameObject);
+        Death();
+    }
+
+    private void Death()
+    {
+        onDeathEvents.Invoke();
     }
 }

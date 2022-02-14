@@ -13,6 +13,11 @@ public class UIWeapon : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ammoValue;
     [SerializeField] private TextMeshProUGUI clipValue;
 
+    private void Start()
+    {
+        UpdateValue();
+    }
+
     public void UpdateValue()
     {
         if (!isSecondary)

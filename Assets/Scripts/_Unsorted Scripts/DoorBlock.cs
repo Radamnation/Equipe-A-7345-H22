@@ -11,6 +11,12 @@ public class DoorBlock : MonoBehaviour
 
     [SerializeField] private BuildingBlock wallPrefab;
     [SerializeField] private GameObject door;
+    [SerializeField] private BoxCollider doorCollider;
+
+    public bool IsDoor { get => isDoor; set => isDoor = value; }
+    public bool IsOpen { get => isOpen; set => isOpen = value; }
+    public bool IsLocked { get => isLocked; set => isLocked = value; }
+    public bool IsSecret { get => isSecret; set => isSecret = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -30,16 +36,39 @@ public class DoorBlock : MonoBehaviour
 
     public void OpenDoor()
     {
-        GetComponent<Animator>().SetTrigger("OpenDoor");
+        if (!isLocked)
+        {
+            GetComponent<Animator>().SetTrigger("OpenDoor");
+        }
+    }
+
+    public void RemoveCollider()
+    {
+        doorCollider.enabled = false;
+    }
+
+    public void InitiateRoom()
+    {
+        if (!isLocked)
+        {
+            transform.parent.GetComponent<Room>().InitiateRoom();
+        }
     }
 
     public void CloseDoor()
     {
-
+        doorCollider.enabled = true;
+        GetComponent<Animator>().SetTrigger("CloseDoor");
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void CloseOffWall()
     {
-        OpenDoor();
+        Instantiate(wallPrefab, transform);
+        door.SetActive(false);
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    OpenDoor();
+    //}
 }
