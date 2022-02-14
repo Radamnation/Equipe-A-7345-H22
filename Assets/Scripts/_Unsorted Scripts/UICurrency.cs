@@ -11,6 +11,11 @@ public class UICurrency : MonoBehaviour
     [SerializeField] private Image imageValue;
     [SerializeField] private TextMeshProUGUI textValue;
 
+    private void Start()
+    {
+        UpdateValue();
+    }
+
     public void UpdateValue()
     {
         textValue.text = currentValue.Value.ToString();

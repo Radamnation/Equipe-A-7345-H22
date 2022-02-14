@@ -11,6 +11,7 @@ public class LivingEntityContext : MonoBehaviour
     [SerializeField] private FloatReference currentHP;
 
     [Header("Animator")]
+    [SerializeField] private float visualCueTimer = 0.14f;
     [SerializeField] private Animator anim;
     [SerializeField] private string deathAnimStr;
     [SerializeField] private string takeDmgAnimStr;
@@ -18,6 +19,8 @@ public class LivingEntityContext : MonoBehaviour
     [Header("Events")]
     [SerializeField] private UnityEvent onTakeDamageEvents;
     [SerializeField] private UnityEvent onDeathEvents;
+
+                     private SpriteRenderer[] spriteRenderer;
 
 
     // SECTION - Property =========================================================
@@ -28,6 +31,7 @@ public class LivingEntityContext : MonoBehaviour
     private void Start()
     {
         FullHeal();
+        spriteRenderer = GetComponentsInChildren<SpriteRenderer>();
     }
 
 
@@ -42,6 +46,8 @@ public class LivingEntityContext : MonoBehaviour
         if (currentHP.Value > 0.0f)
         {
             currentHP.Value -= damage;
+
+            StartCoroutine(TakeDamageVisualCue());
 
             // On Death
             if (IsDead)
@@ -80,8 +86,22 @@ public class LivingEntityContext : MonoBehaviour
         // Extend default behaviours on take damage here
     }
 
+    private IEnumerator TakeDamageVisualCue()
+    {
+        // Red
+        foreach (SpriteRenderer renderer in spriteRenderer)
+            renderer.color = Color.red;
+
+        yield return new WaitForSeconds(visualCueTimer);
+
+        // Base Color
+        foreach (SpriteRenderer renderer in spriteRenderer)
+            renderer.color = Color.white;
+    }
+
     private void AEDestroyGameObject_AtEndAnim() // Animator Event
     {
+        transform.parent.GetComponent<Room>().FinishRoom();
         Destroy(gameObject);
     }
 }
