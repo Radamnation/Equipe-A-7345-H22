@@ -22,7 +22,8 @@ MonoBehaviour:
   firingRate: 3
   reloadTime: 0
   damage: 50
-  projectile: {fileID: 6912852400933906267, guid: a7eca7a43babbf445857475fcbb97c1e, type: 3}
+  spread: 0
+  projectile: {fileID: -16509233619259775, guid: a7eca7a43babbf445857475fcbb97c1e, type: 3}
   weaponUISprite: {fileID: 0}
   weaponPlayerSprite: {fileID: 0}
   animator: {fileID: 0}

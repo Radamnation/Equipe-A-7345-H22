@@ -15,14 +15,15 @@ MonoBehaviour:
   weaponName: Shotgun
   weaponDescription: Pumping Action
   currencyValue: 25
-  currentAmmo: 40
-  maxAmmo: 40
-  currentClip: 4
-  maxClip: 4
-  firingRate: 0.5
-  reloadTime: 3
+  currentAmmo: 60
+  maxAmmo: 60
+  currentClip: 6
+  maxClip: 6
+  firingRate: 1
+  reloadTime: 2
   damage: 25
   spread: 0.2
+  bulletsNumber: 10
   projectile: {fileID: 0}
   weaponUISprite: {fileID: 0}
   weaponPlayerSprite: {fileID: 21300000, guid: 33b32e9b4ffcfa443a07ebd6248ee8d4, type: 3}

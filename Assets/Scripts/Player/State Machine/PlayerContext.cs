@@ -20,6 +20,7 @@ public class PlayerContext : MonoBehaviour
     [SerializeField] private WeaponsInventorySO weapons;
     [SerializeField] private WeaponHolder weaponHolder;
     [SerializeField] private TransformSO playerTransform;
+    [SerializeField] private PositionRotationSO lastSpawnPositionRotation;
 
     [Header("Rigidbody & Colliders")]
     [SerializeField] private Rigidbody rb;
@@ -50,6 +51,7 @@ public class PlayerContext : MonoBehaviour
     public WeaponsInventorySO Weapons { get => weapons; set => weapons = value; }
     public WeaponHolder WeaponHolder { get => weaponHolder; set => weaponHolder = value; }
     public TransformSO PlayerTransform { get => playerTransform; set => playerTransform = value; }
+    public PositionRotationSO LastSpawnPositionRotation { get => lastSpawnPositionRotation; set => lastSpawnPositionRotation = value; }
 
     public Rigidbody Rb { get => rb; set => rb = value; }
 
@@ -97,6 +99,8 @@ public class PlayerContext : MonoBehaviour
 
     public void OnStateUpdate()
     {
+        // Added to have player position known to everything
+        playerTransform.Transform = transform;
         currState.OnStateUpdate(this);
     }
 
@@ -165,11 +169,11 @@ public class PlayerContext : MonoBehaviour
                     {
                         if (weapons.EquippedMainWeapon.Spread > 0)
                         {
-                            weaponHolder.ShootMultipleRayCasts(10, weapons.EquippedMainWeapon.Spread);
+                            weaponHolder.ShootMultipleRayCasts(weapons.EquippedMainWeapon.Damage, weapons.EquippedMainWeapon.BulletsNumber, weapons.EquippedMainWeapon.Spread);
                         }
                         else
                         {
-                            weaponHolder.ShootRayCast();
+                            weaponHolder.ShootRayCast(weapons.EquippedMainWeapon.Damage);
                         }
                     }
                     mainWeaponHasShot.Invoke();
@@ -197,7 +201,7 @@ public class PlayerContext : MonoBehaviour
                     }
                     else
                     {
-                        weaponHolder.ShootRayCast();
+                        weaponHolder.ShootRayCast(weapons.EquippedSecondaryWeapon.Damage);
                     }
                     secondaryWeaponHasShot.Invoke();
                 }

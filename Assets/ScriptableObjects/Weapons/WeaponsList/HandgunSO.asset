@@ -15,12 +15,12 @@ MonoBehaviour:
   weaponName: Handgun
   weaponDescription: Simple handgun
   currencyValue: 25
-  currentAmmo: 50
-  maxAmmo: 50
-  currentClip: 5
-  maxClip: 5
-  firingRate: 0.5
-  reloadTime: 2
+  currentAmmo: 44
+  maxAmmo: 80
+  currentClip: 8
+  maxClip: 8
+  firingRate: 0.25
+  reloadTime: 1.5
   damage: 10
   spread: 0
   projectile: {fileID: 0}

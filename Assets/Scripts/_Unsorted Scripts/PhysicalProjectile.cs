@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class PhysicalProjectile : MonoBehaviour
 {
+    // [SerializeField] private float colliderActivationDelay = 0.1f;
     [SerializeField] private bool affectedByGravity = true;
     
     [SerializeField] private float impulsion = 5f;
@@ -19,11 +20,15 @@ public class PhysicalProjectile : MonoBehaviour
 
     [SerializeField] private UnityEvent onDeathEvents;
 
-    protected Rigidbody myRigidbody;
+    private Rigidbody myRigidbody;
+    private Collider myCollider;
+
+    public Rigidbody MyRigidbody { get => myRigidbody; set => myRigidbody = value; }
 
     private void Awake()
     {
         myRigidbody = GetComponent<Rigidbody>();
+        myCollider = GetComponent<Collider>();
 
         myRigidbody.useGravity = affectedByGravity;
 
@@ -37,6 +42,12 @@ public class PhysicalProjectile : MonoBehaviour
             myRigidbody.velocity = transform.forward * projectileSpeed;
         }
     }
+
+    //private IEnumerator ActivateCollider()
+    //{
+    //    yield return new WaitForSeconds(colliderActivationDelay);
+    //    myCollider.enabled = true;
+    //}
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +76,11 @@ public class PhysicalProjectile : MonoBehaviour
         if (!explodeOnImpact) return;
 
         Death();
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        myCollider.isTrigger = false;
     }
 
     private void Death()

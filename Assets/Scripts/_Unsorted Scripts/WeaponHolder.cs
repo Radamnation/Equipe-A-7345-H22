@@ -21,43 +21,51 @@ public class WeaponHolder : MonoBehaviour
         secondaryFireRateDelay -= Time.deltaTime;
     }
 
-    public void ShootProjectile(GameObject projectile)
+    public void ShootProjectile(PhysicalProjectile projectile)
     {
         var newProjectile = Instantiate(projectile, transform);
+        newProjectile.MyRigidbody.velocity += transform.parent.GetComponent<Rigidbody>().velocity * 0.25f;
         newProjectile.transform.parent = null;
         Debug.Log(newProjectile.name + " was instantiated");
     }
 
-    public void ShootRayCast()
+    public void ShootRayCast(float damage)
     {
         RaycastHit hit;
-        Physics.Raycast(transform.position, transform.forward, out hit, 1000);
-        Debug.Log(hit.collider.name + " was hit");
-        if (hit.collider.GetComponent<LivingEntityContext>() != null)
+        Physics.Raycast(transform.position, transform.forward, out hit, GameManager.instance.canBeShotByPlayerMask, 1000);
+        if (hit.collider != null)
         {
-            hit.collider.GetComponent<LivingEntityContext>().TakeDamage(1.0f);
+            Debug.Log(hit.collider.name + " was hit");
+            if (hit.collider.GetComponent<LivingEntityContext>() != null)
+            {
+                hit.collider.GetComponent<LivingEntityContext>().TakeDamage(damage);
+            }
+            else
+            {
+                var newBulletHole = Instantiate(bulletHole, hit.point + hit.normal * 0.001f, Quaternion.LookRotation(hit.normal, Vector3.up));
+            }
         }
-        else
-        {
-            var newBulletHole = Instantiate(bulletHole, hit.point + hit.normal * 0.001f, Quaternion.LookRotation(hit.normal, Vector3.up));
-        }
+        
     }
 
-    public void ShootMultipleRayCasts(int hits, float spread)
+    public void ShootMultipleRayCasts(float damage, int hits, float spread)
     {
         for (int i = 0; i < hits; i++)
         {
             RaycastHit hit;
             var spreadDirection = new Vector3(0, Random.Range(-spread, spread), Random.Range(-spread, spread));
-            Physics.Raycast(transform.position, transform.forward + spreadDirection, out hit, 1000);
-            Debug.Log(hit.collider.name + " was hit");
-            if (hit.collider.GetComponent<LivingEntityContext>() != null)
+            Physics.Raycast(transform.position, transform.forward + spreadDirection, out hit, GameManager.instance.canBeShotByPlayerMask, 1000);
+            if (hit.collider != null)
             {
-                hit.collider.GetComponent<LivingEntityContext>().TakeDamage(1.0f);
-            }
-            else
-            {
-                var newBulletHole = Instantiate(bulletHole, hit.point + hit.normal * 0.001f, Quaternion.LookRotation(hit.normal, Vector3.up));
+                Debug.Log(hit.collider.name + " was hit");
+                if (hit.collider.GetComponent<LivingEntityContext>() != null)
+                {
+                    hit.collider.GetComponent<LivingEntityContext>().TakeDamage(damage / hits);
+                }
+                else
+                {
+                    var newBulletHole = Instantiate(bulletHole, hit.point + hit.normal * 0.001f, Quaternion.LookRotation(hit.normal, Vector3.up));
+                }
             }
         }
     }

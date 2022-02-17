@@ -22,7 +22,8 @@ public class WeaponSO : ScriptableObject
     [SerializeField] private float reloadTime;
     [SerializeField] private float damage;
     [SerializeField] private float spread;
-    [SerializeField] private GameObject projectile;
+    [SerializeField] private int bulletsNumber;
+    [SerializeField] private PhysicalProjectile projectile;
 
     [Header("Visual")]
     [SerializeField] private Sprite weaponUISprite;
@@ -43,7 +44,8 @@ public class WeaponSO : ScriptableObject
     public float ReloadTime { get => reloadTime; set => reloadTime = value; }
     public float Damage { get => damage; set => damage = value; }
     public float Spread { get => spread; set => spread = value; }
-    public GameObject Projectile { get => projectile; set => projectile = value; }
+    public int BulletsNumber { get => bulletsNumber; set => bulletsNumber = value; }
+    public PhysicalProjectile Projectile { get => projectile; set => projectile = value; }
 
     public Sprite WeaponUISprite { get => weaponUISprite; set => weaponUISprite = value; }
     public Sprite WeaponPlayerSprite { get => weaponPlayerSprite; set => weaponPlayerSprite = value; }
