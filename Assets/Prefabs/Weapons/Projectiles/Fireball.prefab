@@ -147,7 +147,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2147483647
   isDebugOn: 0
-  delay: 0.4
+  delay: 0
   damage: 5
 --- !u!1 &6912852400933906267
 GameObject:

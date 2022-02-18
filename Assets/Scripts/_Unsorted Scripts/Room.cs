@@ -257,6 +257,8 @@ public class Room : MonoBehaviour
         // Debug.Log("Applying Spawn Position " + lastSpawnPositionRotation.Transform.position);
 
         player.transform.position = lastSpawnPositionRotation.Position;
-        // player.transform.rotation = lastSpawnPositionRotation.Rotation;
+        var playerRigid = player.GetComponent<Rigidbody>();
+        playerRigid.velocity = Vector3.zero;
+        playerRigid.angularVelocity = Vector3.zero;
     }
 }

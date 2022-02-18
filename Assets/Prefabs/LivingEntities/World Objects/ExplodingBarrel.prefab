@@ -276,5 +276,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2147483647
   isDebugOn: 1
-  delay: 0.75
+  delay: 0.4
   damage: 5

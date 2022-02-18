@@ -14,6 +14,7 @@ public class WeaponSO : ScriptableObject
     [SerializeField] private int currencyValue;
 
     [Header("Statistics")]
+    [SerializeField] private bool canFireContinuously;
     [SerializeField] private int currentAmmo;
     [SerializeField] private int maxAmmo;
     [SerializeField] private int currentClip;
@@ -26,6 +27,7 @@ public class WeaponSO : ScriptableObject
     [SerializeField] private PhysicalProjectile projectile;
 
     [Header("Visual")]
+    [SerializeField] private BulletHole bulletHole;
     [SerializeField] private Sprite weaponUISprite;
     [SerializeField] private Sprite weaponPlayerSprite;
     [SerializeField] private Animator animator;
@@ -35,7 +37,8 @@ public class WeaponSO : ScriptableObject
     public string WeaponDescription { get => weaponDescription; set => weaponDescription = value; }
     
     public int CurrencyValue { get => currencyValue; set => currencyValue = value; }
-    
+
+    public bool CanFireContinuously { get => canFireContinuously; set => canFireContinuously = value; }
     public int CurrentAmmo { get => currentAmmo; set => currentAmmo = value; }
     public int MaxAmmo { get => maxAmmo; set => maxAmmo = value; }
     public int CurrentClip { get => currentClip; set => currentClip = value; }
@@ -47,6 +50,7 @@ public class WeaponSO : ScriptableObject
     public int BulletsNumber { get => bulletsNumber; set => bulletsNumber = value; }
     public PhysicalProjectile Projectile { get => projectile; set => projectile = value; }
 
+    public BulletHole BulletHole { get => bulletHole; set => bulletHole = value; }
     public Sprite WeaponUISprite { get => weaponUISprite; set => weaponUISprite = value; }
     public Sprite WeaponPlayerSprite { get => weaponPlayerSprite; set => weaponPlayerSprite = value; }
     public Animator Animator { get => animator; set => animator = value; }
@@ -58,7 +62,7 @@ public class WeaponSO : ScriptableObject
         currentClip = maxClip;
     }
 
-    public bool Shoot()
+    public bool ShootCheck()
     {
         if (currentClip > 0)
         {
@@ -68,22 +72,26 @@ public class WeaponSO : ScriptableObject
         return false;
     }
 
-    public bool Reload()
+    public bool ReloadCheck()
     {
         if (currentAmmo > 0)
         {
-            if (currentAmmo >= maxClip - currentClip)
-            {
-                currentAmmo -= (maxClip - currentClip);
-                currentClip = maxClip;
-            }
-            else
-            {
-                currentClip += currentAmmo;
-                currentAmmo = 0;
-            }
             return true;
         }
         return false;
+    }
+
+    public void Reload()
+    {
+        if (currentAmmo >= maxClip - currentClip)
+        {
+            currentAmmo -= (maxClip - currentClip);
+            currentClip = maxClip;
+        }
+        else
+        {
+            currentClip += currentAmmo;
+            currentAmmo = 0;
+        }
     }
 }

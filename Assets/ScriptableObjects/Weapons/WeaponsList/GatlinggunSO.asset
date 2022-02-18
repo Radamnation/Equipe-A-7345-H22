@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62355733d51508349b066ba42d18111e, type: 3}
-  m_Name: HandgunSO
+  m_Name: GatlinggunSO
   m_EditorClassIdentifier: 
-  weaponName: Handgun
-  weaponDescription: Simple handgun
+  weaponName: Shotgun
+  weaponDescription: Pumping Action
   currencyValue: 25
-  canFireContinuously: 0
-  currentAmmo: 80
-  maxAmmo: 80
-  currentClip: 8
-  maxClip: 8
-  firingRate: 0.25
-  reloadTime: 1.5
-  damage: 10
+  canFireContinuously: 1
+  currentAmmo: 120
+  maxAmmo: 120
+  currentClip: 10
+  maxClip: 30
+  firingRate: 0.1
+  reloadTime: 3
+  damage: 5
   spread: 0
   bulletsNumber: 0
   projectile: {fileID: 0}
-  bulletHole: {fileID: 5792683063871329260, guid: 91294ae40b06c3e448e666c7f71369c5, type: 3}
+  bulletHole: {fileID: 5792683063871329260, guid: f15a24a6094d55245a6e13e6068537f5, type: 3}
   weaponUISprite: {fileID: 0}
-  weaponPlayerSprite: {fileID: 21300000, guid: bc17827da149c514ca5ea7f929e4b86a, type: 3}
+  weaponPlayerSprite: {fileID: 21300000, guid: 1f178f2daf596f24f94b13e54c481ed5, type: 3}
   animator: {fileID: 0}

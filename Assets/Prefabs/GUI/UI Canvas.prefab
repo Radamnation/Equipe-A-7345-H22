@@ -1514,7 +1514,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &4249242937532648691
 MonoBehaviour:
@@ -2041,7 +2041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8783334f93d39bf4f92d0cdf1f5eaecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 5593f666cacc862428d0458cdcdc51b2, type: 2}
+  Event: {fileID: 11400000, guid: 5ae0d5b9457f8d349895514b8b2b3fde, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:

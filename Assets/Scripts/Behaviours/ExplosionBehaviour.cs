@@ -36,6 +36,6 @@ public class ExplosionBehaviour : MonoBehaviour
         foreach (Collider hitObj in collArray)
             if (hitObj.GetComponent<LivingEntityContext>())
                 hitObj.GetComponent<LivingEntityContext>().TakeDamage(damage);
-        Destroy(transform.parent.gameObject);
+        // Destroy(transform.parent.gameObject);
     }
 }
