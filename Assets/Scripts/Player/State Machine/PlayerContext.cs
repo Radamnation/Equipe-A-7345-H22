@@ -18,8 +18,9 @@ public class PlayerContext : MonoBehaviour
     [Header("Weapons")]
     // CURRENT WEAPON & MORE GO HERE
     [SerializeField] private WeaponsInventorySO weapons;
-    [SerializeField] private WeaponHolder weaponHolder;
+    [SerializeField] private WeaponManager weaponHolder;
     [SerializeField] private TransformSO playerTransform;
+    [SerializeField] private PositionRotationSO lastSpawnPositionRotation;
 
     [Header("Rigidbody & Colliders")]
     [SerializeField] private Rigidbody rb;
@@ -34,10 +35,8 @@ public class PlayerContext : MonoBehaviour
     [SerializeField] private InteractCanvasHandler interactCanvasHandler;
 
     [Header("Events")]
-    [SerializeField] private UnityEvent mainWeaponHasShot;
-    [SerializeField] private UnityEvent mainWeaponHasReloaded;
     [SerializeField] private UnityEvent mainWeaponHasChanged;
-    [SerializeField] private UnityEvent secondaryWeaponHasShot;
+
 
     // SECTION - Property ===================================================================
     #region REGION - PROPERTY
@@ -48,8 +47,9 @@ public class PlayerContext : MonoBehaviour
     public bool IsDebugOn { get => isDebugOn; set => isDebugOn = value; }
 
     public WeaponsInventorySO Weapons { get => weapons; set => weapons = value; }
-    public WeaponHolder WeaponHolder { get => weaponHolder; set => weaponHolder = value; }
+    public WeaponManager WeaponHolder { get => weaponHolder; set => weaponHolder = value; }
     public TransformSO PlayerTransform { get => playerTransform; set => playerTransform = value; }
+    public PositionRotationSO LastSpawnPositionRotation { get => lastSpawnPositionRotation; set => lastSpawnPositionRotation = value; }
 
     public Rigidbody Rb { get => rb; set => rb = value; }
 
@@ -57,10 +57,7 @@ public class PlayerContext : MonoBehaviour
 
     public Animator Anim { get => anim; set => anim = value; }
     
-    public UnityEvent MainWeaponHasShot { get => mainWeaponHasShot; set => mainWeaponHasShot = value; }
-    public UnityEvent MainWeaponHasReloaded { get => mainWeaponHasReloaded; set => mainWeaponHasReloaded = value; }
     public UnityEvent MainWeaponHasChanged { get => mainWeaponHasChanged; set => mainWeaponHasChanged = value; }
-    public UnityEvent SecondaryWeaponHasShot { get => secondaryWeaponHasShot; set => secondaryWeaponHasShot = value; }
 
     public InteractCanvasHandler InteractCanvasHandler { get => interactCanvasHandler; set => interactCanvasHandler = value; }
     #endregion
@@ -74,9 +71,12 @@ public class PlayerContext : MonoBehaviour
 
         // TO BE DELETED
         livingEntityContext.FullHeal();
+        // TO BE MOVED
+        weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
+        weaponHolder.SecondaryWeapon = weapons.EquippedSecondaryWeapon;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (oldState != currState)
         {
@@ -97,6 +97,8 @@ public class PlayerContext : MonoBehaviour
 
     public void OnStateUpdate()
     {
+        // Added to have player position known to everything
+        playerTransform.Transform = transform;
         currState.OnStateUpdate(this);
     }
 
@@ -147,34 +149,12 @@ public class PlayerContext : MonoBehaviour
     {
         if (input.FireMainWeapon)
         {
-            input.FireMainWeapon = false;
-
-
-            if (weaponHolder.MainFireRateDelay <= 0 && weaponHolder.MainReloadDelay <= 0)
+            if (!weaponHolder.MainWeapon.CanFireContinuously)
             {
-                if (weapons.EquippedMainWeapon.Shoot())
-                {
-                    Debug.Log($" {weapons.EquippedMainWeapon.WeaponName} ... FIRED");
-
-                    weaponHolder.MainFireRateDelay = weapons.EquippedMainWeapon.FiringRate;
-                    if (weapons.EquippedMainWeapon.Projectile != null)
-                    {
-                        weaponHolder.ShootProjectile(weapons.EquippedMainWeapon.Projectile);
-                    }
-                    else
-                    {
-                        if (weapons.EquippedMainWeapon.Spread > 0)
-                        {
-                            weaponHolder.ShootMultipleRayCasts(10, weapons.EquippedMainWeapon.Spread);
-                        }
-                        else
-                        {
-                            weaponHolder.ShootRayCast();
-                        }
-                    }
-                    mainWeaponHasShot.Invoke();
-                }
+                input.FireMainWeapon = false;
             }
+
+            weaponHolder.TriggerMainWeapon();
         }
     }
 
@@ -184,24 +164,7 @@ public class PlayerContext : MonoBehaviour
         {
             input.FireSecondaryWeapon = false;
 
-            if (weaponHolder.SecondaryFireRateDelay <= 0)
-            {
-                if (weapons.EquippedSecondaryWeapon.Shoot())
-                {
-                    Debug.Log($" {weapons.EquippedSecondaryWeapon.WeaponName} ... FIRED");
-
-                    weaponHolder.SecondaryFireRateDelay = weapons.EquippedSecondaryWeapon.FiringRate;
-                    if (weapons.EquippedSecondaryWeapon.Projectile != null)
-                    {
-                        weaponHolder.ShootProjectile(weapons.EquippedSecondaryWeapon.Projectile);
-                    }
-                    else
-                    {
-                        weaponHolder.ShootRayCast();
-                    }
-                    secondaryWeaponHasShot.Invoke();
-                }
-            }
+            weaponHolder.TriggerSecondaryWeapon();
         }
     }
 
@@ -212,7 +175,10 @@ public class PlayerContext : MonoBehaviour
             input.WeaponOne = false;
 
             // EVENT GO HERE
+            weaponHolder.ResetReload();
+
             weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[0];
+            weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
             Debug.Log($"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
             mainWeaponHasChanged.Invoke();
         }
@@ -220,8 +186,11 @@ public class PlayerContext : MonoBehaviour
         {
             input.WeaponTwo = false;
 
+            weaponHolder.ResetReload();
+
             // EVENT GO HERE
             weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[1];
+            weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
             Debug.Log($"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
             mainWeaponHasChanged.Invoke();
         }
@@ -229,11 +198,14 @@ public class PlayerContext : MonoBehaviour
         {
             input.WeaponScrollBackward = false;
 
+            weaponHolder.ResetReload();
+
             // EVENT GO HERE
             var index = weapons.CarriedMainWeapons.IndexOf(weapons.EquippedMainWeapon) - 1;
             if (index < 0)
                 index = weapons.CarriedMainWeapons.Count - 1;
             weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[index];
+            weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
             Debug.Log($"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
             mainWeaponHasChanged.Invoke();
         }
@@ -241,11 +213,14 @@ public class PlayerContext : MonoBehaviour
         {
             input.WeaponScrollForward = false;
 
+            weaponHolder.ResetReload();
+
             // EVENT GO HERE
             var index = weapons.CarriedMainWeapons.IndexOf(weapons.EquippedMainWeapon) + 1;
             if (index > weapons.CarriedMainWeapons.Count - 1)
                 index = 0;
             weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[index];
+            weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
             Debug.Log($"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
             mainWeaponHasChanged.Invoke();
         }
@@ -258,15 +233,7 @@ public class PlayerContext : MonoBehaviour
             input.Reload = false;
 
             // EVENT GO HERE
-            if (weaponHolder.MainReloadDelay <= 0)
-            {
-                if (weapons.EquippedMainWeapon.Reload())
-                {
-                    Debug.Log($" {weapons.EquippedMainWeapon.WeaponName} ... RELOADED");
-                    mainWeaponHasReloaded.Invoke();
-                    weaponHolder.MainReloadDelay = weapons.EquippedMainWeapon.ReloadTime;
-                }
-            }
+            weaponHolder.ReloadMainWeapon();
         }
     }
     #endregion

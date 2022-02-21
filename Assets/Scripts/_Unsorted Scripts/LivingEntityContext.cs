@@ -47,6 +47,8 @@ public class LivingEntityContext : MonoBehaviour
         {
             currentHP.Value -= damage;
 
+            Debug.Log($"{gameObject.name} has taken damage");
+
             StartCoroutine(TakeDamageVisualCue());
 
             // On Death
@@ -64,6 +66,11 @@ public class LivingEntityContext : MonoBehaviour
                     onTakeDamageEvents.Invoke();
             }
         }
+    }
+
+    public void InstantDeath()
+    {
+        TakeDamage(maxHP.Value);
     }
 
 
@@ -101,7 +108,8 @@ public class LivingEntityContext : MonoBehaviour
 
     private void AEDestroyGameObject_AtEndAnim() // Animator Event
     {
-        transform.parent.GetComponent<Room>().FinishRoom();
+        // transform.parent.
+        GetComponentInParent<Room>().FinishRoom();
         Destroy(gameObject);
     }
 }

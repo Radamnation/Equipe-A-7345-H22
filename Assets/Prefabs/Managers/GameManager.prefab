@@ -50,3 +50,6 @@ MonoBehaviour:
   interactableMask:
     serializedVersion: 2
     m_Bits: 128
+  canBeShotByPlayerMask:
+    serializedVersion: 2
+    m_Bits: 960

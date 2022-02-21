@@ -50,4 +50,9 @@ MonoBehaviour:
   roomSize: 15
   maxGridSize: 3
   roomPrefabs:
-  - {fileID: 3992321305335836164, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
+  - {fileID: 3404908083903607379, guid: af8035daf55cbff489e923abfe43c1a5, type: 3}
+  - {fileID: 3989586123135901805, guid: a552ccb313f8fa948a8b6f7ce21b931f, type: 3}
+  - {fileID: 6930314500423577105, guid: 3666f3364710cb74483a0a84f865fae9, type: 3}
+  - {fileID: 5843665426262922214, guid: fda19da06a4e79546a3cd73f9a97f207, type: 3}
+  - {fileID: 5785998747963336200, guid: 9996513b43dbcd6428e938b0c69999ef, type: 3}
+  - {fileID: 5869650660629083920, guid: 9d9c960ecc7d8b446bc7b7553bf9cadd, type: 3}
