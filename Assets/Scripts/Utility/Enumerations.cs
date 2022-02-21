@@ -9,5 +9,4 @@ public enum BasicEnemy_AnimationStates { IDDLE, MOVEMENT, ONAWAKE, ROAMINGATTACK
 
 public enum BasicEnemy_AnimTriggers { DEATH, ONHIT, ROAMINGATTACK, AGGRESSIVEATTACK}
 
-
 // Extend here

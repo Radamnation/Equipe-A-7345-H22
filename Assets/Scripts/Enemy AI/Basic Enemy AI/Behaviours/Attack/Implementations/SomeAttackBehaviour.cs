@@ -33,7 +33,7 @@ public class SomeAttackBehaviour : AbstractAttackBehaviour
         // some random bullshit condition for this.script
         // Also keep track of executability for this.script down the line ifever 
         int a = 1; int b = 2;
-        if (a > b) base.animConditionBool = true; 
+        if (a > b) base.animConditionBool = true;
 
         // Nested conditional return for lineup of behaviour, if desired
         bool lineUpBool = myNextBehaviour.IsExecutionValid();
