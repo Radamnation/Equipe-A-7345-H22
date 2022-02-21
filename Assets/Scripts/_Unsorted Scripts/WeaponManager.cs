@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class WeaponHolder : MonoBehaviour
+public class WeaponManager : MonoBehaviour
 {
+    [SerializeField] private bool tracksPlayer = true;
+    [SerializeField] private TransformSO playerTransform;
+    
     [SerializeField] private WeaponSO mainWeapon;
     [SerializeField] private WeaponSO secondaryWeapon;
 
@@ -27,6 +30,8 @@ public class WeaponHolder : MonoBehaviour
     private void Update()
     {
         mainFireRateDelay -= Time.deltaTime;
+        secondaryFireRateDelay -= Time.deltaTime;
+
         if (mainReloadDelay > 0)
         {
             mainReloadDelay -= Time.deltaTime;
@@ -38,7 +43,11 @@ public class WeaponHolder : MonoBehaviour
             mainWeaponFinishedReloading.Invoke();
             mainWeaponIsReloading = false;
         }
-        secondaryFireRateDelay -= Time.deltaTime;
+        
+        if (tracksPlayer)
+        {
+            transform.forward = transform.position - playerTransform.Transform.position;
+        }
     }
 
     public void ResetReload()
@@ -59,7 +68,7 @@ public class WeaponHolder : MonoBehaviour
                 ShootWeapon(mainWeapon);
                 mainWeaponHasShot.Invoke();
             }
-            else
+            else if (!mainWeapon.CanFireContinuously)
             {
                 ReloadMainWeapon();
             }

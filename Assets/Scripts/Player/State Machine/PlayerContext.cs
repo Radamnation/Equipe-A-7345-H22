@@ -18,7 +18,7 @@ public class PlayerContext : MonoBehaviour
     [Header("Weapons")]
     // CURRENT WEAPON & MORE GO HERE
     [SerializeField] private WeaponsInventorySO weapons;
-    [SerializeField] private WeaponHolder weaponHolder;
+    [SerializeField] private WeaponManager weaponHolder;
     [SerializeField] private TransformSO playerTransform;
     [SerializeField] private PositionRotationSO lastSpawnPositionRotation;
 
@@ -47,7 +47,7 @@ public class PlayerContext : MonoBehaviour
     public bool IsDebugOn { get => isDebugOn; set => isDebugOn = value; }
 
     public WeaponsInventorySO Weapons { get => weapons; set => weapons = value; }
-    public WeaponHolder WeaponHolder { get => weaponHolder; set => weaponHolder = value; }
+    public WeaponManager WeaponHolder { get => weaponHolder; set => weaponHolder = value; }
     public TransformSO PlayerTransform { get => playerTransform; set => playerTransform = value; }
     public PositionRotationSO LastSpawnPositionRotation { get => lastSpawnPositionRotation; set => lastSpawnPositionRotation = value; }
 

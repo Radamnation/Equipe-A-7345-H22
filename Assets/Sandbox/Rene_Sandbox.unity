@@ -1277,6 +1277,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 316649815, guid: a3bba2dbe530b5241beabfbbc59adc79, type: 3}
+      propertyPath: m_Name
+      value: WeaponManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 316649817, guid: a3bba2dbe530b5241beabfbbc59adc79, type: 3}
+      propertyPath: tracksPlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 316649817, guid: a3bba2dbe530b5241beabfbbc59adc79, type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 11400000, guid: bb659ba3eaf28be498f4674f9cbb480c, type: 2}
     - target: {fileID: 316649817, guid: a3bba2dbe530b5241beabfbbc59adc79, type: 3}
       propertyPath: weaponHasShot.m_PersistentCalls.m_Calls.Array.size
       value: 1
