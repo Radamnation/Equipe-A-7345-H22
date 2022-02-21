@@ -133,6 +133,7 @@ public class WeaponManager : MonoBehaviour
 
     public void ShootSingleRayCast(WeaponSO weapon)
     {
+        Debug.Log("A");
         RaycastHit hit;
         Physics.Raycast(transform.position, transform.forward, out hit, GameManager.instance.canBeShotByPlayerMask, 1000);
         if (hit.collider != null)
