@@ -35,7 +35,6 @@ public class PlayerStateGrounded : IPlayerState
             Vector3 movement = context.transform.right * moveX + context.transform.up * moveY + context.transform.forward * moveZ;
             context.Rb.velocity = movement;
 
-
             OnStateExit(context);
         }
     }

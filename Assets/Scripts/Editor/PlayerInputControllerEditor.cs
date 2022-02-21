@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.Linq;
+
+// Note : Try switch debugger buttons into property drawer if time
 
 [CustomEditor(typeof(PlayerInputController), true)]
 public class PlayerInputControllerEditor : Editor
@@ -30,7 +30,7 @@ public class PlayerInputControllerEditor : Editor
         btnHeightAll = Screen.height * 0.025f; // No currentViewHeight available
         btnHeightSingle = Screen.height * 0.03f; // No currentViewHeight available
 
-        //myTarget.ColumnQty = 1; // DEBUGGER IN CASE OF BUG 
+        myTarget.ColumnQty = 2; // Set base column quantity so that it is easier to read
     }
 
     public override void OnInspectorGUI()
