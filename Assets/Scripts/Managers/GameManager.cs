@@ -12,6 +12,12 @@ public class GameManager : MonoBehaviour
     public LayerMask interactableMask;
     public LayerMask canBeShotByPlayerMask;
 
+    private Transform playerTransformRef;
+
+
+    // SECTION - Property ===================================================================
+    public Transform PlayerTransformRef => playerTransformRef;
+
 
     // SECTION - Method - Unity Specific ===================================================================
     private void Awake()
@@ -22,6 +28,8 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
 
         instance.SetMouseCursor_LockedInvisible();
+
+        playerTransformRef = GameObject.Find("Player").transform;
     }
 
 

@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 580406396174781458}
   - component: {fileID: 1550851825}
   - component: {fileID: 1550851826}
+  - component: {fileID: 429604732}
   m_Layer: 8
   m_Name: ExplodingBarrel
   m_TagString: Untagged
@@ -157,7 +158,7 @@ MonoBehaviour:
     Variable: {fileID: 0}
   visualCueTimer: 0.14
   anim: {fileID: 580406396174781458}
-  deathAnimStr: IsDead
+  deathAnimStr: OnDeath
   takeDmgAnimStr: 
   onTakeDamageEvents:
     m_PersistentCalls:
@@ -187,7 +188,7 @@ Animator:
   m_GameObject: {fileID: 6544539548589606803}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 17c584e1724e24d4abc2864ed1d962c0, type: 2}
+  m_Controller: {fileID: 9100000, guid: faf64b5dff225f24b967b7503c1a7e52, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -227,6 +228,40 @@ CapsuleCollider:
   m_Height: 0.5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &429604732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6544539548589606803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efee954c69f0d421086729bb8df1137f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  uniqueID: 5853020225258447830
+  points:
+  - {x: -0.32, y: 0, z: -0.32}
+  - {x: 0.32, y: 0, z: -0.32}
+  - {x: 0.32, y: 0, z: 0.32}
+  - {x: -0.32, y: 0, z: 0.32}
+  convex: 1
+  minBoundsHeight: 0.5
+  penaltyDelta: 0
+  modifyWalkability: 0
+  setWalkability: 0
+  applyOnStart: 1
+  applyOnScan: 1
+  updatePhysics: 0
+  resetPenaltyOnPhysics: 1
+  updateErosion: 1
+  modifyTag: 1
+  setTag: 1
+  legacyMode: 0
+  serializedVersion: 1
+  legacyUseWorldSpace: 0
 --- !u!1 &6544539550013374663
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +287,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6544539550013374663}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.05, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

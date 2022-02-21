@@ -7,7 +7,6 @@ public class ExplosionBehaviour : MonoBehaviour
     // SECTION - Field ============================================================
     [Header("SphereCast Values")]
     [SerializeField] private float radius;
-    //[SerializeField] private float maxDistance;
     [SerializeField] private LayerMask targetMask;
     [SerializeField] private bool isDebugOn = false;
 
@@ -15,7 +14,7 @@ public class ExplosionBehaviour : MonoBehaviour
     [SerializeField] private float delay = 0.0f;
     [SerializeField] private float damage;
 
-    private Collider[] collArray;
+                     private Collider[] collArray;
 
 
     // SECTION - Method ============================================================
@@ -29,7 +28,15 @@ public class ExplosionBehaviour : MonoBehaviour
         Invoke("ExecuteExplosion", delay);
     }
 
-    public void ExecuteExplosion()
+    public void SelfDestruct()
+    {
+        LivingEntityContext myLE = GetComponentInParent<LivingEntityContext>();
+        myLE.InstantDeath();
+
+        Invoke("ExecuteExplosion", delay * 0.5f);
+    }
+
+    private void ExecuteExplosion()
     {
         collArray = StaticRayCaster.IsOverlapSphereTouching(transform.parent.transform, radius, targetMask, isDebugOn);
 
