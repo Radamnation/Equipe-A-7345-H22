@@ -92,10 +92,6 @@ public class PlayerStateGrounded : IPlayerState
         OnLook(context);
         OnMove(context);
         OnJump(context);
-        
-        // Added to have player position known to everything
-        context.PlayerTransform.Transform = context.transform;
-
 
         OnFireWeaponMain(context);
         OnFireWeaponSecondary(context);
@@ -113,9 +109,14 @@ public class PlayerStateGrounded : IPlayerState
             return new PlayerStateDead();
 
         // Airborne
-        if (context.Input.Jump)
-            if (!context.TryRayCastGround().transform)               
-                return new PlayerStateAirborne();
+        if (context.Input.Jump || !context.TryRayCastGround().transform)
+        {
+            return new PlayerStateAirborne();
+        }
+        else
+        {
+            context.LastSpawnPositionRotation.Position = context.TryRayCastGround().transform.position + Vector3.up;
+        }
 
         return this;
     }

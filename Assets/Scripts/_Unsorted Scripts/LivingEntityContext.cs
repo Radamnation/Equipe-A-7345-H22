@@ -101,7 +101,8 @@ public class LivingEntityContext : MonoBehaviour
 
     private void AEDestroyGameObject_AtEndAnim() // Animator Event
     {
-        transform.parent.GetComponent<Room>().FinishRoom();
+        // transform.parent.
+        GetComponentInParent<Room>().FinishRoom();
         Destroy(gameObject);
     }
 }

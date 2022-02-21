@@ -60,8 +60,58 @@ public class MapLayout : MonoBehaviour
     {
         foreach (Vector3 roomPosition in mapLayoutInformation.RoomPositions)
         {
-            var newRoom = Instantiate(roomPrefabs[Random.Range(0, roomPrefabs.Length - 1)], roomPosition * roomSize, Quaternion.identity);
+            var eastHasNoRoom = !mapLayoutInformation.RoomPositions.Contains(roomPosition + new Vector3(1, 0, 0));
+            var westHasNoRoom = !mapLayoutInformation.RoomPositions.Contains(roomPosition + new Vector3(-1, 0, 0));
+            var northHasNoRoom = !mapLayoutInformation.RoomPositions.Contains(roomPosition + new Vector3(0, 0, 1));
+            var southHasNoRoom = !mapLayoutInformation.RoomPositions.Contains(roomPosition + new Vector3(0, 0, -1));
+
+            Room newRoomPrefab;
+            float roomRotation;
+            bool tempEastHasNoRoom;
+            bool tempWestHasNoRoom;
+            bool tempNorthHasNoRoom;
+            bool tempSouthHasNoRoom;
+
+            do
+            {
+                newRoomPrefab = roomPrefabs[Random.Range(0, roomPrefabs.Length)];
+                roomRotation = 0;
+                tempEastHasNoRoom = eastHasNoRoom;
+                tempWestHasNoRoom = westHasNoRoom;
+                tempNorthHasNoRoom = northHasNoRoom;
+                tempSouthHasNoRoom = southHasNoRoom;
+
+                do
+                {
+                    if (newRoomPrefab.EastDoorIsBlocked == tempEastHasNoRoom &&
+                     newRoomPrefab.WestDoorIsBlocked == tempWestHasNoRoom &&
+                     newRoomPrefab.NorthDoorIsBlocked == tempNorthHasNoRoom &&
+                     newRoomPrefab.SouthDoorIsBlocked == tempSouthHasNoRoom)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        if (newRoomPrefab.LayoutCanBeRotated)
+                        {
+                            roomRotation += 90;
+                            var temp = tempEastHasNoRoom;
+                            tempEastHasNoRoom = tempSouthHasNoRoom;
+                            tempSouthHasNoRoom = tempWestHasNoRoom;
+                            tempWestHasNoRoom = tempNorthHasNoRoom;
+                            tempNorthHasNoRoom = temp;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                } while (roomRotation < 360);
+            } while (newRoomPrefab.EastDoorIsBlocked != tempEastHasNoRoom || newRoomPrefab.WestDoorIsBlocked != tempWestHasNoRoom || newRoomPrefab.NorthDoorIsBlocked != tempNorthHasNoRoom || newRoomPrefab.SouthDoorIsBlocked != tempSouthHasNoRoom);
+
+            var newRoom = Instantiate(newRoomPrefab, roomPosition * roomSize, Quaternion.identity);
             newRoom.transform.parent = transform;
+            newRoom.RoomInside.transform.rotation = Quaternion.Euler(newRoom.transform.rotation.eulerAngles + new Vector3(0, roomRotation, 0));
             mapLayoutInformation.Rooms.Add(newRoom);
         }
     }

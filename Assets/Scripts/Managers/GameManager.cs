@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [Header("Important Layer Masks")]
     public LayerMask groundMask;
     public LayerMask interactableMask;
+    public LayerMask canBeShotByPlayerMask;
 
 
     // SECTION - Method - Unity Specific ===================================================================

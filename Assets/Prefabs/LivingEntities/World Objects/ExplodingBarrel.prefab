@@ -271,10 +271,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d613873f442ac404bbef14939145ef69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.5
+  radius: 1
   targetMask:
     serializedVersion: 2
     m_Bits: 2147483647
-  isDebugOn: 0
-  delay: 2
+  isDebugOn: 1
+  delay: 0.4
   damage: 5
