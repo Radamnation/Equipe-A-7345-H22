@@ -18,7 +18,7 @@ public abstract class AbstractAttackBehaviour : MonoBehaviour
     // SECTION - Field ===================================================================
     [Tooltip("Ignore if of no use for current behaviour")]
     [Header("Base Class Fields")]
-    [SerializeField] private LayerMask tagetMask;
+    [SerializeField] protected LayerMask targetMask;
     [SerializeField] protected bool animConditionBool = false;
 
     // Extend necessary base fields here
