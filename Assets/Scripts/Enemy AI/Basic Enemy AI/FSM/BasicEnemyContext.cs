@@ -59,7 +59,7 @@ public class BasicEnemyContext : MonoBehaviour
 
     [Space(10)]
     [Header("    ========== Roaming State ==========\n")]
-    [SerializeField] private WeaponHolder r_WeaponHolder;
+    [SerializeField] private WeaponManager r_WeaponManager;
     [SerializeField] private bool r_OnAtkExit = false;
     [Tooltip("Animation event must be set manually")]
     [SerializeField] private bool r_AnimExecuteAtk = false;
@@ -69,7 +69,7 @@ public class BasicEnemyContext : MonoBehaviour
 
     [Space(10)]
     [Header("    ========== Aggressive State ==========\n")]
-    [SerializeField] private WeaponHolder a_WeaponHolder;
+    [SerializeField] private WeaponManager a_WeaponManager;
     [SerializeField] private bool a_OnAtkExit = false;
     [Tooltip("Animation event must be set manually")]
     [SerializeField] private bool a_AnimExecuteAtk = false;
@@ -88,14 +88,14 @@ public class BasicEnemyContext : MonoBehaviour
     public AIPath MyAIPath { get => myAIPath; set => myAIPath = value; }
 
     // Roaming State
-    public WeaponHolder R_WeaponHolder { get => r_WeaponHolder; set => r_WeaponHolder = value; }
+    public WeaponManager R_WeaponManager { get => r_WeaponManager; set => r_WeaponManager = value; }
     public bool R_OnAnimExit { get => r_OnAtkExit; }
     public bool R_AnimExecuteAtk { get => r_AnimExecuteAtk; }
     public AbstractMovementBehaviour R_MoveBehaviour { get => r_MoveBehaviour; }
     public AbstractAttackBehaviour R_AtkBehaviour { get => r_AtkBehaviour; }
 
     // Aggressive State
-    public WeaponHolder A_WeaponHolder { get => a_WeaponHolder; set => a_WeaponHolder = value; }
+    public WeaponManager A_WeaponManager { get => a_WeaponManager; set => a_WeaponManager = value; }
     public bool A_OnAtkExit { get => a_OnAtkExit; }
     public bool A_AnimExecuteAtk { get => a_AnimExecuteAtk; }
     public AbstractMovementBehaviour A_MoveBehaviour { get => a_MoveBehaviour; }
@@ -185,7 +185,8 @@ public class BasicEnemyContext : MonoBehaviour
         // Miscellaneous ========================================
         // Get Components
         myLivingEntity = GetComponentInChildren<LivingEntityContext>();
-        r_WeaponHolder = GetComponentInChildren<WeaponHolder>();
+        //a_WeaponManager = GetComponentInChildren<WeaponManager>(); // TO BE IMPLEMENTED
+        //r_WeaponManager = GetComponentInChildren<WeaponManager>(); // TO BE IMPLEMENTED
         mySpriteTransform = GetComponentInChildren<SpriteRenderer>().transform;
         anim = GetComponentInChildren<Animator>();
     }

@@ -135,12 +135,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myStartingState: 1
   startAtMaxSpeed: 1
-  r_WeaponHolder: {fileID: 0}
+  r_WeaponManager: {fileID: 0}
   r_OnAtkExit: 0
   r_AnimExecuteAtk: 0
   r_MoveBehaviour: {fileID: 0}
   r_AtkBehaviour: {fileID: 0}
-  a_WeaponHolder: {fileID: 0}
+  a_WeaponManager: {fileID: 0}
   a_OnAtkExit: 0
   a_AnimExecuteAtk: 0
   a_MoveBehaviour: {fileID: 0}
@@ -157,7 +157,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302ed520c0a045543bbc07729b6e4645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletHole: {fileID: 0}
+  tracksPlayer: 1
+  playerTransform: {fileID: 11400000, guid: bb659ba3eaf28be498f4674f9cbb480c, type: 2}
+  mainWeapon: {fileID: 0}
+  secondaryWeapon: {fileID: 0}
+  mainWeaponFinishedReloading:
+    m_PersistentCalls:
+      m_Calls: []
+  mainWeaponHasShot:
+    m_PersistentCalls:
+      m_Calls: []
+  mainWeaponStartedReloading:
+    m_PersistentCalls:
+      m_Calls: []
+  secondaryWeaponHasShot:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!95 &161874762372255118
 Animator:
   serializedVersion: 4
