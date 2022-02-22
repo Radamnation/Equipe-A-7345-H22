@@ -31,7 +31,7 @@ public class EnemyStateRoaming : IEnemyState
                 Debug.Log("ROAMING : IMPLEMENT ATTACK COOLDOWN HERE");
 
                 // Check if invoke now or wait for animation event
-                if (!context.R_AnimExecuteAtk)
+                if (!context.RAnimExecuteAtk)
                 {
                     if (context.R_AtkBehaviour.IsExecutionValid())
                     {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class ExplosionBehaviour : MonoBehaviour
 {
@@ -11,7 +12,10 @@ public class ExplosionBehaviour : MonoBehaviour
     [SerializeField] private bool isDebugOn = false;
 
     [Header("Behaviour Values")]
-    [SerializeField] private float delay = 0.0f;
+    [SerializeField] private bool delayDestroys = false;
+    [SerializeField] private bool delayDisablesSprite = false;
+    [SerializeField] private float executeDelay = 0.0f;
+    [SerializeField] private float lingerDelay = 0.0f;
     [SerializeField] private float damage;
 
                      private Collider[] collArray;
@@ -25,24 +29,26 @@ public class ExplosionBehaviour : MonoBehaviour
 
     public void Explosion()
     {
-        Invoke("ExecuteExplosion", delay);
-    }
-
-    public void SelfDestruct()
-    {
-        LivingEntityContext myLE = GetComponentInParent<LivingEntityContext>();
-        myLE.InstantDeath();
-
-        Invoke("ExecuteExplosion", delay * 0.5f);
+        Invoke("ExecuteExplosion", executeDelay);
     }
 
     private void ExecuteExplosion()
     {
-        collArray = StaticRayCaster.IsOverlapSphereTouching(transform.parent.transform, radius, targetMask, isDebugOn);
+        collArray = StaticRayCaster.IsOverlapSphereTouching(transform.position, radius, targetMask, isDebugOn); // transform.parent.transform
 
         foreach (Collider hitObj in collArray)
             if (hitObj.GetComponent<LivingEntityContext>())
                 hitObj.GetComponent<LivingEntityContext>().TakeDamage(damage);
-        // Destroy(transform.parent.gameObject);
+
+        // Manage object / sprite renderer
+        if (delayDisablesSprite)
+            transform.parent.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        else if (delayDestroys)
+            Invoke("AE_DestroyObject", lingerDelay);
+    }
+
+    private void AE_DestroyObject() // Animator Event
+    {
+        Destroy(transform.parent.gameObject);
     }
 }
