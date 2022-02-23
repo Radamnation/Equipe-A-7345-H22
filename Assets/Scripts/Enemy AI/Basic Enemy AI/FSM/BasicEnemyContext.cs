@@ -251,11 +251,7 @@ public class BasicEnemyContext : MonoBehaviour
                 break;
             case BasicEnemy_States.AGGRESSIVE:
                 if (!(currState is EnemyStateAgressive))
-                {
-                    Debug.Log("A");
                     currState = new EnemyStateAgressive();
-                }
-
                 break;
         }
     }

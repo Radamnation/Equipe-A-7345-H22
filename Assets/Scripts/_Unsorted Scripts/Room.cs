@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding; // Path Finding
 
 public class Room : MonoBehaviour
 {
+    // Path Finding 
+    private AstarPath myAstarPath;
+
     // CONFIGURATION
     [SerializeField] private int xDimension = 15;
     [SerializeField] private int zDimension = 15;
@@ -48,6 +52,7 @@ public class Room : MonoBehaviour
 
     public bool IsCompleted { get => isCompleted; set => isCompleted = value; }
     public Transform RoomInside { get => roomInside; set => roomInside = value; }
+    public AstarPath MyAstarPath { get => myAstarPath; set => myAstarPath = value; }
 
     // Start is called before the first frame update
     void Awake()
@@ -204,6 +209,7 @@ public class Room : MonoBehaviour
     public void InitiateRoom()
     {
         LockAllDoors();
+
         foreach (Room room in mapLayoutInformation.Rooms)
         {
             if (this != room)
@@ -212,6 +218,12 @@ public class Room : MonoBehaviour
                 {
                     room.CloseAllDoors();
                     room.LockAllDoors();
+
+                    // Set Path Finding uppon entering new room
+                    myAstarPath.data.gridGraph.center = gameObject.transform.localPosition;
+                    myAstarPath.data.gridGraph.width = xDimension;
+                    myAstarPath.data.gridGraph.depth = zDimension;
+                    myAstarPath.Scan();
                 }
             }
         }
@@ -233,11 +245,14 @@ public class Room : MonoBehaviour
             {
                 if (room.IsCompleted)
                 {
+                    // Interactable sandwish with unlock-all-doors bread
                     room.UnlockAllDoors();
+
                     SetIsInteractable(eastDoor, false);
                     SetIsInteractable(westDoor, false);
                     SetIsInteractable(northDoor, false);
                     SetIsInteractable(southDoor, false);
+
                     room.OpenAllDoors();
                 }
             }
