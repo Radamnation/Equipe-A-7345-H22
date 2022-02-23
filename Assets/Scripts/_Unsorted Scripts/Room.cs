@@ -174,17 +174,31 @@ public class Room : MonoBehaviour
     public void LockAllDoors()
     {
         eastDoor.IsLocked = true;
+        SetIsInteractable(eastDoor, false);
+
         westDoor.IsLocked = true;
+        SetIsInteractable(westDoor, false);
+
         northDoor.IsLocked = true;
+        SetIsInteractable(northDoor, false);
+
         southDoor.IsLocked = true;
+        SetIsInteractable(southDoor, false);
     }
 
     public void UnlockAllDoors()
     {
         eastDoor.IsLocked = false;
+        SetIsInteractable(eastDoor, true);
+
         westDoor.IsLocked = false;
+        SetIsInteractable(westDoor, true);
+
         northDoor.IsLocked = false;
+        SetIsInteractable(northDoor, true);
+
         southDoor.IsLocked = false;
+        SetIsInteractable(southDoor, true);
     }
 
     public void InitiateRoom()
@@ -205,7 +219,7 @@ public class Room : MonoBehaviour
 
     public void FinishRoom()
     {
-        Debug.Log("Testing Living Entities in the room");
+        Debug.Log($"Testing Living Entities in the room: {gameObject.name}");
         Invoke("TestLivingEntities", 0.1f);
     }
 
@@ -220,6 +234,10 @@ public class Room : MonoBehaviour
                 if (room.IsCompleted)
                 {
                     room.UnlockAllDoors();
+                    SetIsInteractable(eastDoor, false);
+                    SetIsInteractable(westDoor, false);
+                    SetIsInteractable(northDoor, false);
+                    SetIsInteractable(southDoor, false);
                     room.OpenAllDoors();
                 }
             }
@@ -260,5 +278,15 @@ public class Room : MonoBehaviour
         var playerRigid = player.GetComponent<Rigidbody>();
         playerRigid.velocity = Vector3.zero;
         playerRigid.angularVelocity = Vector3.zero;
+    }
+
+    private void SetIsInteractable(DoorBlock doorBlock, bool setTo)
+    {
+        // Get
+        Interactable myDoorInteractable;
+
+        // Set
+        myDoorInteractable = doorBlock.GetComponentInChildren<Interactable>();
+        if (myDoorInteractable != null) myDoorInteractable.SetIsInteractable(setTo);
     }
 }

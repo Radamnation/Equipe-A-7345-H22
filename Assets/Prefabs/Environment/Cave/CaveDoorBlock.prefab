@@ -7,6 +7,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 137854453737433965, guid: 20184c58aeb9bef40889e919c3c60fbb, type: 3}
+      propertyPath: interacted.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 137854453737433965, guid: 20184c58aeb9bef40889e919c3c60fbb, type: 3}
+      propertyPath: interacted.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 137854453737433965, guid: 20184c58aeb9bef40889e919c3c60fbb, type: 3}
+      propertyPath: interacted.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3595097499365690113}
+    - target: {fileID: 137854453737433965, guid: 20184c58aeb9bef40889e919c3c60fbb, type: 3}
+      propertyPath: interacted.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OpenDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 137854453737433965, guid: 20184c58aeb9bef40889e919c3c60fbb, type: 3}
+      propertyPath: interacted.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: DoorBlock, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 199257001791624005, guid: 20184c58aeb9bef40889e919c3c60fbb, type: 3}
       propertyPath: isDoor
       value: 1
@@ -137,3 +157,14 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2985062f3fd9e2e4283c0f1a54de3e9e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20184c58aeb9bef40889e919c3c60fbb, type: 3}
+--- !u!114 &3595097499365690113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 199257001791624005, guid: 20184c58aeb9bef40889e919c3c60fbb, type: 3}
+  m_PrefabInstance: {fileID: 3686122693160785988}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ccaade35a4c0d04fb2b59cff805125b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
