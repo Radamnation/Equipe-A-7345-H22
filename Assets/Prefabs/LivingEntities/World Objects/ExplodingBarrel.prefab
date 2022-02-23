@@ -156,6 +156,8 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue: 0
     Variable: {fileID: 0}
+  deathDestroys: 1
+  deathDisablesSprite: 0
   visualCueTimer: 0.14
   anim: {fileID: 580406396174781458}
   deathAnimStr: OnDeath
@@ -309,7 +311,10 @@ MonoBehaviour:
   radius: 1
   targetMask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 969
   isDebugOn: 1
-  delay: 0.4
+  delayDestroys: 0
+  delayDisablesSprite: 0
+  executeDelay: 0
+  lingerDelay: 0
   damage: 5

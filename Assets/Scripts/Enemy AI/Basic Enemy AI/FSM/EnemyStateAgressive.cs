@@ -31,7 +31,7 @@ public class EnemyStateAgressive : IEnemyState
                 Debug.Log("AGGRESSIVE : IMPLEMENT ATTACK COOLDOWN HERE");
 
                 // Check if invoke now or wait for animation event
-                if (!context.A_AnimExecuteAtk)
+                if (!context.AAnimExecuteAtk)
                 {
                     if (context.A_AtkBehaviour.IsExecutionValid())
                     {

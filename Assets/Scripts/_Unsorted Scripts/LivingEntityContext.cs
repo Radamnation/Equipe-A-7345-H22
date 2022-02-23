@@ -11,6 +11,9 @@ public class LivingEntityContext : MonoBehaviour
     [SerializeField] private FloatReference currentHP;
 
     [Header("Animator")]
+    [SerializeField] private bool deathDestroys = false;
+    [SerializeField] private bool deathDisablesSprite = false;
+    [Space(10)]
     [SerializeField] private float visualCueTimer = 0.14f;
     [SerializeField] private Animator anim;
     [SerializeField] private string deathAnimStr;
@@ -106,10 +109,18 @@ public class LivingEntityContext : MonoBehaviour
             renderer.color = Color.white;
     }
 
-    private void AEDestroyGameObject_AtEndAnim() // Animator Event
+    public void AE_ManageObjectAtEndDeathAnim() // Animator Event
     {
-        // transform.parent.
+        if (deathDisablesSprite)
+            GetComponentInChildren<SpriteRenderer>().enabled = false;
+        else if (deathDestroys)
+            DestroyMe();
+         
         GetComponentInParent<Room>().FinishRoom();
+    }
+
+    public void DestroyMe()
+    {
         Destroy(gameObject);
     }
 }

@@ -179,7 +179,7 @@ public class PlayerContext : MonoBehaviour
 
             weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[0];
             weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
-            Debug.Log($"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
+            StaticDebugger.SimpleDebugger(isDebugOn, $"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
             mainWeaponHasChanged.Invoke();
         }
         else if (input.WeaponTwo)       // WEAPON TWO
@@ -191,7 +191,7 @@ public class PlayerContext : MonoBehaviour
             // EVENT GO HERE
             weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[1];
             weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
-            Debug.Log($"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
+            StaticDebugger.SimpleDebugger(IsDebugOn, $"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
             mainWeaponHasChanged.Invoke();
         }
         else if (input.WeaponScrollBackward)       // WEAPON SCROLL <=
@@ -206,7 +206,7 @@ public class PlayerContext : MonoBehaviour
                 index = weapons.CarriedMainWeapons.Count - 1;
             weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[index];
             weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
-            Debug.Log($"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
+            StaticDebugger.SimpleDebugger(IsDebugOn, $"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
             mainWeaponHasChanged.Invoke();
         }
         else if (input.WeaponScrollForward)       // WEAPON SCROLL =>
@@ -221,7 +221,7 @@ public class PlayerContext : MonoBehaviour
                 index = 0;
             weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[index];
             weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
-            Debug.Log($"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
+            StaticDebugger.SimpleDebugger(IsDebugOn, $"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
             mainWeaponHasChanged.Invoke();
         }
     }
@@ -247,7 +247,8 @@ public class PlayerContext : MonoBehaviour
 
             if (hit.transform != null)
             {
-                Interactable interactable = hit.transform.GetComponent<Interactable>();
+                Debug.Log($"hit name is : {hit.transform.name}");
+                Interactable interactable = hit.transform.GetComponentInChildren<Interactable>();
 
                 // Canvas visual cue
                 interactCanvasHandler.SetVisualCue(interactable.IsInteractable);

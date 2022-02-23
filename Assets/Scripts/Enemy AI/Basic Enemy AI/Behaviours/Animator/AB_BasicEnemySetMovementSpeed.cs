@@ -1,9 +1,12 @@
 using UnityEngine;
 
-public class AB_BasicEnemyToggleStateAtEndAttack : StateMachineBehaviour
+public class AB_BasicEnemySetMovementSpeed : StateMachineBehaviour
 {
     // SECTION - Field ============================================================
     private BasicEnemyContext myContext;
+    [SerializeField] private bool isMaxSpeedOnEnter = false;
+    [SerializeField] float speedOnEnterIfNotMax = 0.0f;
+    [SerializeField] private bool isMaxSpeedOnExit = true;
 
 
     // SECTION - Method ============================================================
@@ -12,14 +15,16 @@ public class AB_BasicEnemyToggleStateAtEndAttack : StateMachineBehaviour
         // Get BasicEnemyContext
         if (myContext == null)
             myContext = animator.GetComponent<BasicEnemyContext>();
+
+        if (isMaxSpeedOnEnter)
+            myContext.SetSpeedAsDefault();
+        else
+            myContext.SetSpeed(speedOnEnterIfNotMax);
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // Toggle handler
-        if (myContext.IsInAnimationState(BasicEnemy_AnimationStates.ROAMINGATTACK) && myContext.ToAOnAtkExit)
-            myContext.ToggleState();
-        else if (myContext.IsInAnimationState(BasicEnemy_AnimationStates.AGGRESSIVEATTACK) && myContext.ToROnAtkExit)
-            myContext.ToggleState();
+        if (isMaxSpeedOnExit)
+            myContext.SetSpeedAsDefault();
     }
 }
