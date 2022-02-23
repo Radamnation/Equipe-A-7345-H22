@@ -52,30 +52,33 @@ public class BasicEnemyContext : MonoBehaviour
     #endregion
 
 
-
-    [Header("On Start Specifications")]
+    [Header("    ======= On Start Specifications =======\n")]
     [SerializeField] private BasicEnemy_States myStartingState = BasicEnemy_States.ROAMING;
     [SerializeField] private bool startAtMaxSpeed = true;
 
     [Space(10)]
     [Header("    ========== Roaming State ==========\n")]
-    [SerializeField] private WeaponManager r_WeaponManager;
-    [SerializeField] private bool r_OnAtkExit = false;
+    [Header("Weapon Manager")]
+    [SerializeField] private WeaponManager rWeaponManager;
+
+    [Header("Animator")]
+    [SerializeField] private bool toAOnAtkExit = false;
     [Tooltip("Animation event must be set manually")]
-    [SerializeField] private bool r_AnimExecuteAtk = false;
-    [Space(10)]
-    [SerializeField] private AbstractMovementBehaviour r_MoveBehaviour;
-    [SerializeField] private AbstractAttackBehaviour r_AtkBehaviour;
+    [SerializeField] private bool rAnimExecuteAtk = false;
+    private AbstractMovementBehaviour r_MoveBehaviour;
+    private AbstractAttackBehaviour r_AtkBehaviour;
 
     [Space(10)]
-    [Header("    ========== Aggressive State ==========\n")]
-    [SerializeField] private WeaponManager a_WeaponManager;
-    [SerializeField] private bool a_OnAtkExit = false;
+    [Header("    ========= Aggressive State =========\n")]
+    [Header("Weapon Manager")]
+    [SerializeField] private WeaponManager aWeaponManager;
+
+    [Header("Animator")]
+    [SerializeField] private bool toROnAtkExit = false;
     [Tooltip("Animation event must be set manually")]
-    [SerializeField] private bool a_AnimExecuteAtk = false;
-    [Space(10)]
-    [SerializeField] private AbstractMovementBehaviour a_MoveBehaviour;
-    [SerializeField] private AbstractAttackBehaviour a_AtkBehaviour;
+    [SerializeField] private bool aAnimExecuteAtk = false;
+    private AbstractMovementBehaviour a_MoveBehaviour;
+    private AbstractAttackBehaviour a_AtkBehaviour;
 
 
     // SECTION - Property ===================================================================
@@ -88,16 +91,16 @@ public class BasicEnemyContext : MonoBehaviour
     public AIPath MyAIPath { get => myAIPath; set => myAIPath = value; }
 
     // Roaming State
-    public WeaponManager R_WeaponManager { get => r_WeaponManager; set => r_WeaponManager = value; }
-    public bool R_OnAnimExit { get => r_OnAtkExit; }
-    public bool R_AnimExecuteAtk { get => r_AnimExecuteAtk; }
+    public WeaponManager RWeaponManager { get => rWeaponManager; set => rWeaponManager = value; }
+    public bool ToAOnAtkExit { get => toAOnAtkExit; }
+    public bool RAnimExecuteAtk { get => rAnimExecuteAtk; }
     public AbstractMovementBehaviour R_MoveBehaviour { get => r_MoveBehaviour; }
     public AbstractAttackBehaviour R_AtkBehaviour { get => r_AtkBehaviour; }
 
     // Aggressive State
-    public WeaponManager A_WeaponManager { get => a_WeaponManager; set => a_WeaponManager = value; }
-    public bool A_OnAtkExit { get => a_OnAtkExit; }
-    public bool A_AnimExecuteAtk { get => a_AnimExecuteAtk; }
+    public WeaponManager AWeaponManager { get => aWeaponManager; set => aWeaponManager = value; }
+    public bool ToROnAtkExit { get => toROnAtkExit; }
+    public bool AAnimExecuteAtk { get => aAnimExecuteAtk; }
     public AbstractMovementBehaviour A_MoveBehaviour { get => a_MoveBehaviour; }
     public AbstractAttackBehaviour A_AtkBehaviour { get => a_AtkBehaviour; }
     #endregion
@@ -185,10 +188,14 @@ public class BasicEnemyContext : MonoBehaviour
         // Miscellaneous ========================================
         // Get Components
         myLivingEntity = GetComponentInChildren<LivingEntityContext>();
-        //a_WeaponManager = GetComponentInChildren<WeaponManager>(); // TO BE IMPLEMENTED
-        //r_WeaponManager = GetComponentInChildren<WeaponManager>(); // TO BE IMPLEMENTED
         mySpriteTransform = GetComponentInChildren<SpriteRenderer>().transform;
         anim = GetComponentInChildren<Animator>();
+
+        r_MoveBehaviour = transform.GetChild(1).GetComponentInChildren<AbstractMovementBehaviour>();
+        r_AtkBehaviour = transform.GetChild(1).GetComponentInChildren<AbstractAttackBehaviour>();
+
+        a_MoveBehaviour = transform.GetChild(2).GetComponentInChildren<AbstractMovementBehaviour>();
+        a_AtkBehaviour = transform.GetChild(2).GetComponentInChildren<AbstractAttackBehaviour>();
     }
     #endregion
 
@@ -244,11 +251,7 @@ public class BasicEnemyContext : MonoBehaviour
                 break;
             case BasicEnemy_States.AGGRESSIVE:
                 if (!(currState is EnemyStateAgressive))
-                {
-                    Debug.Log("A");
                     currState = new EnemyStateAgressive();
-                }
-
                 break;
         }
     }

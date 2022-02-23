@@ -1,11 +1,10 @@
 HOW TO USE
 
 Step 01 : CREATE PREFAB VARIANT ========================
-+ Drag & Drop [_Template _ Basic Enemy] inside scene
-+ [MB2 on object > Prefab > Unpack Completely] for the newly droped prefab
++ [MB2 on prefab > Create > Prefab Variant]
 + Change Name
 
-Step 02: ANIMATOR =====================================
+Step 02: ANIMATOR ===================================== (MAY NEED TO IMPLEMENT [Animation Override Controller] INSTEAD)
 + [Animation > Enemy > Basic Enemy AI]
 + CTRL + D... [_TEMPLATE _ ANIMATOR & ANIMATION]
 + Rename Folder

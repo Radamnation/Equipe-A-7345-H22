@@ -42,7 +42,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3831662558199758471}
-  - component: {fileID: 3831662558199758470}
   m_Layer: 8
   m_Name: Behaviours _ Passive
   m_TagString: Untagged
@@ -65,25 +64,6 @@ Transform:
   m_Father: {fileID: 3831662558856893141}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3831662558199758470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3831662558199758472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44cad9dbd72d0d44d835380b79927ede, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myMovementTarget: {fileID: 0}
-  isPassiveBehaviour: 1
-  nextState: 1
-  waitForMask:
-    serializedVersion: 2
-    m_Bits: 8
-  waitUntilRange: 1.92
 --- !u!1 &3831662558613925919
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,6 +163,8 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue: 0
     Variable: {fileID: 0}
+  deathDestroys: 1
+  deathDisablesSprite: 0
   visualCueTimer: 0.14
   anim: {fileID: 3831662558856893132}
   deathAnimStr: OnDeath
@@ -192,19 +174,7 @@ MonoBehaviour:
       m_Calls: []
   onDeathEvents:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ExplosionBehaviour, Assembly-CSharp
-        m_MethodName: Explosion
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &3831662558856893129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,16 +189,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myStartingState: 0
   startAtMaxSpeed: 1
-  r_WeaponHolder: {fileID: 0}
-  r_OnAtkExit: 0
-  r_AnimExecuteAtk: 0
-  r_MoveBehaviour: {fileID: 0}
-  r_AtkBehaviour: {fileID: 0}
-  a_WeaponHolder: {fileID: 0}
-  a_OnAtkExit: 0
-  a_AnimExecuteAtk: 0
-  a_MoveBehaviour: {fileID: 0}
-  a_AtkBehaviour: {fileID: 0}
+  rWeaponManager: {fileID: 0}
+  toAOnAtkExit: 0
+  rAnimExecuteAtk: 0
+  aWeaponManager: {fileID: 0}
+  toROnAtkExit: 0
+  aAnimExecuteAtk: 0
 --- !u!114 &3831662558856893130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,7 +207,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302ed520c0a045543bbc07729b6e4645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletHole: {fileID: 0}
+  tracksPlayer: 0
+  playerTransform: {fileID: 0}
+  mainWeapon: {fileID: 0}
+  secondaryWeapon: {fileID: 0}
+  mainWeaponFinishedReloading:
+    m_PersistentCalls:
+      m_Calls: []
+  mainWeaponHasShot:
+    m_PersistentCalls:
+      m_Calls: []
+  mainWeaponStartedReloading:
+    m_PersistentCalls:
+      m_Calls: []
+  secondaryWeaponHasShot:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!95 &3831662558856893132
 Animator:
   serializedVersion: 4
@@ -389,7 +370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 3317722960103916111
+  uniqueID: 9073864552650571613
   points:
   - {x: -0.32, y: 0, z: -0.32}
   - {x: 0.32, y: 0, z: -0.32}
@@ -610,8 +591,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4261843815690790764}
-  - component: {fileID: 4261843815690790754}
-  - component: {fileID: 4261843815690790765}
   m_Layer: 8
   m_Name: Attack
   m_TagString: Untagged
@@ -634,43 +613,6 @@ Transform:
   m_Father: {fileID: 3831662558613925918}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4261843815690790754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4261843815690790767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f5109669e982dc4bab68e50a38bc5e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagetMask:
-    serializedVersion: 2
-    m_Bits: 0
-  animConditionBool: 0
-  myNextBehaviour: {fileID: 4261843815690790765}
-  myNextBehaviours: []
-  myEventList:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &4261843815690790765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4261843815690790767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9de4b420b1cf7d45a658ef15ebe2940, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagetMask:
-    serializedVersion: 2
-    m_Bits: 0
-  animConditionBool: 0
 --- !u!1 &4261843816707075335
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,7 +622,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4261843816707075332}
-  - component: {fileID: 4261843816707075333}
   m_Layer: 8
   m_Name: Attack
   m_TagString: Untagged
@@ -703,34 +644,3 @@ Transform:
   m_Father: {fileID: 3831662557995219414}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4261843816707075333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4261843816707075335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dab2fd8d43a408e4da855ba091f87d11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagetMask:
-    serializedVersion: 2
-    m_Bits: 0
-  animConditionBool: 1
-  myEvents:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3831662558856893131}
-        m_TargetAssemblyTypeName: LivingEntityContext, Assembly-CSharp
-        m_MethodName: InstantDeath
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2

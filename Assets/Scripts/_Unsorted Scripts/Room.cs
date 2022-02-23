@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding; // Path Finding
 
 public class Room : MonoBehaviour
 {
+    // Path Finding 
+    private AstarPath myAstarPath;
+
     // CONFIGURATION
     [SerializeField] private int xDimension = 15;
     [SerializeField] private int zDimension = 15;
@@ -48,6 +52,7 @@ public class Room : MonoBehaviour
 
     public bool IsCompleted { get => isCompleted; set => isCompleted = value; }
     public Transform RoomInside { get => roomInside; set => roomInside = value; }
+    public AstarPath MyAstarPath { get => myAstarPath; set => myAstarPath = value; }
 
     // Start is called before the first frame update
     void Awake()
@@ -174,22 +179,37 @@ public class Room : MonoBehaviour
     public void LockAllDoors()
     {
         eastDoor.IsLocked = true;
+        SetIsInteractable(eastDoor, false);
+
         westDoor.IsLocked = true;
+        SetIsInteractable(westDoor, false);
+
         northDoor.IsLocked = true;
+        SetIsInteractable(northDoor, false);
+
         southDoor.IsLocked = true;
+        SetIsInteractable(southDoor, false);
     }
 
     public void UnlockAllDoors()
     {
         eastDoor.IsLocked = false;
+        SetIsInteractable(eastDoor, true);
+
         westDoor.IsLocked = false;
+        SetIsInteractable(westDoor, true);
+
         northDoor.IsLocked = false;
+        SetIsInteractable(northDoor, true);
+
         southDoor.IsLocked = false;
+        SetIsInteractable(southDoor, true);
     }
 
     public void InitiateRoom()
     {
         LockAllDoors();
+
         foreach (Room room in mapLayoutInformation.Rooms)
         {
             if (this != room)
@@ -198,6 +218,12 @@ public class Room : MonoBehaviour
                 {
                     room.CloseAllDoors();
                     room.LockAllDoors();
+
+                    // Set Path Finding uppon entering new room
+                    myAstarPath.data.gridGraph.center = gameObject.transform.localPosition;
+                    myAstarPath.data.gridGraph.width = xDimension;
+                    myAstarPath.data.gridGraph.depth = zDimension;
+                    myAstarPath.Scan();
                 }
             }
         }
@@ -205,7 +231,7 @@ public class Room : MonoBehaviour
 
     public void FinishRoom()
     {
-        Debug.Log("Testing Living Entities in the room");
+        Debug.Log($"Testing Living Entities in the room: {gameObject.name}");
         Invoke("TestLivingEntities", 0.1f);
     }
 
@@ -219,7 +245,14 @@ public class Room : MonoBehaviour
             {
                 if (room.IsCompleted)
                 {
+                    // Interactable sandwish with unlock-all-doors bread
                     room.UnlockAllDoors();
+
+                    SetIsInteractable(eastDoor, false);
+                    SetIsInteractable(westDoor, false);
+                    SetIsInteractable(northDoor, false);
+                    SetIsInteractable(southDoor, false);
+
                     room.OpenAllDoors();
                 }
             }
@@ -260,5 +293,15 @@ public class Room : MonoBehaviour
         var playerRigid = player.GetComponent<Rigidbody>();
         playerRigid.velocity = Vector3.zero;
         playerRigid.angularVelocity = Vector3.zero;
+    }
+
+    private void SetIsInteractable(DoorBlock doorBlock, bool setTo)
+    {
+        // Get
+        Interactable myDoorInteractable;
+
+        // Set
+        myDoorInteractable = doorBlock.GetComponentInChildren<Interactable>();
+        if (myDoorInteractable != null) myDoorInteractable.SetIsInteractable(setTo);
     }
 }

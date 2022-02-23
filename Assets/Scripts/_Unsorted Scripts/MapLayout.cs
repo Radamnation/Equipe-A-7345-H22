@@ -58,6 +58,8 @@ public class MapLayout : MonoBehaviour
 
     public void PlaceRooms()
     {
+        AstarPath myAstarPathRef = GetComponentInChildren<AstarPath>();
+
         foreach (Vector3 roomPosition in mapLayoutInformation.RoomPositions)
         {
             var eastHasNoRoom = !mapLayoutInformation.RoomPositions.Contains(roomPosition + new Vector3(1, 0, 0));
@@ -113,6 +115,9 @@ public class MapLayout : MonoBehaviour
             newRoom.transform.parent = transform;
             newRoom.RoomInside.transform.rotation = Quaternion.Euler(newRoom.transform.rotation.eulerAngles + new Vector3(0, roomRotation, 0));
             mapLayoutInformation.Rooms.Add(newRoom);
+
+            // Set AStar reference
+            newRoom.MyAstarPath = myAstarPathRef;
         }
     }
 
