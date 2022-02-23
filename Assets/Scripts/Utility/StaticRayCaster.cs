@@ -64,6 +64,34 @@ public class StaticRayCaster : MonoBehaviour
         }
     }
 
+    public static void RaycastSphereDebugger(Vector3 position, float distance, bool isDebugOn)
+    {
+        if (isDebugOn)
+        {
+            // Get lengths of lines
+            Vector3 endforwardPositive = position + Vector3.forward * distance;
+            Vector3 endforwardNegative = position + -Vector3.forward * distance;
+
+            Vector3 endUpPositive = position + Vector3.up * distance;
+            Vector3 endUpNegative = position + -Vector3.up * distance;
+
+            Vector3 endRightPositive = position + Vector3.right * distance;
+            Vector3 endRightNegative = position + -Vector3.right * distance;
+
+
+            // Print lines
+            Debug.DrawLine(position, endforwardPositive, Color.yellow);
+            Debug.DrawLine(position, endforwardNegative, Color.yellow);
+
+            Debug.DrawLine(position, endUpPositive, Color.blue);
+            Debug.DrawLine(position, endUpNegative, Color.blue);
+
+            Debug.DrawLine(position, endRightPositive, Color.red);
+            Debug.DrawLine(position, endRightNegative, Color.red);
+        }
+    }
+
+
     static public Collider[] IsOverlapSphereTouching(Transform originTransform, float radius, LayerMask mask, bool isDebugOn = false)
     {
         RaycastSphereDebugger(originTransform, radius, isDebugOn);
@@ -71,44 +99,11 @@ public class StaticRayCaster : MonoBehaviour
         return Physics.OverlapSphere(originTransform.position, radius, mask);
     }
 
-
-
-
-
-
-    public static void RaycastSphereDebugger(Vector3 localPosition, float distance, bool isDebugOn)
+    static public Collider[] IsOverlapSphereTouching(Vector3 position, float radius, LayerMask mask, bool isDebugOn = false)
     {
-        if (isDebugOn)
-        {
-            // Get lengths of lines
-            Vector3 endforwardPositive = localPosition + Vector3.forward * distance;
-            Vector3 endforwardNegative = localPosition + -Vector3.forward * distance;
+        RaycastSphereDebugger(position, radius, isDebugOn);
 
-            Vector3 endUpPositive = localPosition + Vector3.up * distance;
-            Vector3 endUpNegative = localPosition + -Vector3.up * distance;
-
-            Vector3 endRightPositive = localPosition + Vector3.right * distance;
-            Vector3 endRightNegative = localPosition + -Vector3.right * distance;
-
-
-            // Print lines
-            Debug.DrawLine(localPosition, endforwardPositive, Color.yellow);
-            Debug.DrawLine(localPosition, endforwardNegative, Color.yellow);
-
-            Debug.DrawLine(localPosition, endUpPositive, Color.blue);
-            Debug.DrawLine(localPosition, endUpNegative, Color.blue);
-
-            Debug.DrawLine(localPosition, endRightPositive, Color.red);
-            Debug.DrawLine(localPosition, endRightNegative, Color.red);
-        }
-    }
-
-
-    static public Collider[] IsOverlapSphereTouching(Vector3 localPosition, float radius, LayerMask mask, bool isDebugOn = false)
-    {
-        RaycastSphereDebugger(localPosition, radius, isDebugOn);
-
-        return Physics.OverlapSphere(localPosition, radius, mask);
+        return Physics.OverlapSphere(position, radius, mask);
     }
     #endregion
 }
