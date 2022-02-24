@@ -27,9 +27,10 @@ public class WeaponManager : MonoBehaviour
 
     public WeaponSO MainWeapon { get => mainWeapon; set => mainWeapon = value; }
     public WeaponSO SecondaryWeapon { get => secondaryWeapon; set => secondaryWeapon = value; }
+    public bool MainWeaponIsReloading { get => mainWeaponIsReloading; }
 
     // public float SecondaryFireRateDelay { get => secondaryFireRateDelay; set => secondaryFireRateDelay = value; }
-    
+
     private void Update()
     {
         mainFireRateDelay -= Time.deltaTime;

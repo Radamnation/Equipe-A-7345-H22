@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class PlayerStateDead : IPlayerState
 {
+    // SECTION - Field ===================================================================
+    private const string deathCanvasString = "Death Canvas";
+
+
     // SECTION - Method - State Specific ===================================================================
     // Movement --------------------
     public void OnLook(PlayerContext context) { }
@@ -24,7 +28,10 @@ public class PlayerStateDead : IPlayerState
 
 
     // SECTION - Method - General ===================================================================
-    public void OnStateEnter(PlayerContext context) { }
+    public void OnStateEnter(PlayerContext context) 
+    {
+        GameObject.Find(deathCanvasString).GetComponent<OnDeathManager>().enabled = true;
+    }
 
     public void OnStateUpdate(PlayerContext context) { }
 

@@ -5,7 +5,7 @@ public interface IEnemyState
     // SECTION - Method - State Specific =================================================================== 
     public void OnMovement(BasicEnemyContext context);
 
-    public void OnAttack(BasicEnemyContext context);
+    public void OnAttackMain(BasicEnemyContext context);
 
     public void OnManageToken(BasicEnemyContext context);
 

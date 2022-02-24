@@ -417,6 +417,7 @@ GameObject:
   - component: {fileID: 1990362425418368990}
   - component: {fileID: 1990362425418368991}
   - component: {fileID: 1990362425418368984}
+  - component: {fileID: 252175990}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -470,7 +471,7 @@ MonoBehaviour:
   deathDisablesSprite: 0
   visualCueTimer: 0.14
   anim: {fileID: 1990362425418368984}
-  deathAnimStr: 
+  deathAnimStr: OnDeath
   takeDmgAnimStr: 
   onTakeDamageEvents:
     m_PersistentCalls:
@@ -783,8 +784,8 @@ MonoBehaviour:
     m_ActionName: Player/OnWeaponScrollBack[/Mouse/backButton,/DualShock4GamepadHID/dpad/left]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CtrlLayoutManager, Assembly-CSharp
+      - m_Target: {fileID: 1990362425418368987}
+        m_TargetAssemblyTypeName: PlayerInputController, Assembly-CSharp
         m_MethodName: OnAnyKey
         m_Mode: 0
         m_Arguments:
@@ -855,7 +856,7 @@ Animator:
   m_GameObject: {fileID: 1990362425418368980}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cf6d4bf6228ddc74b9593668483f28be, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -865,6 +866,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &252175990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990362425418368980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3cb2d97b94011488b7813497456562, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1990362425783954038
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,7 +970,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1990362425989773735}
-  m_LocalRotation: {x: -0.0072427737, y: 0.0025302472, z: 0.000017861836, w: 0.9999706}
+  m_LocalRotation: {x: -0.007242421, y: 0.0025305573, z: 0.000017791986, w: 0.9999706}
   m_LocalPosition: {x: 0, y: 0.38, z: -0.334}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

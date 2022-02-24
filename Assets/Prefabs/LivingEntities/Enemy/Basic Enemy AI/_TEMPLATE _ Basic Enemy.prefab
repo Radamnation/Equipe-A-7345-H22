@@ -108,7 +108,6 @@ GameObject:
   - component: {fileID: 3831662558856893141}
   - component: {fileID: 3831662558856893131}
   - component: {fileID: 3831662558856893129}
-  - component: {fileID: 3831662558856893130}
   - component: {fileID: 3831662558856893132}
   - component: {fileID: 3831662558856893133}
   - component: {fileID: 3831662558856893134}
@@ -195,34 +194,6 @@ MonoBehaviour:
   aWeaponManager: {fileID: 0}
   toROnAtkExit: 0
   aAnimExecuteAtk: 0
---- !u!114 &3831662558856893130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3831662558856893142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 302ed520c0a045543bbc07729b6e4645, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tracksPlayer: 0
-  playerTransform: {fileID: 0}
-  mainWeapon: {fileID: 0}
-  secondaryWeapon: {fileID: 0}
-  mainWeaponFinishedReloading:
-    m_PersistentCalls:
-      m_Calls: []
-  mainWeaponHasShot:
-    m_PersistentCalls:
-      m_Calls: []
-  mainWeaponStartedReloading:
-    m_PersistentCalls:
-      m_Calls: []
-  secondaryWeaponHasShot:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!95 &3831662558856893132
 Animator:
   serializedVersion: 4
@@ -370,7 +341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 9073864552650571613
+  uniqueID: 4882625604399673255
   points:
   - {x: -0.32, y: 0, z: -0.32}
   - {x: 0.32, y: 0, z: -0.32}

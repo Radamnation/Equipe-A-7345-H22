@@ -7,7 +7,7 @@ public class EnemyStateDead : IEnemyState
     {
     }
 
-    public void OnAttack(BasicEnemyContext context)
+    public void OnAttackMain(BasicEnemyContext context)
     {
     }
 

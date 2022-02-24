@@ -4,27 +4,26 @@ Step 01 : CREATE PREFAB VARIANT ========================
 + [MB2 on prefab > Create > Prefab Variant]
 + Change Name
 
+
 Step 02: ANIMATOR ===================================== (MAY NEED TO IMPLEMENT [Animation Override Controller] INSTEAD)
 + [Animation > Enemy > Basic Enemy AI]
-+ CTRL + D... [_TEMPLATE _ ANIMATOR & ANIMATION]
++ CTRL + D ... [_TEMPLATE _ AOC & ANIMATIONS]
 + Rename Folder
-+ Rename Animator (suggested)
++ Rename Animator Override Controller (suggested)
 + Rename Animations (suggested)
-+ On newly dragged & dropped prefab
-	++ Change Animator for copied one
-	++ Change [-> ALL <-] animations for copied ones
-		++ Do not forget animations of blend tree
++ On newly created prefab variant
+	++ [_AOC _ MyAiName] > Change all animations for current folder's animations
+	++ Sprites of animations MUST be set manually
 
-+ IMPORTANT NOTE
-	++ Some animation use animation events to dictate behaviour...
-	   ... in case you need to modify those events, here is the list:
-	   
-	   +++ OnDeath					  : Last frame  : Destroy object
-	   +++ OnAttackRoaming/Aggressive : Last frame  : Reset movement speed at max
-	   +++ OnAwake					  : First frame : Set movement speed as 0.0f
-	   +++ OnAwake					  : Last frame  : Reset movement speed at max
 
-Step 03: SETTING UP BEHAVIOURS ========================
+Step 03: SETTING UP WEAPON MANAGERS ===================
++ A maximum of one weapon manager can be placed on each state
+	++ The same weapon holder can be used for both state
+	++ Only the main weapon of each weapon manager is currently used by the FSM
+	++ [TheBaseEnemyContext.cs] will clone the main weapon's scriptable object OnStart
+
+
+Step 04: SETTING UP BEHAVIOURS ========================
 + Plug N' Play system
 
 	++ [Basic Enemy Context.cs] - Defining terms
@@ -60,4 +59,4 @@ Step 03: SETTING UP BEHAVIOURS ========================
 			++++ Passive behaviours which are not dictated by any state management
 			
 	
-Step 04: Enjoy! =======================================
+Step 05: Enjoy! =======================================

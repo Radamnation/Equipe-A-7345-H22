@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -52,6 +51,24 @@ public class GameManager : MonoBehaviour
     {
         Cursor.lockState = lockMode;
         Cursor.visible = cursorVisible;
+    }
+    #endregion
+
+
+    #region REGION - Scene Load & Quit
+    public void LoadScene(int scene)
+    {
+        SceneManager.LoadScene(SceneManager.GetSceneAt(scene).name);
+    }
+
+    public void LoadScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
     #endregion
 
