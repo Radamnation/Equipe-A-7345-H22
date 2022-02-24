@@ -190,6 +190,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: PaletteIcons_3
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 1
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae13abf57c49b4e4ab16f682a9d61ce0
+      internalID: 779877637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PaletteIcons_4
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 1
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd16f21f70a44cc469be805dc31aa1dd
+      internalID: 48030486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -202,7 +244,9 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       PaletteIcons_2: 1508533038
+      PaletteIcons_4: 48030486
       PaletteIcons_0: 1577340742
+      PaletteIcons_3: 779877637
       PaletteIcons_1: -582779925
   spritePackingTag: 
   pSDRemoveMatte: 0

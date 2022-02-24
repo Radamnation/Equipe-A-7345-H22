@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6dd5b66272fae1e428361bba782974d5, type: 3}
-  m_Name: WeaponsInventorySO
+  m_Name: PlayerWeaponsInventorySO
   m_EditorClassIdentifier: 
-  CarriedMainWeapons:
+  DefaultMainWeapons:
   - {fileID: 11400000, guid: 2fec7de208af184448023900d178369c, type: 2}
-  - {fileID: 11400000, guid: 9b3bd99fc8d650141a02a158c813cfa7, type: 2}
-  - {fileID: 11400000, guid: f85df85a504f5804db1afc427de2431b, type: 2}
-  - {fileID: 11400000, guid: 38e6bcc42d089514091064afffb4928c, type: 2}
-  EquippedMainWeapon: {fileID: 11400000, guid: 2fec7de208af184448023900d178369c, type: 2}
-  CarriedSecondaryWeapons:
+  CarriedMainWeapons:
+  - {fileID: 0}
+  EquippedMainWeapon: {fileID: 0}
+  DefaultSecondaryWeapons:
   - {fileID: 11400000, guid: 4f46119e318ec2d4b854a0b36d9a0856, type: 2}
-  EquippedSecondaryWeapon: {fileID: 11400000, guid: 4f46119e318ec2d4b854a0b36d9a0856, type: 2}
+  CarriedSecondaryWeapons:
+  - {fileID: 0}
+  EquippedSecondaryWeapon: {fileID: 0}

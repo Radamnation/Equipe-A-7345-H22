@@ -12,6 +12,7 @@ public class WeaponManager : MonoBehaviour
     
     [SerializeField] private WeaponSO mainWeapon;
     [SerializeField] private WeaponSO secondaryWeapon;
+    [SerializeField] private WeaponsInventorySO weaponsInventory;
 
     [SerializeField] private UnityEvent mainWeaponFinishedReloading;
     [SerializeField] private UnityEvent mainWeaponHasShot;
@@ -50,6 +51,11 @@ public class WeaponManager : MonoBehaviour
         {
             transform.forward = transform.position - playerTransform.Transform.position;
         }
+    }
+
+    public void UpdateWeapon()
+    {
+        mainWeapon = weaponsInventory.EquippedMainWeapon;
     }
 
     public void ResetReload()

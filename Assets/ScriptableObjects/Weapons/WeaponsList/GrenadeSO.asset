@@ -15,6 +15,7 @@ MonoBehaviour:
   weaponName: Grenade
   weaponDescription: Explosion Damage
   currencyValue: 5
+  canFireContinuously: 0
   currentAmmo: 0
   maxAmmo: 0
   currentClip: 3
@@ -23,7 +24,10 @@ MonoBehaviour:
   reloadTime: 0
   damage: 50
   spread: 0
+  range: 0
+  bulletsNumber: 0
   projectile: {fileID: -16509233619259775, guid: a7eca7a43babbf445857475fcbb97c1e, type: 3}
-  weaponUISprite: {fileID: 0}
+  bulletHole: {fileID: 0}
+  weaponUISprite: {fileID: -205887807, guid: a3663b8204d1d194895c7d7299a3526c, type: 3}
   weaponPlayerSprite: {fileID: 0}
   animator: {fileID: 0}

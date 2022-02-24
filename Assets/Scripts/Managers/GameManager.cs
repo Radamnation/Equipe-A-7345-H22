@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public LayerMask groundMask;
     public LayerMask interactableMask;
     public LayerMask canBeShotByPlayerMask;
+    public LayerMask respawnMask;
 
     private Transform playerTransformRef;
 
