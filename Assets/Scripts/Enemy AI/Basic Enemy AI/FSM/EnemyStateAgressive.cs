@@ -10,7 +10,8 @@ public class EnemyStateAgressive : IEnemyState
 
         if (!context.IsInAnimationState(BasicEnemy_AnimationStates.ROAMINGATTACK) &&
             !context.IsInAnimationState(BasicEnemy_AnimationStates.AGGRESSIVEATTACK) &&
-            !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE))
+            !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE) &&
+            !context.TryFireMainWeapon()) // Add !hastoken AS FIRST CHECK
         {
             if (context.A_MoveBehaviour != null)
                 context.A_MoveBehaviour.Execute();
@@ -18,18 +19,16 @@ public class EnemyStateAgressive : IEnemyState
         else context.SetTargetAsPlayer(); // Prevents target being null
     }
 
-    public void OnAttack(BasicEnemyContext context)
+    public void OnAttackMain(BasicEnemyContext context)
     {
-        if(context.A_AtkBehaviour != null)
+        if (context.A_AtkBehaviour != null)
         {
             if (context.MyAIPath.reachedEndOfPath &&
                 !context.IsInAnimationState(BasicEnemy_AnimationStates.ROAMINGATTACK) &&
                 !context.IsInAnimationState(BasicEnemy_AnimationStates.AGGRESSIVEATTACK) &&
-                !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE)) // Add && canAttackCooldown check here
+                !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE) &&
+                 context.TryFireMainWeapon()) // Add hastoken AS FIRST CHECK
             {
-                // Start canAttack cooldown here
-                Debug.Log("AGGRESSIVE : IMPLEMENT ATTACK COOLDOWN HERE");
-
                 // Check if invoke now or wait for animation event
                 if (!context.AAnimExecuteAtk)
                 {
@@ -53,14 +52,13 @@ public class EnemyStateAgressive : IEnemyState
     // SECTION - Method - General ===================================================================
     public void OnStateEnter(BasicEnemyContext context)
     {
-        Debug.Log("AGRESSIVE STATE : FINISH IMPLEMENTATION HERE");
-        //context.MyAIPath.endReachedDistance = context.MyAggressiveWeaponHolder.weapon.range;
+        context.SetEndReachedDistance(context.AWeaponManager.MainWeapon.Range);
     }
 
     public void OnStateUpdate(BasicEnemyContext context)
     {
         OnMovement(context);
-        OnAttack(context);
+        OnAttackMain(context);
         OnManageToken(context);
     }
 

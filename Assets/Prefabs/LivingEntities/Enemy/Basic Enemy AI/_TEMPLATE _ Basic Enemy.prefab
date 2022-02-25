@@ -108,7 +108,6 @@ GameObject:
   - component: {fileID: 3831662558856893141}
   - component: {fileID: 3831662558856893131}
   - component: {fileID: 3831662558856893129}
-  - component: {fileID: 3831662558856893130}
   - component: {fileID: 3831662558856893132}
   - component: {fileID: 3831662558856893133}
   - component: {fileID: 3831662558856893134}
@@ -161,11 +160,11 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: 9870af32e803051449b14dac5eabbd8e, type: 2}
   currentHP:
     UseConstant: 1
-    ConstantValue: 0
+    ConstantValue: 1
     Variable: {fileID: 0}
-  deathDestroys: 1
-  deathDisablesSprite: 0
-  visualCueTimer: 0.14
+  exitDeathDestroys: 1
+  exitDeathDisablesSprite: 0
+  onHitCueDuration: 0.14
   anim: {fileID: 3831662558856893132}
   deathAnimStr: OnDeath
   takeDmgAnimStr: OnHit
@@ -189,40 +188,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myStartingState: 0
   startAtMaxSpeed: 1
+  exitDeathAnim: 1
   rWeaponManager: {fileID: 0}
   toAOnAtkExit: 0
   rAnimExecuteAtk: 0
   aWeaponManager: {fileID: 0}
   toROnAtkExit: 0
   aAnimExecuteAtk: 0
---- !u!114 &3831662558856893130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3831662558856893142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 302ed520c0a045543bbc07729b6e4645, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tracksPlayer: 0
-  playerTransform: {fileID: 0}
-  mainWeapon: {fileID: 0}
-  secondaryWeapon: {fileID: 0}
-  mainWeaponFinishedReloading:
-    m_PersistentCalls:
-      m_Calls: []
-  mainWeaponHasShot:
-    m_PersistentCalls:
-      m_Calls: []
-  mainWeaponStartedReloading:
-    m_PersistentCalls:
-      m_Calls: []
-  secondaryWeaponHasShot:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!95 &3831662558856893132
 Animator:
   serializedVersion: 4
@@ -370,7 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 9073864552650571613
+  uniqueID: 4882625604399673255
   points:
   - {x: -0.32, y: 0, z: -0.32}
   - {x: 0.32, y: 0, z: -0.32}

@@ -10,7 +10,8 @@ public class EnemyStateRoaming : IEnemyState
 
         if (!context.IsInAnimationState(BasicEnemy_AnimationStates.ROAMINGATTACK) &&
             !context.IsInAnimationState(BasicEnemy_AnimationStates.AGGRESSIVEATTACK) &&
-            !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE))
+            !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE) &&
+            !context.TryFireMainWeapon()) // Add !hastoken AS FIRST CHECK
         {       
             if (context.R_MoveBehaviour != null)
                 context.R_MoveBehaviour.Execute();
@@ -18,18 +19,16 @@ public class EnemyStateRoaming : IEnemyState
         else context.SetTargetAsPlayer(); // Prevents target being null     
     }
 
-    public void OnAttack(BasicEnemyContext context)
+    public void OnAttackMain(BasicEnemyContext context)
     {
         if (context.R_AtkBehaviour != null)
         {
             if (context.MyAIPath.reachedEndOfPath &&
                 !context.IsInAnimationState(BasicEnemy_AnimationStates.ROAMINGATTACK) &&
                 !context.IsInAnimationState(BasicEnemy_AnimationStates.AGGRESSIVEATTACK) &&
-                !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE)) // Add && canAttackCooldown check here
+                !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE) &&
+                 context.TryFireMainWeapon()) // Add hastoken AS FIRST CHECK
             {
-                // Start canAttack cooldown here
-                Debug.Log("ROAMING : IMPLEMENT ATTACK COOLDOWN HERE");
-
                 // Check if invoke now or wait for animation event
                 if (!context.RAnimExecuteAtk)
                 {
@@ -43,7 +42,6 @@ public class EnemyStateRoaming : IEnemyState
                     context.SetAnimTrigger(BasicEnemy_AnimTriggers.ROAMINGATTACK);
             }
         }
-
     }
 
     public void OnManageToken(BasicEnemyContext context)
@@ -54,14 +52,14 @@ public class EnemyStateRoaming : IEnemyState
     // SECTION - Method - General ===================================================================
     public void OnStateEnter(BasicEnemyContext context)
     {
-        Debug.Log("ROAMING : FINISH IMPLEMENTATION HERE");
-        //context.MyAIPath.endReachedDistance = context.MyRoamingWeaponHolder.weapon.range;
+        Debug.Log("Roaming");
+        context.SetEndReachedDistance(context.RWeaponManager.MainWeapon.Range);
     }
 
     public void OnStateUpdate(BasicEnemyContext context)
     {
         OnMovement(context);
-        OnAttack(context);
+        OnAttackMain(context);
         OnManageToken(context);
     }
 

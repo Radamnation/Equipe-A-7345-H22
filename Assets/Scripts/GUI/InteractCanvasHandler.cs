@@ -18,12 +18,18 @@ public class InteractCanvasHandler : MonoBehaviour
     [SerializeField] private Sprite invalidBackground;
 
 
+    private void Start()
+    {
+        //RaycastHit hit = default;
+        //SetActive(hit);
+    }
+
     // SECTION - Method - System Specific ===================================================================
     public void SetActive(RaycastHit hit) // Fade in - Fade out [Set Animator]
     {
         if (hit.transform != null && !anim.GetCurrentAnimatorStateInfo(0).IsName(popUpString))
             anim.SetTrigger(popUpString);
-        else if (hit.transform == null && !anim.GetCurrentAnimatorStateInfo(0).IsName(popOutString))
+        else if (hit.transform == null && anim.GetCurrentAnimatorStateInfo(0).IsName(popUpString))
             anim.SetTrigger(popOutString);
     }
 

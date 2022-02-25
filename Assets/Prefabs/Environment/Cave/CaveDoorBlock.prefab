@@ -16,15 +16,31 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 137854453737433965, guid: 20184c58aeb9bef40889e919c3c60fbb, type: 3}
+      propertyPath: interacted.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 137854453737433965, guid: 20184c58aeb9bef40889e919c3c60fbb, type: 3}
       propertyPath: interacted.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 3595097499365690113}
+    - target: {fileID: 137854453737433965, guid: 20184c58aeb9bef40889e919c3c60fbb, type: 3}
+      propertyPath: interacted.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 5624798836001986079}
+    - target: {fileID: 137854453737433965, guid: 20184c58aeb9bef40889e919c3c60fbb, type: 3}
+      propertyPath: interacted.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 137854453737433965, guid: 20184c58aeb9bef40889e919c3c60fbb, type: 3}
       propertyPath: interacted.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: OpenDoor
       objectReference: {fileID: 0}
     - target: {fileID: 137854453737433965, guid: 20184c58aeb9bef40889e919c3c60fbb, type: 3}
       propertyPath: interacted.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: DoorBlock, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 137854453737433965, guid: 20184c58aeb9bef40889e919c3c60fbb, type: 3}
+      propertyPath: interacted.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: DoorBlock, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 199257001791624005, guid: 20184c58aeb9bef40889e919c3c60fbb, type: 3}
@@ -168,3 +184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ccaade35a4c0d04fb2b59cff805125b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5624798836001986079 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9018724002037173851, guid: 20184c58aeb9bef40889e919c3c60fbb, type: 3}
+  m_PrefabInstance: {fileID: 3686122693160785988}
+  m_PrefabAsset: {fileID: 0}

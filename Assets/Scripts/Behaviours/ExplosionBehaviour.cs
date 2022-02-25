@@ -34,6 +34,7 @@ public class ExplosionBehaviour : MonoBehaviour
 
     private void ExecuteExplosion()
     {
+        Debug.Log("EXECUTE EXPLOSION");
         collArray = StaticRayCaster.IsOverlapSphereTouching(transform.position, radius, targetMask, isDebugOn); // transform.parent.transform
 
         foreach (Collider hitObj in collArray)

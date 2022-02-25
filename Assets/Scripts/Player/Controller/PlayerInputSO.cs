@@ -39,4 +39,7 @@ public class PlayerInputSO : ScriptableObject
     public bool WeaponTwo { get; set; }
     public bool WeaponScrollBackward { get; set; }
     public bool WeaponScrollForward { get; set; }
+
+    // Misc --------------------
+    public bool AnyKey { get; set; }
 }

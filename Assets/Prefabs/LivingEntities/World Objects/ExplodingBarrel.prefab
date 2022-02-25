@@ -156,9 +156,9 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue: 0
     Variable: {fileID: 0}
-  deathDestroys: 1
-  deathDisablesSprite: 0
-  visualCueTimer: 0.14
+  exitDeathDestroys: 1
+  exitDeathDisablesSprite: 0
+  onHitCueDuration: 0.14
   anim: {fileID: 580406396174781458}
   deathAnimStr: OnDeath
   takeDmgAnimStr: 

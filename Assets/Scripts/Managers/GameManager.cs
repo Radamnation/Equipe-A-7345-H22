@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,11 +12,19 @@ public class GameManager : MonoBehaviour
     public LayerMask canBeShotByPlayerMask;
     public LayerMask respawnMask;
 
+    [Header("Important Scenes")]
+    [SerializeField] private string stringHUB = "HUB";
+
     private Transform playerTransformRef;
+
+    private AsyncOperation asyncLoad;
 
 
     // SECTION - Property ===================================================================
     public Transform PlayerTransformRef => playerTransformRef;
+
+    public AsyncOperation AsyncLoad { get => asyncLoad; }
+    public string StringHUB { get => stringHUB; }
 
 
     // SECTION - Method - Unity Specific ===================================================================
@@ -55,4 +62,52 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+
+    #region REGION - Scene Load & Quit
+    // Basic
+    public void LoadScene(int scene)
+    {
+        SceneManager.LoadScene(SceneManager.GetSceneAt(scene).name);
+    }
+
+    public void LoadScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
+    }
+
+    // Async
+    public void LoadSceneAsync(int scene, bool allowSceneActivation = false)
+    {
+        // Async load desired scene
+        asyncLoad = SceneManager.LoadSceneAsync(scene);
+        asyncLoad.allowSceneActivation = allowSceneActivation;
+
+        Debug.Log($"asyncload: {asyncLoad}");
+
+        // Prevents unintentional inputs
+        Input.ResetInputAxes();
+
+        // Garbage collection - just in case -
+        System.GC.Collect();
+    }
+
+    public void LoadSceneAsync(string scene, bool allowSceneActivation = false)
+    {
+        // Async load desired scene
+        asyncLoad = SceneManager.LoadSceneAsync(scene);
+        asyncLoad.allowSceneActivation = allowSceneActivation;
+
+        // Prevents unintentional inputs
+        Input.ResetInputAxes();
+
+        // Garbage collection - just in case -
+        System.GC.Collect();
+    }
+
+    // Quit Game
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+    #endregion
 }

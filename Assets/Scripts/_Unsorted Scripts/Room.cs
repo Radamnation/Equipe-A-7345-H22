@@ -248,8 +248,8 @@ public class Room : MonoBehaviour
 
                     // Set Path Finding uppon entering new room
                     myAstarPath.data.gridGraph.center = gameObject.transform.localPosition;
-                    myAstarPath.data.gridGraph.width = xDimension;
-                    myAstarPath.data.gridGraph.depth = zDimension;
+                    myAstarPath.data.gridGraph.Width = xDimension;
+                    myAstarPath.data.gridGraph.Depth = zDimension;
                     myAstarPath.Scan();
                 }
             }

@@ -7,7 +7,7 @@ public class EnemyStateDead : IEnemyState
     {
     }
 
-    public void OnAttack(BasicEnemyContext context)
+    public void OnAttackMain(BasicEnemyContext context)
     {
     }
 
@@ -21,6 +21,12 @@ public class EnemyStateDead : IEnemyState
     {
         // Disable Movement
         context.SetSpeed(0.0f);
+
+        // Disable passive behaviours
+        context.transform.GetChild(4).gameObject.SetActive(false);
+
+        // Disable State Machine
+        context.enabled = false;
     }
 
     public void OnStateUpdate(BasicEnemyContext context)

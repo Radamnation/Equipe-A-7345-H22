@@ -1,11 +1,6 @@
 using UnityEngine;
 using Pathfinding; // Aaron Granberg A*
 
-// Reminder for setting dynamic scan of navmesh
-// private NavGraph[] navGraph;
-// navGraph = astarPath.graphs;
-// AstartPath astarPath.Scan(navGraph);
-
 public class BasicEnemyContext : MonoBehaviour
 {
     // SECTION - Field ===================================================================
@@ -25,6 +20,7 @@ public class BasicEnemyContext : MonoBehaviour
     private AIPath myAIPath;                           // Movement, rotation, End Reached Distance, etc.
     private AIDestinationSetter myAIDestinationSetter; // Pathfinding Target
     private float maxSpeed;
+    private const float defaultEndReachedDistance = 0.96f;
     #endregion
 
 
@@ -34,6 +30,7 @@ public class BasicEnemyContext : MonoBehaviour
     private Animator anim;
 
     // Parameters
+    private readonly string animParam_ExitDeathAnim = "ExitDeathAnim";
     private readonly string animParam_OnDeath = "OnDeath";
     private readonly string animParam_OnHit = "OnHit";
     private readonly string animParam_OnAtkRoaming = "OnAttackRoaming";
@@ -56,12 +53,20 @@ public class BasicEnemyContext : MonoBehaviour
     [SerializeField] private BasicEnemy_States myStartingState = BasicEnemy_States.ROAMING;
     [SerializeField] private bool startAtMaxSpeed = true;
 
+    [Header("    ======= Animator Specifications =======\n")]
+    [Tooltip("Allows to keep last sprite for lingering dead enemies")]
+    [SerializeField] private bool exitDeathAnim = true;
+
     [Space(10)]
     [Header("    ========== Roaming State ==========\n")]
     [Header("Weapon Manager")]
+    [Tooltip("[Range] is used for [endReachedDistance]" +
+             "[MainWeaponIsReloading] is used for time between two attacks")]
     [SerializeField] private WeaponManager rWeaponManager;
 
     [Header("Animator")]
+    [Tooltip("If false, OnDeath animation will stay at last frame until object is destroyed")]
+
     [SerializeField] private bool toAOnAtkExit = false;
     [Tooltip("Animation event must be set manually")]
     [SerializeField] private bool rAnimExecuteAtk = false;
@@ -111,6 +116,7 @@ public class BasicEnemyContext : MonoBehaviour
     {
         // Get Set Components & Variables
         GetSetHiddensHandler();
+
         // Set State Machine
         FirstStateHandler();
     }
@@ -136,6 +142,7 @@ public class BasicEnemyContext : MonoBehaviour
 
     public void OnStateUpdate()
     {
+        Debug.Log($"is main fire rate usable for {gameObject.name}? : " + aWeaponManager.MainWeaponIsReloading);
         currState.OnStateUpdate(this);
     }
 
@@ -162,12 +169,42 @@ public class BasicEnemyContext : MonoBehaviour
 
         oldState = currState;
 
-        // endReachedDistance
-        Debug.Log("FINISH ENDREACHEDDISTANCE IMPLEMENTATION HERE");
-        myAIPath.endReachedDistance = 0.64f; // ARBITRARY DISTANCE, DELETE WHEN LINE BELLOW IS IMPLEMENTED
-        //myAIPath.endReachedDistance = (myStartingState == BasicEnemy_States.ROAMING) ? myRoamingWeaponHolder.weapon.distance : myAggressiveWeaponHolder.weapon.distance; ;
+        // Instantiate WeaponSOs && Set endReachedDistance
+        FirstSetMainWeaponAndAIDistance(currState);     
     }
-    
+
+    private void FirstSetMainWeaponAndAIDistance(IEnemyState myState)
+    {
+        // Weapons
+        WeaponSO myWeaponSO = null;
+
+        if (myState is EnemyStateRoaming)
+        {
+            if (rWeaponManager != null)
+            {
+                // Clone WeaponSO and set it up as main weapon
+                myWeaponSO = Instantiate(rWeaponManager.MainWeapon);
+                rWeaponManager.MainWeapon = myWeaponSO;
+                return;
+            }
+        }
+        else if (myState is EnemyStateAgressive)
+        {
+            if (aWeaponManager != null)
+            {
+                // Clone WeaponSO and set it up as main weapon
+                myWeaponSO = Instantiate(aWeaponManager.MainWeapon);
+                aWeaponManager.MainWeapon = myWeaponSO;
+                return;
+            }
+        }
+
+        if (myWeaponSO != null)
+            SetEndReachedDistance(myWeaponSO.Range);
+        else
+            SetEndReachedDistance(defaultEndReachedDistance);
+    }
+
     private void GetSetHiddensHandler()
     {
         // AI ========================================
@@ -185,11 +222,12 @@ public class BasicEnemyContext : MonoBehaviour
         if (!startAtMaxSpeed)
             SetSpeed(0.0f);
 
+
         // Miscellaneous ========================================
-        // Get Components
         myLivingEntity = GetComponentInChildren<LivingEntityContext>();
         mySpriteTransform = GetComponentInChildren<SpriteRenderer>().transform;
         anim = GetComponentInChildren<Animator>();
+        anim.SetBool(animParam_ExitDeathAnim, exitDeathAnim);
 
         r_MoveBehaviour = transform.GetChild(1).GetComponentInChildren<AbstractMovementBehaviour>();
         r_AtkBehaviour = transform.GetChild(1).GetComponentInChildren<AbstractAttackBehaviour>();
@@ -231,6 +269,31 @@ public class BasicEnemyContext : MonoBehaviour
     #endregion
 
     #region REGION - Utility
+
+    public bool TryFireMainWeapon()
+    {
+        if (currState is EnemyStateRoaming)
+            if (rWeaponManager != null)
+                return rWeaponManager.TriggerMainWeapon();
+        else if (currState is EnemyStateAgressive)
+            if (aWeaponManager != null)
+                return aWeaponManager.TriggerMainWeapon();
+
+        return true; // true == prevent using main weapon when checking !IsMainWeaponReloading()
+    }
+
+    public bool TryFireMainWeapon(BasicEnemy_States stateSpecificCheck)
+    {
+        if (stateSpecificCheck == BasicEnemy_States.ROAMING)
+            if (rWeaponManager != null)
+                return rWeaponManager.TriggerMainWeapon();
+        else if (stateSpecificCheck == BasicEnemy_States.AGGRESSIVE)
+            if (aWeaponManager != null)
+                return aWeaponManager.TriggerMainWeapon();
+
+        return true; // true == prevent using main weapon when checking !IsMainWeaponReloading()
+    }
+
     public void SetSpeedAsDefault() // Note : Also used as animator event
     {
         MyAIPath.maxSpeed = maxSpeed;
@@ -239,6 +302,33 @@ public class BasicEnemyContext : MonoBehaviour
     public void SetSpeed(float newSpeed)
     {
         MyAIPath.maxSpeed = newSpeed;
+    }
+
+    public void SetEndReachedDistance(float newEndReachedDistance = defaultEndReachedDistance)
+    {
+        myAIPath.endReachedDistance = newEndReachedDistance;
+    }
+
+    public void SetEndReachedDistance_ToCurrState()
+    {
+        if (currState is EnemyStateRoaming)
+        {
+            if (rWeaponManager != null)
+            {
+                SetEndReachedDistance(rWeaponManager.MainWeapon.Range);
+                return;
+            }
+        }
+        else if (currState is EnemyStateAgressive)
+        {
+            if (aWeaponManager != null)
+            {
+                SetEndReachedDistance(aWeaponManager.MainWeapon.Range);
+                return;
+            }
+        }
+
+        SetEndReachedDistance();
     }
 
     public void SetFiniteStateMachine(BasicEnemy_States transitionTo)
@@ -270,21 +360,32 @@ public class BasicEnemyContext : MonoBehaviour
             case BasicEnemy_AnimTriggers.DEATH:
                 anim.SetTrigger(animParam_OnDeath);
                 break;
+
+            case BasicEnemy_AnimTriggers.EXITDEATH:
+                anim.SetBool(animParam_ExitDeathAnim, true);
+                break;
+
             case BasicEnemy_AnimTriggers.ONHIT:
                 anim.SetTrigger(animParam_OnHit);
                 break;
+
             case BasicEnemy_AnimTriggers.ROAMINGATTACK:
                 anim.SetTrigger(animParam_OnAtkRoaming);
                 break;
+
             case BasicEnemy_AnimTriggers.AGGRESSIVEATTACK:
                 anim.SetTrigger(animParam_OnAtkAggressive);
                 break;
+
+
             default: Debug.Log($"An error as occured at [SetAnimTrigger()] of [EnemyContext.cs] from enemy: {gameObject.name}"); break;
         }
     }
 
     public bool IsInAnimationState(BasicEnemy_AnimationStates checkAnimation)
     {
+        // ADD
+        // ONREVIVE
         switch (checkAnimation)
         {
             case BasicEnemy_AnimationStates.IDDLE:
@@ -325,6 +426,5 @@ public class BasicEnemyContext : MonoBehaviour
     {
         A_AtkBehaviour.Execute();
     }
-
     #endregion
 }

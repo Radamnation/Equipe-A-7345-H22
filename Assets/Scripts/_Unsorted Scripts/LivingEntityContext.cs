@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,10 +10,12 @@ public class LivingEntityContext : MonoBehaviour
     [SerializeField] private FloatReference currentHP;
 
     [Header("Animator")]
-    [SerializeField] private bool deathDestroys = false;
-    [SerializeField] private bool deathDisablesSprite = false;
+    [Tooltip("You may need to add [AB_ManageOnDeathAnim.cs] to animation state")]
+    [SerializeField] private bool exitDeathDestroys = false;
+    [Tooltip("You may need to add [AB_ManageOnDeathAnim.cs] to animation state")]
+    [SerializeField] private bool exitDeathDisablesSprite = false;
     [Space(10)]
-    [SerializeField] private float visualCueTimer = 0.14f;
+    [SerializeField] private float onHitCueDuration = 0.14f;
     [SerializeField] private Animator anim;
     [SerializeField] private string deathAnimStr;
     [SerializeField] private string takeDmgAnimStr;
@@ -102,7 +103,7 @@ public class LivingEntityContext : MonoBehaviour
         foreach (SpriteRenderer renderer in spriteRenderer)
             renderer.color = Color.red;
 
-        yield return new WaitForSeconds(visualCueTimer);
+        yield return new WaitForSeconds(onHitCueDuration);
 
         // Base Color
         foreach (SpriteRenderer renderer in spriteRenderer)
@@ -111,9 +112,9 @@ public class LivingEntityContext : MonoBehaviour
 
     public void AE_ManageObjectAtEndDeathAnim() // Animator Event
     {
-        if (deathDisablesSprite)
+        if (exitDeathDisablesSprite)
             GetComponentInChildren<SpriteRenderer>().enabled = false;
-        else if (deathDestroys)
+        else if (exitDeathDestroys)
             DestroyMe();
          
         GetComponentInParent<Room>().CheckLivingEntities();

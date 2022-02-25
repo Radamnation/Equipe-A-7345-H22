@@ -27,9 +27,10 @@ public class WeaponManager : MonoBehaviour
 
     public WeaponSO MainWeapon { get => mainWeapon; set => mainWeapon = value; }
     public WeaponSO SecondaryWeapon { get => secondaryWeapon; set => secondaryWeapon = value; }
+    public bool MainWeaponIsReloading { get => mainWeaponIsReloading; }
 
     // public float SecondaryFireRateDelay { get => secondaryFireRateDelay; set => secondaryFireRateDelay = value; }
-    
+
     private void Update()
     {
         mainFireRateDelay -= Time.deltaTime;
@@ -64,7 +65,7 @@ public class WeaponManager : MonoBehaviour
         mainWeaponIsReloading = false;
     }
 
-    public void TriggerMainWeapon()
+    public bool TriggerMainWeapon()
     {
         if (mainFireRateDelay <= 0 && mainReloadDelay <= 0)
         {
@@ -75,12 +76,14 @@ public class WeaponManager : MonoBehaviour
                 mainFireRateDelay = mainWeapon.FiringRate;
                 ShootWeapon(mainWeapon);
                 mainWeaponHasShot.Invoke();
+                return true;
             }
             else if (!mainWeapon.CanFireContinuously)
             {
                 ReloadMainWeapon();
             }
         }
+        return false;
     }
 
     public void TriggerSecondaryWeapon()
