@@ -142,7 +142,6 @@ public class BasicEnemyContext : MonoBehaviour
 
     public void OnStateUpdate()
     {
-        Debug.Log($"is main fire rate usable for {gameObject.name}? : " + aWeaponManager.MainWeaponIsReloading);
         currState.OnStateUpdate(this);
     }
 
