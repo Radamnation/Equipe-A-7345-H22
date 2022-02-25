@@ -30,8 +30,9 @@ public class BasicEnemyContext : MonoBehaviour
     private Animator anim;
 
     // Parameters
-    private readonly string animParam_IsExitOnDeath = "IsExitOnDeath";
+    private readonly string animParam_ExitDeathAnim = "ExitDeathAnim";
     private readonly string animParam_OnDeath = "OnDeath";
+    private readonly string animParam_OnRevive = "OnRevive";
     private readonly string animParam_OnHit = "OnHit";
     private readonly string animParam_OnAtkRoaming = "OnAttackRoaming";
     private readonly string animParam_OnAtkAggressive = "OnAttackAggressive";
@@ -53,6 +54,10 @@ public class BasicEnemyContext : MonoBehaviour
     [SerializeField] private BasicEnemy_States myStartingState = BasicEnemy_States.ROAMING;
     [SerializeField] private bool startAtMaxSpeed = true;
 
+    [Header("    ======= Animator Specifications =======\n")]
+    [Tooltip("Allows to keep last sprite for lingering dead enemies")]
+    [SerializeField] private bool exitDeathAnim = true;
+
     [Space(10)]
     [Header("    ========== Roaming State ==========\n")]
     [Header("Weapon Manager")]
@@ -62,7 +67,7 @@ public class BasicEnemyContext : MonoBehaviour
 
     [Header("Animator")]
     [Tooltip("If false, OnDeath animation will stay at last frame until object is destroyed")]
-    [SerializeField] private bool isExitOnDeath = true;
+
     [SerializeField] private bool toAOnAtkExit = false;
     [Tooltip("Animation event must be set manually")]
     [SerializeField] private bool rAnimExecuteAtk = false;
@@ -116,7 +121,7 @@ public class BasicEnemyContext : MonoBehaviour
         // Set State Machine
         FirstStateHandler();
 
-        anim.SetBool(animParam_IsExitOnDeath, false);
+        
     }
 
     private void FixedUpdate()
@@ -222,10 +227,10 @@ public class BasicEnemyContext : MonoBehaviour
 
 
         // Miscellaneous ========================================
-        // Get Components
         myLivingEntity = GetComponentInChildren<LivingEntityContext>();
         mySpriteTransform = GetComponentInChildren<SpriteRenderer>().transform;
         anim = GetComponentInChildren<Animator>();
+        anim.SetBool(animParam_ExitDeathAnim, exitDeathAnim);
 
         r_MoveBehaviour = transform.GetChild(1).GetComponentInChildren<AbstractMovementBehaviour>();
         r_AtkBehaviour = transform.GetChild(1).GetComponentInChildren<AbstractAttackBehaviour>();
@@ -358,21 +363,32 @@ public class BasicEnemyContext : MonoBehaviour
             case BasicEnemy_AnimTriggers.DEATH:
                 anim.SetTrigger(animParam_OnDeath);
                 break;
+
+            case BasicEnemy_AnimTriggers.EXITDEATH:
+                anim.SetBool(animParam_ExitDeathAnim, true);
+                break;
+
             case BasicEnemy_AnimTriggers.ONHIT:
                 anim.SetTrigger(animParam_OnHit);
                 break;
+
             case BasicEnemy_AnimTriggers.ROAMINGATTACK:
                 anim.SetTrigger(animParam_OnAtkRoaming);
                 break;
+
             case BasicEnemy_AnimTriggers.AGGRESSIVEATTACK:
                 anim.SetTrigger(animParam_OnAtkAggressive);
                 break;
+
+
             default: Debug.Log($"An error as occured at [SetAnimTrigger()] of [EnemyContext.cs] from enemy: {gameObject.name}"); break;
         }
     }
 
     public bool IsInAnimationState(BasicEnemy_AnimationStates checkAnimation)
     {
+        // ADD
+        // ONREVIVE
         switch (checkAnimation)
         {
             case BasicEnemy_AnimationStates.IDDLE:
