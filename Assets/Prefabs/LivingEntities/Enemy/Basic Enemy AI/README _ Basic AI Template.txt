@@ -3,6 +3,7 @@ HOW TO USE
 Step 01 : CREATE PREFAB VARIANT ========================
 + [MB2 on prefab > Create > Prefab Variant]
 + Change Name
++ Create a new [FloatVariableSO] for maxHP & link to variant
 
 
 Step 02: ANIMATOR ===================================== (MAY NEED TO IMPLEMENT [Animation Override Controller] INSTEAD)

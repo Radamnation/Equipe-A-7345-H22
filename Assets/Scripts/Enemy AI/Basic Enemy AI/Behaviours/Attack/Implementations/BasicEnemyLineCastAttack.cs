@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SomeLineUpAtkBehaviour : AbstractAttackBehaviour
+public class BasicEnemyLineCastAttack : AbstractAttackBehaviour
 {
+    
+
     public override void Execute()
     {
-        // What is my purpose?
-        // - To do nothing
+        //Physics hit = StaticRayCaster.IsLineCastTouching();
+        //if ()
+
     }
 
     public override bool IsExecutionValid()
     {
-        return true; // Bullshit return for true testing
+        return base.animConditionBool;
     }
 }

@@ -32,7 +32,6 @@ public class BasicEnemyContext : MonoBehaviour
     // Parameters
     private readonly string animParam_ExitDeathAnim = "ExitDeathAnim";
     private readonly string animParam_OnDeath = "OnDeath";
-    private readonly string animParam_OnRevive = "OnRevive";
     private readonly string animParam_OnHit = "OnHit";
     private readonly string animParam_OnAtkRoaming = "OnAttackRoaming";
     private readonly string animParam_OnAtkAggressive = "OnAttackAggressive";
@@ -120,8 +119,6 @@ public class BasicEnemyContext : MonoBehaviour
 
         // Set State Machine
         FirstStateHandler();
-
-        
     }
 
     private void FixedUpdate()
@@ -429,6 +426,5 @@ public class BasicEnemyContext : MonoBehaviour
     {
         A_AtkBehaviour.Execute();
     }
-
     #endregion
 }

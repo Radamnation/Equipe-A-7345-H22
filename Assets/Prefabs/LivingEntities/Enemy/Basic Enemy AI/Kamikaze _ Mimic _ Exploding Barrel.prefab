@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: exitDeathAnim
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: isExitOnDeath
@@ -121,7 +121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893142, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_Name
-      value: Mimic Exploding Barrel
+      value: Mimic _ Exploding Barrel
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4261843815690790754, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44cad9dbd72d0d44d835380b79927ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myTargetPrefab: {fileID: 0}
   myMovementTarget: {fileID: 0}
   isPassiveBehaviour: 1
   nextState: 1

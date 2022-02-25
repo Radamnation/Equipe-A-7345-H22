@@ -162,9 +162,9 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue: 1
     Variable: {fileID: 0}
-  deathDestroys: 1
-  deathDisablesSprite: 0
-  visualCueTimer: 0.14
+  exitDeathDestroys: 1
+  exitDeathDisablesSprite: 0
+  onHitCueDuration: 0.14
   anim: {fileID: 3831662558856893132}
   deathAnimStr: OnDeath
   takeDmgAnimStr: OnHit
@@ -188,8 +188,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myStartingState: 0
   startAtMaxSpeed: 1
+  exitDeathAnim: 1
   rWeaponManager: {fileID: 0}
-  isExitOnDeath: 1
   toAOnAtkExit: 0
   rAnimExecuteAtk: 0
   aWeaponManager: {fileID: 0}

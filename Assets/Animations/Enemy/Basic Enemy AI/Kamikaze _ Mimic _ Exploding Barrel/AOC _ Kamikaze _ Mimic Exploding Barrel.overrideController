@@ -6,7 +6,7 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AOC _ Mimic Exploding Barrel
+  m_Name: AOC _ Kamikaze _ Mimic Exploding Barrel
   m_Controller: {fileID: 9100000, guid: 6d50ddc4c1d1f60419fbf5d050ffd290, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 5fb660dd65790d849be82732d6ac2ef4, type: 2}
