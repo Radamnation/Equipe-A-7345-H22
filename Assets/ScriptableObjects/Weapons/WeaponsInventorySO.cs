@@ -5,13 +5,27 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Scriptable/Weapons/WeaponInventory", fileName = "WeaponsInventorySO")]
 public class WeaponsInventorySO : ScriptableObject
 {
-    public List<WeaponSO> DefaultMainWeapons = new List<WeaponSO>();
-    public List<WeaponSO> CarriedMainWeapons = new List<WeaponSO>();
-    public WeaponSO EquippedMainWeapon;
-    
-    public List<WeaponSO> DefaultSecondaryWeapons = new List<WeaponSO>();
-    public List<WeaponSO> CarriedSecondaryWeapons = new List<WeaponSO>();
-    public WeaponSO EquippedSecondaryWeapon;
+    [SerializeField] private int maxMainWeapons = 2;
+    [SerializeField] private int maxSecodnaryWeapons = 1;
+
+    [SerializeField] private List<WeaponSO> defaultMainWeapons = new List<WeaponSO>();
+    [SerializeField] private List<WeaponSO> carriedMainWeapons = new List<WeaponSO>();
+    [SerializeField] private WeaponSO equippedMainWeapon;
+
+    [SerializeField] private List<WeaponSO> defaultSecondaryWeapons = new List<WeaponSO>();
+    [SerializeField] private List<WeaponSO> carriedSecondaryWeapons = new List<WeaponSO>();
+    [SerializeField] private WeaponSO equippedSecondaryWeapon;
+
+    public int MaxMainWeapons { get => maxMainWeapons; set => maxMainWeapons = value; }
+    public int MaxSecodnaryWeapons { get => maxSecodnaryWeapons; set => maxSecodnaryWeapons = value; }
+
+    public List<WeaponSO> DefaultMainWeapons { get => defaultMainWeapons; set => defaultMainWeapons = value; }
+    public List<WeaponSO> CarriedMainWeapons { get => carriedMainWeapons; set => carriedMainWeapons = value; }
+    public WeaponSO EquippedMainWeapon { get => equippedMainWeapon; set => equippedMainWeapon = value; }
+
+    public List<WeaponSO> DefaultSecondaryWeapons { get => defaultSecondaryWeapons; set => defaultSecondaryWeapons = value; }
+    public List<WeaponSO> CarriedSecondaryWeapons { get => carriedSecondaryWeapons; set => carriedSecondaryWeapons = value; }
+    public WeaponSO EquippedSecondaryWeapon { get => equippedSecondaryWeapon; set => equippedSecondaryWeapon = value; }
 
     // Start is called before the first frame update
     void OnEnable()

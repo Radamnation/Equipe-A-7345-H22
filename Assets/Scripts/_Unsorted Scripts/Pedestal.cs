@@ -36,18 +36,44 @@ public class Pedestal : MonoBehaviour
 
     public void ActivatePedestal()
     {
-        WeaponSO temp = pedestalWeapon;
-        pedestalWeapon = weaponInventory.EquippedMainWeapon;
-        var carriedWeaponIndex = weaponInventory.CarriedMainWeapons.IndexOf(weaponInventory.EquippedMainWeapon);
-        weaponInventory.CarriedMainWeapons[carriedWeaponIndex] = temp;
-        weaponInventory.EquippedMainWeapon = temp;
-        mainWeaponHasChanged.Invoke();
-        UpdateSprite();
+        var otherPedestals = transform.parent.transform.GetComponentsInChildren<Pedestal>();
+        foreach (Pedestal pedestal in otherPedestals)
+        {
+            if (pedestal != this)
+            {
+                pedestal.EmptyPedestal();
+            }
+        }
+        if (weaponInventory.CarriedMainWeapons.Count < weaponInventory.MaxMainWeapons)
+        {
+            WeaponSO temp = pedestalWeapon;
+            pedestalWeapon = null;
+            weaponInventory.CarriedMainWeapons.Add(temp);
+            weaponInventory.EquippedMainWeapon = temp;
+            mainWeaponHasChanged.Invoke();
+            EmptyPedestal();
+        }
+        else
+        {
+            WeaponSO temp = pedestalWeapon;
+            pedestalWeapon = weaponInventory.EquippedMainWeapon;
+            var carriedWeaponIndex = weaponInventory.CarriedMainWeapons.IndexOf(weaponInventory.EquippedMainWeapon);
+            weaponInventory.CarriedMainWeapons[carriedWeaponIndex] = temp;
+            weaponInventory.EquippedMainWeapon = temp;
+            mainWeaponHasChanged.Invoke();
+            UpdateSprite();
+        }
         // mySpriteRenderer.enabled = false;
     }
 
     private void UpdateSprite()
     {
         mySpriteRenderer.sprite = pedestalWeapon.WeaponUISprite;
+    }
+
+    public void EmptyPedestal()
+    {
+        mySpriteRenderer.enabled = false;
+        gameObject.layer = LayerMask.NameToLayer("Obstacle");
     }
 }

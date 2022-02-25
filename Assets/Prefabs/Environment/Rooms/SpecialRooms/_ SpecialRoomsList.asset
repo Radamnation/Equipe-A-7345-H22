@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f154196a838d15246a41bfefe1660af1, type: 3}
-  m_Name: SOPlayerMaxHp
+  m_Script: {fileID: 11500000, guid: 40ad3989cdc73324e933c47ba5f736cd, type: 3}
+  m_Name: _ SpecialRoomsList
   m_EditorClassIdentifier: 
-  Value: 10
+  rooms:
+  - {fileID: 6655414022719296296, guid: 9a4eb3a2f88318b40853b0bf04f16d9b, type: 3}

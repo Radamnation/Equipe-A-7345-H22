@@ -676,6 +676,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  deactivatedLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &1920727229787516146
 MonoBehaviour:
   m_ObjectHideFlags: 0

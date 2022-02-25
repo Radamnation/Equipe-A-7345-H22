@@ -16,7 +16,7 @@ MonoBehaviour:
   color: {r: 0, g: 0.253304, b: 1, a: 1}
   healthValueIsPercent: 0
   healthValue: 0
-  armorValueIsPercent: 0
+  armorValueIsPercent: 1
   armorValue: 100
   ammoValueIsPercent: 0
   ammoValue: 0

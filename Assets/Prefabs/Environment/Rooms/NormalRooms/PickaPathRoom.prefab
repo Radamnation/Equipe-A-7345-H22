@@ -8,6 +8,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3992321305335836164, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
+      propertyPath: locksOnEnter
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3992321305335836164, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
+      propertyPath: willBeLocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3992321305335836164, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
       propertyPath: eastDoorIsBlocked
       value: 1
       objectReference: {fileID: 0}
@@ -65,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3992321305335836167, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
       propertyPath: m_Name
-      value: SquidGameRoom
+      value: PickaPathRoom
       objectReference: {fileID: 0}
     - target: {fileID: 8426313561995024683, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
       propertyPath: m_Tiles.Array.size

@@ -70,7 +70,7 @@ public class PlayerContext : MonoBehaviour
         oldState = currState;
 
         // TO BE DELETED
-        livingEntityContext.FullHeal();
+        // livingEntityContext.FullHeal();
         // TO BE MOVED
         weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
         weaponHolder.SecondaryWeapon = weapons.EquippedSecondaryWeapon;

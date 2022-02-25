@@ -13,6 +13,7 @@ public class Room : MonoBehaviour
     [SerializeField] private int zDimension = 15;
     [SerializeField] private int yHeight = 1;
     [SerializeField] private MapLayoutInformationSO mapLayoutInformation;
+    [SerializeField] private bool locksOnEnter = true;
 
     [SerializeField] private bool eastDoorIsBlocked = false;
     [SerializeField] private bool westDoorIsBlocked = false;
@@ -41,6 +42,8 @@ public class Room : MonoBehaviour
     private DoorBlock southDoor;
     private DoorBlock northDoor;
 
+    private ExitBlock exitBlock;
+
     public bool EastDoorIsBlocked { get => eastDoorIsBlocked; }
     public bool WestDoorIsBlocked { get => westDoorIsBlocked; }
     public bool SouthDoorIsBlocked { get => southDoorIsBlocked; }
@@ -57,6 +60,12 @@ public class Room : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        if (GetComponentInChildren<ExitBlock>() != null)
+        {
+            exitBlock = GetComponentInChildren<ExitBlock>();
+            exitBlock.gameObject.SetActive(false);
+        }
+
         floorPrefab = biomeInformation.floorPrefab;
         wallPrefab = biomeInformation.wallPrefab;
         ceilingPrefab = biomeInformation.ceilingPrefab;
@@ -208,24 +217,31 @@ public class Room : MonoBehaviour
 
     public void InitiateRoom()
     {
-        LockAllDoors();
-
-        foreach (Room room in mapLayoutInformation.Rooms)
+        if (locksOnEnter)
         {
-            if (this != room)
-            {
-                if (room.IsCompleted)
-                {
-                    room.CloseAllDoors();
-                    room.LockAllDoors();
+            LockAllDoors();
 
-                    // Set Path Finding uppon entering new room
-                    myAstarPath.data.gridGraph.center = gameObject.transform.localPosition;
-                    myAstarPath.data.gridGraph.width = xDimension;
-                    myAstarPath.data.gridGraph.depth = zDimension;
-                    myAstarPath.Scan();
+            foreach (Room room in mapLayoutInformation.Rooms)
+            {
+                if (this != room)
+                {
+                    if (room.IsCompleted)
+                    {
+                        room.CloseAllDoors();
+                        room.LockAllDoors();
+
+                        // Set Path Finding uppon entering new room
+                        myAstarPath.data.gridGraph.center = gameObject.transform.localPosition;
+                        myAstarPath.data.gridGraph.width = xDimension;
+                        myAstarPath.data.gridGraph.depth = zDimension;
+                        myAstarPath.Scan();
+                    }
                 }
             }
+        }
+        else
+        {
+            FinishRoom();
         }
     }
 
@@ -241,6 +257,10 @@ public class Room : MonoBehaviour
         if (livingEntitiesInsideRoom.Length <= 0)
         {
             IsCompleted = true;
+            if (exitBlock != null)
+            {
+                exitBlock.gameObject.SetActive(true);
+            }
             foreach (Room room in mapLayoutInformation.Rooms)
             {
                 if (room.IsCompleted)

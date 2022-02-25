@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3992321305335836164, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
       propertyPath: yHeight
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3992321305335836165, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
       propertyPath: m_RootOrder
