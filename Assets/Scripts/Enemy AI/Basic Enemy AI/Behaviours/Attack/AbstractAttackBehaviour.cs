@@ -37,6 +37,9 @@ public abstract class AbstractAttackBehaviour : MonoBehaviour
         // Get Component
         // context is located in object's parent(base parent) of attack parent(state parent)
         myContext = transform.parent.transform.parent.gameObject.GetComponent<BasicEnemyContext>();
+
+        if (myContext == null)
+            myContext = transform.GetComponentInParent<BasicEnemyContext>();
     }
 
 
