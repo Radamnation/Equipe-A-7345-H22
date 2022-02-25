@@ -34,6 +34,8 @@ public class MapLayout : MonoBehaviour
     {
         GenerateMapLayout();
         PlaceRooms();
+        GetNearbyRooms();
+        InitializeStartingRoom();
         CloseOffWalls();
         mapLayoutInformation.Rooms[0].OpenAllDoors();
         mapLayoutInformation.Rooms[0].IsCompleted = true;
@@ -108,10 +110,12 @@ public class MapLayout : MonoBehaviour
     public void PlaceRooms()
     {
         AstarPath myAstarPathRef = GetComponentInChildren<AstarPath>();
-
+        
+        // Place Starting Room
         var newStartingRoom = Instantiate(startingRoomsList.Rooms[Random.Range(0, startingRoomsList.Rooms.Count)], Vector3.zero, Quaternion.identity);
         newStartingRoom.transform.parent = transform;
         mapLayoutInformation.Rooms.Add(newStartingRoom);
+        newStartingRoom.MyAstarPath = myAstarPathRef;
 
         // Place Normal Rooms
         for (int i = 1; i < mapLayoutInformation.RoomPositions.Count - bossRooms - treasureRooms; i++)
@@ -183,13 +187,74 @@ public class MapLayout : MonoBehaviour
                     }
                 }
             } while (roomRotation < 360);
-        } while (newRoomPrefab.EastDoorIsBlocked != tempEastHasNoRoom || newRoomPrefab.WestDoorIsBlocked != tempWestHasNoRoom || newRoomPrefab.NorthDoorIsBlocked != tempNorthHasNoRoom || newRoomPrefab.SouthDoorIsBlocked != tempSouthHasNoRoom);
+        } while (newRoomPrefab.EastDoorIsBlocked != tempEastHasNoRoom ||
+                 newRoomPrefab.WestDoorIsBlocked != tempWestHasNoRoom ||
+                 newRoomPrefab.NorthDoorIsBlocked != tempNorthHasNoRoom ||
+                 newRoomPrefab.SouthDoorIsBlocked != tempSouthHasNoRoom);
 
         var newRoom = Instantiate(newRoomPrefab, roomPosition * roomSize, Quaternion.identity);
+        
         newRoom.transform.parent = transform;
         newRoom.RoomInside.transform.rotation = Quaternion.Euler(newRoom.transform.rotation.eulerAngles + new Vector3(0, roomRotation, 0));
+        while(roomRotation > 0)
+        {
+            var temp = tempNorthHasNoRoom;
+            tempNorthHasNoRoom = tempWestHasNoRoom;
+            tempWestHasNoRoom = tempSouthHasNoRoom;
+            tempSouthHasNoRoom = tempEastHasNoRoom;
+            tempEastHasNoRoom = temp;
+            roomRotation -= 90;
+        }
+        newRoom.EastDoorIsBlocked = tempEastHasNoRoom;
+        newRoom.WestDoorIsBlocked = tempWestHasNoRoom;
+        newRoom.NorthDoorIsBlocked = tempNorthHasNoRoom;
+        newRoom.SouthDoorIsBlocked = tempSouthHasNoRoom;
+        
         mapLayoutInformation.Rooms.Add(newRoom);
+        newRoom.gameObject.SetActive(false);
         return newRoom;
+    }
+
+    private void GetNearbyRooms()
+    {
+        for (int i = 0; i < mapLayoutInformation.RoomPositions.Count; i++)
+        {
+            var eastHasNoRoom = !mapLayoutInformation.RoomPositions.Contains(mapLayoutInformation.RoomPositions[i] + new Vector3(1, 0, 0));
+            var westHasNoRoom = !mapLayoutInformation.RoomPositions.Contains(mapLayoutInformation.RoomPositions[i] + new Vector3(-1, 0, 0));
+            var northHasNoRoom = !mapLayoutInformation.RoomPositions.Contains(mapLayoutInformation.RoomPositions[i] + new Vector3(0, 0, 1));
+            var southHasNoRoom = !mapLayoutInformation.RoomPositions.Contains(mapLayoutInformation.RoomPositions[i] + new Vector3(0, 0, -1));
+
+            if (!eastHasNoRoom)
+            {
+                Room eastRoom = mapLayoutInformation.Rooms[mapLayoutInformation.RoomPositions.IndexOf(mapLayoutInformation.RoomPositions[i] + new Vector3(1, 0, 0))];
+                mapLayoutInformation.Rooms[i].MyAdjacentRooms.Add(eastRoom);
+            }
+            if (!westHasNoRoom)
+            {
+                Room westRoom = mapLayoutInformation.Rooms[mapLayoutInformation.RoomPositions.IndexOf(mapLayoutInformation.RoomPositions[i] + new Vector3(-1, 0, 0))];
+                mapLayoutInformation.Rooms[i].MyAdjacentRooms.Add(westRoom);
+            }
+            if (!northHasNoRoom)
+            {
+                Room northRoom = mapLayoutInformation.Rooms[mapLayoutInformation.RoomPositions.IndexOf(mapLayoutInformation.RoomPositions[i] + new Vector3(0, 0, 1))];
+                mapLayoutInformation.Rooms[i].MyAdjacentRooms.Add(northRoom);
+            }
+            if (!southHasNoRoom)
+            {
+                Room southRoom = mapLayoutInformation.Rooms[mapLayoutInformation.RoomPositions.IndexOf(mapLayoutInformation.RoomPositions[i] + new Vector3(0, 0, -1))];
+                mapLayoutInformation.Rooms[i].MyAdjacentRooms.Add(southRoom);
+            }
+        }
+    }
+
+    private void InitializeStartingRoom()
+    {
+        mapLayoutInformation.Rooms[0].IsVisitedOnMap = true;
+        foreach (Room room in mapLayoutInformation.Rooms[0].MyAdjacentRooms)
+        {
+            room.IsVisibleOnMap = true;
+            room.gameObject.SetActive(true);
+        }
     }
 
     private void CloseOffWalls()
