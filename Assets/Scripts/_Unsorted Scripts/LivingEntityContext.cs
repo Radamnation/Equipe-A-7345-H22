@@ -116,7 +116,7 @@ public class LivingEntityContext : MonoBehaviour
         else if (deathDestroys)
             DestroyMe();
          
-        GetComponentInParent<Room>().FinishRoom();
+        GetComponentInParent<Room>().CheckLivingEntities();
     }
 
     public void DestroyMe()

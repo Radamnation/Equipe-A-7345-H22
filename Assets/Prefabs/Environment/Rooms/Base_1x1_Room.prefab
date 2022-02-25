@@ -835,6 +835,7 @@ MonoBehaviour:
   zDimension: 15
   yHeight: 1
   mapLayoutInformation: {fileID: 11400000, guid: fbe5b2935dbd3b64db1ac0d24dd668d9, type: 2}
+  locksOnEnter: 1
   eastDoorIsBlocked: 0
   westDoorIsBlocked: 0
   southDoorIsBlocked: 0
@@ -845,6 +846,21 @@ MonoBehaviour:
   isCompleted: 0
   roomInside: {fileID: 2737011260352304371}
   lastSpawnPositionRotation: {fileID: 11400000, guid: 5b2ea36876857aa408390dd9cc286978, type: 2}
+  mapHasChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: b5d46385f1b068e4688670f09933ac85, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   biomeInformation: {fileID: 11400000, guid: 4ec9ab5ce5955d24db9be8c61e8c1ab9, type: 2}
 --- !u!65 &539145505761517670
 BoxCollider:

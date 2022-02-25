@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 5853020225258447830
+  uniqueID: 6891580601205548774
   points:
   - {x: -0.32, y: 0, z: -0.32}
   - {x: 0.32, y: 0, z: -0.32}
@@ -315,6 +315,6 @@ MonoBehaviour:
   isDebugOn: 1
   delayDestroys: 0
   delayDisablesSprite: 0
-  executeDelay: 0
+  executeDelay: 0.4
   lingerDelay: 0
   damage: 5

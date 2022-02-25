@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Pathfinding; // Path Finding
 
 public class Room : MonoBehaviour
@@ -13,6 +14,7 @@ public class Room : MonoBehaviour
     [SerializeField] private int zDimension = 15;
     [SerializeField] private int yHeight = 1;
     [SerializeField] private MapLayoutInformationSO mapLayoutInformation;
+    [SerializeField] private bool locksOnEnter = true;
 
     [SerializeField] private bool eastDoorIsBlocked = false;
     [SerializeField] private bool westDoorIsBlocked = false;
@@ -24,9 +26,15 @@ public class Room : MonoBehaviour
     [SerializeField] private bool layoutCanBeMirroredY = false;
 
     [SerializeField] private bool isCompleted = false;
+    [SerializeField] private bool isVisibleOnMap = false;
+    [SerializeField] private bool isVisitedOnMap = false;
 
     [SerializeField] private Transform roomInside;
     [SerializeField] private PositionRotationSO lastSpawnPositionRotation;
+
+    [SerializeField] private UnityEvent mapHasChanged;
+
+    [SerializeField] private List<Room> myAdjacentRooms = new List<Room>();
 
     // PREFABS
     [SerializeField] private BiomeInformation biomeInformation;
@@ -41,22 +49,35 @@ public class Room : MonoBehaviour
     private DoorBlock southDoor;
     private DoorBlock northDoor;
 
-    public bool EastDoorIsBlocked { get => eastDoorIsBlocked; }
-    public bool WestDoorIsBlocked { get => westDoorIsBlocked; }
-    public bool SouthDoorIsBlocked { get => southDoorIsBlocked; }
-    public bool NorthDoorIsBlocked { get => northDoorIsBlocked; }
+    private ExitBlock exitBlock;
+
+    public bool EastDoorIsBlocked { get => eastDoorIsBlocked; set => eastDoorIsBlocked = value; }
+    public bool WestDoorIsBlocked { get => westDoorIsBlocked; set => westDoorIsBlocked = value; }
+    public bool SouthDoorIsBlocked { get => southDoorIsBlocked; set => southDoorIsBlocked = value; }
+    public bool NorthDoorIsBlocked { get => northDoorIsBlocked; set => northDoorIsBlocked = value; }
 
     public bool LayoutCanBeRotated { get => layoutCanBeRotated; }
     public bool LayoutCanBeMirroredX { get => layoutCanBeMirroredX; }
     public bool LayoutCanBeMirroredY { get => layoutCanBeMirroredY; }
 
     public bool IsCompleted { get => isCompleted; set => isCompleted = value; }
+    public bool IsVisibleOnMap { get => isVisibleOnMap; set => isVisibleOnMap = value; }
+    public bool IsVisitedOnMap { get => isVisitedOnMap; set => isVisitedOnMap = value; }
+
     public Transform RoomInside { get => roomInside; set => roomInside = value; }
     public AstarPath MyAstarPath { get => myAstarPath; set => myAstarPath = value; }
+    
+    public List<Room> MyAdjacentRooms { get => myAdjacentRooms; set => myAdjacentRooms = value; }
 
     // Start is called before the first frame update
     void Awake()
     {
+        if (GetComponentInChildren<ExitBlock>() != null)
+        {
+            exitBlock = GetComponentInChildren<ExitBlock>();
+            exitBlock.gameObject.SetActive(false);
+        }
+
         floorPrefab = biomeInformation.floorPrefab;
         wallPrefab = biomeInformation.wallPrefab;
         ceilingPrefab = biomeInformation.ceilingPrefab;
@@ -208,11 +229,17 @@ public class Room : MonoBehaviour
 
     public void InitiateRoom()
     {
-        LockAllDoors();
-
-        foreach (Room room in mapLayoutInformation.Rooms)
+        isVisitedOnMap = true;
+        foreach (Room room in MyAdjacentRooms)
         {
-            if (this != room)
+            room.isVisibleOnMap = true;
+            room.gameObject.SetActive(true);
+        }
+        mapHasChanged.Invoke();
+        if (locksOnEnter && !isCompleted)
+        {
+            LockAllDoors();
+            foreach (Room room in myAdjacentRooms)
             {
                 if (room.IsCompleted)
                 {
@@ -226,38 +253,68 @@ public class Room : MonoBehaviour
                     myAstarPath.Scan();
                 }
             }
-        }
-    }
-
-    public void FinishRoom()
-    {
-        Debug.Log($"Testing Living Entities in the room: {gameObject.name}");
-        Invoke("TestLivingEntities", 0.1f);
-    }
-
-    private void TestLivingEntities()
-    {
-        var livingEntitiesInsideRoom = GetComponentsInChildren<LivingEntityContext>();
-        if (livingEntitiesInsideRoom.Length <= 0)
-        {
-            IsCompleted = true;
             foreach (Room room in mapLayoutInformation.Rooms)
             {
-                if (room.IsCompleted)
+                if (room != this && !myAdjacentRooms.Contains(room))
                 {
-                    // Interactable sandwish with unlock-all-doors bread
-                    room.UnlockAllDoors();
-
-                    SetIsInteractable(eastDoor, false);
-                    SetIsInteractable(westDoor, false);
-                    SetIsInteractable(northDoor, false);
-                    SetIsInteractable(southDoor, false);
-
-                    room.OpenAllDoors();
+                    room.gameObject.SetActive(false);
                 }
             }
         }
+        else
+        {
+            IsCompleted = true;
+        }
     }
+
+    public void CheckLivingEntities()
+    {
+        Debug.Log($"Testing Living Entities in the room: {gameObject.name}");
+        StartCoroutine(StartCheckLivingEntities());
+        // Invoke("TestLivingEntities", 0.1f);
+    }
+
+    private IEnumerator StartCheckLivingEntities()
+    {
+        yield return new WaitForSeconds(0.1f);
+        var livingEntitiesInsideRoom = GetComponentsInChildren<LivingEntityContext>();
+        if (livingEntitiesInsideRoom.Length <= 0)
+        {
+            FinishRoom();
+        }
+    }
+
+    private void FinishRoom()
+    {
+        IsCompleted = true;
+        if (exitBlock != null)
+        {
+            exitBlock.gameObject.SetActive(true);
+        }
+        UnlockAllDoors();
+        OpenAllDoors();
+        foreach (Room room in myAdjacentRooms)
+        {
+            if (room.IsCompleted)
+            {
+                room.UnlockAllDoors();
+
+                SetIsInteractable(eastDoor, false);
+                SetIsInteractable(westDoor, false);
+                SetIsInteractable(northDoor, false);
+                SetIsInteractable(southDoor, false);
+
+                room.OpenAllDoors();
+            }
+        }
+        foreach (Room room in mapLayoutInformation.Rooms)
+        {
+            if (room.IsVisibleOnMap)
+            {
+                room.gameObject.SetActive(true);
+            }
+        }
+    }    
 
     // Update is called once per frame
     void Update()
