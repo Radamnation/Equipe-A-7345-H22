@@ -65,7 +65,7 @@ public class WeaponManager : MonoBehaviour
         mainWeaponIsReloading = false;
     }
 
-    public void TriggerMainWeapon()
+    public bool TriggerMainWeapon()
     {
         if (mainFireRateDelay <= 0 && mainReloadDelay <= 0)
         {
@@ -76,12 +76,14 @@ public class WeaponManager : MonoBehaviour
                 mainFireRateDelay = mainWeapon.FiringRate;
                 ShootWeapon(mainWeapon);
                 mainWeaponHasShot.Invoke();
+                return true;
             }
             else if (!mainWeapon.CanFireContinuously)
             {
                 ReloadMainWeapon();
             }
         }
+        return false;
     }
 
     public void TriggerSecondaryWeapon()

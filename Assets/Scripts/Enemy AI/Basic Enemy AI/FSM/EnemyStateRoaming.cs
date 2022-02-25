@@ -11,7 +11,7 @@ public class EnemyStateRoaming : IEnemyState
         if (!context.IsInAnimationState(BasicEnemy_AnimationStates.ROAMINGATTACK) &&
             !context.IsInAnimationState(BasicEnemy_AnimationStates.AGGRESSIVEATTACK) &&
             !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE) &&
-            !context.IsMainWeaponReloading())
+            !context.TryFireMainWeapon()) // Add !hastoken AS FIRST CHECK
         {       
             if (context.R_MoveBehaviour != null)
                 context.R_MoveBehaviour.Execute();
@@ -27,10 +27,8 @@ public class EnemyStateRoaming : IEnemyState
                 !context.IsInAnimationState(BasicEnemy_AnimationStates.ROAMINGATTACK) &&
                 !context.IsInAnimationState(BasicEnemy_AnimationStates.AGGRESSIVEATTACK) &&
                 !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE) &&
-                 context.IsMainWeaponReloading())
+                 context.TryFireMainWeapon()) // Add hastoken AS FIRST CHECK
             {
-                context.ReloadMainWeapon();
-
                 // Check if invoke now or wait for animation event
                 if (!context.RAnimExecuteAtk)
                 {
@@ -54,6 +52,7 @@ public class EnemyStateRoaming : IEnemyState
     // SECTION - Method - General ===================================================================
     public void OnStateEnter(BasicEnemyContext context)
     {
+        Debug.Log("Roaming");
         context.SetEndReachedDistance(context.RWeaponManager.MainWeapon.Range);
     }
 

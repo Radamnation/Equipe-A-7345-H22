@@ -11,7 +11,7 @@ public class EnemyStateAgressive : IEnemyState
         if (!context.IsInAnimationState(BasicEnemy_AnimationStates.ROAMINGATTACK) &&
             !context.IsInAnimationState(BasicEnemy_AnimationStates.AGGRESSIVEATTACK) &&
             !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE) &&
-            !context.IsMainWeaponReloading())
+            !context.TryFireMainWeapon()) // Add !hastoken AS FIRST CHECK
         {
             if (context.A_MoveBehaviour != null)
                 context.A_MoveBehaviour.Execute();
@@ -27,10 +27,8 @@ public class EnemyStateAgressive : IEnemyState
                 !context.IsInAnimationState(BasicEnemy_AnimationStates.ROAMINGATTACK) &&
                 !context.IsInAnimationState(BasicEnemy_AnimationStates.AGGRESSIVEATTACK) &&
                 !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE) &&
-                 context.IsMainWeaponReloading())
+                 context.TryFireMainWeapon()) // Add hastoken AS FIRST CHECK
             {
-                context.ReloadMainWeapon();
-
                 // Check if invoke now or wait for animation event
                 if (!context.AAnimExecuteAtk)
                 {

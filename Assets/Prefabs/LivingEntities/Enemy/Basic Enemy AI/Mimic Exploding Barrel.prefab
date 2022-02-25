@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: isExitOnDeath
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: aWeaponManager
       value: 
       objectReference: {fileID: 6404246582735429935}
@@ -23,6 +27,10 @@ PrefabInstance:
       propertyPath: maxHP.Variable
       value: 
       objectReference: {fileID: 11400000, guid: 1e2985d7ca2971f4982bad82226840e6, type: 2}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: currentHP.ConstantValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: onDeathEvents.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -54,7 +62,7 @@ PrefabInstance:
     - target: {fileID: 3831662558856893132, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: a66ebb4c3c5652e43af3971c882e9c42, type: 2}
+      objectReference: {fileID: 22100000, guid: 8cf918ce5854d364989cc054690fdf0b, type: 2}
     - target: {fileID: 3831662558856893141, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_RootOrder
       value: 0

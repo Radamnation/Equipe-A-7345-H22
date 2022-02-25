@@ -116,6 +116,8 @@ public class MapLayout : MonoBehaviour
         newStartingRoom.transform.parent = transform;
         mapLayoutInformation.Rooms.Add(newStartingRoom);
         newStartingRoom.MyAstarPath = myAstarPathRef;
+        //AstarPath myAstarPathRef = GetComponentInChildren<AstarPath>();
+        AstarPath myAstarPathRef = GameObject.Find("----------------------- TERRAIN").GetComponentInChildren<AstarPath>();
 
         // Place Normal Rooms
         for (int i = 1; i < mapLayoutInformation.RoomPositions.Count - bossRooms - treasureRooms; i++)

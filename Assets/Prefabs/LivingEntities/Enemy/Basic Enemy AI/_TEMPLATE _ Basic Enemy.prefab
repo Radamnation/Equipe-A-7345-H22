@@ -160,7 +160,7 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: 9870af32e803051449b14dac5eabbd8e, type: 2}
   currentHP:
     UseConstant: 1
-    ConstantValue: 0
+    ConstantValue: 1
     Variable: {fileID: 0}
   deathDestroys: 1
   deathDisablesSprite: 0
@@ -189,6 +189,7 @@ MonoBehaviour:
   myStartingState: 0
   startAtMaxSpeed: 1
   rWeaponManager: {fileID: 0}
+  isExitOnDeath: 1
   toAOnAtkExit: 0
   rAnimExecuteAtk: 0
   aWeaponManager: {fileID: 0}

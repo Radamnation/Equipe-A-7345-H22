@@ -30,6 +30,7 @@ public class BasicEnemyContext : MonoBehaviour
     private Animator anim;
 
     // Parameters
+    private readonly string animParam_IsExitOnDeath = "IsExitOnDeath";
     private readonly string animParam_OnDeath = "OnDeath";
     private readonly string animParam_OnHit = "OnHit";
     private readonly string animParam_OnAtkRoaming = "OnAttackRoaming";
@@ -60,6 +61,8 @@ public class BasicEnemyContext : MonoBehaviour
     [SerializeField] private WeaponManager rWeaponManager;
 
     [Header("Animator")]
+    [Tooltip("If false, OnDeath animation will stay at last frame until object is destroyed")]
+    [SerializeField] private bool isExitOnDeath = true;
     [SerializeField] private bool toAOnAtkExit = false;
     [Tooltip("Animation event must be set manually")]
     [SerializeField] private bool rAnimExecuteAtk = false;
@@ -109,8 +112,11 @@ public class BasicEnemyContext : MonoBehaviour
     {
         // Get Set Components & Variables
         GetSetHiddensHandler();
+
         // Set State Machine
         FirstStateHandler();
+
+        anim.SetBool(animParam_IsExitOnDeath, false);
     }
 
     private void FixedUpdate()
@@ -162,9 +168,7 @@ public class BasicEnemyContext : MonoBehaviour
         oldState = currState;
 
         // Instantiate WeaponSOs && Set endReachedDistance
-        FirstSetMainWeaponAndAIDistance(currState);
-
-        
+        FirstSetMainWeaponAndAIDistance(currState);     
     }
 
     private void FirstSetMainWeaponAndAIDistance(IEnemyState myState)
@@ -264,49 +268,28 @@ public class BasicEnemyContext : MonoBehaviour
 
     #region REGION - Utility
 
-    public bool IsMainWeaponReloading()
+    public bool TryFireMainWeapon()
     {
         if (currState is EnemyStateRoaming)
             if (rWeaponManager != null)
-                return rWeaponManager.MainWeaponIsReloading;
+                return rWeaponManager.TriggerMainWeapon();
         else if (currState is EnemyStateAgressive)
             if (aWeaponManager != null)
-                return aWeaponManager.MainWeaponIsReloading;
+                return aWeaponManager.TriggerMainWeapon();
 
         return true; // true == prevent using main weapon when checking !IsMainWeaponReloading()
     }
 
-    public bool IsMainWeaponReloading(BasicEnemy_States stateSpecificCheck)
+    public bool TryFireMainWeapon(BasicEnemy_States stateSpecificCheck)
     {
         if (stateSpecificCheck == BasicEnemy_States.ROAMING)
             if (rWeaponManager != null)
-                return rWeaponManager.MainWeaponIsReloading;
+                return rWeaponManager.TriggerMainWeapon();
         else if (stateSpecificCheck == BasicEnemy_States.AGGRESSIVE)
             if (aWeaponManager != null)
-                return aWeaponManager.MainWeaponIsReloading;
+                return aWeaponManager.TriggerMainWeapon();
 
         return true; // true == prevent using main weapon when checking !IsMainWeaponReloading()
-    }
-
-    public void ReloadMainWeapon()
-    {
-        Debug.Log("A");
-        if (currState is EnemyStateRoaming)
-            if (rWeaponManager != null)
-                rWeaponManager.ReloadMainWeapon();
-        else if (currState is EnemyStateAgressive)
-            if (aWeaponManager != null)
-                aWeaponManager.ReloadMainWeapon();
-    }
-
-    public void ReloadMainWeapon(BasicEnemy_States stateSpecificCheck)
-    {
-        if (stateSpecificCheck == BasicEnemy_States.ROAMING)
-            if (rWeaponManager != null)
-                rWeaponManager.ReloadMainWeapon();
-        else if (stateSpecificCheck == BasicEnemy_States.AGGRESSIVE)
-            if (aWeaponManager != null)
-                aWeaponManager.ReloadMainWeapon();
     }
 
     public void SetSpeedAsDefault() // Note : Also used as animator event
