@@ -3,41 +3,41 @@ using UnityEngine;
 public class PlayerDeathAnimCanvasHandlers : MonoBehaviour
 {
     // SECTION - Field ===================================================================
-    private GameObject UICanvas;
-    private GameObject weaponCanvas;
-    private GameObject visualFeedBack;
-    private OnDeathManager onDeathManager;
-
-
-    // SECTION - Method - Unity Specific ===================================================================
-    private void Start()
-    {
-        UICanvas = GameObject.Find("UI Canvas").gameObject;
-        weaponCanvas = GameObject.Find("Weapon Canvas").gameObject;
-        visualFeedBack = GameObject.Find("Visual Feedback Canvas").gameObject;
-
-        onDeathManager = GameObject.Find("Death Canvas").GetComponent<OnDeathManager>();
-    }
+    [SerializeField] private GameObject UICanvas;
+    [SerializeField] private GameObject minimapCanvas;
+    [SerializeField] private GameObject weaponCanvas;
+    [SerializeField] private GameObject visualFeedBack;
+    [SerializeField] private OnDeathManager onDeathManager;
 
 
     // SECTION - Method - Script Specific ===================================================================
     public void Toggle_UICanvas()
     {
-        UICanvas.SetActive(!UICanvas.activeSelf);
+        if (UICanvas != null)
+            UICanvas.SetActive(!UICanvas.activeSelf);
+    }
+
+    public void Toggle_MiniMapCanvas()
+    {
+        if (minimapCanvas != null)
+            minimapCanvas.SetActive(!minimapCanvas.activeSelf);
     }
 
     public void Toggle_WeaponCanvas()
     {
-        weaponCanvas.SetActive(!weaponCanvas.activeSelf);
+        if (weaponCanvas != null)
+            weaponCanvas.SetActive(!weaponCanvas.activeSelf);
     }
 
     public void Toggle_VisualFeedback()
     {
-        visualFeedBack.SetActive(!visualFeedBack.activeSelf);
+        if (weaponCanvas != null)
+            visualFeedBack.SetActive(!visualFeedBack.activeSelf);
     }
 
     public void CheckEndAsync()
     {
-        onDeathManager.OnDeathAnimationEnd();
+        if (onDeathManager != null)
+            onDeathManager.OnDeathAnimationEnd();
     }
 }

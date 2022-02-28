@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3831662557995219414}
   m_Layer: 8
-  m_Name: Behaviours _ State _ Aggressive
+  m_Name: Behaviours _ State _ 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3831662558613925918}
   m_Layer: 8
-  m_Name: Behaviours _ State _ Roaming
+  m_Name: Behaviours _ State _ 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,15 +186,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26b433ecaa2da543b1fc23d41cd03bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myStartingState: 0
+  myTemporaryTargetPrefab: {fileID: 3480657260901902752, guid: eea5978212187864eaa3c060c97a4793, type: 3}
+  startingState: 0
   startAtMaxSpeed: 1
   exitDeathAnim: 1
-  rWeaponManager: {fileID: 0}
-  toAOnAtkExit: 0
-  rAnimExecuteAtk: 0
-  aWeaponManager: {fileID: 0}
-  toROnAtkExit: 0
-  aAnimExecuteAtk: 0
+  weaponManager_1: {fileID: 0}
+  to_2_OnAtkExit: 0
+  animExecuteAtk_1: 0
+  weaponManager_2: {fileID: 0}
+  to_1_OnAtkExit: 0
+  animExecuteAtk_2: 0
 --- !u!95 &3831662558856893132
 Animator:
   serializedVersion: 4
@@ -502,7 +503,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4261843814959357846}
   m_Layer: 8
-  m_Name: Movement
+  m_Name: Without Token
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -533,7 +534,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4261843815022965214}
   m_Layer: 8
-  m_Name: Movement
+  m_Name: Without Token
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -564,7 +565,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4261843815690790764}
   m_Layer: 8
-  m_Name: Attack
+  m_Name: With Token
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -595,7 +596,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4261843816707075332}
   m_Layer: 8
-  m_Name: Attack
+  m_Name: With Token
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

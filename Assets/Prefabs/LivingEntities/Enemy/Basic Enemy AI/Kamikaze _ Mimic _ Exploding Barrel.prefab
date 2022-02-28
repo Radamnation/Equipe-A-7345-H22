@@ -27,6 +27,10 @@ PrefabInstance:
       propertyPath: startAtMaxSpeed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: weaponManager_2
+      value: 
+      objectReference: {fileID: 6404246582735429935}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: deathDestroys
       value: 1
@@ -75,6 +79,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: 8cf918ce5854d364989cc054690fdf0b, type: 2}
+    - target: {fileID: 3831662558856893138, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: uniqueID
+      value: 6622942233943178384
+      objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893141, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -121,7 +129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893142, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_Name
-      value: Mimic _ Exploding Barrel
+      value: Kamikaze _ Mimic _ Exploding Barrel
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4261843815690790754, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
@@ -150,6 +158,7 @@ MonoBehaviour:
   playerTransform: {fileID: 11400000, guid: bb659ba3eaf28be498f4674f9cbb480c, type: 2}
   mainWeapon: {fileID: 11400000, guid: deae533e02d594d43ac71554f1db0da1, type: 2}
   secondaryWeapon: {fileID: 0}
+  weaponsInventory: {fileID: 0}
   mainWeaponFinishedReloading:
     m_PersistentCalls:
       m_Calls: []
@@ -179,14 +188,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44cad9dbd72d0d44d835380b79927ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myTargetPrefab: {fileID: 0}
-  myMovementTarget: {fileID: 0}
-  isPassiveBehaviour: 1
-  nextState: 1
-  waitForMask:
+  targetMask:
     serializedVersion: 2
     m_Bits: 8
-  waitUntilRange: 1.92
+  isDistanceCurrWeaponBased: 0
+  distance: 1.92
+  validationType: 0
+  isPassiveBehaviour: 1
+  nextState: 1
 --- !u!1 &2340426114970463942 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3831662559138504925, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
@@ -245,7 +254,9 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 8
-  animConditionBool: 1
+  isDistanceCurrWeaponBased: 1
+  distance: 0
+  validationType: 1
   myEvents:
     m_PersistentCalls:
       m_Calls:

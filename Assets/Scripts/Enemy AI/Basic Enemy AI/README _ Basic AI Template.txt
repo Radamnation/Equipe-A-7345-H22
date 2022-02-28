@@ -24,7 +24,7 @@ Step 03: SETTING UP WEAPON MANAGERS ===================
 
 
 Step 04: SETTING UP BEHAVIOURS ========================
-+ Plug N' Play system
++ Plug N' Play-ish system
 
 	++ [Basic Enemy Context.cs] - Defining terms
 		+++ My Starting State : Which state enemy starts in
@@ -43,17 +43,14 @@ Step 04: SETTING UP BEHAVIOURS ========================
 
 
 	++ Children of main object
-		+++ Behaviours _ State _ Roaming
-			++++ First behaviour at TOP of list will be used as starting behaviour
-				+++++ Applies for both movement and Attack behaviours
+		+++ Behaviours _ State _ 1
+			++++ Behaviour slots for WITH and WITHOUT token
 
-		+++ Behaviours _ State _ Aggressive
-			++++ First behaviour at TOP of list will be used as starting behaviour
-				+++++ Applies for both movement and Attack behaviours			
+		+++ Behaviours _ State _ 2	
+			++++ Behaviour slots for WITH and WITHOUT token
 
 		+++ Behaviours _ Death / On Hit
-			++++ Storage unit for [LivingEntity.cs]'s Events on death & on hit
-			
+			++++ Storage unit for [LivingEntity.cs]'s Events on death & on hit			
 
 		+++ Behaviours _ Passive
 			++++ Passive behaviours which are not dictated by any state management
