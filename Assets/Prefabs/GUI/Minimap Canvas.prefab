@@ -217,6 +217,9 @@ MonoBehaviour:
   minimapRoomsParent: {fileID: 8121001753430221430}
   roomScale: 15
   minimapScale: 5
+  normalRoomSprite: {fileID: 42719387, guid: 44d386e27e92d8241a7992f38469fada, type: 3}
+  bossRoomSprite: {fileID: -593051415, guid: 44d386e27e92d8241a7992f38469fada, type: 3}
+  treasureRoomSprite: {fileID: 112649581, guid: 44d386e27e92d8241a7992f38469fada, type: 3}
 --- !u!114 &1852364942
 MonoBehaviour:
   m_ObjectHideFlags: 0

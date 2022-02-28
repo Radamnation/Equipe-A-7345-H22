@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Minimap : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class Minimap : MonoBehaviour
 
     [SerializeField] private float roomScale = 15.0f;
     [SerializeField] private float minimapScale = 5.0f;
+
+    [SerializeField] private Sprite normalRoomSprite;
+    [SerializeField] private Sprite bossRoomSprite;
+    [SerializeField] private Sprite treasureRoomSprite;
 
     private List<MinimapRoom> minimapRooms = new List<MinimapRoom>();
 
@@ -28,6 +33,18 @@ public class Minimap : MonoBehaviour
             newMinimapRoom.transform.localScale = Vector3.one;
             newMinimapRoom.transform.localRotation = Quaternion.identity;
             newMinimapRoom.PlaceDoors(mapLayoutInformation.Rooms[i]);
+            if (mapLayoutInformation.Rooms[i].IsBossRoom)
+            {
+                newMinimapRoom.MyImage.sprite = bossRoomSprite;
+            }
+            else if (mapLayoutInformation.Rooms[i].IsTreasureRoom)
+            {
+                newMinimapRoom.MyImage.sprite = treasureRoomSprite;
+            }
+            else
+            {
+                newMinimapRoom.MyImage.sprite = normalRoomSprite;
+            }
             newMinimapRoom.gameObject.SetActive(false);
             minimapRooms.Add(newMinimapRoom);
         }
@@ -49,7 +66,7 @@ public class Minimap : MonoBehaviour
             if (mapLayoutInformation.Rooms[i].IsVisibleOnMap)
             {
                 minimapRooms[i].gameObject.SetActive(true);
-                minimapRooms[i].MyImage.color = Color.grey;
+                minimapRooms[i].MyImage.color = Color.gray;
             }
             if (mapLayoutInformation.Rooms[i].IsVisitedOnMap)
             {

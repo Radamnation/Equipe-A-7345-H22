@@ -28,13 +28,16 @@ public class Room : MonoBehaviour
     [SerializeField] private bool isCompleted = false;
     [SerializeField] private bool isVisibleOnMap = false;
     [SerializeField] private bool isVisitedOnMap = false;
+    [SerializeField] private bool isTreasureRoom = false;
+    [SerializeField] private bool isBossRoom = false;
 
     [SerializeField] private Transform roomInside;
     [SerializeField] private PositionRotationSO lastSpawnPositionRotation;
 
     [SerializeField] private UnityEvent mapHasChanged;
 
-    [SerializeField] private List<Room> myAdjacentRooms = new List<Room>();
+    private List<Room> myAdjacentRooms = new List<Room>();
+    private List<LivingEntityContext> myLivingEntities = new List<LivingEntityContext>();
 
     // PREFABS
     [SerializeField] private BiomeInformation biomeInformation;
@@ -63,6 +66,8 @@ public class Room : MonoBehaviour
     public bool IsCompleted { get => isCompleted; set => isCompleted = value; }
     public bool IsVisibleOnMap { get => isVisibleOnMap; set => isVisibleOnMap = value; }
     public bool IsVisitedOnMap { get => isVisitedOnMap; set => isVisitedOnMap = value; }
+    public bool IsTreasureRoom { get => isTreasureRoom; set => isTreasureRoom = value; }
+    public bool IsBossRoom { get => isBossRoom; set => isBossRoom = value; }
 
     public Transform RoomInside { get => roomInside; set => roomInside = value; }
     public AstarPath MyAstarPath { get => myAstarPath; set => myAstarPath = value; }
@@ -159,6 +164,26 @@ public class Room : MonoBehaviour
                 }
             }
         }
+
+        var livingEntities = GetComponentsInChildren<LivingEntityContext>();
+        myLivingEntities.AddRange(livingEntities);
+        DeactivateLivingEntities();
+    }
+
+    private void DeactivateLivingEntities()
+    {
+        foreach (LivingEntityContext livingEntity in myLivingEntities)
+        {
+            livingEntity.gameObject.SetActive(false);
+        }
+    }
+
+    public void ActivateLivingEntities()
+    {
+        foreach (LivingEntityContext livingEntity in myLivingEntities)
+        {
+            livingEntity.gameObject.SetActive(true);
+        }
     }
 
     public void CloseOffWalls(List<Vector3> roomPositions)
@@ -239,6 +264,7 @@ public class Room : MonoBehaviour
         if (locksOnEnter && !isCompleted)
         {
             LockAllDoors();
+            ActivateLivingEntities();
             foreach (Room room in myAdjacentRooms)
             {
                 if (room.IsCompleted)
@@ -264,6 +290,7 @@ public class Room : MonoBehaviour
         else
         {
             IsCompleted = true;
+            OpenAllDoors();
         }
     }
 
@@ -276,7 +303,8 @@ public class Room : MonoBehaviour
 
     private IEnumerator StartCheckLivingEntities()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForEndOfFrame();
+        // yield return new WaitForSeconds(0.1f);
         var livingEntitiesInsideRoom = GetComponentsInChildren<LivingEntityContext>();
         if (livingEntitiesInsideRoom.Length <= 0)
         {
