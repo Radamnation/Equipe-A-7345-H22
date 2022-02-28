@@ -63,6 +63,9 @@ public class Room : MonoBehaviour
     public bool LayoutCanBeMirroredX { get => layoutCanBeMirroredX; }
     public bool LayoutCanBeMirroredY { get => layoutCanBeMirroredY; }
 
+    public int XDimension { get => xDimension; }
+    public int ZDimension { get => zDimension; }
+
     public bool IsCompleted { get => isCompleted; set => isCompleted = value; }
     public bool IsVisibleOnMap { get => isVisibleOnMap; set => isVisibleOnMap = value; }
     public bool IsVisitedOnMap { get => isVisitedOnMap; set => isVisitedOnMap = value; }
@@ -296,7 +299,7 @@ public class Room : MonoBehaviour
 
     public void CheckLivingEntities()
     {
-        Debug.Log($"Testing Living Entities in the room: {gameObject.name}");
+        StaticDebugger.SimpleDebugger(false, $"Testing Living Entities in the room: {gameObject.name}");
         StartCoroutine(StartCheckLivingEntities());
         // Invoke("TestLivingEntities", 0.1f);
     }

@@ -1222,21 +1222,28 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 2.3666666
+  - time: 2.5
     functionName: Toggle_VisualFeedback
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.9333334
+  - time: 3
     functionName: Toggle_WeaponCanvas
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 3.5166667
+  - time: 3.5
+    functionName: Toggle_MiniMapCanvas
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 4
     functionName: Toggle_UICanvas
     data: 
     objectReferenceParameter: {fileID: 0}

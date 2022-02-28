@@ -3,11 +3,11 @@ using UnityEngine;
 public class EnemyStateDead : IEnemyState
 {
     // SECTION - Method - State Specific ===================================================================
-    public void OnMovement(BasicEnemyContext context)
+    public void WithoutTokenBehaviour(BasicEnemyContext context)
     {
     }
 
-    public void OnAttackMain(BasicEnemyContext context)
+    public void WithTokenBehaviour(BasicEnemyContext context)
     {
     }
 

@@ -53,8 +53,6 @@ public class LivingEntityContext : MonoBehaviour
         {
             currentHP.Value -= damage;
 
-            Debug.Log($"{gameObject.name} has taken damage");
-
             StartCoroutine(TakeDamageVisualCue());
 
             // On Death
