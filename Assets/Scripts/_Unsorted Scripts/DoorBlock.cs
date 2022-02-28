@@ -38,7 +38,7 @@ public class DoorBlock : MonoBehaviour
     {
         if (!isLocked)
         {
-            GetComponent<Animator>().SetTrigger("OpenDoor");
+            GetComponent<Animator>().SetTrigger("OpenDoor");         
         }
     }
 

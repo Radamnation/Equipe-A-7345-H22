@@ -23,7 +23,8 @@ public class PlayerInputController : MonoBehaviour
         { "Weapon Scroll <= Debug", false },
         { "Weapon Scroll => Debug", false },
         { "Interact Debug", false },
-        { "Show Map Debug", false }
+        { "Show Map Debug", false },
+        { "Any Key Debug", false}
     };
     #endregion
 
@@ -159,6 +160,16 @@ public class PlayerInputController : MonoBehaviour
         if (debugDico["Show Map Debug"])
             if(input.ShowMap)
                 Debug.Log($" {gameObject.name} ... SHOW MAP");
+    }
+
+    public void OnAnyKey(InputAction.CallbackContext cbc)
+    {
+        input.AnyKey = cbc.performed;
+
+        // Debugger
+        if (debugDico["Any Key Debug"])
+            if (input.AnyKey)
+                Debug.Log($" {gameObject.name} ... Any Key");
     }
     #endregion
 

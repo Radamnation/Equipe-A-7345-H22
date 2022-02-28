@@ -114,7 +114,10 @@ public class PlayerStateGrounded : IPlayerState
         }
         else
         {
-            context.LastSpawnPositionRotation.Position = context.TryRayCastGround().transform.position + Vector3.up;
+            if (context.TryRayCastRespawn().transform)
+            {
+                context.LastSpawnPositionRotation.Position = context.TryRayCastRespawn().transform.position + Vector3.up;
+            }
         }
 
         return this;

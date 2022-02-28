@@ -18,7 +18,8 @@ public class Interactable : MonoBehaviour
     // SECTION - Method - Main ===================================================================
     public void OnInteraction()
     {
-        interacted.Invoke();
+        if(isInteractable)
+            interacted.Invoke();
     }
 
 

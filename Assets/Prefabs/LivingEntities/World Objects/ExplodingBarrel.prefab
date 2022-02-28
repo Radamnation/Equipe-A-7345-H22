@@ -156,7 +156,9 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue: 0
     Variable: {fileID: 0}
-  visualCueTimer: 0.14
+  exitDeathDestroys: 1
+  exitDeathDisablesSprite: 0
+  onHitCueDuration: 0.14
   anim: {fileID: 580406396174781458}
   deathAnimStr: OnDeath
   takeDmgAnimStr: 
@@ -241,7 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 5853020225258447830
+  uniqueID: 6891580601205548774
   points:
   - {x: -0.32, y: 0, z: -0.32}
   - {x: 0.32, y: 0, z: -0.32}
@@ -309,7 +311,10 @@ MonoBehaviour:
   radius: 1
   targetMask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 969
   isDebugOn: 1
-  delay: 0.4
+  delayDestroys: 0
+  delayDisablesSprite: 0
+  executeDelay: 0.4
+  lingerDelay: 0
   damage: 5

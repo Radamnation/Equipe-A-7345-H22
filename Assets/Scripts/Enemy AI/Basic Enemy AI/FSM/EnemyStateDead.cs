@@ -3,11 +3,11 @@ using UnityEngine;
 public class EnemyStateDead : IEnemyState
 {
     // SECTION - Method - State Specific ===================================================================
-    public void OnMovement(BasicEnemyContext context)
+    public void WithoutTokenBehaviour(BasicEnemyContext context)
     {
     }
 
-    public void OnAttack(BasicEnemyContext context)
+    public void WithTokenBehaviour(BasicEnemyContext context)
     {
     }
 
@@ -21,6 +21,12 @@ public class EnemyStateDead : IEnemyState
     {
         // Disable Movement
         context.SetSpeed(0.0f);
+
+        // Disable passive behaviours
+        context.transform.GetChild(4).gameObject.SetActive(false);
+
+        // Disable State Machine
+        context.enabled = false;
     }
 
     public void OnStateUpdate(BasicEnemyContext context)

@@ -5,11 +5,14 @@ using UnityEngine.Events;
 
 public class WeaponManager : MonoBehaviour
 {
+    [SerializeField] private bool isDebugOn = false;
+    [Space(10)]
     [SerializeField] private bool tracksPlayer = true;
     [SerializeField] private TransformSO playerTransform;
     
     [SerializeField] private WeaponSO mainWeapon;
     [SerializeField] private WeaponSO secondaryWeapon;
+    [SerializeField] private WeaponsInventorySO weaponsInventory;
 
     [SerializeField] private UnityEvent mainWeaponFinishedReloading;
     [SerializeField] private UnityEvent mainWeaponHasShot;
@@ -24,9 +27,10 @@ public class WeaponManager : MonoBehaviour
 
     public WeaponSO MainWeapon { get => mainWeapon; set => mainWeapon = value; }
     public WeaponSO SecondaryWeapon { get => secondaryWeapon; set => secondaryWeapon = value; }
+    public bool MainWeaponIsReloading { get => mainWeaponIsReloading; }
 
     // public float SecondaryFireRateDelay { get => secondaryFireRateDelay; set => secondaryFireRateDelay = value; }
-    
+
     private void Update()
     {
         mainFireRateDelay -= Time.deltaTime;
@@ -50,29 +54,36 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
+    public void UpdateWeapon()
+    {
+        mainWeapon = weaponsInventory.EquippedMainWeapon;
+    }
+
     public void ResetReload()
     {
         mainReloadDelay = 0;
         mainWeaponIsReloading = false;
     }
 
-    public void TriggerMainWeapon()
+    public bool TriggerMainWeapon()
     {
         if (mainFireRateDelay <= 0 && mainReloadDelay <= 0)
         {
             if (mainWeapon.ShootCheck())
             {
-                Debug.Log($" {mainWeapon.WeaponName} ... FIRED");
+                StaticDebugger.SimpleDebugger(isDebugOn, $" {mainWeapon.WeaponName} ... FIRED");
 
                 mainFireRateDelay = mainWeapon.FiringRate;
                 ShootWeapon(mainWeapon);
                 mainWeaponHasShot.Invoke();
+                return true;
             }
             else if (!mainWeapon.CanFireContinuously)
             {
                 ReloadMainWeapon();
             }
         }
+        return false;
     }
 
     public void TriggerSecondaryWeapon()
@@ -81,7 +92,7 @@ public class WeaponManager : MonoBehaviour
         {
             if (secondaryWeapon.ShootCheck())
             {
-                Debug.Log($" {secondaryWeapon.WeaponName} ... FIRED");
+                StaticDebugger.SimpleDebugger(isDebugOn, $" {secondaryWeapon.WeaponName} ... FIRED");
 
                 secondaryFireRateDelay = secondaryWeapon.FiringRate;
                 ShootWeapon(secondaryWeapon);
@@ -96,7 +107,8 @@ public class WeaponManager : MonoBehaviour
         {
             if (mainWeapon.ReloadCheck())
             {
-                Debug.Log($" {mainWeapon.WeaponName} ... RELOADED");
+                StaticDebugger.SimpleDebugger(isDebugOn, $" {mainWeapon.WeaponName} ... RELOADED");
+
                 mainWeaponStartedReloading.Invoke();
                 mainReloadDelay = mainWeapon.ReloadTime;
             }
@@ -119,8 +131,7 @@ public class WeaponManager : MonoBehaviour
             {
                 ShootSingleRayCast(weapon);
             }
-        }
-        
+        }      
     }
 
     public void ShootProjectile(WeaponSO weapon)
@@ -128,17 +139,20 @@ public class WeaponManager : MonoBehaviour
         var newProjectile = Instantiate(weapon.Projectile, transform);
         newProjectile.MyRigidbody.velocity += transform.parent.GetComponent<Rigidbody>().velocity * 0.25f;
         newProjectile.transform.parent = null;
-        Debug.Log(newProjectile.name + " was instantiated");
+
+        StaticDebugger.SimpleDebugger(isDebugOn, newProjectile.name + " was instantiated");
     }
 
     public void ShootSingleRayCast(WeaponSO weapon)
     {
-        Debug.Log("A");
+        StaticDebugger.SimpleDebugger(isDebugOn, "A");
+        
         RaycastHit hit;
         Physics.Raycast(transform.position, transform.forward, out hit, GameManager.instance.canBeShotByPlayerMask, 1000);
         if (hit.collider != null)
         {
-            Debug.Log(hit.collider.name + " was hit");
+            StaticDebugger.SimpleDebugger(isDebugOn, hit.collider.name + " was hit");
+
             if (hit.collider.GetComponent<LivingEntityContext>() != null)
             {
                 hit.collider.GetComponent<LivingEntityContext>().TakeDamage(weapon.Damage);
@@ -160,7 +174,8 @@ public class WeaponManager : MonoBehaviour
             Physics.Raycast(transform.position, transform.forward + spreadDirection, out hit, GameManager.instance.canBeShotByPlayerMask, 1000);
             if (hit.collider != null)
             {
-                Debug.Log(hit.collider.name + " was hit");
+                StaticDebugger.SimpleDebugger(isDebugOn, hit.collider.name + " was hit");
+
                 if (hit.collider.GetComponent<LivingEntityContext>() != null)
                 {
                     hit.collider.GetComponent<LivingEntityContext>().TakeDamage(weapon.Damage / weapon.BulletsNumber);

@@ -62,6 +62,10 @@ public class PlayerContext : MonoBehaviour
     public InteractCanvasHandler InteractCanvasHandler { get => interactCanvasHandler; set => interactCanvasHandler = value; }
     #endregion
 
+    private void Awake()
+    {
+        playerTransform.Transform = transform;
+    }
 
     // SECTION - Method - Unity ===================================================================
     private void Start()
@@ -70,7 +74,7 @@ public class PlayerContext : MonoBehaviour
         oldState = currState;
 
         // TO BE DELETED
-        livingEntityContext.FullHeal();
+        // livingEntityContext.FullHeal();
         // TO BE MOVED
         weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
         weaponHolder.SecondaryWeapon = weapons.EquippedSecondaryWeapon;
@@ -98,7 +102,6 @@ public class PlayerContext : MonoBehaviour
     public void OnStateUpdate()
     {
         // Added to have player position known to everything
-        playerTransform.Transform = transform;
         currState.OnStateUpdate(this);
     }
 
@@ -113,6 +116,11 @@ public class PlayerContext : MonoBehaviour
     public RaycastHit TryRayCastGround() // Only purpose is to aleviate eye bleeding
     {
         return StaticRayCaster.IsLineCastTouching(transform.position, -transform.up, DistanceGround, GameManager.instance.groundMask, IsDebugOn);
+    }
+
+    public RaycastHit TryRayCastRespawn() // Only purpose is to aleviate eye bleeding
+    {
+        return StaticRayCaster.IsLineCastTouching(transform.position, -transform.up, DistanceGround, GameManager.instance.respawnMask, IsDebugOn);
     }
 
     public RaycastHit TryRayCastInteractable() // Only purpose is to aleviate eye bleeding
@@ -178,8 +186,8 @@ public class PlayerContext : MonoBehaviour
             weaponHolder.ResetReload();
 
             weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[0];
-            weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
-            Debug.Log($"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
+            // weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
+            StaticDebugger.SimpleDebugger(isDebugOn, $"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
             mainWeaponHasChanged.Invoke();
         }
         else if (input.WeaponTwo)       // WEAPON TWO
@@ -189,10 +197,13 @@ public class PlayerContext : MonoBehaviour
             weaponHolder.ResetReload();
 
             // EVENT GO HERE
-            weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[1];
-            weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
-            Debug.Log($"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
-            mainWeaponHasChanged.Invoke();
+            if (weapons.CarriedMainWeapons.Count > 1)
+            {
+                weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[1];
+                // weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
+                StaticDebugger.SimpleDebugger(IsDebugOn, $"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
+                mainWeaponHasChanged.Invoke();
+            }
         }
         else if (input.WeaponScrollBackward)       // WEAPON SCROLL <=
         {
@@ -201,13 +212,16 @@ public class PlayerContext : MonoBehaviour
             weaponHolder.ResetReload();
 
             // EVENT GO HERE
-            var index = weapons.CarriedMainWeapons.IndexOf(weapons.EquippedMainWeapon) - 1;
-            if (index < 0)
-                index = weapons.CarriedMainWeapons.Count - 1;
-            weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[index];
-            weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
-            Debug.Log($"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
-            mainWeaponHasChanged.Invoke();
+            if (weapons.CarriedMainWeapons.Count > 1)
+            {
+                var index = weapons.CarriedMainWeapons.IndexOf(weapons.EquippedMainWeapon) - 1;
+                if (index < 0)
+                    index = weapons.CarriedMainWeapons.Count - 1;
+                weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[index];
+                // weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
+                StaticDebugger.SimpleDebugger(IsDebugOn, $"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
+                mainWeaponHasChanged.Invoke();
+            }
         }
         else if (input.WeaponScrollForward)       // WEAPON SCROLL =>
         {
@@ -216,13 +230,16 @@ public class PlayerContext : MonoBehaviour
             weaponHolder.ResetReload();
 
             // EVENT GO HERE
-            var index = weapons.CarriedMainWeapons.IndexOf(weapons.EquippedMainWeapon) + 1;
-            if (index > weapons.CarriedMainWeapons.Count - 1)
-                index = 0;
-            weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[index];
-            weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
-            Debug.Log($"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
-            mainWeaponHasChanged.Invoke();
+            if (weapons.CarriedMainWeapons.Count > 1)
+            {
+                var index = weapons.CarriedMainWeapons.IndexOf(weapons.EquippedMainWeapon) + 1;
+                if (index > weapons.CarriedMainWeapons.Count - 1)
+                    index = 0;
+                weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[index];
+                // weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
+                StaticDebugger.SimpleDebugger(IsDebugOn, $"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
+                mainWeaponHasChanged.Invoke();
+            }
         }
     }
 
@@ -247,7 +264,8 @@ public class PlayerContext : MonoBehaviour
 
             if (hit.transform != null)
             {
-                Interactable interactable = hit.transform.GetComponent<Interactable>();
+                Debug.Log($"hit name is : {hit.transform.name}");
+                Interactable interactable = hit.transform.GetComponentInChildren<Interactable>();
 
                 // Canvas visual cue
                 interactCanvasHandler.SetVisualCue(interactable.IsInteractable);

@@ -18,7 +18,7 @@ MonoBehaviour:
   healthValue: 0
   armorValueIsPercent: 0
   armorValue: 0
-  ammoValueIsPercent: 0
+  ammoValueIsPercent: 1
   ammoValue: 100
   secondaryValueIsPercent: 0
   secondaryValue: 0

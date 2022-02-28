@@ -1,11 +1,6 @@
 using UnityEngine;
 using Pathfinding; // Aaron Granberg A*
 
-// Reminder for setting dynamic scan of navmesh
-// private NavGraph[] navGraph;
-// navGraph = astarPath.graphs;
-// AstartPath astarPath.Scan(navGraph);
-
 public class BasicEnemyContext : MonoBehaviour
 {
     // SECTION - Field ===================================================================
@@ -22,9 +17,11 @@ public class BasicEnemyContext : MonoBehaviour
 
 
     #region REGION - HIDDEN - AStar Specific
+    private Transform myTemporaryTargetTransform;
     private AIPath myAIPath;                           // Movement, rotation, End Reached Distance, etc.
     private AIDestinationSetter myAIDestinationSetter; // Pathfinding Target
     private float maxSpeed;
+    private const float defaultEndReachedDistance = 0.96f;
     #endregion
 
 
@@ -34,6 +31,7 @@ public class BasicEnemyContext : MonoBehaviour
     private Animator anim;
 
     // Parameters
+    private readonly string animParam_ExitDeathAnim = "ExitDeathAnim";
     private readonly string animParam_OnDeath = "OnDeath";
     private readonly string animParam_OnHit = "OnHit";
     private readonly string animParam_OnAtkRoaming = "OnAttackRoaming";
@@ -52,62 +50,86 @@ public class BasicEnemyContext : MonoBehaviour
     #endregion
 
 
-
-    [Header("On Start Specifications")]
-    [SerializeField] private BasicEnemy_States myStartingState = BasicEnemy_States.ROAMING;
+    [Header("    ======= On Start Specifications =======\n")]
+    [SerializeField] private GameObject myTemporaryTargetPrefab;
+    [Space(10)]
+    [SerializeField] private BasicEnemy_States startingState = BasicEnemy_States.ONE;
     [SerializeField] private bool startAtMaxSpeed = true;
 
-    [Space(10)]
-    [Header("    ========== Roaming State ==========\n")]
-    [SerializeField] private WeaponManager r_WeaponManager;
-    [SerializeField] private bool r_OnAtkExit = false;
-    [Tooltip("Animation event must be set manually")]
-    [SerializeField] private bool r_AnimExecuteAtk = false;
-    [Space(10)]
-    [SerializeField] private AbstractMovementBehaviour r_MoveBehaviour;
-    [SerializeField] private AbstractAttackBehaviour r_AtkBehaviour;
+    [Header("    ======= Animator Specifications =======\n")]
+    [Tooltip("Allows to keep last sprite for lingering dead enemies")]
+    [SerializeField] private bool exitDeathAnim = true;
 
     [Space(10)]
-    [Header("    ========== Aggressive State ==========\n")]
-    [SerializeField] private WeaponManager a_WeaponManager;
-    [SerializeField] private bool a_OnAtkExit = false;
+    [Header("    ========== State One ==========\n")]
+    [Header("Weapon Manager")]
+    [Tooltip("[Range] is used for [endReachedDistance]" +
+             "[MainWeaponIsReloading] is used for time between two attacks")]
+    [SerializeField] private WeaponManager weaponManager_1;
+
+    [Header("Animator")]
+    [Tooltip("If false, OnDeath animation will stay at last frame until object is destroyed")]
+
+    [SerializeField] private bool to_2_OnAtkExit = false;
     [Tooltip("Animation event must be set manually")]
-    [SerializeField] private bool a_AnimExecuteAtk = false;
+    [SerializeField] private bool animExecuteAtk_1 = false;
+    private AbstractBehaviour moveBehaviour_1;
+    private AbstractBehaviour atkBehaviour_1;
+
     [Space(10)]
-    [SerializeField] private AbstractMovementBehaviour a_MoveBehaviour;
-    [SerializeField] private AbstractAttackBehaviour a_AtkBehaviour;
+    [Header("    ========= State Two =========\n")]
+    [Header("Weapon Manager")]
+    [SerializeField] private WeaponManager weaponManager_2;
+
+    [Header("Animator")]
+    [SerializeField] private bool to_1_OnAtkExit = false;
+    [Tooltip("Animation event must be set manually")]
+    [SerializeField] private bool animExecuteAtk_2 = false;
+    private AbstractBehaviour moveBehaviour_2;
+    private AbstractBehaviour atkBehaviour_2;
 
 
     // SECTION - Property ===================================================================
     #region REGION - PROPERTY
+    // State
+    public IEnemyState CurrState { get => currState; set => currState = value; }
+
     // General
     public LivingEntityContext MyLivingEntity { get => myLivingEntity; set => myLivingEntity = value; }
     public Animator Anim { get => anim; set => anim = value; }
 
     // AI
     public AIPath MyAIPath { get => myAIPath; set => myAIPath = value; }
+    public Transform MyTemporaryTargetTransform { get => myTemporaryTargetTransform; }
 
-    // Roaming State
-    public WeaponManager R_WeaponManager { get => r_WeaponManager; set => r_WeaponManager = value; }
-    public bool R_OnAnimExit { get => r_OnAtkExit; }
-    public bool R_AnimExecuteAtk { get => r_AnimExecuteAtk; }
-    public AbstractMovementBehaviour R_MoveBehaviour { get => r_MoveBehaviour; }
-    public AbstractAttackBehaviour R_AtkBehaviour { get => r_AtkBehaviour; }
+    // State One
+    public WeaponManager WeaponManager_1 { get => weaponManager_1; set => weaponManager_1 = value; }
+    public bool To_2_OnAtkExit { get => to_2_OnAtkExit; }
+    public bool AnimExecuteAtk_1 { get => animExecuteAtk_1; }
+    public AbstractBehaviour MoveBehaviour_1 { get => moveBehaviour_1; }
+    public AbstractBehaviour AtkBehaviour_1 { get => atkBehaviour_1; }
 
-    // Aggressive State
-    public WeaponManager A_WeaponManager { get => a_WeaponManager; set => a_WeaponManager = value; }
-    public bool A_OnAtkExit { get => a_OnAtkExit; }
-    public bool A_AnimExecuteAtk { get => a_AnimExecuteAtk; }
-    public AbstractMovementBehaviour A_MoveBehaviour { get => a_MoveBehaviour; }
-    public AbstractAttackBehaviour A_AtkBehaviour { get => a_AtkBehaviour; }
+    // State Two
+    public WeaponManager WeaponManager_2 { get => weaponManager_2; set => weaponManager_2 = value; }
+    public bool To_1_OnAtkExit { get => to_1_OnAtkExit; }
+    public bool AnimExecuteAtk_2 { get => animExecuteAtk_2; }
+    public AbstractBehaviour MoveBehaviour_2 { get => moveBehaviour_2; }
+    public AbstractBehaviour AtkBehaviour_2 { get => atkBehaviour_2; }
     #endregion
 
 
     // SECTION - Method - Unity Specific ===================================================================
+    private void OnDestroy()
+    {
+        if (MyTemporaryTargetTransform)
+            Destroy(myTemporaryTargetTransform.gameObject);
+    }
+
     private void Start()
     {
         // Get Set Components & Variables
         GetSetHiddensHandler();
+
         // Set State Machine
         FirstStateHandler();
     }
@@ -146,25 +168,55 @@ public class BasicEnemyContext : MonoBehaviour
     #region REGION - On Start Handlers
     private void FirstStateHandler()
     {
-        switch(myStartingState)
+        switch(startingState)
         {
-            case BasicEnemy_States.ROAMING:
-                SetFiniteStateMachine(BasicEnemy_States.ROAMING);
+            case BasicEnemy_States.ONE:
+                SetFiniteStateMachine(BasicEnemy_States.ONE);
                 break;
-            case BasicEnemy_States.AGGRESSIVE:
-                SetFiniteStateMachine(BasicEnemy_States.AGGRESSIVE);
+            case BasicEnemy_States.TWO:
+                SetFiniteStateMachine(BasicEnemy_States.TWO);
                 break;
             default: Debug.Log($"An error as occured at [FirstStateHandler()] of [EnemyContext.cs] from enemy: {gameObject.name}"); break;
         }
 
         oldState = currState;
 
-        // endReachedDistance
-        Debug.Log("FINISH ENDREACHEDDISTANCE IMPLEMENTATION HERE");
-        myAIPath.endReachedDistance = 0.64f; // ARBITRARY DISTANCE, DELETE WHEN LINE BELLOW IS IMPLEMENTED
-        //myAIPath.endReachedDistance = (myStartingState == BasicEnemy_States.ROAMING) ? myRoamingWeaponHolder.weapon.distance : myAggressiveWeaponHolder.weapon.distance; ;
+        // Instantiate WeaponSOs && Set endReachedDistance
+        FirstSetMainWeaponAndAIDistance(currState);     
     }
-    
+
+    private void FirstSetMainWeaponAndAIDistance(IEnemyState myState)
+    {
+        // Weapons
+        WeaponSO myWeaponSO = null;
+
+        if (myState is BasicEnemyState_One)
+        {
+            if (weaponManager_1 != null)
+            {
+                // Clone WeaponSO and set it up as main weapon
+                myWeaponSO = Instantiate(weaponManager_1.MainWeapon);
+                weaponManager_1.MainWeapon = myWeaponSO;
+                return;
+            }
+        }
+        else if (myState is BasicEnemyState_Two)
+        {
+            if (weaponManager_2 != null)
+            {
+                // Clone WeaponSO and set it up as main weapon
+                myWeaponSO = Instantiate(weaponManager_2.MainWeapon);
+                weaponManager_2.MainWeapon = myWeaponSO;
+                return;
+            }
+        }
+
+        if (myWeaponSO != null)
+            SetEndReachedDistance(myWeaponSO.Range);
+        else
+            SetEndReachedDistance(defaultEndReachedDistance);
+    }
+
     private void GetSetHiddensHandler()
     {
         // AI ========================================
@@ -173,22 +225,29 @@ public class BasicEnemyContext : MonoBehaviour
         myAIDestinationSetter = GetComponentInChildren<AIDestinationSetter>();
 
         // Set Variables
+        myTemporaryTargetTransform = Instantiate(myTemporaryTargetPrefab, GameObject.Find("--------------------- DYNAMIC").transform).transform;
         maxSpeed = myAIPath.maxSpeed;
 
 
         if (myAIDestinationSetter.target == null)
-            myAIDestinationSetter.target = GameManager.instance.PlayerTransformRef;
+            SetTargetAsPlayer();
+            //myAIDestinationSetter.target = GameManager.instance.PlayerTransformRef;
 
         if (!startAtMaxSpeed)
             SetSpeed(0.0f);
 
+
         // Miscellaneous ========================================
-        // Get Components
         myLivingEntity = GetComponentInChildren<LivingEntityContext>();
-        //a_WeaponManager = GetComponentInChildren<WeaponManager>(); // TO BE IMPLEMENTED
-        //r_WeaponManager = GetComponentInChildren<WeaponManager>(); // TO BE IMPLEMENTED
         mySpriteTransform = GetComponentInChildren<SpriteRenderer>().transform;
         anim = GetComponentInChildren<Animator>();
+        anim.SetBool(animParam_ExitDeathAnim, exitDeathAnim);
+
+        moveBehaviour_1 = transform.GetChild(1).transform.GetChild(0).GetComponentInChildren<AbstractBehaviour>();
+        atkBehaviour_1 = transform.GetChild(1).transform.GetChild(1).GetComponentInChildren<AbstractBehaviour>();
+
+        moveBehaviour_2 = transform.GetChild(2).transform.GetChild(0).GetComponentInChildren<AbstractBehaviour>();
+        atkBehaviour_2 = transform.GetChild(2).transform.GetChild(1).GetComponentInChildren<AbstractBehaviour>();
     }
     #endregion
 
@@ -221,9 +280,73 @@ public class BasicEnemyContext : MonoBehaviour
     {
         myAIDestinationSetter.target = newTarget;
     }
+
+    public Transform GetTarget()
+    {
+        return myAIDestinationSetter.target;
+    }
     #endregion
 
     #region REGION - Utility
+    public void SetMyTemporaryTargetAs(Transform setAs)
+    {
+        myTemporaryTargetTransform.position = setAs.position;
+    }
+
+    public bool TryFireMainWeapon()
+    {
+        if (currState is BasicEnemyState_One)
+            if (weaponManager_1 != null)
+                return weaponManager_1.TriggerMainWeapon();
+        else if (currState is BasicEnemyState_Two)
+            if (weaponManager_2 != null)
+                return weaponManager_2.TriggerMainWeapon();
+
+        return true; // true == prevent using main weapon when checking !IsMainWeaponReloading()
+    }
+
+    public bool TryFireMainWeapon(BasicEnemy_States stateSpecificCheck)
+    {
+        if (stateSpecificCheck == BasicEnemy_States.ONE)
+            if (weaponManager_1 != null)
+                return weaponManager_1.TriggerMainWeapon();
+        else if (stateSpecificCheck == BasicEnemy_States.TWO)
+            if (weaponManager_2 != null)
+                return weaponManager_2.TriggerMainWeapon();
+
+        return true; // true == prevent using main weapon when checking !IsMainWeaponReloading()
+    }
+
+    public bool IsCurrentWeaponManagerNull()
+    {
+        if (currState is BasicEnemyState_One && weaponManager_1 == null)
+            return true;
+        else if (currState is BasicEnemyState_Two && WeaponManager_2 == null)
+            return true;
+
+        return false;
+    }
+
+    public WeaponManager GetCurrentWeaponManager()
+    {
+        if (currState is BasicEnemyState_One && weaponManager_1 != null)
+            return weaponManager_1;
+        else if (currState is BasicEnemyState_Two && WeaponManager_2 != null)
+            return WeaponManager_2;
+
+        return null;
+    }
+
+    public WeaponManager GetSpecificWeaponManager(BasicEnemy_States specificState)
+    {
+        if (specificState == BasicEnemy_States.ONE)
+            return weaponManager_2;
+        else if (specificState == BasicEnemy_States.TWO)
+            return WeaponManager_1;
+
+        return null;
+    }
+
     public void SetSpeedAsDefault() // Note : Also used as animator event
     {
         MyAIPath.maxSpeed = maxSpeed;
@@ -234,30 +357,53 @@ public class BasicEnemyContext : MonoBehaviour
         MyAIPath.maxSpeed = newSpeed;
     }
 
+    public void SetEndReachedDistance(float newEndReachedDistance = defaultEndReachedDistance)
+    {
+        myAIPath.endReachedDistance = newEndReachedDistance;
+    }
+
+    public void SetEndReachedDistance_ToCurrState()
+    {
+        if (currState is BasicEnemyState_One)
+        {
+            if (weaponManager_1 != null)
+            {
+                SetEndReachedDistance(weaponManager_1.MainWeapon.Range);
+                return;
+            }
+        }
+        else if (currState is BasicEnemyState_Two)
+        {
+            if (weaponManager_2 != null)
+            {
+                SetEndReachedDistance(weaponManager_2.MainWeapon.Range);
+                return;
+            }
+        }
+
+        SetEndReachedDistance();
+    }
+
     public void SetFiniteStateMachine(BasicEnemy_States transitionTo)
     {
         switch (transitionTo)
         {
-            case BasicEnemy_States.ROAMING:
-                if (!(currState is EnemyStateRoaming))
-                    currState = new EnemyStateRoaming();
+            case BasicEnemy_States.ONE:
+                if (!(currState is BasicEnemyState_One))
+                    currState = new BasicEnemyState_One();
                 break;
-            case BasicEnemy_States.AGGRESSIVE:
-                if (!(currState is EnemyStateAgressive))
-                {
-                    Debug.Log("A");
-                    currState = new EnemyStateAgressive();
-                }
-
+            case BasicEnemy_States.TWO:
+                if (!(currState is BasicEnemyState_Two))
+                    currState = new BasicEnemyState_Two();
                 break;
         }
     }
     public void ToggleState()
     {
-        if (currState is EnemyStateRoaming)
-            SetFiniteStateMachine(BasicEnemy_States.AGGRESSIVE);
+        if (currState is BasicEnemyState_One)
+            SetFiniteStateMachine(BasicEnemy_States.TWO);
         else
-            SetFiniteStateMachine(BasicEnemy_States.ROAMING);
+            SetFiniteStateMachine(BasicEnemy_States.ONE);
     }
 
     public void SetAnimTrigger(BasicEnemy_AnimTriggers trigger)
@@ -267,21 +413,42 @@ public class BasicEnemyContext : MonoBehaviour
             case BasicEnemy_AnimTriggers.DEATH:
                 anim.SetTrigger(animParam_OnDeath);
                 break;
+
+            case BasicEnemy_AnimTriggers.EXITDEATH:
+                anim.SetBool(animParam_ExitDeathAnim, true);
+                break;
+
             case BasicEnemy_AnimTriggers.ONHIT:
                 anim.SetTrigger(animParam_OnHit);
                 break;
-            case BasicEnemy_AnimTriggers.ROAMINGATTACK:
+
+            case BasicEnemy_AnimTriggers.STATEONEATTACK:
                 anim.SetTrigger(animParam_OnAtkRoaming);
                 break;
-            case BasicEnemy_AnimTriggers.AGGRESSIVEATTACK:
+
+            case BasicEnemy_AnimTriggers.STATETWOATTACK:
                 anim.SetTrigger(animParam_OnAtkAggressive);
                 break;
+
+
             default: Debug.Log($"An error as occured at [SetAnimTrigger()] of [EnemyContext.cs] from enemy: {gameObject.name}"); break;
         }
     }
 
+    public bool IsAnimExecuteAttack()
+    {
+        if (currState is BasicEnemyState_One)
+            return animExecuteAtk_1;
+        else if (currState is BasicEnemyState_Two)
+            return animExecuteAtk_2;
+
+        return false;
+    }
+
     public bool IsInAnimationState(BasicEnemy_AnimationStates checkAnimation)
     {
+        // ADD
+        // ONREVIVE
         switch (checkAnimation)
         {
             case BasicEnemy_AnimationStates.IDDLE:
@@ -293,10 +460,10 @@ public class BasicEnemyContext : MonoBehaviour
             case BasicEnemy_AnimationStates.MOVEMENT:
                 return anim.GetCurrentAnimatorStateInfo(0).IsName(animState_OnMoveBlendTree);
 
-            case BasicEnemy_AnimationStates.ROAMINGATTACK:
+            case BasicEnemy_AnimationStates.STATE_ONE_ATTACK:
                 return anim.GetCurrentAnimatorStateInfo(0).IsName(animState_OnAtkRoaming);
 
-            case BasicEnemy_AnimationStates.AGGRESSIVEATTACK:
+            case BasicEnemy_AnimationStates.STATE_TWO_ATTACK:
                 return anim.GetCurrentAnimatorStateInfo(0).IsName(animState_OnAtkAggressive);
 
             case BasicEnemy_AnimationStates.DEAD:
@@ -315,13 +482,12 @@ public class BasicEnemyContext : MonoBehaviour
 
     private void AE_ExecuteRoamingAttack() // Animator Event
     {
-        r_AtkBehaviour.Execute();
+        atkBehaviour_1.Execute();
     }
 
     private void AE_ExecuteAggressiveAttack() // Animator Event
     {
-        A_AtkBehaviour.Execute();
+        AtkBehaviour_2.Execute();
     }
-
     #endregion
 }

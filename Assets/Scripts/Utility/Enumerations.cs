@@ -3,10 +3,12 @@ using UnityEngine;
 // SECTION - Enumeration ============================================================
 
 // Basic Ennemy
-public enum BasicEnemy_States { ROAMING, AGGRESSIVE }
+public enum BasicEnemy_States { ONE, TWO }
 
-public enum BasicEnemy_AnimationStates { IDDLE, MOVEMENT, ONAWAKE, ROAMINGATTACK, AGGRESSIVEATTACK, DEAD }
+public enum BasicEnemy_AnimationStates { IDDLE, MOVEMENT, ONAWAKE, STATE_ONE_ATTACK, STATE_TWO_ATTACK, DEAD }
 
-public enum BasicEnemy_AnimTriggers { DEATH, ONHIT, ROAMINGATTACK, AGGRESSIVEATTACK}
+public enum BasicEnemy_AnimTriggers { DEATH, EXITDEATH, ONHIT, STATEONEATTACK, STATETWOATTACK}
 
-// Extend here
+
+// Base Enemy AI
+public enum ValidationCheckTypes { CHILDSPECIFIC, ALWAYSVALID, RAYCASTSINGLE, RAYCASTARRAY, OVERLAPSPHERE }

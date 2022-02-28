@@ -46,10 +46,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 1088
   interactableMask:
     serializedVersion: 2
     m_Bits: 128
   canBeShotByPlayerMask:
     serializedVersion: 2
-    m_Bits: 960
+    m_Bits: 448
+  respawnMask:
+    serializedVersion: 2
+    m_Bits: 64
