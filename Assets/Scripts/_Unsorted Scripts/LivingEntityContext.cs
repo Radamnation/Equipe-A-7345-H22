@@ -26,9 +26,11 @@ public class LivingEntityContext : MonoBehaviour
 
                      private SpriteRenderer[] spriteRenderer;
 
+    [SerializeField] private bool isEnemy = true;
 
     // SECTION - Property =========================================================
     public bool IsDead { get => currentHP.Value <= 0.0f; }
+    public bool IsEnemy { get => isEnemy; set => isEnemy = value; }
 
 
     // SECTION - Method - Unity Specific =========================================================

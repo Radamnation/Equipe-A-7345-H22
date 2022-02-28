@@ -19,7 +19,7 @@ public class MapLayout : MonoBehaviour
     [SerializeField] private RoomsListSO treasureRoomsList;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         InitializeMapLayout();
     }
@@ -129,12 +129,14 @@ public class MapLayout : MonoBehaviour
         for (int i = mapLayoutInformation.RoomPositions.Count - bossRooms - treasureRooms; i < mapLayoutInformation.RoomPositions.Count- treasureRooms; i++)
         {
             var newBossRoom = RotateAndPlaceRoom(bossRoomsList, mapLayoutInformation.RoomPositions[i]);
+            newBossRoom.IsBossRoom = true;
             newBossRoom.MyAstarPath = myAstarPathRef;
         }
         // Place TreasureRoom
         for (int i = mapLayoutInformation.RoomPositions.Count - treasureRooms; i < mapLayoutInformation.RoomPositions.Count; i++)
         {
             var newTreasureRoom = RotateAndPlaceRoom(treasureRoomsList, mapLayoutInformation.RoomPositions[i]);
+            newTreasureRoom.IsTreasureRoom = true;
             newTreasureRoom.MyAstarPath = myAstarPathRef;
         }
     }

@@ -62,6 +62,10 @@ public class PlayerContext : MonoBehaviour
     public InteractCanvasHandler InteractCanvasHandler { get => interactCanvasHandler; set => interactCanvasHandler = value; }
     #endregion
 
+    private void Awake()
+    {
+        playerTransform.Transform = transform;
+    }
 
     // SECTION - Method - Unity ===================================================================
     private void Start()
@@ -98,7 +102,6 @@ public class PlayerContext : MonoBehaviour
     public void OnStateUpdate()
     {
         // Added to have player position known to everything
-        playerTransform.Transform = transform;
         currState.OnStateUpdate(this);
     }
 
