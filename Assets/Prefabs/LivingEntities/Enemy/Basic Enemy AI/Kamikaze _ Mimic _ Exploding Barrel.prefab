@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kamikaze _ Mimic _ Exploding Barrel
       objectReference: {fileID: 0}
+    - target: {fileID: 3831662559004454559, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -60718901, guid: 84bb84bb9c7d8bd4b9659a8859f69afb, type: 3}
     m_RemovedComponents:
     - {fileID: 4261843815690790754, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
     - {fileID: 4261843815690790765, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
@@ -188,6 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44cad9dbd72d0d44d835380b79927ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDebuggerOn: 0
   targetMask:
     serializedVersion: 2
     m_Bits: 8
@@ -251,6 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab2fd8d43a408e4da855ba091f87d11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDebuggerOn: 0
   targetMask:
     serializedVersion: 2
     m_Bits: 8
