@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: _ StartingRoomsList
   m_EditorClassIdentifier: 
   rooms:
-  - {fileID: 404744334319405661, guid: f685101f7d9d7574dbbbcc08eb050f6b, type: 3}
+  - {fileID: 404744334319405661, guid: 876dbe727504bd441a88970c4988b20b, type: 3}

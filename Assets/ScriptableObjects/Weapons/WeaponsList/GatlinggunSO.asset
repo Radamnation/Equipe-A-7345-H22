@@ -16,9 +16,11 @@ MonoBehaviour:
   weaponDescription: Pumping Action
   currencyValue: 25
   canFireContinuously: 1
-  currentAmmo: 120
+  startingAmmo: 120
+  currentAmmo: 0
   maxAmmo: 120
-  currentClip: 30
+  startingClip: 30
+  currentClip: 0
   maxClip: 30
   firingRate: 0.1
   reloadTime: 3

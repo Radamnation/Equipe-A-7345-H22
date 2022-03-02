@@ -8,8 +8,9 @@ public class MapLayout : MonoBehaviour
     [SerializeField] private int minRooms = 5;
     [SerializeField] private int maxRooms = 12;
     [SerializeField] private int roomSize = 15;
-    [SerializeField] private int bossRooms = 2;
-    [SerializeField] private int treasureRooms = 2;
+    [SerializeField] private int bossRooms = 1;
+    [SerializeField] private int treasureRooms = 1;
+    [SerializeField] private int specialRooms = 2;
     [SerializeField] private int maxGridSize = 3;
     [SerializeField] private RoomsListSO startingRoomsList;
     [SerializeField] private RoomsListSO normalRoomsList;
@@ -69,7 +70,7 @@ public class MapLayout : MonoBehaviour
                 startPoint = mapLayoutInformation.RoomPositions[Random.Range(0, mapLayoutInformation.RoomPositions.Count - 1)];
                 offset = new Vector3(Random.Range(-1, 2), 0, Random.Range(-1, 2));
                 endPoint = startPoint + offset;
-            } while (Mathf.Abs(offset.x) == Mathf.Abs(offset.z) || mapLayoutInformation.RoomPositions.Contains(endPoint) || CheckRoomsAround(endPoint, 1));
+            } while (Mathf.Abs(offset.x) == Mathf.Abs(offset.z) || mapLayoutInformation.RoomPositions.Contains(endPoint) || CheckRoomsAround(endPoint, 1) || IsTouchingLastXRooms(endPoint, bossRooms));
             mapLayoutInformation.RoomPositions.Add(endPoint);
         }
         for(int i = 0; i < treasureRooms; i++)
@@ -80,6 +81,16 @@ public class MapLayout : MonoBehaviour
                 offset = new Vector3(Random.Range(-1, 2), 0, Random.Range(-1, 2));
                 endPoint = startPoint + offset;
             } while (Mathf.Abs(offset.x) == Mathf.Abs(offset.z) || mapLayoutInformation.RoomPositions.Contains(endPoint) || CheckRoomsAround(endPoint, 1) || IsTouchingLastXRooms(endPoint, bossRooms + treasureRooms));
+            mapLayoutInformation.RoomPositions.Add(endPoint);
+        }
+        for (int i = 0; i < specialRooms; i++)
+        {
+            do
+            {
+                startPoint = mapLayoutInformation.RoomPositions[Random.Range(0, mapLayoutInformation.RoomPositions.Count - 1)];
+                offset = new Vector3(Random.Range(-1, 2), 0, Random.Range(-1, 2));
+                endPoint = startPoint + offset;
+            } while (Mathf.Abs(offset.x) == Mathf.Abs(offset.z) || mapLayoutInformation.RoomPositions.Contains(endPoint) || CheckRoomsAround(endPoint, 1) || IsTouchingLastXRooms(endPoint, bossRooms + treasureRooms + specialRooms));
             mapLayoutInformation.RoomPositions.Add(endPoint);
         }
     }
@@ -116,28 +127,34 @@ public class MapLayout : MonoBehaviour
         newStartingRoom.transform.parent = transform;
         mapLayoutInformation.Rooms.Add(newStartingRoom);
         newStartingRoom.MyAstarPath = myAstarPathRef;
-        
 
         // Place Normal Rooms
-        for (int i = 1; i < mapLayoutInformation.RoomPositions.Count - bossRooms - treasureRooms; i++)
+        for (int i = 1; i < mapLayoutInformation.RoomPositions.Count - bossRooms - treasureRooms - specialRooms; i++)
         {
             var newNormalRoom = RotateAndPlaceRoom(normalRoomsList, mapLayoutInformation.RoomPositions[i]);
             // Set AStar reference
             newNormalRoom.MyAstarPath = myAstarPathRef;
         }
-        // Place BossRoom
-        for (int i = mapLayoutInformation.RoomPositions.Count - bossRooms - treasureRooms; i < mapLayoutInformation.RoomPositions.Count- treasureRooms; i++)
+        // Place BossRooms
+        for (int i = mapLayoutInformation.RoomPositions.Count - bossRooms - treasureRooms - specialRooms; i < mapLayoutInformation.RoomPositions.Count - treasureRooms - specialRooms; i++)
         {
             var newBossRoom = RotateAndPlaceRoom(bossRoomsList, mapLayoutInformation.RoomPositions[i]);
             newBossRoom.IsBossRoom = true;
             newBossRoom.MyAstarPath = myAstarPathRef;
         }
-        // Place TreasureRoom
-        for (int i = mapLayoutInformation.RoomPositions.Count - treasureRooms; i < mapLayoutInformation.RoomPositions.Count; i++)
+        // Place TreasureRooms
+        for (int i = mapLayoutInformation.RoomPositions.Count - treasureRooms - specialRooms; i < mapLayoutInformation.RoomPositions.Count - specialRooms; i++)
         {
             var newTreasureRoom = RotateAndPlaceRoom(treasureRoomsList, mapLayoutInformation.RoomPositions[i]);
             newTreasureRoom.IsTreasureRoom = true;
             newTreasureRoom.MyAstarPath = myAstarPathRef;
+        }
+        // Place SpecialRooms
+        for (int i = mapLayoutInformation.RoomPositions.Count - specialRooms; i < mapLayoutInformation.RoomPositions.Count; i++)
+        {
+            var newSpecialRoom = RotateAndPlaceRoom(specialRoomsList, mapLayoutInformation.RoomPositions[i]);
+            newSpecialRoom.IsSpecialRoom = true;
+            newSpecialRoom.MyAstarPath = myAstarPathRef;
         }
     }
 
@@ -166,10 +183,10 @@ public class MapLayout : MonoBehaviour
 
             do
             {
-                if (newRoomPrefab.EastDoorIsBlocked == tempEastHasNoRoom &&
-                 newRoomPrefab.WestDoorIsBlocked == tempWestHasNoRoom &&
-                 newRoomPrefab.NorthDoorIsBlocked == tempNorthHasNoRoom &&
-                 newRoomPrefab.SouthDoorIsBlocked == tempSouthHasNoRoom)
+                if ((newRoomPrefab.EastDoorIsBlocked == tempEastHasNoRoom || !newRoomPrefab.EastDoorIsBlocked) &&
+                 (newRoomPrefab.WestDoorIsBlocked == tempWestHasNoRoom || !newRoomPrefab.WestDoorIsBlocked) &&
+                 (newRoomPrefab.NorthDoorIsBlocked == tempNorthHasNoRoom || !newRoomPrefab.NorthDoorIsBlocked) &&
+                 (newRoomPrefab.SouthDoorIsBlocked == tempSouthHasNoRoom || !newRoomPrefab.SouthDoorIsBlocked))
                 {
                     break;
                 }
@@ -190,10 +207,10 @@ public class MapLayout : MonoBehaviour
                     }
                 }
             } while (roomRotation < 360);
-        } while (newRoomPrefab.EastDoorIsBlocked != tempEastHasNoRoom ||
-                 newRoomPrefab.WestDoorIsBlocked != tempWestHasNoRoom ||
-                 newRoomPrefab.NorthDoorIsBlocked != tempNorthHasNoRoom ||
-                 newRoomPrefab.SouthDoorIsBlocked != tempSouthHasNoRoom);
+        } while ((newRoomPrefab.EastDoorIsBlocked != tempEastHasNoRoom && newRoomPrefab.EastDoorIsBlocked) ||
+                 (newRoomPrefab.WestDoorIsBlocked != tempWestHasNoRoom && newRoomPrefab.WestDoorIsBlocked) ||
+                 (newRoomPrefab.NorthDoorIsBlocked != tempNorthHasNoRoom && newRoomPrefab.NorthDoorIsBlocked) ||
+                 (newRoomPrefab.SouthDoorIsBlocked != tempSouthHasNoRoom && newRoomPrefab.SouthDoorIsBlocked));
 
         var newRoom = Instantiate(newRoomPrefab, roomPosition * roomSize, Quaternion.identity);
         

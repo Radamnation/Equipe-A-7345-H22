@@ -16,9 +16,11 @@ MonoBehaviour:
   weaponDescription: Shoots a Fireball
   currencyValue: 35
   canFireContinuously: 0
-  currentAmmo: 25
+  startingAmmo: 25
+  currentAmmo: 0
   maxAmmo: 25
-  currentClip: 5
+  startingClip: 5
+  currentClip: 0
   maxClip: 5
   firingRate: 0.75
   reloadTime: 2

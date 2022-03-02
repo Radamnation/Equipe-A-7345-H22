@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: _ SpecialRoomsList
   m_EditorClassIdentifier: 
   rooms:
-  - {fileID: 6655414022719296296, guid: 9a4eb3a2f88318b40853b0bf04f16d9b, type: 3}
+  - {fileID: 7974846370688627555, guid: 19f907f4a4080a04bb33bdb303f7220b, type: 3}
+  - {fileID: 1239280296460548805, guid: b52d9954a4364e149aadbdc0cf106a21, type: 3}
+  - {fileID: 1239280296460548805, guid: a492ad9759e30d7449a2b74748e7ba73, type: 3}
