@@ -45,11 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapLayoutInformation: {fileID: 11400000, guid: fbe5b2935dbd3b64db1ac0d24dd668d9, type: 2}
-  minRooms: 15
-  maxRooms: 20
+  minRooms: 12
+  maxRooms: 15
   roomSize: 15
   bossRooms: 1
-  treasureRooms: 2
+  treasureRooms: 1
+  specialRooms: 2
   maxGridSize: 3
   startingRoomsList: {fileID: 11400000, guid: 0a6556125b79dbf418bfa5d22a4415af, type: 2}
   normalRoomsList: {fileID: 11400000, guid: b80ad4d6119d16c4eb950cfd4629da00, type: 2}

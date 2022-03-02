@@ -15,8 +15,10 @@ public class WeaponSO : ScriptableObject
 
     [Header("Statistics")]
     [SerializeField] private bool canFireContinuously;
+    [SerializeField] private int startingAmmo;
     [SerializeField] private int currentAmmo;
     [SerializeField] private int maxAmmo;
+    [SerializeField] private int startingClip;
     [SerializeField] private int currentClip;
     [SerializeField] private int maxClip;
     [SerializeField] private float firingRate;
@@ -60,8 +62,8 @@ public class WeaponSO : ScriptableObject
     // Start is called before the first frame update
     void OnEnable()
     {
-        currentAmmo = maxAmmo;
-        currentClip = maxClip;
+        currentAmmo = startingAmmo;
+        currentClip = startingClip;
     }
 
     public bool ShootCheck()

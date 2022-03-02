@@ -32,7 +32,7 @@ public class Pickable : MonoBehaviour
 
     private void ActivatePickable(Collision collision)
     {
-        if (collision.gameObject.GetComponentInChildren<PickableManager>().PickedPickable(pickableSO))
+        if (collision.gameObject.GetComponentInChildren<PickableManager>().PickPickable(pickableSO))
         {
             Destroy(gameObject);
         }

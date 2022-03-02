@@ -27,7 +27,7 @@ public class Minimap : MonoBehaviour
         for (int i = 0; i < mapLayoutInformation.RoomPositions.Count; i++)
         {
             var newMinimapRoom = Instantiate(minimapRoomPrefab);
-            newMinimapRoom.transform.parent = minimapRoomsParent;
+            newMinimapRoom.transform.SetParent(minimapRoomsParent);
             var tempPosition = mapLayoutInformation.RoomPositions[i] * minimapScale;
             newMinimapRoom.transform.localPosition = new Vector3(tempPosition.x, tempPosition.z);
             newMinimapRoom.transform.localScale = Vector3.one;

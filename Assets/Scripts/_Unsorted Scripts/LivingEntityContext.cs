@@ -112,12 +112,16 @@ public class LivingEntityContext : MonoBehaviour
 
     public void AE_ManageObjectAtEndDeathAnim() // Animator Event
     {
+        if (isEnemy)
+        {
+            GetComponentInParent<Room>().MyLivingEntities.Remove(this);
+            GetComponentInParent<Room>().CheckLivingEntities();
+        }
+
         if (exitDeathDisablesSprite)
             GetComponentInChildren<SpriteRenderer>().enabled = false;
         else if (exitDeathDestroys)
             DestroyMe();
-         
-        GetComponentInParent<Room>().CheckLivingEntities();
     }
 
     public void DestroyMe()

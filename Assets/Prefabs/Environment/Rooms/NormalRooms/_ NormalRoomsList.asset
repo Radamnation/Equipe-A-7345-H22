@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: _ NormalRoomsList
   m_EditorClassIdentifier: 
   rooms:
-  - {fileID: 7974846370688627555, guid: 19f907f4a4080a04bb33bdb303f7220b, type: 3}
   - {fileID: 5869650660629083920, guid: 9d9c960ecc7d8b446bc7b7553bf9cadd, type: 3}
   - {fileID: 3404908083903607379, guid: f406289f81bfd664d8d46dd36f5bc28e, type: 3}
   - {fileID: 3989586123135901805, guid: e4ad0703bd7d73d4883c989c39894bde, type: 3}
   - {fileID: 6930314500423577105, guid: 7e1d3b58c8d56c34e9738c1530190e43, type: 3}
   - {fileID: 5843665426262922214, guid: 7b0a2a91467eaec46b690d0bdde6c83e, type: 3}
   - {fileID: 5785998747963336200, guid: 08b6b3bc274145d4986755a5a8cdeabc, type: 3}
+  - {fileID: 5453236573054022754, guid: 28df99be426bbca418bb1eba856026a8, type: 3}
