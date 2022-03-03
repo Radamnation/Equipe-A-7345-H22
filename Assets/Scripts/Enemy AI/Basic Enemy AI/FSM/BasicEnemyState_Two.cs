@@ -29,7 +29,6 @@ public class BasicEnemyState_Two : IEnemyState
                 !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE) &&
                  context.TryFireMainWeapon()) // Add hastoken AS FIRST CHECK
             {
-
                 // Check if invoke now or wait for animation event
                 if (!context.AnimExecuteAtk_2)
                 {

@@ -57,6 +57,7 @@ public abstract class AbstractBehaviour : MonoBehaviour
     // SECTION - Method - System Specific ===================================================================
     public void Execute()
     {
+        Debug.Log("Start Execute");
         // [ANIMATION EVENT] - Check Validity
         // Otherwise checked in FSM
         if (myContext.IsAnimExecuteAttack())
@@ -69,6 +70,7 @@ public abstract class AbstractBehaviour : MonoBehaviour
         // Execute
         if (isValidForExecute)
         {
+            Debug.Log($"Valid for execute? {isValidForExecute}");
             isExecutionDone = false;
             Behaviour();
             myHitsObjs.Clear();

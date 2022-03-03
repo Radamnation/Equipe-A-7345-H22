@@ -99,9 +99,21 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: 8cf918ce5854d364989cc054690fdf0b, type: 2}
+    - target: {fileID: 3831662558856893135, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: traversableTags
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893135, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: tagPenalties.Array.data[2]
+      value: 100000
+      objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893138, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: uniqueID
       value: 7571589750310670837
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893138, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: modifyWalkability
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893141, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_RootOrder
@@ -276,13 +288,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab2fd8d43a408e4da855ba091f87d11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDebuggerOn: 0
+  isDebuggerOn: 1
   targetMask:
     serializedVersion: 2
     m_Bits: 8
   isDistanceCurrWeaponBased: 1
   distance: 0
-  validationType: 1
+  validationType: 4
   myEvents:
     m_PersistentCalls:
       m_Calls:

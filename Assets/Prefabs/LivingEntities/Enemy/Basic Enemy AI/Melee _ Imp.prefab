@@ -67,6 +67,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: e474034abe5432f4b85ca267fc1579a2, type: 2}
+    - target: {fileID: 3831662558856893135, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: traversableTags
+      value: -5
+      objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893136, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: maxSpeed
       value: 4
