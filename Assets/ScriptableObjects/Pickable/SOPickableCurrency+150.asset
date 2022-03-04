@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SOPickableCurrency+150
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: d8819bb965cef284ab3c5b2098314bc8, type: 3}
-  color: {r: 1, g: 0.61149544, b: 0, a: 1}
+  color: {r: 0.9960785, g: 0.68235296, b: 0.20392159, a: 1}
   healthValueIsPercent: 0
   healthValue: 0
   armorValueIsPercent: 0
@@ -24,3 +24,4 @@ MonoBehaviour:
   secondaryValue: 0
   currencyValue: 150
   pickableUISprite: {fileID: 1290737715, guid: 7798803a5657cec4ab5d54f16b404352, type: 3}
+  merchantPrice: 0

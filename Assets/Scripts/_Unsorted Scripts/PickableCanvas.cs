@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class PickableCanvas : MonoBehaviour
 {
+    [SerializeField] private Color healthColor;
+    [SerializeField] private Color armorColor;
+    [SerializeField] private Color ammoColor;
+    [SerializeField] private Color secondaryColor;
+    [SerializeField] private Color currencyColor;
     [SerializeField] private float flashTime = 0.1f;
     [SerializeField] private float colorAlpha = 0.25f;
 
@@ -19,27 +24,27 @@ public class PickableCanvas : MonoBehaviour
 
     public void FlashHealthColor()
     {
-        StartCoroutine(StartFlash(Color.red));
+        StartCoroutine(StartFlash(healthColor));
     }
 
     public void FlashArmorColor()
     {
-        StartCoroutine(StartFlash(Color.blue));
+        StartCoroutine(StartFlash(armorColor));
     }
 
     public void FlashAmmoColor()
     {
-        StartCoroutine(StartFlash(Color.yellow));
+        StartCoroutine(StartFlash(ammoColor));
     }
 
     public void FlashSecondaryColor()
     {
-        StartCoroutine(StartFlash(Color.white));
+        StartCoroutine(StartFlash(secondaryColor));
     }
 
     public void FlashCurrencyColor()
     {
-        StartCoroutine(StartFlash(Color.green));
+        StartCoroutine(StartFlash(currencyColor));
     }
 
     private IEnumerator StartFlash(Color color)

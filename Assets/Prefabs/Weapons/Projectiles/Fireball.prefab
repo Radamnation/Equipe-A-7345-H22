@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d613873f442ac404bbef14939145ef69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.5
+  radius: 1
   targetMask:
     serializedVersion: 2
     m_Bits: 2147483647
@@ -151,7 +151,7 @@ MonoBehaviour:
   delayDisablesSprite: 0
   executeDelay: 0
   lingerDelay: 0
-  damage: 5
+  damage: 25
 --- !u!1 &6912852400933906267
 GameObject:
   m_ObjectHideFlags: 0

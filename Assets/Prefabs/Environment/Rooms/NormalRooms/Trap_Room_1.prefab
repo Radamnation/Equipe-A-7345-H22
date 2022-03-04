@@ -228,6 +228,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 236021a54a3f44449801f2cbf466ea38, type: 3}
+--- !u!1001 &948822413961176335
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6234310102541818722}
+    m_Modifications:
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935586, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_Name
+      value: PendulumBladeBlock
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
 --- !u!1001 &953507393513843014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -456,6 +513,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 236021a54a3f44449801f2cbf466ea38, type: 3}
+--- !u!1001 &1912270368261985007
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6234310102541818722}
+    m_Modifications:
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935586, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_Name
+      value: PendulumBladeBlock
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
 --- !u!1001 &2050392723096709536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -684,6 +798,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5a7d258efbf53e4c93998a180b509f2, type: 3}
+--- !u!1001 &3165942092453968850
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6234310102541818722}
+    m_Modifications:
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935586, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_Name
+      value: PendulumBladeBlock
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
 --- !u!1001 &3473341463949643659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -969,6 +1140,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5a7d258efbf53e4c93998a180b509f2, type: 3}
+--- !u!1001 &3900775521132608178
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6234310102541818722}
+    m_Modifications:
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935586, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_Name
+      value: PendulumBladeBlock
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
 --- !u!1001 &3921277379901997163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1140,6 +1368,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5a7d258efbf53e4c93998a180b509f2, type: 3}
+--- !u!1001 &4452410827645882699
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6234310102541818722}
+    m_Modifications:
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935586, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_Name
+      value: PendulumBladeBlock
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
 --- !u!1001 &4558778447328761638
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1425,6 +1710,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e0bf07fa6695e3468ef2ac3153b1322, type: 3}
+--- !u!1001 &5112299566183375514
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6234310102541818722}
+    m_Modifications:
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935584, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108988498780935586, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
+      propertyPath: m_Name
+      value: PendulumBladeBlock
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ece8bbaa687a1384ba9c78eac8529ec9, type: 3}
 --- !u!1001 &5272944782740177971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3444,5 +3786,10 @@ Transform:
 --- !u!4 &5479584334010132856 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3513157616269374238, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
+  m_PrefabInstance: {fileID: 8992099483261704806}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6234310102541818722 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3048623413329117444, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
   m_PrefabInstance: {fileID: 8992099483261704806}
   m_PrefabAsset: {fileID: 0}

@@ -16,9 +16,11 @@ MonoBehaviour:
   maxSecodnaryWeapons: 1
   defaultMainWeapons:
   - {fileID: 11400000, guid: 2fec7de208af184448023900d178369c, type: 2}
-  carriedMainWeapons: []
+  carriedMainWeapons:
+  - {fileID: 0}
   equippedMainWeapon: {fileID: 0}
   defaultSecondaryWeapons:
   - {fileID: 11400000, guid: 4f46119e318ec2d4b854a0b36d9a0856, type: 2}
-  carriedSecondaryWeapons: []
+  carriedSecondaryWeapons:
+  - {fileID: 0}
   equippedSecondaryWeapon: {fileID: 0}

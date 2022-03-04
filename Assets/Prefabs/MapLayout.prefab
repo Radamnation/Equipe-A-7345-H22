@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapLayoutInformation: {fileID: 11400000, guid: fbe5b2935dbd3b64db1ac0d24dd668d9, type: 2}
-  minRooms: 12
-  maxRooms: 15
+  minRooms: 15
+  maxRooms: 20
   roomSize: 15
+  secretRooms: 1
   bossRooms: 1
   treasureRooms: 1
   specialRooms: 2

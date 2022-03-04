@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Handgun
   weaponDescription: Simple handgun
-  currencyValue: 25
+  currencyValue: 50
   canFireContinuously: 0
   startingAmmo: 80
-  currentAmmo: 0
+  currentAmmo: 80
   maxAmmo: 80
   startingClip: 8
-  currentClip: 0
+  currentClip: 8
   maxClip: 8
   firingRate: 0.25
   reloadTime: 1.5

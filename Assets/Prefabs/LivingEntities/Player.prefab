@@ -685,6 +685,14 @@ MonoBehaviour:
     UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 0d4b3e70ac3975747a53808160286be2, type: 2}
+  maxArmor:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 575d2db500b30d9488bfcf6d0970059f, type: 2}
+  currentArmor:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: fc2eb6ac934ded342adb1751c513319d, type: 2}
   exitDeathDestroys: 0
   exitDeathDisablesSprite: 0
   onHitCueDuration: 0.14
@@ -733,6 +741,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  isEnemy: 1
 --- !u!114 &1990362425418368985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1206,7 +1215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1990362425989773735}
   m_LocalRotation: {x: -0.007242421, y: 0.0025305573, z: 0.000017791986, w: 0.9999706}
-  m_LocalPosition: {x: 0, y: 0.38, z: -0.334}
+  m_LocalPosition: {x: 0, y: 0.38, z: -0.33399963}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1243,7 +1252,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7779479, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1294,7 +1303,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1990362426275796371}
   m_LocalRotation: {x: -0.007242421, y: 0.0025305573, z: 0.000017791986, w: 0.9999706}
-  m_LocalPosition: {x: 8.54, y: 2.3600001, z: 0.906}
+  m_LocalPosition: {x: 0, y: 0.38, z: -0.33399963}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
