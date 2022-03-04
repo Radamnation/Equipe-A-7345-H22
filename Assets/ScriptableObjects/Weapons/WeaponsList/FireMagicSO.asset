@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Fire Magic
   weaponDescription: Shoots a Fireball
-  currencyValue: 35
+  currencyValue: 100
   canFireContinuously: 0
   startingAmmo: 25
-  currentAmmo: 0
+  currentAmmo: 25
   maxAmmo: 25
   startingClip: 5
-  currentClip: 0
+  currentClip: 5
   maxClip: 5
   firingRate: 0.75
   reloadTime: 2

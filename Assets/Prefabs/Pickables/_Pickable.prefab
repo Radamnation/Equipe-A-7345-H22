@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7273268727204465672}
   - component: {fileID: 3085029854650198423}
   m_Layer: 11
-  m_Name: Pickable
+  m_Name: _Pickable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +56,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1196974668017824924}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 0ec2b9f9dfa33f54795a03987ce7307a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.075

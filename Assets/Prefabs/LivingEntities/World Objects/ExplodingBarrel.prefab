@@ -189,6 +189,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   isEnemy: 0
+  myDrops: []
+  minDrop: 10
+  maxDrop: 20
 --- !u!95 &580406396174781458
 Animator:
   serializedVersion: 4
@@ -232,7 +235,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6544539548589606803}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 0ec2b9f9dfa33f54795a03987ce7307a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.24

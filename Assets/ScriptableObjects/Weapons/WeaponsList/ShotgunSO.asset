@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Shotgun
   weaponDescription: Pumping Action
-  currencyValue: 25
+  currencyValue: 75
   canFireContinuously: 0
   startingAmmo: 60
   currentAmmo: 60
