@@ -133,8 +133,8 @@ TextureImporter:
         serializedVersion: 2
         x: 1
         y: 1
-        width: 8
-        height: 8
+        width: 9
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,10 +152,10 @@ TextureImporter:
       name: MapIcons_1
       rect:
         serializedVersion: 2
-        x: 11
+        x: 12
         y: 1
-        width: 8
-        height: 8
+        width: 9
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,10 +173,10 @@ TextureImporter:
       name: MapIcons_2
       rect:
         serializedVersion: 2
-        x: 21
+        x: 23
         y: 1
-        width: 8
-        height: 8
+        width: 9
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -186,6 +186,48 @@ TextureImporter:
       bones: []
       spriteID: 5156b4278d026af42bb589ff2b2586f8
       internalID: -593051415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MapIcons_3
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 1
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fedeac03bbbc2245837fe2dc149b841
+      internalID: -1356468214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MapIcons_4
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 1
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f79ab7098081d8e4697034730be64d91
+      internalID: 1956788645
       vertices: []
       indices: 
       edges: []
@@ -204,6 +246,8 @@ TextureImporter:
       MapIcons_1: 112649581
       MapIcons_2: -593051415
       MapIcons_0: 42719387
+      MapIcons_3: -1356468214
+      MapIcons_4: 1956788645
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

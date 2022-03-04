@@ -17,10 +17,10 @@ MonoBehaviour:
   currencyValue: 25
   canFireContinuously: 0
   startingAmmo: 60
-  currentAmmo: 0
+  currentAmmo: 60
   maxAmmo: 60
   startingClip: 6
-  currentClip: 0
+  currentClip: 6
   maxClip: 6
   firingRate: 1
   reloadTime: 2
@@ -29,7 +29,7 @@ MonoBehaviour:
   range: 0
   bulletsNumber: 10
   projectile: {fileID: 0}
-  bulletHole: {fileID: 5792683063871329260, guid: 807922f1559cdcb45bb90d29e7bf3769, type: 3}
+  bulletHole: {fileID: 5792683063871329260, guid: 91294ae40b06c3e448e666c7f71369c5, type: 3}
   weaponUISprite: {fileID: 129101084, guid: 510812d92e72e1941887c7b675838739, type: 3}
   weaponPlayerSprite: {fileID: 21300000, guid: 33b32e9b4ffcfa443a07ebd6248ee8d4, type: 3}
   animator: {fileID: 0}

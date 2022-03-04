@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1196974668017824925}
   - component: {fileID: 7273268727204465672}
   - component: {fileID: 3085029854650198423}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Pickable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickableSO: {fileID: 0}
+  spawnForce: 3
 --- !u!136 &7273268727204465672
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -59,7 +60,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.075
-  m_Height: 0.25
+  m_Height: 0.125
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3085029854650198423
@@ -89,8 +90,9 @@ GameObject:
   - component: {fileID: 4779232126959458162}
   - component: {fileID: 9081413802567273650}
   - component: {fileID: 1096449315295841540}
+  - component: {fileID: 7661496642333395902}
   m_Layer: 0
-  m_Name: Visual
+  m_Name: MainSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,3 +178,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 11400000, guid: bb659ba3eaf28be498f4674f9cbb480c, type: 2}
+--- !u!135 &7661496642333395902
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2500628664307869952}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}

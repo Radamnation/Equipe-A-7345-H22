@@ -37,8 +37,13 @@ public class ExplosionBehaviour : MonoBehaviour
         collArray = StaticRayCaster.IsOverlapSphereTouching(transform.position, radius, targetMask, isDebugOn); // transform.parent.transform
 
         foreach (Collider hitObj in collArray)
+        {
             if (hitObj.GetComponent<LivingEntityContext>())
                 hitObj.GetComponent<LivingEntityContext>().TakeDamage(damage);
+            if (hitObj.GetComponent<BuildingBlock>())
+                if (hitObj.GetComponent<BuildingBlock>().IsBreakable)
+                    Destroy(hitObj.gameObject);
+        }
 
         // Manage object / sprite renderer
         if (delayDisablesSprite)

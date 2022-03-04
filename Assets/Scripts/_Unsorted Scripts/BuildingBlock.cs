@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class BuildingBlock : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private bool isBreakable = false;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool IsBreakable { get => isBreakable; set => isBreakable = value; }
 }

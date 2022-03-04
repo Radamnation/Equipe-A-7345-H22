@@ -1437,6 +1437,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3992321305335836164, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
+      propertyPath: biomeInformation
+      value: 
+      objectReference: {fileID: 11400000, guid: c8d2cf053db68c74383127c73c7d083a, type: 2}
+    - target: {fileID: 3992321305335836164, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
       propertyPath: eastDoorIsBlocked
       value: 1
       objectReference: {fileID: 0}
@@ -1498,7 +1502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3992321305335836167, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
       propertyPath: m_Name
-      value: BossRoom1
+      value: Boss_Room_1
       objectReference: {fileID: 0}
     - target: {fileID: 6824925770155736519, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
       propertyPath: m_Tiles.Array.size

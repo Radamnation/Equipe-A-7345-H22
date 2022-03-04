@@ -2233,6 +2233,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3992321305335836164, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
+      propertyPath: biomeInformation
+      value: 
+      objectReference: {fileID: 11400000, guid: e73f49b8784af5e4aad1af15ae8af70e, type: 2}
+    - target: {fileID: 3992321305335836164, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
       propertyPath: eastDoorIsBlocked
       value: 1
       objectReference: {fileID: 0}

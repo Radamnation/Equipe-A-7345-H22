@@ -60,7 +60,11 @@ public class PickablePedestal : MonoBehaviour
         {
             if (PickableManager.instance.PickPickable(pedestalPickable))
             {
-                EmptyPedestal();
+                var otherPedestals = transform.parent.transform.GetComponentsInChildren<PickablePedestal>();
+                foreach (PickablePedestal pedestal in otherPedestals)
+                {
+                    pedestal.EmptyPedestal();
+                }
             }
         }
     }

@@ -29,6 +29,7 @@ public class Room : MonoBehaviour
     [SerializeField] private bool isVisibleOnMap = false;
     [SerializeField] private bool isVisitedOnMap = false;
     [SerializeField] private bool isTreasureRoom = false;
+    [SerializeField] private bool isSecretRoom = false;
     [SerializeField] private bool isBossRoom = false;
     [SerializeField] private bool isSpecialRoom = false;
     [SerializeField] private bool isMerchantRoom = false;
@@ -72,6 +73,7 @@ public class Room : MonoBehaviour
     public bool IsVisibleOnMap { get => isVisibleOnMap; set => isVisibleOnMap = value; }
     public bool IsVisitedOnMap { get => isVisitedOnMap; set => isVisitedOnMap = value; }
     public bool IsTreasureRoom { get => isTreasureRoom; set => isTreasureRoom = value; }
+    public bool IsSecretRoom { get => isSecretRoom; set => isSecretRoom = value; }
     public bool IsBossRoom { get => isBossRoom; set => isBossRoom = value; }
     public bool IsSpecialRoom { get => isSpecialRoom; set => isSpecialRoom = value; }
     public bool IsMerchantRoom { get => isMerchantRoom; set => isMerchantRoom = value; }
@@ -271,7 +273,10 @@ public class Room : MonoBehaviour
         isVisitedOnMap = true;
         foreach (Room room in MyAdjacentRooms)
         {
-            room.isVisibleOnMap = true;
+            if (!room.isSecretRoom)
+            {
+                room.isVisibleOnMap = true;
+            }
             room.gameObject.SetActive(true);
         }
         mapHasChanged.Invoke();
@@ -351,7 +356,7 @@ public class Room : MonoBehaviour
         }
         foreach (Room room in mapLayoutInformation.Rooms)
         {
-            if (room.IsVisibleOnMap)
+            if (room.IsVisibleOnMap || room.IsSecretRoom)
             {
                 room.gameObject.SetActive(true);
             }

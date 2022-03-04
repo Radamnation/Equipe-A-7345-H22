@@ -156,6 +156,14 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue: 0
     Variable: {fileID: 0}
+  maxArmor:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  currentArmor:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
   exitDeathDestroys: 1
   exitDeathDisablesSprite: 0
   onHitCueDuration: 0.14
@@ -309,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d613873f442ac404bbef14939145ef69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1
+  radius: 2
   targetMask:
     serializedVersion: 2
     m_Bits: 969
@@ -318,4 +326,4 @@ MonoBehaviour:
   delayDisablesSprite: 0
   executeDelay: 0.4
   lingerDelay: 0
-  damage: 5
+  damage: 25

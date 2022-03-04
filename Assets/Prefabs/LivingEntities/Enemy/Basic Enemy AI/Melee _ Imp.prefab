@@ -43,6 +43,26 @@ PrefabInstance:
       propertyPath: maxHP.Variable
       value: 
       objectReference: {fileID: 11400000, guid: ac2e18107c0e4a64fa726c09140a1358, type: 2}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: myDrops.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: myDrops.Array.data[0]
+      value: 
+      objectReference: {fileID: 418731571920632839, guid: 67d2eb267d4dd404299b59ec5eaa6bc1, type: 3}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: myDrops.Array.data[1]
+      value: 
+      objectReference: {fileID: 2989215637769811154, guid: 7737965b165c68641b2c5ab578b243e5, type: 3}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: myDrops.Array.data[2]
+      value: 
+      objectReference: {fileID: 7546089093656136656, guid: e0f77ea0d2091fb458dfdbbdafde5e4d, type: 3}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: myDrops.Array.data[3]
+      value: 
+      objectReference: {fileID: 1904513868067826317, guid: dd77c72568d1be44fa3b9ad678e743d8, type: 3}
     - target: {fileID: 3831662558856893132, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_Controller
       value: 

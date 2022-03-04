@@ -1384,6 +1384,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3992321305335836164, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
+      propertyPath: biomeInformation
+      value: 
+      objectReference: {fileID: 11400000, guid: 47b5e12ab2410674db85648ac81b0609, type: 2}
+    - target: {fileID: 3992321305335836164, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
       propertyPath: eastDoorIsBlocked
       value: 1
       objectReference: {fileID: 0}
@@ -1445,7 +1449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3992321305335836167, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
       propertyPath: m_Name
-      value: TreasureRoom1
+      value: Treasure_Room_1
       objectReference: {fileID: 0}
     - target: {fileID: 6824925770155736519, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
       propertyPath: m_Tiles.Array.size
