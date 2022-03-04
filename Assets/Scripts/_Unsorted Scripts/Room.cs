@@ -295,8 +295,7 @@ public class Room : MonoBehaviour
                     // +1 to dimensions so that enemies can go in between two doors
                     myAstarPath.data.gridGraph.center = gameObject.transform.localPosition;
                     myAstarPath.data.gridGraph.center.y = -1.0f; // Must be at ground level
-                    myAstarPath.data.gridGraph.Width = xDimension + 1;
-                    myAstarPath.data.gridGraph.Depth = zDimension + 1;
+                    myAstarPath.data.gridGraph.SetDimensions(XDimension * 2 + 2, ZDimension * 2 + 2, myAstarPath.data.gridGraph.nodeSize);
                     myAstarPath.Scan();
                 }
             }

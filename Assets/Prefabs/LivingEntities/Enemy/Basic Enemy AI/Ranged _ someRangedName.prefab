@@ -7,26 +7,54 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
-      propertyPath: myDrops.Array.size
-      value: 4
+    - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: weaponManager_1
+      value: 
+      objectReference: {fileID: 4299170497466126559}
+    - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: animExecuteAtk_1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
-      propertyPath: myDrops.Array.data[0]
+      propertyPath: maxHP.Variable
       value: 
-      objectReference: {fileID: 418731571920632839, guid: 67d2eb267d4dd404299b59ec5eaa6bc1, type: 3}
+      objectReference: {fileID: 11400000, guid: cb9596dc62d5b9b4199672f8b7e5e5a9, type: 2}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
-      propertyPath: myDrops.Array.data[1]
-      value: 
-      objectReference: {fileID: 2989215637769811154, guid: 7737965b165c68641b2c5ab578b243e5, type: 3}
+      propertyPath: onTakeDamageEvents.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
-      propertyPath: myDrops.Array.data[2]
-      value: 
-      objectReference: {fileID: 7546089093656136656, guid: e0f77ea0d2091fb458dfdbbdafde5e4d, type: 3}
+      propertyPath: onTakeDamageEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
-      propertyPath: myDrops.Array.data[3]
+      propertyPath: onTakeDamageEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1904513868067826317, guid: dd77c72568d1be44fa3b9ad678e743d8, type: 3}
+      objectReference: {fileID: 3964606470850225240}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: onTakeDamageEvents.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: onTakeDamageEvents.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Behaviour
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: onTakeDamageEvents.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MoveBetweenAttacksBehaviour, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: onTakeDamageEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893136, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: endReachedDistance
+      value: 5.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893138, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: uniqueID
+      value: 8311175036076894382
+      objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893141, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -75,5 +103,103 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ranged _ someRangedName
       objectReference: {fileID: 0}
+    - target: {fileID: 3831662559004454559, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -280725821, guid: 510812d92e72e1941887c7b675838739, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+--- !u!1 &9004775643557206347 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3831662558613925919, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+  m_PrefabInstance: {fileID: 5322040309315135828}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4299170497466126559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9004775643557206347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302ed520c0a045543bbc07729b6e4645, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDebugOn: 0
+  tracksPlayer: 1
+  playerTransform: {fileID: 11400000, guid: bb659ba3eaf28be498f4674f9cbb480c, type: 2}
+  mainWeapon: {fileID: 11400000, guid: f85df85a504f5804db1afc427de2431b, type: 2}
+  secondaryWeapon: {fileID: 0}
+  weaponsInventory: {fileID: 0}
+  mainWeaponFinishedReloading:
+    m_PersistentCalls:
+      m_Calls: []
+  mainWeaponHasShot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9004775643667086232}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OnAttackRoaming
+          m_BoolArgument: 0
+        m_CallState: 2
+  mainWeaponStartedReloading:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3964606470850225240}
+        m_TargetAssemblyTypeName: MoveToRandomNodeBehaviour, Assembly-CSharp
+        m_MethodName: Behaviour
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  secondaryWeaponHasShot:
+    m_PersistentCalls:
+      m_Calls: []
+  someMask:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!95 &9004775643667086232 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3831662558856893132, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+  m_PrefabInstance: {fileID: 5322040309315135828}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9004775644115274121 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3831662559138504925, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+  m_PrefabInstance: {fileID: 5322040309315135828}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3964606470850225240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9004775644115274121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6695a6738e985644fb3fb330ef6a35dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDebuggerOn: 0
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 8
+  isDistanceCurrWeaponBased: 0
+  distance: 0.25
+  validationType: 1
+  myDesiredRangeOfPositions: {fileID: 11400000, guid: 29c21b83d80fd4744bdb8d6cd1a73ef2, type: 2}
+  maxQuantityOfMove: 1
+  moveAtSpeed: 0

@@ -207,6 +207,9 @@ MonoBehaviour:
   secondaryWeaponHasShot:
     m_PersistentCalls:
       m_Calls: []
+  someMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &2340426114300178579 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3831662558199758472, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
@@ -253,7 +256,7 @@ MonoBehaviour:
   radius: 2
   targetMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 264
   isDebugOn: 0
   delayDestroys: 0
   delayDisablesSprite: 0
@@ -288,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab2fd8d43a408e4da855ba091f87d11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDebuggerOn: 1
+  isDebuggerOn: 0
   targetMask:
     serializedVersion: 2
     m_Bits: 8

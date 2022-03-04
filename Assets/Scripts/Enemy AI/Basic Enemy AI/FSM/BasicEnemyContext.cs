@@ -482,12 +482,23 @@ public class BasicEnemyContext : MonoBehaviour
 
     private void AE_ExecuteRoamingAttack() // Animator Event
     {
-        atkBehaviour_1.Execute();
+        // TryFireMainWeapon() will execute damage regardless if there is additional behaviours
+        if (TryFireMainWeapon() && atkBehaviour_1 != null)
+            atkBehaviour_1.Execute();
     }
 
     private void AE_ExecuteAggressiveAttack() // Animator Event
     {
-        AtkBehaviour_2.Execute();
+        // TryFireMainWeapon() will execute damage regardless if there is additional behaviours
+        if (TryFireMainWeapon() && atkBehaviour_2 != null)
+            atkBehaviour_2.Execute();
+    }
+
+    private void AE_FreezeRigidBodyDisableCollider()
+    {
+        Rigidbody myRigidBody = GetComponent<Rigidbody>();
+        myRigidBody.constraints = RigidbodyConstraints.FreezePosition; 
+        GetComponent<Collider>().enabled = false;
     }
     #endregion
 }

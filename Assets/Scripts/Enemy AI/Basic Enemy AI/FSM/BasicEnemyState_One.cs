@@ -19,6 +19,15 @@ public class BasicEnemyState_One : IEnemyState
         else context.SetTargetAsPlayer(); // Prevents target being null     
     }
 
+
+    /*
+                 if (context.MyAIPath.reachedEndOfPath &&
+                !context.IsInAnimationState(BasicEnemy_AnimationStates.STATE_ONE_ATTACK) &&
+                !context.IsInAnimationState(BasicEnemy_AnimationStates.STATE_TWO_ATTACK) &&
+                !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE) &&
+                 context.TryFireMainWeapon()) // Add hastoken AS FIRST CHECK
+     */
+
     public void WithTokenBehaviour(BasicEnemyContext context)
     {
         if (context.AtkBehaviour_1 != null)
@@ -26,13 +35,12 @@ public class BasicEnemyState_One : IEnemyState
             if (context.MyAIPath.reachedEndOfPath &&
                 !context.IsInAnimationState(BasicEnemy_AnimationStates.STATE_ONE_ATTACK) &&
                 !context.IsInAnimationState(BasicEnemy_AnimationStates.STATE_TWO_ATTACK) &&
-                !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE) &&
-                 context.TryFireMainWeapon()) // Add hastoken AS FIRST CHECK
+                !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE) ) // Add hastoken AS FIRST CHECK
             {
                 // Check if invoke now or wait for animation event
                 if (!context.AnimExecuteAtk_1)
                 {
-                    if (context.AtkBehaviour_1.IsExecutionValid())
+                    if (context.TryFireMainWeapon() && context.AtkBehaviour_1.IsExecutionValid())
                     {
                         context.SetAnimTrigger(BasicEnemy_AnimTriggers.STATEONEATTACK);
                         context.OnDefaultAttackBehaviour();

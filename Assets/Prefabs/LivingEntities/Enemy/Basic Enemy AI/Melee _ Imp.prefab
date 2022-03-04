@@ -180,6 +180,9 @@ MonoBehaviour:
   secondaryWeaponHasShot:
     m_PersistentCalls:
       m_Calls: []
+  someMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &921857698452092909 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4261843816707075335, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
@@ -204,7 +207,6 @@ MonoBehaviour:
   isDistanceCurrWeaponBased: 1
   distance: 0
   validationType: 1
-  myRoom: {fileID: 0}
   myDesiredRangeOfPositions: {fileID: 11400000, guid: fc07bcacc6da4cb4db7e79c230044866, type: 2}
   maxQuantityOfMove: 1
   moveAtSpeed: 6

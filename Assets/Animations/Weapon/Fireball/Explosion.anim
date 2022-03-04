@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OnAttackRoaming TEMPLATE
+  m_Name: Explosion
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,11 +20,15 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 229674327, guid: 1be1ef89eac720344a5e164d5475416b, type: 3}
-    - time: 1
-      value: {fileID: 229674327, guid: 1be1ef89eac720344a5e164d5475416b, type: 3}
+      value: {fileID: -1006890047, guid: 435f9b892f90507479fad0ecb750b9ee, type: 3}
+    - time: 0.16666667
+      value: {fileID: -1399357332, guid: 435f9b892f90507479fad0ecb750b9ee, type: 3}
+    - time: 0.33333334
+      value: {fileID: -1681627392, guid: 435f9b892f90507479fad0ecb750b9ee, type: 3}
+    - time: 0.5
+      value: {fileID: -636919341, guid: 435f9b892f90507479fad0ecb750b9ee, type: 3}
     attribute: m_Sprite
-    path: MainSprite
+    path: 
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 6
@@ -35,21 +39,23 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 1418253986
+      path: 0
       attribute: 0
       script: {fileID: 0}
       typeID: 212
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 229674327, guid: 1be1ef89eac720344a5e164d5475416b, type: 3}
-    - {fileID: 229674327, guid: 1be1ef89eac720344a5e164d5475416b, type: 3}
+    - {fileID: -1006890047, guid: 435f9b892f90507479fad0ecb750b9ee, type: 3}
+    - {fileID: -1399357332, guid: 435f9b892f90507479fad0ecb750b9ee, type: 3}
+    - {fileID: -1681627392, guid: 435f9b892f90507479fad0ecb750b9ee, type: 3}
+    - {fileID: -636919341, guid: 435f9b892f90507479fad0ecb750b9ee, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.1666666
+    m_StopTime: 0.6666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -68,11 +74,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0.6666667
-    functionName: AE_ExecuteRoamingAttack
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

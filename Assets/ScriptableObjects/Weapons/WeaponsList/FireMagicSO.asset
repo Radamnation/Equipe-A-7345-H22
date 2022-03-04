@@ -26,7 +26,7 @@ MonoBehaviour:
   reloadTime: 2
   damage: 35
   spread: 0
-  range: 0
+  range: 5.26
   bulletsNumber: 0
   projectile: {fileID: 8577326024213328246, guid: f7c7dc808ce6fe14a949282368fc7d44, type: 3}
   bulletHole: {fileID: 0}

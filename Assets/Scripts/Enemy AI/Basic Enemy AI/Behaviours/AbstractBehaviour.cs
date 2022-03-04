@@ -70,7 +70,6 @@ public abstract class AbstractBehaviour : MonoBehaviour
         // Execute
         if (isValidForExecute)
         {
-            Debug.Log($"Valid for execute? {isValidForExecute}");
             isExecutionDone = false;
             Behaviour();
             myHitsObjs.Clear();
