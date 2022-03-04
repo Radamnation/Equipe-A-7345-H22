@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3405079283174591513}
   - component: {fileID: 2529524754522273601}
   - component: {fileID: 6939322735967745380}
+  - component: {fileID: 2344881297690857419}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 277442837, guid: 435f9b892f90507479fad0ecb750b9ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,6 +99,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 11400000, guid: bb659ba3eaf28be498f4674f9cbb480c, type: 2}
+--- !u!95 &2344881297690857419
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3196266039403845945}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8c6e63258d14712449f89f5e8cb4b22a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5045569684226790572
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,13 +166,13 @@ MonoBehaviour:
   radius: 1
   targetMask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 392
   isDebugOn: 0
   delayDestroys: 1
   delayDisablesSprite: 0
   executeDelay: 0
-  lingerDelay: 0
   damage: 25
+  lingerDelay: 0.3
 --- !u!1 &6912852400933906267
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,5 +270,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2344881297690857419}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Explosion
           m_BoolArgument: 0
         m_CallState: 2

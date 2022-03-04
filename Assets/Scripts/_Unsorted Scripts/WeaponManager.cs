@@ -30,9 +30,11 @@ public class WeaponManager : MonoBehaviour
     public bool MainWeaponIsReloading { get => mainWeaponIsReloading; }
 
     // public float SecondaryFireRateDelay { get => secondaryFireRateDelay; set => secondaryFireRateDelay = value; }
-
+    public LayerMask someMask;
     private void Update()
     {
+        StaticRayCaster.IsLineCastTouching(transform.position, transform.forward, 5.0f, someMask, true);
+
         mainFireRateDelay -= Time.deltaTime;
         secondaryFireRateDelay -= Time.deltaTime;
 
@@ -50,7 +52,7 @@ public class WeaponManager : MonoBehaviour
         
         if (tracksPlayer)
         {
-            transform.forward = transform.position - playerTransform.Transform.position;
+            transform.forward = playerTransform.Transform.position - transform.position;
         }
     }
 

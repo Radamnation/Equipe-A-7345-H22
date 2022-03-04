@@ -16,15 +16,17 @@ MonoBehaviour:
   weaponDescription: Some Melee Weapon
   currencyValue: 10
   canFireContinuously: 1
-  currentAmmo: 1000
+  startingAmmo: 0
+  currentAmmo: 0
   maxAmmo: 1000
-  currentClip: 1000
+  startingClip: 0
+  currentClip: 0
   maxClip: 1000
   firingRate: 1
   reloadTime: 0
   damage: 5
   spread: 0
-  range: 0.96
+  range: 1.28
   bulletsNumber: 0
   projectile: {fileID: 0}
   bulletHole: {fileID: 0}

@@ -26,14 +26,12 @@ public class BasicEnemyState_Two : IEnemyState
             if (context.MyAIPath.reachedEndOfPath &&
                 !context.IsInAnimationState(BasicEnemy_AnimationStates.STATE_ONE_ATTACK) &&
                 !context.IsInAnimationState(BasicEnemy_AnimationStates.STATE_TWO_ATTACK) &&
-                !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE) &&
-                 context.TryFireMainWeapon()) // Add hastoken AS FIRST CHECK
+                !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE) ) // Add hastoken AS FIRST CHECK
             {
-
                 // Check if invoke now or wait for animation event
                 if (!context.AnimExecuteAtk_2)
                 {
-                    if (context.AtkBehaviour_2.IsExecutionValid())
+                    if (context.TryFireMainWeapon() && context.AtkBehaviour_2.IsExecutionValid())
                     {
                         context.SetAnimTrigger(BasicEnemy_AnimTriggers.STATETWOATTACK);
                         context.OnDefaultAttackBehaviour();

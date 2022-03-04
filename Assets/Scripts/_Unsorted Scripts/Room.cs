@@ -292,9 +292,10 @@ public class Room : MonoBehaviour
                     room.LockAllDoors();
 
                     // Set Path Finding uppon entering new room
+                    // +1 to dimensions so that enemies can go in between two doors
                     myAstarPath.data.gridGraph.center = gameObject.transform.localPosition;
-                    myAstarPath.data.gridGraph.Width = xDimension;
-                    myAstarPath.data.gridGraph.Depth = zDimension;
+                    myAstarPath.data.gridGraph.center.y = -1.0f; // Must be at ground level
+                    myAstarPath.data.gridGraph.SetDimensions(XDimension * 2 + 2, ZDimension * 2 + 2, myAstarPath.data.gridGraph.nodeSize);
                     myAstarPath.Scan();
                 }
             }

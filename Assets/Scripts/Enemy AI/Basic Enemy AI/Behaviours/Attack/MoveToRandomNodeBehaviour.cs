@@ -1,23 +1,16 @@
 using UnityEngine;
 using System.Collections;
+using Pathfinding;
 
-public class MoveBetweenAttacksBehaviour : AbstractBehaviour
+public class MoveToRandomNodeBehaviour : AbstractBehaviour
 {
     // SECTION - Field ===================================================================
     [Header("Child Specific")]
-    [SerializeField] private Room myRoom;
     [SerializeField] private AIPossiblePositionsSO myDesiredRangeOfPositions;
     [SerializeField] private int maxQuantityOfMove = 1;
     [SerializeField] private float moveAtSpeed = 0;
-    
-    private int currentMove = 0;
 
-    // TODO : Check if node is outside of room && Replace by valid node if so ************************************
-    //private void Start()
-    //{
-      //  myRoom = gameObject.GetComponentInParent<Room>();
-        //Debug.Log($"Room position is: {myRoom.transform.position}");
-    //}
+    private int currentMove = 0;
 
     // SECTION - Method - Implementation ===================================================================
     public override void Behaviour()
@@ -26,7 +19,13 @@ public class MoveBetweenAttacksBehaviour : AbstractBehaviour
         StartCoroutine(StartBehaviour());
     }
 
-    public override bool ChildSpecificValidations() { throw new System.NotImplementedException(); }
+    public override bool ChildSpecificValidations() 
+    {
+        if (myContext.IsInAnimationState(BasicEnemy_AnimationStates.STATE_ONE_ATTACK) || myContext.IsInAnimationState(BasicEnemy_AnimationStates.STATE_TWO_ATTACK))
+            return false;
+
+        return true;        
+    }
 
 
     // SECTION - Method - Behaviour Specific ===================================================================
@@ -52,6 +51,7 @@ public class MoveBetweenAttacksBehaviour : AbstractBehaviour
         if (currentMove < maxQuantityOfMove)      // Set new Target when applicable
         {
             myContext.SetMyTemporaryTargetAs(myDesiredRangeOfPositions.GetRandomTransform());
+
             myContext.SetTarget(myContext.MyTemporaryTargetTransform);
             currentMove++;
         }
