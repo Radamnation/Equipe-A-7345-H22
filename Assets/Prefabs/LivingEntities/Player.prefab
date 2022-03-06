@@ -47,7 +47,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDebugOn: 0
   tracksPlayer: 0
+  isEnemyWeaponManager: 0
   playerTransform: {fileID: 11400000, guid: bb659ba3eaf28be498f4674f9cbb480c, type: 2}
+  myTargetMask:
+    serializedVersion: 2
+    m_Bits: 448
   mainWeapon: {fileID: 0}
   secondaryWeapon: {fileID: 0}
   weaponsInventory: {fileID: 11400000, guid: a281a8a3b05e1994aa74255a14e2dd2e, type: 2}
@@ -111,6 +115,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  someMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &264046455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -742,6 +749,9 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   isEnemy: 1
+  myDrops: []
+  minDrop: 5
+  maxDrop: 10
 --- !u!114 &1990362425418368985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1215,7 +1225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1990362425989773735}
   m_LocalRotation: {x: -0.007242421, y: 0.0025305573, z: 0.000017791986, w: 0.9999706}
-  m_LocalPosition: {x: 0, y: 0.38, z: -0.33399963}
+  m_LocalPosition: {x: 0, y: 0.38, z: -0.334}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1252,7 +1262,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7779479, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1303,7 +1313,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1990362426275796371}
   m_LocalRotation: {x: -0.007242421, y: 0.0025305573, z: 0.000017791986, w: 0.9999706}
-  m_LocalPosition: {x: 0, y: 0.38, z: -0.33399963}
+  m_LocalPosition: {x: 8.54, y: 2.3600001, z: 0.906}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

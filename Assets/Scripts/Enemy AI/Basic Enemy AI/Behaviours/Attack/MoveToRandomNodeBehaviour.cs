@@ -21,7 +21,9 @@ public class MoveToRandomNodeBehaviour : AbstractBehaviour
 
     public override bool ChildSpecificValidations() 
     {
-        if (myContext.IsInAnimationState(BasicEnemy_AnimationStates.STATE_ONE_ATTACK) || myContext.IsInAnimationState(BasicEnemy_AnimationStates.STATE_TWO_ATTACK))
+        if (!myContext.IsInAnimationState(BasicEnemy_AnimationStates.STATE_ONE_ATTACK) && 
+            !myContext.IsInAnimationState(BasicEnemy_AnimationStates.STATE_TWO_ATTACK) &&
+            !myContext.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE))
             return false;
 
         return true;        
@@ -44,6 +46,8 @@ public class MoveToRandomNodeBehaviour : AbstractBehaviour
 
         if (moveAtSpeed != 0)
             myContext.SetSpeed(moveAtSpeed);
+        else
+            myContext.SetSpeedAsDefault();
     }
 
     private void SetNextPosition()
@@ -57,6 +61,8 @@ public class MoveToRandomNodeBehaviour : AbstractBehaviour
         }
         else if (currentMove == maxQuantityOfMove) // Quit behaviour
         {
+            // NOTE
+            //      -To be changed for desired target
             myContext.SetTarget(GameObject.Find("Player").transform); // myContext.SetTargetAsPlayer() don't work here only???
             //myContext.SetTargetAsPlayer(); // Doesn't work here only???
             myContext.SetEndReachedDistance_ToCurrState();
@@ -73,6 +79,8 @@ public class MoveToRandomNodeBehaviour : AbstractBehaviour
             yield return new WaitForSeconds(1.0f); // Debugger, endReachedDistance always true for attack otherwise
             yield return new WaitUntil(() => myContext.MyAIPath.reachedEndOfPath);
         } while (!myContext.GetTarget().CompareTag("Player")) ;
+        // NOTE
+        //      -Condition to be changed for desired target
 
         isExecutionDone = true;
         isValidForExecute = false;

@@ -9,15 +9,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: startingState
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: aWeaponManager
       value: 
-      objectReference: {fileID: 4996558891091380983}
+      objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: rWeaponManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: to_1_OnAtkExit
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: to_2_OnAtkExit
@@ -28,12 +32,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: weaponManager_1
+      value: 
+      objectReference: {fileID: 6792830168174405186}
+    - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: weaponManager_2
       value: 
-      objectReference: {fileID: 4996558891091380983}
+      objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: animExecuteAtk_1
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: animExecuteAtk_2
@@ -77,7 +85,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893138, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: uniqueID
-      value: 1763628076202764698
+      value: 8415237236259071733
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893141, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_RootOrder
@@ -133,26 +141,30 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 0d75d94e5557112438bdd3f1adb04bc0, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
---- !u!1 &198941390817665853 stripped
+--- !u!1 &198941392648530677 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 3831662557995219415, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3831662558613925919, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
   m_PrefabInstance: {fileID: 4030164144152320746}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4996558891091380983
+--- !u!114 &6792830168174405186
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 198941390817665853}
+  m_GameObject: {fileID: 198941392648530677}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 302ed520c0a045543bbc07729b6e4645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDebugOn: 0
-  tracksPlayer: 0
+  isDebugOn: 1
+  isEnemyWeaponManager: 1
+  tracksPlayer: 1
   playerTransform: {fileID: 11400000, guid: bb659ba3eaf28be498f4674f9cbb480c, type: 2}
+  myTargetMask:
+    serializedVersion: 2
+    m_Bits: 8
   mainWeapon: {fileID: 11400000, guid: 535c270d77980b5409d80cd57b74af53, type: 2}
   secondaryWeapon: {fileID: 0}
   weaponsInventory: {fileID: 0}
@@ -170,19 +182,19 @@ MonoBehaviour:
       m_Calls: []
   someMask:
     serializedVersion: 2
-    m_Bits: 0
---- !u!1 &921857698452092909 stripped
+    m_Bits: 8
+--- !u!1 &921857699174874501 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 4261843816707075335, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4261843815690790767, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
   m_PrefabInstance: {fileID: 4030164144152320746}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3635292115418766666
+--- !u!114 &3965439695855229149
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 921857698452092909}
+  m_GameObject: {fileID: 921857699174874501}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6695a6738e985644fb3fb330ef6a35dd, type: 3}
@@ -196,5 +208,5 @@ MonoBehaviour:
   distance: 0
   validationType: 1
   myDesiredRangeOfPositions: {fileID: 11400000, guid: fc07bcacc6da4cb4db7e79c230044866, type: 2}
-  maxQuantityOfMove: 1
+  maxQuantityOfMove: 2
   moveAtSpeed: 4

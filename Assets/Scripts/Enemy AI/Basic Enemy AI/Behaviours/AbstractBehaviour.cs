@@ -57,7 +57,6 @@ public abstract class AbstractBehaviour : MonoBehaviour
     // SECTION - Method - System Specific ===================================================================
     public void Execute()
     {
-        Debug.Log("Start Execute");
         // [ANIMATION EVENT] - Check Validity
         // Otherwise checked in FSM
         if (myContext.IsAnimExecuteAttack())
@@ -115,7 +114,7 @@ public abstract class AbstractBehaviour : MonoBehaviour
 
 
     // SECTION - Method - Utility ===================================================================
-    private void SetMyBasicEnemyContext()
+    protected void SetMyBasicEnemyContext()
     {
         // context is located in object's parent(base parent) of attack parent(state parent)
         myContext = transform.parent.transform.parent.gameObject.GetComponent<BasicEnemyContext>();

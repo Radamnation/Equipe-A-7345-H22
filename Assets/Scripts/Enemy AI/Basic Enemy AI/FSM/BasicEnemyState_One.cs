@@ -2,54 +2,67 @@ using UnityEngine;
 
 public class BasicEnemyState_One : IEnemyState
 {
+    // SECTION - Field ===================================================================
+    private bool launchAnimation = false;
+
+
     // SECTION - Method - State Specific ===================================================================
     public void WithoutTokenBehaviour(BasicEnemyContext context) 
     {
         context.OnDefaultSetMoveAnim();
         context.OnDefaultMoveBehaviour();
 
-        if (!context.IsInAnimationState(BasicEnemy_AnimationStates.STATE_ONE_ATTACK) &&
+        if (!context.HasToken &&
+            !context.IsInAnimationState(BasicEnemy_AnimationStates.STATE_ONE_ATTACK) &&
             !context.IsInAnimationState(BasicEnemy_AnimationStates.STATE_TWO_ATTACK) &&
-            !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE) &&
-            !context.TryFireMainWeapon()) // Add !hastoken AS FIRST CHECK
+            !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE) )
         {       
-            if (context.MoveBehaviour_1 != null && context.MoveBehaviour_1.IsExecutionValid())
-                context.MoveBehaviour_1.Execute();
+            // Behaviour
+            if (context.Behaviour_NoToken_1 != null && context.Behaviour_NoToken_1.IsExecutionValid())
+            {
+                context.Behaviour_Token_1.Execute();
+
+                //context.SetAnimTrigger(BasicEnemy_AnimTriggers.STATEONEATTACK);
+            }              
         }
         else context.SetTargetAsPlayer(); // Prevents target being null     
     }
 
-
-    /*
-                 if (context.MyAIPath.reachedEndOfPath &&
-                !context.IsInAnimationState(BasicEnemy_AnimationStates.STATE_ONE_ATTACK) &&
-                !context.IsInAnimationState(BasicEnemy_AnimationStates.STATE_TWO_ATTACK) &&
-                !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE) &&
-                 context.TryFireMainWeapon()) // Add hastoken AS FIRST CHECK
-     */
-
     public void WithTokenBehaviour(BasicEnemyContext context)
     {
-        if (context.AtkBehaviour_1 != null)
+        if (context.HasToken &&
+            context.MyAIPath.reachedEndOfPath &&
+            !context.IsInAnimationState(BasicEnemy_AnimationStates.STATE_ONE_ATTACK) &&
+            !context.IsInAnimationState(BasicEnemy_AnimationStates.STATE_TWO_ATTACK) &&
+            !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE) )
         {
-            if (context.MyAIPath.reachedEndOfPath &&
-                !context.IsInAnimationState(BasicEnemy_AnimationStates.STATE_ONE_ATTACK) &&
-                !context.IsInAnimationState(BasicEnemy_AnimationStates.STATE_TWO_ATTACK) &&
-                !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE) ) // Add hastoken AS FIRST CHECK
+            // Check: Animation based
+            if (!context.AnimExecuteAtk_1)
             {
-                // Check if invoke now or wait for animation event
-                if (!context.AnimExecuteAtk_1)
+                launchAnimation = false;
+
+                // Weapon
+                if (context.TryFireMainWeapon())
                 {
-                    if (context.TryFireMainWeapon() && context.AtkBehaviour_1.IsExecutionValid())
+                    launchAnimation = true;
+
+                    context.OnDefaultAttackBehaviour();
+
+                    // Behaviour
+                    if (context.Behaviour_Token_1 != null && context.Behaviour_Token_1.IsExecutionValid())
                     {
-                        context.SetAnimTrigger(BasicEnemy_AnimTriggers.STATEONEATTACK);
-                        context.OnDefaultAttackBehaviour();
-                        context.AtkBehaviour_1.Execute();
+                        //launchAnimation = true;
+
+                        context.Behaviour_Token_1.Execute();
                     }
                 }
-                else
-                    context.SetAnimTrigger(BasicEnemy_AnimTriggers.STATEONEATTACK);          
+ 
+                // Can the animation be launched?
+                if (launchAnimation)
+                    context.SetAnimTrigger(BasicEnemy_AnimTriggers.STATEONEATTACK);
             }
+            else if ((context.Behaviour_Token_1 != null && context.Behaviour_Token_1.IsExecutionValid()) || context.WeaponManager_1.IsTargetInFront())
+                context.SetAnimTrigger(BasicEnemy_AnimTriggers.STATEONEATTACK); // Animation event based execution      
         }
     }
 

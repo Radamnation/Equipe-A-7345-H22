@@ -7,13 +7,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3831662557995219414, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558613925918, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: weaponManager_1
       value: 
       objectReference: {fileID: 4299170497466126559}
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: animExecuteAtk_1
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: maxHP.Variable
@@ -127,8 +135,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDebugOn: 0
+  isEnemyWeaponManager: 1
   tracksPlayer: 1
   playerTransform: {fileID: 11400000, guid: bb659ba3eaf28be498f4674f9cbb480c, type: 2}
+  myTargetMask:
+    serializedVersion: 2
+    m_Bits: 8
   mainWeapon: {fileID: 11400000, guid: f85df85a504f5804db1afc427de2431b, type: 2}
   secondaryWeapon: {fileID: 0}
   weaponsInventory: {fileID: 0}
@@ -168,9 +180,6 @@ MonoBehaviour:
   secondaryWeaponHasShot:
     m_PersistentCalls:
       m_Calls: []
-  someMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!95 &9004775643667086232 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3831662558856893132, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
@@ -203,3 +212,30 @@ MonoBehaviour:
   myDesiredRangeOfPositions: {fileID: 11400000, guid: 29c21b83d80fd4744bdb8d6cd1a73ef2, type: 2}
   maxQuantityOfMove: 1
   moveAtSpeed: 0
+--- !u!1 &9004775645324040156 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3831662558199758472, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+  m_PrefabInstance: {fileID: 5322040309315135828}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9138617531171704649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9004775645324040156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de675a62d85831b4b9644c83367e5655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDebuggerOn: 0
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 0
+  isDistanceCurrWeaponBased: 0
+  distance: 0
+  validationType: 1
+  moveNearDesiredRange: 1
+  myDesiredRangeOfPositions: {fileID: 11400000, guid: 29c21b83d80fd4744bdb8d6cd1a73ef2, type: 2}
+  moveAfterIddleTime: 1
