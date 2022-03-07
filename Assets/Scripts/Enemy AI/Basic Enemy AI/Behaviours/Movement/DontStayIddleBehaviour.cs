@@ -5,6 +5,8 @@ using System.Collections;
 public class DontStayIddleBehaviour : AbstractBehaviour
 {
     // SECTION - Field ===================================================================
+    [SerializeField] private bool isDebugOn = false;
+
     [Header("Child Specific")]
     [Tooltip("If false, will move randomly around itself")]
     [SerializeField] private bool moveNearDesiredRange = true;
@@ -50,7 +52,7 @@ public class DontStayIddleBehaviour : AbstractBehaviour
 
     private IEnumerator StartMovement()
     {
-        Debug.Log("STARTED MOVEMENT");
+        StaticDebugger.SimpleDebugger(isDebugOn, $"{transform.parent.name} has entered [StartMovement()]");
         currTimer = 0.0f;
         myContext.SetSpeedAsDefault();
 
@@ -60,7 +62,14 @@ public class DontStayIddleBehaviour : AbstractBehaviour
             myContext.SetTarget(myDesiredRangeOfPositions.GetRandomTransform());
         else
         {
-            GraphNode node = AstarPath.active.GetNearest(transform.position, NNConstraint.Default).node;
+            int randomNegativePosition = Random.Range(0, 1);
+            float newX = transform.position.z + Random.Range(0.32f, 0.64f) * randomNegativePosition == 0 ? -1 : 1;
+            float newZ = transform.position.z + Random.Range(0.32f, 0.64f) * randomNegativePosition == 0 ? -1 : 1;
+            float oldY = transform.position.y;
+            Vector3 myNewDesiredPosition = new Vector3(newX, oldY, newZ);
+
+            GraphNode node = AstarPath.active.GetNearest(myNewDesiredPosition, NNConstraint.Default).node;
+            //GraphNode node = AstarPath.active.GetNearest(transform.position, NNConstraint.Default).node;
 
             if (node != null && node.Walkable)
             {
