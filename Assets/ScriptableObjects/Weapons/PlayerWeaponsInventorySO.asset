@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dd5b66272fae1e428361bba782974d5, type: 3}
   m_Name: PlayerWeaponsInventorySO
   m_EditorClassIdentifier: 
+  maxMeleeWeapons: 1
   maxMainWeapons: 2
   maxSecodnaryWeapons: 1
+  defaultMeleeWeapons:
+  - {fileID: 11400000, guid: 20772d244dbf58d47bfa4dd53c569e1f, type: 2}
+  carriedMeleeWeapons: []
+  equippedMeleeWeapon: {fileID: 0}
   defaultMainWeapons:
   - {fileID: 11400000, guid: 2fec7de208af184448023900d178369c, type: 2}
   carriedMainWeapons:

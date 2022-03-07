@@ -18,7 +18,9 @@ public class PlayerContext : MonoBehaviour
     [Header("Weapons")]
     // CURRENT WEAPON & MORE GO HERE
     [SerializeField] private WeaponsInventorySO weapons;
-    [SerializeField] private WeaponManager weaponHolder;
+    [SerializeField] private WeaponManager meleeWeapon;
+    [SerializeField] private WeaponManager mainWeapon;
+    [SerializeField] private WeaponManager secondaryWeapon;
     [SerializeField] private TransformSO playerTransform;
     [SerializeField] private PositionRotationSO lastSpawnPositionRotation;
 
@@ -47,7 +49,9 @@ public class PlayerContext : MonoBehaviour
     public bool IsDebugOn { get => isDebugOn; set => isDebugOn = value; }
 
     public WeaponsInventorySO Weapons { get => weapons; set => weapons = value; }
-    public WeaponManager WeaponHolder { get => weaponHolder; set => weaponHolder = value; }
+    public WeaponManager MeleeWeapon { get => meleeWeapon; set => meleeWeapon = value; }
+    public WeaponManager MainWeapon { get => mainWeapon; set => mainWeapon = value; }
+    public WeaponManager SecondaryWeapon { get => secondaryWeapon; set => secondaryWeapon = value; }
     public TransformSO PlayerTransform { get => playerTransform; set => playerTransform = value; }
     public PositionRotationSO LastSpawnPositionRotation { get => lastSpawnPositionRotation; set => lastSpawnPositionRotation = value; }
 
@@ -76,8 +80,9 @@ public class PlayerContext : MonoBehaviour
         // TO BE DELETED
         // livingEntityContext.FullHeal();
         // TO BE MOVED
-        weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
-        weaponHolder.SecondaryWeapon = weapons.EquippedSecondaryWeapon;
+        meleeWeapon.Weapon = weapons.EquippedMeleeWeapon;
+        mainWeapon.Weapon = weapons.EquippedMainWeapon;
+        secondaryWeapon.Weapon = weapons.EquippedSecondaryWeapon;
     }
 
     private void Update()
@@ -153,16 +158,29 @@ public class PlayerContext : MonoBehaviour
     #endregion
 
     #region REGION - Weapon
+    public void OnDefaultFireWeaponMelee()
+    {
+        if (input.FireMeleeWeapon)
+        {
+            if (!meleeWeapon.Weapon.CanFireContinuously)
+            {
+                input.FireMeleeWeapon = false;
+            }
+
+            meleeWeapon.TriggerWeapon();
+        }
+    }
+
     public void OnDefaultFireWeaponMain()
     {
         if (input.FireMainWeapon)
         {
-            if (!weaponHolder.MainWeapon.CanFireContinuously)
+            if (!mainWeapon.Weapon.CanFireContinuously)
             {
                 input.FireMainWeapon = false;
             }
 
-            weaponHolder.TriggerMainWeapon();
+            mainWeapon.TriggerWeapon();
         }
     }
 
@@ -172,7 +190,7 @@ public class PlayerContext : MonoBehaviour
         {
             input.FireSecondaryWeapon = false;
 
-            weaponHolder.TriggerSecondaryWeapon();
+            secondaryWeapon.TriggerWeapon();
         }
     }
 
@@ -183,33 +201,35 @@ public class PlayerContext : MonoBehaviour
             input.WeaponOne = false;
 
             // EVENT GO HERE
-            weaponHolder.ResetReload();
+            mainWeapon.ResetReload();
 
             weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[0];
+            mainWeapon.UpdateWeapon();
             // weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
             StaticDebugger.SimpleDebugger(isDebugOn, $"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
-            mainWeaponHasChanged.Invoke();
+            // mainWeaponHasChanged.Invoke();
         }
         else if (input.WeaponTwo)       // WEAPON TWO
         {
             input.WeaponTwo = false;
 
-            weaponHolder.ResetReload();
+            mainWeapon.ResetReload();
 
             // EVENT GO HERE
             if (weapons.CarriedMainWeapons.Count > 1)
             {
                 weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[1];
+                mainWeapon.UpdateWeapon();
                 // weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
                 StaticDebugger.SimpleDebugger(IsDebugOn, $"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
-                mainWeaponHasChanged.Invoke();
+                // mainWeaponHasChanged.Invoke();
             }
         }
         else if (input.WeaponScrollBackward)       // WEAPON SCROLL <=
         {
             input.WeaponScrollBackward = false;
 
-            weaponHolder.ResetReload();
+            mainWeapon.ResetReload();
 
             // EVENT GO HERE
             if (weapons.CarriedMainWeapons.Count > 1)
@@ -218,16 +238,17 @@ public class PlayerContext : MonoBehaviour
                 if (index < 0)
                     index = weapons.CarriedMainWeapons.Count - 1;
                 weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[index];
+                mainWeapon.UpdateWeapon();
                 // weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
                 StaticDebugger.SimpleDebugger(IsDebugOn, $"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
-                mainWeaponHasChanged.Invoke();
+                // mainWeaponHasChanged.Invoke();
             }
         }
         else if (input.WeaponScrollForward)       // WEAPON SCROLL =>
         {
             input.WeaponScrollForward = false;
 
-            weaponHolder.ResetReload();
+            mainWeapon.ResetReload();
 
             // EVENT GO HERE
             if (weapons.CarriedMainWeapons.Count > 1)
@@ -236,9 +257,10 @@ public class PlayerContext : MonoBehaviour
                 if (index > weapons.CarriedMainWeapons.Count - 1)
                     index = 0;
                 weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[index];
+                mainWeapon.UpdateWeapon();
                 // weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
                 StaticDebugger.SimpleDebugger(IsDebugOn, $"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
-                mainWeaponHasChanged.Invoke();
+                // mainWeaponHasChanged.Invoke();
             }
         }
     }
@@ -250,7 +272,7 @@ public class PlayerContext : MonoBehaviour
             input.Reload = false;
 
             // EVENT GO HERE
-            weaponHolder.ReloadMainWeapon();
+            mainWeapon.ReloadWeapon();
         }
     }
     #endregion

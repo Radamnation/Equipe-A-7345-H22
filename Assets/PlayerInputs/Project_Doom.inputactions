@@ -33,6 +33,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "OnFireMeleeWeapon",
+                    "type": "Button",
+                    "id": "5823cc9a-4971-481a-8b4b-e7bab61f1f1b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "OnFireMainWeapon",
                     "type": "Button",
                     "id": "ef515608-7064-4d88-b02a-bdbbd424bb72",
@@ -459,7 +468,7 @@
                 {
                     "name": "",
                     "id": "feca8d4d-519a-48a2-8e26-964b2dd8e39e",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -871,6 +880,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "OnAnyKey",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5590d8c3-0f56-4ce8-98c6-401d7c3136c2",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "OnFireMeleeWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3f966848-22ae-494d-bc4f-bf6043e49036",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "OnFireMeleeWeapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

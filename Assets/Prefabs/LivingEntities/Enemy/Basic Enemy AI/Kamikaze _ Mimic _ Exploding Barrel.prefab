@@ -190,26 +190,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDebugOn: 0
+  isEnemyWeaponManager: 1
   tracksPlayer: 0
   playerTransform: {fileID: 11400000, guid: bb659ba3eaf28be498f4674f9cbb480c, type: 2}
-  mainWeapon: {fileID: 11400000, guid: deae533e02d594d43ac71554f1db0da1, type: 2}
-  secondaryWeapon: {fileID: 0}
-  weaponsInventory: {fileID: 0}
-  mainWeaponFinishedReloading:
-    m_PersistentCalls:
-      m_Calls: []
-  mainWeaponHasShot:
-    m_PersistentCalls:
-      m_Calls: []
-  mainWeaponStartedReloading:
-    m_PersistentCalls:
-      m_Calls: []
-  secondaryWeaponHasShot:
-    m_PersistentCalls:
-      m_Calls: []
-  someMask:
+  myTargetMask:
     serializedVersion: 2
     m_Bits: 0
+  weapon: {fileID: 11400000, guid: deae533e02d594d43ac71554f1db0da1, type: 2}
+  weaponsInventory: {fileID: 0}
+  weaponFinishedReloading:
+    m_PersistentCalls:
+      m_Calls: []
+  weaponHasShot:
+    m_PersistentCalls:
+      m_Calls: []
+  weaponStartedReloading:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2340426114300178579 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3831662558199758472, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}

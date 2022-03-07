@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WeaponImage : MonoBehaviour
+public class MeleeWeaponImage : MonoBehaviour
 {
     [SerializeField] private WeaponsInventorySO weaponInventory;
-    [SerializeField] private Vector3 reloadOffset;
     [SerializeField] private float shakeAmount = 30f;
     [SerializeField] private float shakeTime = 0.5f;
 
@@ -21,31 +20,31 @@ public class WeaponImage : MonoBehaviour
         initialPosition = transform.position;
         currentPosition = initialPosition;
         weaponImage = GetComponent<Image>();
+        weaponImage.enabled = false;
         UpdateWeaponImage();
+    }
+
+    public void UseWeapon()
+    {
+        StartCoroutine(StartUsingWeapon());
+    }
+
+    private IEnumerator StartUsingWeapon()
+    {
+        weaponImage.enabled = true;
+        ShakeWeapon();
+        yield return new WaitForSeconds(weaponInventory.EquippedMeleeWeapon.FiringRate / 2);
+        weaponImage.enabled = false;
     }
 
     public void UpdateWeaponImage()
     {
-        weaponImage.sprite = weaponInventory.EquippedMainWeapon.WeaponPlayerSprite;
+        weaponImage.sprite = weaponInventory.EquippedMeleeWeapon.WeaponPlayerSprite;
     }
 
     public void ShakeWeapon()
     {
         shakeTimer = shakeTime;
-    }
-
-    public void MoveGunDown()
-    {
-        weaponImage.color = Color.grey;
-        currentPosition = initialPosition - reloadOffset;
-        transform.position = currentPosition;
-    }
-
-    public void MoveGunUp()
-    {
-        weaponImage.color = Color.white;
-        currentPosition = initialPosition;
-        transform.position = currentPosition;
     }
 
     // Update is called once per frame

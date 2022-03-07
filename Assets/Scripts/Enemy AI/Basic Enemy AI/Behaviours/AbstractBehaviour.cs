@@ -63,8 +63,8 @@ public abstract class AbstractBehaviour : MonoBehaviour
             IsExecutionValid();
 
         // Set Distance
-        if (isDistanceCurrWeaponBased && !myContext.IsCurrentWeaponManagerNull() && distance != myContext.GetCurrentWeaponManager().MainWeapon.Range)
-            distance = myContext.GetCurrentWeaponManager().MainWeapon.Range;
+        if (isDistanceCurrWeaponBased && !myContext.IsCurrentWeaponManagerNull() && distance != myContext.GetCurrentWeaponManager().Weapon.Range)
+            distance = myContext.GetCurrentWeaponManager().Weapon.Range;
 
         // Execute
         if (isValidForExecute)

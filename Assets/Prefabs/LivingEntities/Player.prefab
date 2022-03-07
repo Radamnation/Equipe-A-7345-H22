@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 316649817}
   - component: {fileID: 264046455}
   m_Layer: 0
-  m_Name: WeaponManager
+  m_Name: MainWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1990362425418368986}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &316649817
 MonoBehaviour:
@@ -46,16 +46,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDebugOn: 0
-  tracksPlayer: 0
   isEnemyWeaponManager: 0
+  tracksPlayer: 0
   playerTransform: {fileID: 11400000, guid: bb659ba3eaf28be498f4674f9cbb480c, type: 2}
   myTargetMask:
     serializedVersion: 2
     m_Bits: 448
-  mainWeapon: {fileID: 0}
-  secondaryWeapon: {fileID: 0}
+  weapon: {fileID: 0}
   weaponsInventory: {fileID: 11400000, guid: a281a8a3b05e1994aa74255a14e2dd2e, type: 2}
-  mainWeaponFinishedReloading:
+  weaponFinishedReloading:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 5ae0d5b9457f8d349895514b8b2b3fde, type: 2}
@@ -70,7 +69,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  mainWeaponHasShot:
+  weaponHasShot:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: f1f092820c450494ab7caec16b5d8acd, type: 2}
@@ -85,7 +84,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  mainWeaponStartedReloading:
+  weaponStartedReloading:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 5593f666cacc862428d0458cdcdc51b2, type: 2}
@@ -100,24 +99,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  secondaryWeaponHasShot:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 7fdde7bde2d1d1546a7c98375ebf70a1, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  someMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &264046455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,7 +325,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1990362425418368986}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!108 &1145415262
 Light:
@@ -665,7 +646,9 @@ Transform:
   - {fileID: 1990362425989773732}
   - {fileID: 2487184806560300718}
   - {fileID: 7449452299918844107}
+  - {fileID: 4670481494135956097}
   - {fileID: 316649816}
+  - {fileID: 8004266524932734654}
   - {fileID: 1145415261}
   - {fileID: 3867671251356483631}
   - {fileID: 8011866210190956432}
@@ -768,7 +751,9 @@ MonoBehaviour:
   distanceGround: 0.3
   distanceInteractible: 0.75
   weapons: {fileID: 11400000, guid: a281a8a3b05e1994aa74255a14e2dd2e, type: 2}
-  weaponHolder: {fileID: 316649817}
+  meleeWeapon: {fileID: 4465828145769734466}
+  mainWeapon: {fileID: 316649817}
+  secondaryWeapon: {fileID: 5010664872695834764}
   playerTransform: {fileID: 11400000, guid: bb659ba3eaf28be498f4674f9cbb480c, type: 2}
   lastSpawnPositionRotation: {fileID: 11400000, guid: 5b2ea36876857aa408390dd9cc286978, type: 2}
   rb: {fileID: 1990362425418368990}
@@ -1047,6 +1032,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5e3162ef-cbdf-4a5e-ae5a-6cdd539754a2
     m_ActionName: Player/OnAnyKey[/Keyboard/anyKey,/DualShock4GamepadHID/buttonEast,/DualShock4GamepadHID/buttonNorth,/DualShock4GamepadHID/buttonSouth,/DualShock4GamepadHID/buttonWest,/DualShock4GamepadHID/leftShoulder,/DualShock4GamepadHID/leftStick/down,/DualShock4GamepadHID/leftStick/left,/DualShock4GamepadHID/leftStick/right,/DualShock4GamepadHID/leftStick/up,/DualShock4GamepadHID/leftStickPress,/DualShock4GamepadHID/leftTrigger,/DualShock4GamepadHID/rightShoulder,/DualShock4GamepadHID/rightStick/down,/DualShock4GamepadHID/rightStick/left,/DualShock4GamepadHID/rightStick/right,/DualShock4GamepadHID/rightStick/up,/DualShock4GamepadHID/rightStickPress,/DualShock4GamepadHID/rightTrigger,/DualShock4GamepadHID/select,/DualShock4GamepadHID/start,/Mouse/backButton,/Mouse/forwardButton,/Mouse/leftButton,/Mouse/middleButton,/Mouse/press,/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1990362425418368987}
+        m_TargetAssemblyTypeName: PlayerInputController, Assembly-CSharp
+        m_MethodName: OnFireMeleeWeapon
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5823cc9a-4971-481a-8b4b-e7bab61f1f1b
+    m_ActionName: Player/OnFireMeleeWeapon[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1262,7 +1263,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7764705, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1313,7 +1314,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1990362426275796371}
   m_LocalRotation: {x: -0.007242421, y: 0.0025305573, z: 0.000017791986, w: 0.9999706}
-  m_LocalPosition: {x: 8.54, y: 2.3600001, z: 0.906}
+  m_LocalPosition: {x: 0, y: 0.38, z: -0.334}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1405,6 +1406,80 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &2268364065600329266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4670481494135956097}
+  - component: {fileID: 4465828145769734466}
+  m_Layer: 0
+  m_Name: MeleeWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4670481494135956097
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2268364065600329266}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1990362425418368986}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4465828145769734466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2268364065600329266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302ed520c0a045543bbc07729b6e4645, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDebugOn: 0
+  isEnemyWeaponManager: 0
+  tracksPlayer: 0
+  playerTransform: {fileID: 11400000, guid: bb659ba3eaf28be498f4674f9cbb480c, type: 2}
+  myTargetMask:
+    serializedVersion: 2
+    m_Bits: 448
+  weapon: {fileID: 0}
+  weaponsInventory: {fileID: 11400000, guid: a281a8a3b05e1994aa74255a14e2dd2e, type: 2}
+  weaponFinishedReloading:
+    m_PersistentCalls:
+      m_Calls: []
+  weaponHasShot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 71bdc33e7660dcb42b69d5a04f0cbf82, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  weaponStartedReloading:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2299263538989107576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1437,7 +1512,7 @@ Transform:
   - {fileID: 6559766538368828791}
   - {fileID: 4655144018168217597}
   m_Father: {fileID: 1990362425418368986}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2365327162963768321
 GameObject:
@@ -1904,6 +1979,80 @@ Transform:
   m_Father: {fileID: 5451710096461077504}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5683024124913023218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8004266524932734654}
+  - component: {fileID: 5010664872695834764}
+  m_Layer: 0
+  m_Name: SecondaryWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8004266524932734654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5683024124913023218}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1990362425418368986}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5010664872695834764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5683024124913023218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302ed520c0a045543bbc07729b6e4645, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDebugOn: 0
+  isEnemyWeaponManager: 0
+  tracksPlayer: 0
+  playerTransform: {fileID: 11400000, guid: bb659ba3eaf28be498f4674f9cbb480c, type: 2}
+  myTargetMask:
+    serializedVersion: 2
+    m_Bits: 448
+  weapon: {fileID: 0}
+  weaponsInventory: {fileID: 11400000, guid: a281a8a3b05e1994aa74255a14e2dd2e, type: 2}
+  weaponFinishedReloading:
+    m_PersistentCalls:
+      m_Calls: []
+  weaponHasShot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 7fdde7bde2d1d1546a7c98375ebf70a1, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  weaponStartedReloading:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5771832302660310550
 GameObject:
   m_ObjectHideFlags: 0
@@ -1934,7 +2083,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1990362425418368986}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8668242842622603273
 MonoBehaviour:

@@ -15,6 +15,7 @@ public class PlayerInputController : MonoBehaviour
     public Dictionary<string, bool> debugDico = new Dictionary<string, bool>
     {
         { "Jump Debug", false },
+        { "Fire Melee Debug", false },
         { "Fire Main Debug", false },
         { "Reload Debug",  false },
         { "Fire Optional Debug", false },
@@ -59,6 +60,16 @@ public class PlayerInputController : MonoBehaviour
     #endregion
 
     #region REGION - Weapon
+    public void OnFireMeleeWeapon(InputAction.CallbackContext cbc)
+    {
+        input.FireMeleeWeapon = cbc.performed;
+
+        // Debugger
+        if (debugDico["Fire Melee Debug"]) // onFireMeleeDebug
+            if (input.FireMeleeWeapon)
+                Debug.Log($" {gameObject.name} ... FIRE MELEE");
+    }
+
     public void OnFireMainWeapon(InputAction.CallbackContext cbc)
     {
         input.FireMainWeapon = cbc.performed;
@@ -66,7 +77,7 @@ public class PlayerInputController : MonoBehaviour
         // Debugger
         if (debugDico["Fire Main Debug"]) // onFireMainDebug
             if (input.FireMainWeapon)
-                Debug.Log($" {gameObject.name} ... FIRE MAINN");
+                Debug.Log($" {gameObject.name} ... FIRE MAIN");
     }
 
 
