@@ -167,6 +167,9 @@ MonoBehaviour:
     m_Bits: 8
   weapon: {fileID: 11400000, guid: 535c270d77980b5409d80cd57b74af53, type: 2}
   weaponsInventory: {fileID: 0}
+  weaponHasChanged:
+    m_PersistentCalls:
+      m_Calls: []
   weaponFinishedReloading:
     m_PersistentCalls:
       m_Calls: []

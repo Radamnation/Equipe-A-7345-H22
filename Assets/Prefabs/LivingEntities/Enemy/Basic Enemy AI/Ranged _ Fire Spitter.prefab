@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893138, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: uniqueID
-      value: 8311175036076894382
+      value: 5054476664607969944
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893141, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_RootOrder
@@ -147,6 +147,9 @@ MonoBehaviour:
     m_Bits: 8
   weapon: {fileID: 11400000, guid: f85df85a504f5804db1afc427de2431b, type: 2}
   weaponsInventory: {fileID: 0}
+  weaponHasChanged:
+    m_PersistentCalls:
+      m_Calls: []
   weaponFinishedReloading:
     m_PersistentCalls:
       m_Calls: []
@@ -155,7 +158,19 @@ MonoBehaviour:
       m_Calls: []
   weaponStartedReloading:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3964606470850225240}
+        m_TargetAssemblyTypeName: MoveToRandomNodeBehaviour, Assembly-CSharp
+        m_MethodName: Behaviour
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &9004775644115274121 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3831662559138504925, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
@@ -207,6 +222,7 @@ MonoBehaviour:
   isDistanceCurrWeaponBased: 0
   distance: 0
   validationType: 1
+  isDebugOn: 0
   moveNearDesiredRange: 1
   myDesiredRangeOfPositions: {fileID: 11400000, guid: 29c21b83d80fd4744bdb8d6cd1a73ef2, type: 2}
   moveAfterIddleTime: 1
