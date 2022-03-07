@@ -12,6 +12,10 @@ PrefabInstance:
       value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558613925918, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558613925918, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.25
       objectReference: {fileID: 0}
@@ -21,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 4299170497466126559}
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: animExecuteAtk_1
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: maxHP.Variable
@@ -109,12 +113,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893142, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_Name
-      value: Ranged _ someRangedName
+      value: Ranged _ Fire Spitter
       objectReference: {fileID: 0}
     - target: {fileID: 3831662559004454559, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -280725821, guid: 510812d92e72e1941887c7b675838739, type: 3}
+      objectReference: {fileID: 1729810193, guid: e0c1de25267601e4b8158e3f651b3b58, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
 --- !u!1 &9004775643557206347 stripped
