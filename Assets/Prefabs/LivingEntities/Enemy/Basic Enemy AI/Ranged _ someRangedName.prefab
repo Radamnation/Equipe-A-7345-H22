@@ -141,50 +141,17 @@ MonoBehaviour:
   myTargetMask:
     serializedVersion: 2
     m_Bits: 8
-  mainWeapon: {fileID: 11400000, guid: f85df85a504f5804db1afc427de2431b, type: 2}
-  secondaryWeapon: {fileID: 0}
+  weapon: {fileID: 11400000, guid: f85df85a504f5804db1afc427de2431b, type: 2}
   weaponsInventory: {fileID: 0}
-  mainWeaponFinishedReloading:
+  weaponFinishedReloading:
     m_PersistentCalls:
       m_Calls: []
-  mainWeaponHasShot:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9004775643667086232}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: OnAttackRoaming
-          m_BoolArgument: 0
-        m_CallState: 2
-  mainWeaponStartedReloading:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3964606470850225240}
-        m_TargetAssemblyTypeName: MoveToRandomNodeBehaviour, Assembly-CSharp
-        m_MethodName: Behaviour
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  secondaryWeaponHasShot:
+  weaponHasShot:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &9004775643667086232 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3831662558856893132, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
-  m_PrefabInstance: {fileID: 5322040309315135828}
-  m_PrefabAsset: {fileID: 0}
+  weaponStartedReloading:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &9004775644115274121 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3831662559138504925, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}

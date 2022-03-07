@@ -197,8 +197,8 @@ public class BasicEnemyContext : MonoBehaviour
             if (weaponManager_1 != null)
             {
                 // Clone WeaponSO and set it up as main weapon
-                myWeaponSO = Instantiate(weaponManager_1.MainWeapon);
-                weaponManager_1.MainWeapon = myWeaponSO;
+                myWeaponSO = Instantiate(weaponManager_1.Weapon);
+                weaponManager_1.Weapon = myWeaponSO;
                 return;
             }
         }
@@ -207,8 +207,8 @@ public class BasicEnemyContext : MonoBehaviour
             if (weaponManager_2 != null)
             {
                 // Clone WeaponSO and set it up as main weapon
-                myWeaponSO = Instantiate(weaponManager_2.MainWeapon);
-                weaponManager_2.MainWeapon = myWeaponSO;
+                myWeaponSO = Instantiate(weaponManager_2.Weapon);
+                weaponManager_2.Weapon = myWeaponSO;
                 return;
             }
         }
@@ -304,10 +304,10 @@ public class BasicEnemyContext : MonoBehaviour
     {
         if (currState is BasicEnemyState_One)
             if (weaponManager_1 != null)
-                return weaponManager_1.TriggerMainWeapon();
+                return weaponManager_1.TriggerWeapon();
         else if (currState is BasicEnemyState_Two)
             if (weaponManager_2 != null)
-                return weaponManager_2.TriggerMainWeapon();
+                return weaponManager_2.TriggerWeapon();
 
         return true; // true == prevent using main weapon when checking !IsMainWeaponReloading()
     }
@@ -316,10 +316,10 @@ public class BasicEnemyContext : MonoBehaviour
     {
         if (stateSpecificCheck == BasicEnemy_States.ONE)
             if (weaponManager_1 != null)
-                return weaponManager_1.TriggerMainWeapon();
+                return weaponManager_1.TriggerWeapon();
         else if (stateSpecificCheck == BasicEnemy_States.TWO)
             if (weaponManager_2 != null)
-                return weaponManager_2.TriggerMainWeapon();
+                return weaponManager_2.TriggerWeapon();
 
         return true; // true == prevent using main weapon when checking !IsMainWeaponReloading()
     }
@@ -375,7 +375,7 @@ public class BasicEnemyContext : MonoBehaviour
         {
             if (weaponManager_1 != null)
             {
-                SetEndReachedDistance(weaponManager_1.MainWeapon.Range);
+                SetEndReachedDistance(weaponManager_1.Weapon.Range);
                 return;
             }
         }
@@ -383,7 +383,7 @@ public class BasicEnemyContext : MonoBehaviour
         {
             if (weaponManager_2 != null)
             {
-                SetEndReachedDistance(weaponManager_2.MainWeapon.Range);
+                SetEndReachedDistance(weaponManager_2.Weapon.Range);
                 return;
             }
         }

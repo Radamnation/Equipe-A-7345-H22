@@ -17,43 +17,43 @@ public class WeaponManager : MonoBehaviour
 
     [SerializeField] private LayerMask myTargetMask;
 
-    [SerializeField] private WeaponSO mainWeapon;
-    [SerializeField] private WeaponSO secondaryWeapon;
+    [SerializeField] private WeaponSO weapon;
+    // [SerializeField] private WeaponSO secondaryWeapon;
     [SerializeField] private WeaponsInventorySO weaponsInventory;
 
-    [SerializeField] private UnityEvent mainWeaponFinishedReloading;
-    [SerializeField] private UnityEvent mainWeaponHasShot;
-    [SerializeField] private UnityEvent mainWeaponStartedReloading;
-    [SerializeField] private UnityEvent secondaryWeaponHasShot;
+    [SerializeField] private UnityEvent weaponFinishedReloading;
+    [SerializeField] private UnityEvent weaponHasShot;
+    [SerializeField] private UnityEvent weaponStartedReloading;
+    // [SerializeField] private UnityEvent secondaryWeaponHasShot;
 
-    private float mainFireRateDelay;
-    private float mainReloadDelay;
-    private float secondaryFireRateDelay;
+    private float fireRateDelay;
+    private float reloadDelay;
+    // private float secondaryFireRateDelay;
 
-    private bool mainWeaponIsReloading = false;
+    private bool weaponIsReloading = false;
 
-    public WeaponSO MainWeapon { get => mainWeapon; set => mainWeapon = value; }
-    public WeaponSO SecondaryWeapon { get => secondaryWeapon; set => secondaryWeapon = value; }
-    public bool MainWeaponIsReloading { get => mainWeaponIsReloading; }
+    public WeaponSO Weapon { get => weapon; set => weapon = value; }
+    // public WeaponSO SecondaryWeapon { get => secondaryWeapon; set => secondaryWeapon = value; }
+    public bool WeaponIsReloading { get => weaponIsReloading; }
     public LayerMask MyTargetMask { get => myTargetMask; }
 
     // public float SecondaryFireRateDelay { get => secondaryFireRateDelay; set => secondaryFireRateDelay = value; }
 
     private void Update()
     {
-        mainFireRateDelay -= Time.deltaTime;
-        secondaryFireRateDelay -= Time.deltaTime;
+        fireRateDelay -= Time.deltaTime;
+        // secondaryFireRateDelay -= Time.deltaTime;
 
-        if (mainReloadDelay > 0)
+        if (reloadDelay > 0)
         {
-            mainReloadDelay -= Time.deltaTime;
-            mainWeaponIsReloading = true;
+            reloadDelay -= Time.deltaTime;
+            weaponIsReloading = true;
         }
-        else if (mainWeaponIsReloading)
+        else if (weaponIsReloading)
         {
-            mainWeapon.Reload();
-            mainWeaponFinishedReloading.Invoke();
-            mainWeaponIsReloading = false;
+            weapon.Reload();
+            weaponFinishedReloading.Invoke();
+            weaponIsReloading = false;
         }
         
         if (tracksPlayer)
@@ -64,63 +64,63 @@ public class WeaponManager : MonoBehaviour
 
     public void UpdateWeapon()
     {
-        mainWeapon = weaponsInventory.EquippedMainWeapon;
+        weapon = weaponsInventory.EquippedMainWeapon;
     }
 
     public void ResetReload()
     {
-        mainReloadDelay = 0;
-        mainWeaponIsReloading = false;
+        reloadDelay = 0;
+        weaponIsReloading = false;
     }
 
-    public bool TriggerMainWeapon()
+    public bool TriggerWeapon()
     {
         bool validationBool = false;
-        if (mainFireRateDelay <= 0 && mainReloadDelay <= 0)
+        if (fireRateDelay <= 0 && reloadDelay <= 0)
         {
-            if (mainWeapon.ShootCheck())
+            if (weapon.ShootCheck())
             {
-                StaticDebugger.SimpleDebugger(isDebugOn, $" {mainWeapon.WeaponName} ... FIRED");
+                StaticDebugger.SimpleDebugger(isDebugOn, $" {weapon.WeaponName} ... FIRED");
 
-                mainFireRateDelay = mainWeapon.FiringRate;
-                validationBool = ShootWeapon(mainWeapon);
-                mainWeaponHasShot.Invoke(); // if (validationBool) for enemies??
+                fireRateDelay = weapon.FiringRate;
+                validationBool = ShootWeapon(weapon);
+                weaponHasShot.Invoke(); // if (validationBool) for enemies??
                 return true;
             }
-            else if (!mainWeapon.CanFireContinuously)
+            else if (!weapon.CanFireContinuously)
             {
-                ReloadMainWeapon();
+                ReloadWeapon();
             }
         }
         return false;
         //return validationBool;
     }
 
-    public void TriggerSecondaryWeapon()
+    //public void TriggerSecondaryWeapon()
+    //{
+    //    if (secondaryFireRateDelay <= 0)
+    //    {
+    //        if (secondaryWeapon.ShootCheck())
+    //        {
+    //            StaticDebugger.SimpleDebugger(isDebugOn, $" {secondaryWeapon.WeaponName} ... FIRED");
+
+    //            secondaryFireRateDelay = secondaryWeapon.FiringRate;
+    //            ShootWeapon(secondaryWeapon);
+    //            secondaryWeaponHasShot.Invoke();
+    //        }
+    //    }
+    //}
+
+    public void ReloadWeapon()
     {
-        if (secondaryFireRateDelay <= 0)
+        if (!weaponIsReloading && weapon.CurrentClip < weapon.MaxClip)
         {
-            if (secondaryWeapon.ShootCheck())
+            if (weapon.ReloadCheck())
             {
-                StaticDebugger.SimpleDebugger(isDebugOn, $" {secondaryWeapon.WeaponName} ... FIRED");
+                StaticDebugger.SimpleDebugger(isDebugOn, $" {weapon.WeaponName} ... RELOADED");
 
-                secondaryFireRateDelay = secondaryWeapon.FiringRate;
-                ShootWeapon(secondaryWeapon);
-                secondaryWeaponHasShot.Invoke();
-            }
-        }
-    }
-
-    public void ReloadMainWeapon()
-    {
-        if (!mainWeaponIsReloading && mainWeapon.CurrentClip < mainWeapon.MaxClip)
-        {
-            if (mainWeapon.ReloadCheck())
-            {
-                StaticDebugger.SimpleDebugger(isDebugOn, $" {mainWeapon.WeaponName} ... RELOADED");
-
-                mainWeaponStartedReloading.Invoke();
-                mainReloadDelay = mainWeapon.ReloadTime;
+                weaponStartedReloading.Invoke();
+                reloadDelay = weapon.ReloadTime;
             }
         }
     }
@@ -137,7 +137,11 @@ public class WeaponManager : MonoBehaviour
         }
         else
         {
-            if (weapon.Spread > 0)
+            if (weapon.IsMelee)
+            {
+                validationBool = ShootShortRayCast(weapon);
+            }
+            else if (weapon.Spread > 0)
             {
                 validationBool = ShootMultipleRayCasts(weapon);
             }
@@ -159,6 +163,33 @@ public class WeaponManager : MonoBehaviour
         StaticDebugger.SimpleDebugger(isDebugOn, newProjectile.name + " was instantiated");
     }
 
+    public bool ShootShortRayCast(WeaponSO weapon)
+    {
+        RaycastHit hit;
+        //Physics.Raycast(transform.position, transform.forward, out hit, GameManager.instance.canBeShotByPlayerMask, 1000); // myMask
+        hit = StaticRayCaster.IsLineCastTouching(transform.position, transform.forward, weapon.Range, myTargetMask, isDebugOn);
+        if (hit.collider != null)
+        {
+            StaticDebugger.SimpleDebugger(isDebugOn, hit.collider.name + " was hit");
+
+            if (hit.collider.GetComponent<LivingEntityContext>() != null)
+            {
+                float damage = isEnemyWeaponManager ? weapon.Damage * enemyDamageModifier : weapon.Damage;
+                hit.collider.GetComponent<LivingEntityContext>().TakeDamage(damage); // weapon.Damage
+                if (weapon.Knockback > 0)
+                {
+                    hit.collider.GetComponent<LivingEntityContext>().KnockBack(weapon.Knockback, transform.forward);
+                }
+                return true;
+            }
+            //else if (!isEnemyWeaponManager)
+            //{
+            //    var newBulletHole = Instantiate(weapon.BulletHole, hit.point + hit.normal * 0.001f, Quaternion.LookRotation(hit.normal, Vector3.up));
+            //    newBulletHole.transform.parent = hit.collider.gameObject.transform;
+            //}
+        }
+        return false;
+    }
 
     public bool ShootSingleRayCast(WeaponSO weapon)
     {
@@ -219,7 +250,7 @@ public class WeaponManager : MonoBehaviour
     public bool IsTargetInFront()
     {
         RaycastHit hit;
-        hit = StaticRayCaster.IsLineCastTouching(transform.position, transform.forward, MainWeapon.Range, myTargetMask, true);
+        hit = StaticRayCaster.IsLineCastTouching(transform.position, transform.forward, Weapon.Range, myTargetMask, true);
 
         return !(hit.transform == null);
     }

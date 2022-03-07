@@ -165,24 +165,17 @@ MonoBehaviour:
   myTargetMask:
     serializedVersion: 2
     m_Bits: 8
-  mainWeapon: {fileID: 11400000, guid: 535c270d77980b5409d80cd57b74af53, type: 2}
-  secondaryWeapon: {fileID: 0}
+  weapon: {fileID: 11400000, guid: 535c270d77980b5409d80cd57b74af53, type: 2}
   weaponsInventory: {fileID: 0}
-  mainWeaponFinishedReloading:
+  weaponFinishedReloading:
     m_PersistentCalls:
       m_Calls: []
-  mainWeaponHasShot:
+  weaponHasShot:
     m_PersistentCalls:
       m_Calls: []
-  mainWeaponStartedReloading:
+  weaponStartedReloading:
     m_PersistentCalls:
       m_Calls: []
-  secondaryWeaponHasShot:
-    m_PersistentCalls:
-      m_Calls: []
-  someMask:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!1 &921857699174874501 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4261843815690790767, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}

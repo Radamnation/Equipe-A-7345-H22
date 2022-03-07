@@ -27,6 +27,7 @@ public class LivingEntityContext : MonoBehaviour
     [SerializeField] private UnityEvent onDeathEvents;
 
                      private SpriteRenderer[] spriteRenderer;
+                     private Rigidbody myRigidbody;
 
     [SerializeField] private bool isEnemy = true;
     [SerializeField] private Pickable[] myDrops;
@@ -43,6 +44,7 @@ public class LivingEntityContext : MonoBehaviour
     {
         FullHeal();
         spriteRenderer = GetComponentsInChildren<SpriteRenderer>();
+        myRigidbody = GetComponent<Rigidbody>();
     }
 
 
@@ -63,6 +65,11 @@ public class LivingEntityContext : MonoBehaviour
         {
             onTakeDamageEvents.Invoke();
         }
+    }
+
+    public void KnockBack(float knockback, Vector3 direction)
+    {
+        myRigidbody.AddForce(knockback * direction, ForceMode.Impulse);
     }
 
     public void TakeDamage(float damage)
