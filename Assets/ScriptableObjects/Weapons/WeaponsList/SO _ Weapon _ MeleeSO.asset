@@ -14,20 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Melee Weapon
   weaponDescription: Some Melee Weapon
+  isMelee: 0
   currencyValue: 10
-  canFireContinuously: 1
-  currentAmmo: 1000
+  canFireContinuously: 0
+  startingAmmo: 100
+  currentAmmo: 100
   maxAmmo: 1000
+  startingClip: 1000
   currentClip: 1000
   maxClip: 1000
-  firingRate: 1
+  firingRate: 1.5
   reloadTime: 0
   damage: 5
+  knockback: 0
   spread: 0
   range: 0.96
   bulletsNumber: 0
   projectile: {fileID: 0}
-  bulletHole: {fileID: 0}
+  bulletHole: {fileID: 5792683063871329260, guid: 807922f1559cdcb45bb90d29e7bf3769, type: 3}
   weaponUISprite: {fileID: 0}
   weaponPlayerSprite: {fileID: 0}
   animator: {fileID: 0}

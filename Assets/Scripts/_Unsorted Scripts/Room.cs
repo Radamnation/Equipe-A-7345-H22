@@ -29,7 +29,10 @@ public class Room : MonoBehaviour
     [SerializeField] private bool isVisibleOnMap = false;
     [SerializeField] private bool isVisitedOnMap = false;
     [SerializeField] private bool isTreasureRoom = false;
+    [SerializeField] private bool isSecretRoom = false;
     [SerializeField] private bool isBossRoom = false;
+    [SerializeField] private bool isSpecialRoom = false;
+    [SerializeField] private bool isMerchantRoom = false;
 
     [SerializeField] private Transform roomInside;
     [SerializeField] private PositionRotationSO lastSpawnPositionRotation;
@@ -70,12 +73,16 @@ public class Room : MonoBehaviour
     public bool IsVisibleOnMap { get => isVisibleOnMap; set => isVisibleOnMap = value; }
     public bool IsVisitedOnMap { get => isVisitedOnMap; set => isVisitedOnMap = value; }
     public bool IsTreasureRoom { get => isTreasureRoom; set => isTreasureRoom = value; }
+    public bool IsSecretRoom { get => isSecretRoom; set => isSecretRoom = value; }
     public bool IsBossRoom { get => isBossRoom; set => isBossRoom = value; }
+    public bool IsSpecialRoom { get => isSpecialRoom; set => isSpecialRoom = value; }
+    public bool IsMerchantRoom { get => isMerchantRoom; set => isMerchantRoom = value; }
 
     public Transform RoomInside { get => roomInside; set => roomInside = value; }
     public AstarPath MyAstarPath { get => myAstarPath; set => myAstarPath = value; }
     
     public List<Room> MyAdjacentRooms { get => myAdjacentRooms; set => myAdjacentRooms = value; }
+    public List<LivingEntityContext> MyLivingEntities { get => myLivingEntities; set => myLivingEntities = value; }
 
     // Start is called before the first frame update
     void Awake()
@@ -169,7 +176,13 @@ public class Room : MonoBehaviour
         }
 
         var livingEntities = GetComponentsInChildren<LivingEntityContext>();
-        myLivingEntities.AddRange(livingEntities);
+        foreach (LivingEntityContext livingEntity in livingEntities)
+        {
+            if (livingEntity.IsEnemy)
+            {
+                myLivingEntities.Add(livingEntity);
+            }
+        }
         DeactivateLivingEntities();
     }
 
@@ -260,7 +273,10 @@ public class Room : MonoBehaviour
         isVisitedOnMap = true;
         foreach (Room room in MyAdjacentRooms)
         {
-            room.isVisibleOnMap = true;
+            if (!room.isSecretRoom)
+            {
+                room.isVisibleOnMap = true;
+            }
             room.gameObject.SetActive(true);
         }
         mapHasChanged.Invoke();
@@ -276,9 +292,10 @@ public class Room : MonoBehaviour
                     room.LockAllDoors();
 
                     // Set Path Finding uppon entering new room
+                    // +1 to dimensions so that enemies can go in between two doors
                     myAstarPath.data.gridGraph.center = gameObject.transform.localPosition;
-                    myAstarPath.data.gridGraph.Width = xDimension;
-                    myAstarPath.data.gridGraph.Depth = zDimension;
+                    myAstarPath.data.gridGraph.center.y = -1.0f; // Must be at ground level
+                    myAstarPath.data.gridGraph.SetDimensions(XDimension * 2 + 2, ZDimension * 2 + 2, myAstarPath.data.gridGraph.nodeSize);
                     myAstarPath.Scan();
                 }
             }
@@ -308,8 +325,8 @@ public class Room : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         // yield return new WaitForSeconds(0.1f);
-        var livingEntitiesInsideRoom = GetComponentsInChildren<LivingEntityContext>();
-        if (livingEntitiesInsideRoom.Length <= 0)
+        // var livingEntitiesInsideRoom = GetComponentsInChildren<LivingEntityContext>();
+        if (myLivingEntities.Count <= 0)
         {
             FinishRoom();
         }
@@ -340,7 +357,7 @@ public class Room : MonoBehaviour
         }
         foreach (Room room in mapLayoutInformation.Rooms)
         {
-            if (room.IsVisibleOnMap)
+            if (room.IsVisibleOnMap || room.IsSecretRoom)
             {
                 room.gameObject.SetActive(true);
             }
@@ -359,7 +376,7 @@ public class Room : MonoBehaviour
         {
             if (other.CompareTag("Player"))
             {
-                other.GetComponent<LivingEntityContext>().TakeDamage(1);
+                other.GetComponent<LivingEntityContext>().TakeDamage(5);
                 RespawnPlayer(other.gameObject);
             }
             else

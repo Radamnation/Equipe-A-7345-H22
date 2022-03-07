@@ -73,8 +73,8 @@ public class BasicEnemyContext : MonoBehaviour
     [SerializeField] private bool to_2_OnAtkExit = false;
     [Tooltip("Animation event must be set manually")]
     [SerializeField] private bool animExecuteAtk_1 = false;
-    private AbstractBehaviour moveBehaviour_1;
-    private AbstractBehaviour atkBehaviour_1;
+    private AbstractBehaviour behaviour_NoToken_1;
+    private AbstractBehaviour behaviour_Token_1;
 
     [Space(10)]
     [Header("    ========= State Two =========\n")]
@@ -85,10 +85,10 @@ public class BasicEnemyContext : MonoBehaviour
     [SerializeField] private bool to_1_OnAtkExit = false;
     [Tooltip("Animation event must be set manually")]
     [SerializeField] private bool animExecuteAtk_2 = false;
-    private AbstractBehaviour moveBehaviour_2;
-    private AbstractBehaviour atkBehaviour_2;
+    private AbstractBehaviour behaviour_NoToken_2;
+    private AbstractBehaviour behaviour_Token_2;
 
-
+    private bool hasToken = true;
     // SECTION - Property ===================================================================
     #region REGION - PROPERTY
     // State
@@ -106,15 +106,17 @@ public class BasicEnemyContext : MonoBehaviour
     public WeaponManager WeaponManager_1 { get => weaponManager_1; set => weaponManager_1 = value; }
     public bool To_2_OnAtkExit { get => to_2_OnAtkExit; }
     public bool AnimExecuteAtk_1 { get => animExecuteAtk_1; }
-    public AbstractBehaviour MoveBehaviour_1 { get => moveBehaviour_1; }
-    public AbstractBehaviour AtkBehaviour_1 { get => atkBehaviour_1; }
+    public AbstractBehaviour Behaviour_NoToken_1 { get => behaviour_NoToken_1; }
+    public AbstractBehaviour Behaviour_Token_1 { get => behaviour_Token_1; }
 
     // State Two
     public WeaponManager WeaponManager_2 { get => weaponManager_2; set => weaponManager_2 = value; }
     public bool To_1_OnAtkExit { get => to_1_OnAtkExit; }
     public bool AnimExecuteAtk_2 { get => animExecuteAtk_2; }
-    public AbstractBehaviour MoveBehaviour_2 { get => moveBehaviour_2; }
-    public AbstractBehaviour AtkBehaviour_2 { get => atkBehaviour_2; }
+    public AbstractBehaviour Behaviour_NoToken_2 { get => behaviour_NoToken_2; }
+    public AbstractBehaviour Behaviour_Token_2 { get => behaviour_Token_2; }
+
+    public bool HasToken { get => hasToken; set => hasToken = value; }
     #endregion
 
 
@@ -195,8 +197,8 @@ public class BasicEnemyContext : MonoBehaviour
             if (weaponManager_1 != null)
             {
                 // Clone WeaponSO and set it up as main weapon
-                myWeaponSO = Instantiate(weaponManager_1.MainWeapon);
-                weaponManager_1.MainWeapon = myWeaponSO;
+                myWeaponSO = Instantiate(weaponManager_1.Weapon);
+                weaponManager_1.Weapon = myWeaponSO;
                 return;
             }
         }
@@ -205,8 +207,8 @@ public class BasicEnemyContext : MonoBehaviour
             if (weaponManager_2 != null)
             {
                 // Clone WeaponSO and set it up as main weapon
-                myWeaponSO = Instantiate(weaponManager_2.MainWeapon);
-                weaponManager_2.MainWeapon = myWeaponSO;
+                myWeaponSO = Instantiate(weaponManager_2.Weapon);
+                weaponManager_2.Weapon = myWeaponSO;
                 return;
             }
         }
@@ -243,11 +245,11 @@ public class BasicEnemyContext : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         anim.SetBool(animParam_ExitDeathAnim, exitDeathAnim);
 
-        moveBehaviour_1 = transform.GetChild(1).transform.GetChild(0).GetComponentInChildren<AbstractBehaviour>();
-        atkBehaviour_1 = transform.GetChild(1).transform.GetChild(1).GetComponentInChildren<AbstractBehaviour>();
+        behaviour_NoToken_1 = transform.GetChild(1).transform.GetChild(0).GetComponentInChildren<AbstractBehaviour>();
+        behaviour_Token_1 = transform.GetChild(1).transform.GetChild(1).GetComponentInChildren<AbstractBehaviour>();
 
-        moveBehaviour_2 = transform.GetChild(2).transform.GetChild(0).GetComponentInChildren<AbstractBehaviour>();
-        atkBehaviour_2 = transform.GetChild(2).transform.GetChild(1).GetComponentInChildren<AbstractBehaviour>();
+        behaviour_NoToken_2 = transform.GetChild(2).transform.GetChild(0).GetComponentInChildren<AbstractBehaviour>();
+        behaviour_Token_2 = transform.GetChild(2).transform.GetChild(1).GetComponentInChildren<AbstractBehaviour>();
     }
     #endregion
 
@@ -293,14 +295,19 @@ public class BasicEnemyContext : MonoBehaviour
         myTemporaryTargetTransform.position = setAs.position;
     }
 
+    public void SetMyTemporaryTargetAs(Vector3 setAs)
+    {
+        myTemporaryTargetTransform.position = setAs;
+    }
+
     public bool TryFireMainWeapon()
     {
         if (currState is BasicEnemyState_One)
             if (weaponManager_1 != null)
-                return weaponManager_1.TriggerMainWeapon();
+                return weaponManager_1.TriggerWeapon();
         else if (currState is BasicEnemyState_Two)
             if (weaponManager_2 != null)
-                return weaponManager_2.TriggerMainWeapon();
+                return weaponManager_2.TriggerWeapon();
 
         return true; // true == prevent using main weapon when checking !IsMainWeaponReloading()
     }
@@ -309,10 +316,10 @@ public class BasicEnemyContext : MonoBehaviour
     {
         if (stateSpecificCheck == BasicEnemy_States.ONE)
             if (weaponManager_1 != null)
-                return weaponManager_1.TriggerMainWeapon();
+                return weaponManager_1.TriggerWeapon();
         else if (stateSpecificCheck == BasicEnemy_States.TWO)
             if (weaponManager_2 != null)
-                return weaponManager_2.TriggerMainWeapon();
+                return weaponManager_2.TriggerWeapon();
 
         return true; // true == prevent using main weapon when checking !IsMainWeaponReloading()
     }
@@ -368,7 +375,7 @@ public class BasicEnemyContext : MonoBehaviour
         {
             if (weaponManager_1 != null)
             {
-                SetEndReachedDistance(weaponManager_1.MainWeapon.Range);
+                SetEndReachedDistance(weaponManager_1.Weapon.Range);
                 return;
             }
         }
@@ -376,7 +383,7 @@ public class BasicEnemyContext : MonoBehaviour
         {
             if (weaponManager_2 != null)
             {
-                SetEndReachedDistance(weaponManager_2.MainWeapon.Range);
+                SetEndReachedDistance(weaponManager_2.Weapon.Range);
                 return;
             }
         }
@@ -482,12 +489,27 @@ public class BasicEnemyContext : MonoBehaviour
 
     private void AE_ExecuteRoamingAttack() // Animator Event
     {
-        atkBehaviour_1.Execute();
+        // TryFireMainWeapon() will execute damage regardless if there is additional behaviours
+        TryFireMainWeapon();
+
+        if ( behaviour_Token_1 != null)
+            behaviour_Token_1.Execute();
     }
 
     private void AE_ExecuteAggressiveAttack() // Animator Event
     {
-        AtkBehaviour_2.Execute();
+        // TryFireMainWeapon() will execute damage regardless if there is additional behaviours
+        TryFireMainWeapon();
+
+        if (behaviour_Token_2 != null)
+            behaviour_Token_2.Execute();
+    }
+
+    private void AE_FreezeRigidBodyDisableCollider()
+    {
+        Rigidbody myRigidBody = GetComponent<Rigidbody>();
+        myRigidBody.constraints = RigidbodyConstraints.FreezePosition; 
+        GetComponent<Collider>().enabled = false;
     }
     #endregion
 }

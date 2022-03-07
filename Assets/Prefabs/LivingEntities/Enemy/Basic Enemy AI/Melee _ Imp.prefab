@@ -9,15 +9,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: startingState
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: aWeaponManager
       value: 
-      objectReference: {fileID: 4996558891091380983}
+      objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: rWeaponManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: to_1_OnAtkExit
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: to_2_OnAtkExit
@@ -28,12 +32,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: weaponManager_1
+      value: 
+      objectReference: {fileID: 6792830168174405186}
+    - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: weaponManager_2
       value: 
-      objectReference: {fileID: 4996558891091380983}
+      objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: animExecuteAtk_1
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: animExecuteAtk_2
@@ -43,13 +51,41 @@ PrefabInstance:
       propertyPath: maxHP.Variable
       value: 
       objectReference: {fileID: 11400000, guid: ac2e18107c0e4a64fa726c09140a1358, type: 2}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: myDrops.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: myDrops.Array.data[0]
+      value: 
+      objectReference: {fileID: 418731571920632839, guid: 67d2eb267d4dd404299b59ec5eaa6bc1, type: 3}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: myDrops.Array.data[1]
+      value: 
+      objectReference: {fileID: 2989215637769811154, guid: 7737965b165c68641b2c5ab578b243e5, type: 3}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: myDrops.Array.data[2]
+      value: 
+      objectReference: {fileID: 7546089093656136656, guid: e0f77ea0d2091fb458dfdbbdafde5e4d, type: 3}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: myDrops.Array.data[3]
+      value: 
+      objectReference: {fileID: 1904513868067826317, guid: dd77c72568d1be44fa3b9ad678e743d8, type: 3}
     - target: {fileID: 3831662558856893132, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: e474034abe5432f4b85ca267fc1579a2, type: 2}
+    - target: {fileID: 3831662558856893135, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: traversableTags
+      value: -5
+      objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893136, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: maxSpeed
-      value: 4
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893138, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: uniqueID
+      value: 8415237236259071733
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893141, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_RootOrder
@@ -97,69 +133,64 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893142, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_Name
-      value: Melee _ SomeMeleeName
+      value: Melee _ Imp
       objectReference: {fileID: 0}
+    - target: {fileID: 3831662559004454559, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -268848824, guid: 6e7cae24fc9876d4694421b4e42d3d37, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
---- !u!1 &198941390817665853 stripped
+--- !u!1 &198941392648530677 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 3831662557995219415, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3831662558613925919, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
   m_PrefabInstance: {fileID: 4030164144152320746}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4996558891091380983
+--- !u!114 &6792830168174405186
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 198941390817665853}
+  m_GameObject: {fileID: 198941392648530677}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 302ed520c0a045543bbc07729b6e4645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDebugOn: 0
-  tracksPlayer: 0
+  isDebugOn: 1
+  isEnemyWeaponManager: 1
+  tracksPlayer: 1
   playerTransform: {fileID: 11400000, guid: bb659ba3eaf28be498f4674f9cbb480c, type: 2}
-  mainWeapon: {fileID: 11400000, guid: 535c270d77980b5409d80cd57b74af53, type: 2}
-  secondaryWeapon: {fileID: 0}
+  myTargetMask:
+    serializedVersion: 2
+    m_Bits: 8
+  weapon: {fileID: 11400000, guid: 535c270d77980b5409d80cd57b74af53, type: 2}
   weaponsInventory: {fileID: 0}
-  mainWeaponFinishedReloading:
+  weaponHasChanged:
     m_PersistentCalls:
       m_Calls: []
-  mainWeaponHasShot:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 198941390817665853}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  mainWeaponStartedReloading:
+  weaponFinishedReloading:
     m_PersistentCalls:
       m_Calls: []
-  secondaryWeaponHasShot:
+  weaponHasShot:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &921857698452092909 stripped
+  weaponStartedReloading:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &921857699174874501 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 4261843816707075335, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4261843815690790767, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
   m_PrefabInstance: {fileID: 4030164144152320746}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3635292115418766666
+--- !u!114 &3965439695855229149
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 921857698452092909}
+  m_GameObject: {fileID: 921857699174874501}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6695a6738e985644fb3fb330ef6a35dd, type: 3}
@@ -172,7 +203,6 @@ MonoBehaviour:
   isDistanceCurrWeaponBased: 1
   distance: 0
   validationType: 1
-  myRoom: {fileID: 0}
   myDesiredRangeOfPositions: {fileID: 11400000, guid: fc07bcacc6da4cb4db7e79c230044866, type: 2}
-  maxQuantityOfMove: 1
-  moveAtSpeed: 6
+  maxQuantityOfMove: 2
+  moveAtSpeed: 4

@@ -79,5 +79,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: CaveCeilingBlock
       objectReference: {fileID: 0}
+    - target: {fileID: 8823828391838441760, guid: 736ec68b75268f54a80cddf4cc9470ae, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 736ec68b75268f54a80cddf4cc9470ae, type: 3}

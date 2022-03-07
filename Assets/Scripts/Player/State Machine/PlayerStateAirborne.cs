@@ -21,6 +21,12 @@ public class PlayerStateAirborne : IPlayerState
     #endregion
 
     #region REGION - Weapon
+    public void OnFireWeaponMelee(PlayerContext context)
+    {
+        // EVENT GO HERE
+        context.OnDefaultFireWeaponMelee();
+    }
+
     public void OnFireWeaponMain(PlayerContext context)
     {
         // EVENT GO HERE
@@ -72,6 +78,7 @@ public class PlayerStateAirborne : IPlayerState
         OnMove(context);
         //OnJump(context);
 
+        OnFireWeaponMelee(context);
         OnFireWeaponMain(context);
         OnFireWeaponSecondary(context);
         OnWeaponChange(context);

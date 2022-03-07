@@ -162,6 +162,14 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue: 1
     Variable: {fileID: 0}
+  maxArmor:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  currentArmor:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
   exitDeathDestroys: 1
   exitDeathDisablesSprite: 0
   onHitCueDuration: 0.14
@@ -174,6 +182,14 @@ MonoBehaviour:
   onDeathEvents:
     m_PersistentCalls:
       m_Calls: []
+  isEnemy: 1
+  myDrops:
+  - {fileID: 418731571920632839, guid: 67d2eb267d4dd404299b59ec5eaa6bc1, type: 3}
+  - {fileID: 2989215637769811154, guid: 7737965b165c68641b2c5ab578b243e5, type: 3}
+  - {fileID: 7546089093656136656, guid: e0f77ea0d2091fb458dfdbbdafde5e4d, type: 3}
+  - {fileID: 1904513868067826317, guid: dd77c72568d1be44fa3b9ad678e743d8, type: 3}
+  minDrop: 5
+  maxDrop: 10
 --- !u!114 &3831662558856893129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,7 +255,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3831662558856893142}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 0ec2b9f9dfa33f54795a03987ce7307a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.24

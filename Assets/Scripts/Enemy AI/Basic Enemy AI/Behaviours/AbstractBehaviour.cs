@@ -63,8 +63,8 @@ public abstract class AbstractBehaviour : MonoBehaviour
             IsExecutionValid();
 
         // Set Distance
-        if (isDistanceCurrWeaponBased && !myContext.IsCurrentWeaponManagerNull() && distance != myContext.GetCurrentWeaponManager().MainWeapon.Range)
-            distance = myContext.GetCurrentWeaponManager().MainWeapon.Range;
+        if (isDistanceCurrWeaponBased && !myContext.IsCurrentWeaponManagerNull() && distance != myContext.GetCurrentWeaponManager().Weapon.Range)
+            distance = myContext.GetCurrentWeaponManager().Weapon.Range;
 
         // Execute
         if (isValidForExecute)
@@ -114,7 +114,7 @@ public abstract class AbstractBehaviour : MonoBehaviour
 
 
     // SECTION - Method - Utility ===================================================================
-    private void SetMyBasicEnemyContext()
+    protected void SetMyBasicEnemyContext()
     {
         // context is located in object's parent(base parent) of attack parent(state parent)
         myContext = transform.parent.transform.parent.gameObject.GetComponent<BasicEnemyContext>();

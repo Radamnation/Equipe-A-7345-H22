@@ -9,19 +9,23 @@ public class WeaponSO : ScriptableObject
     [Header("Information")]
     [SerializeField] private string weaponName;
     [SerializeField] private string weaponDescription;
+    [SerializeField] private bool isMelee = false;
 
     [Header("Value")]
     [SerializeField] private int currencyValue;
 
     [Header("Statistics")]
     [SerializeField] private bool canFireContinuously;
+    [SerializeField] private int startingAmmo;
     [SerializeField] private int currentAmmo;
     [SerializeField] private int maxAmmo;
+    [SerializeField] private int startingClip;
     [SerializeField] private int currentClip;
     [SerializeField] private int maxClip;
     [SerializeField] private float firingRate;
     [SerializeField] private float reloadTime;
     [SerializeField] private float damage;
+    [SerializeField] private float knockback;
     [SerializeField] private float spread;
     [SerializeField] private float range;
     [SerializeField] private int bulletsNumber;
@@ -36,7 +40,8 @@ public class WeaponSO : ScriptableObject
     // SECTION - Property ===================================================================
     public string WeaponName { get => weaponName; set => weaponName = value; }
     public string WeaponDescription { get => weaponDescription; set => weaponDescription = value; }
-    
+    public bool IsMelee { get => isMelee; set => isMelee = value; }
+
     public int CurrencyValue { get => currencyValue; set => currencyValue = value; }
 
     public bool CanFireContinuously { get => canFireContinuously; set => canFireContinuously = value; }
@@ -47,6 +52,7 @@ public class WeaponSO : ScriptableObject
     public float FiringRate { get => firingRate; set => firingRate = value; }
     public float ReloadTime { get => reloadTime; set => reloadTime = value; }
     public float Damage { get => damage; set => damage = value; }
+    public float Knockback { get => knockback; set => knockback = value; }
     public float Spread { get => spread; set => spread = value; }
     public float Range { get => range; set => range = value; }
     public int BulletsNumber { get => bulletsNumber; set => bulletsNumber = value; }
@@ -60,8 +66,8 @@ public class WeaponSO : ScriptableObject
     // Start is called before the first frame update
     void OnEnable()
     {
-        currentAmmo = maxAmmo;
-        currentClip = maxClip;
+        currentAmmo = startingAmmo;
+        currentClip = startingClip;
     }
 
     public bool ShootCheck()

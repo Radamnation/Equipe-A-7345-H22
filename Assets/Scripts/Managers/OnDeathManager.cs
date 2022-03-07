@@ -44,7 +44,7 @@ public class OnDeathManager : MonoBehaviour
         if (GameManager.instance.AsyncLoad == null)
             GameManager.instance.LoadSceneAsync(0); // TO BE CHANGED FOR : GameManager.instance.StringHUB & delete hubsceneint
 
-        if (GameManager.instance.AsyncLoad.progress >= 0.9f)
+        if (GameManager.instance.AsyncLoad.progress > 0.89f)
             myLoadSceneEndCue.gameObject.SetActive(true);
         else
             hasAsyncEndedWithAnim = false;

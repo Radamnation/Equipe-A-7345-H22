@@ -16,7 +16,7 @@ TagManager:
   - LivingEntity
   - Obstacle
   - Platform
-  - 
+  - Pickable
   - 
   - 
   - 

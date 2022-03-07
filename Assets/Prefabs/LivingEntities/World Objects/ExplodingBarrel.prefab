@@ -156,6 +156,14 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue: 0
     Variable: {fileID: 0}
+  maxArmor:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  currentArmor:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
   exitDeathDestroys: 1
   exitDeathDisablesSprite: 0
   onHitCueDuration: 0.14
@@ -180,6 +188,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  isEnemy: 0
+  myDrops: []
+  minDrop: 10
+  maxDrop: 20
 --- !u!95 &580406396174781458
 Animator:
   serializedVersion: 4
@@ -223,7 +235,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6544539548589606803}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 0ec2b9f9dfa33f54795a03987ce7307a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.24
@@ -308,7 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d613873f442ac404bbef14939145ef69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1
+  radius: 2
   targetMask:
     serializedVersion: 2
     m_Bits: 969
@@ -317,4 +329,4 @@ MonoBehaviour:
   delayDisablesSprite: 0
   executeDelay: 0.4
   lingerDelay: 0
-  damage: 5
+  damage: 25

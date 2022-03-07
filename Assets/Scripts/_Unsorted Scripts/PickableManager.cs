@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class PickableManager : MonoBehaviour
 {
+    public static PickableManager instance;
+
     [SerializeField] private WeaponsInventorySO weaponsInventorySO;
     [SerializeField] private FloatReference currentHealth;
     [SerializeField] private FloatReference maxHealth;
@@ -19,6 +21,18 @@ public class PickableManager : MonoBehaviour
     [SerializeField] private UnityEvent secondaryAsChange;
     [SerializeField] private UnityEvent currencyAsChange;
 
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(this.gameObject);
+
+        currentHealth.Value = maxHealth.Value;
+        currentArmor.Value = 0;
+        currentCurrency.Value = 0;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +45,28 @@ public class PickableManager : MonoBehaviour
         
     }
 
-    public bool PickedPickable(PickableSO pickableSO)
+    public void SellWeapon(WeaponSO weaponSO)
+    {
+        currentCurrency.Value += weaponSO.CurrencyValue;
+        currencyAsChange.Invoke();
+    }
+
+    public bool BuyPickable(PickableSO pickableSO)
+    {
+        if (currentCurrency.Value >= pickableSO.MerchantPrice)
+        {
+            if (PickPickable(pickableSO))
+            {
+                currentCurrency.Value -= pickableSO.MerchantPrice;
+                currencyAsChange.Invoke();
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
+
+    public bool PickPickable(PickableSO pickableSO)
     {
         bool verification = false;
         if (pickableSO.HealthValue > 0)

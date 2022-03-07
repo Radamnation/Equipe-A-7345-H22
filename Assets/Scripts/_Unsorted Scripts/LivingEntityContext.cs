@@ -8,6 +8,8 @@ public class LivingEntityContext : MonoBehaviour
     [Header("Health")]
     [SerializeField] private FloatReference maxHP;
     [SerializeField] private FloatReference currentHP;
+    [SerializeField] private FloatReference maxArmor;
+    [SerializeField] private FloatReference currentArmor;
 
     [Header("Animator")]
     [Tooltip("You may need to add [AB_ManageOnDeathAnim.cs] to animation state")]
@@ -25,8 +27,12 @@ public class LivingEntityContext : MonoBehaviour
     [SerializeField] private UnityEvent onDeathEvents;
 
                      private SpriteRenderer[] spriteRenderer;
+                     private Rigidbody myRigidbody;
 
     [SerializeField] private bool isEnemy = true;
+    [SerializeField] private Pickable[] myDrops;
+    [SerializeField] private int minDrop = 5;
+    [SerializeField] private int maxDrop = 10;
 
     // SECTION - Property =========================================================
     public bool IsDead { get => currentHP.Value <= 0.0f; }
@@ -38,6 +44,7 @@ public class LivingEntityContext : MonoBehaviour
     {
         FullHeal();
         spriteRenderer = GetComponentsInChildren<SpriteRenderer>();
+        myRigidbody = GetComponent<Rigidbody>();
     }
 
 
@@ -45,10 +52,41 @@ public class LivingEntityContext : MonoBehaviour
     public void FullHeal()
     {
         currentHP.Value = maxHP.Value;
+        if (gameObject.CompareTag("Player") && onTakeDamageEvents != null)
+        {
+            onTakeDamageEvents.Invoke();
+        }
+    }
+
+    public void FullArmor()
+    {
+        currentArmor.Value = maxArmor.Value;
+        if (onTakeDamageEvents != null)
+        {
+            onTakeDamageEvents.Invoke();
+        }
+    }
+
+    public void KnockBack(float knockback, Vector3 direction)
+    {
+        myRigidbody.AddForce(knockback * direction, ForceMode.Impulse);
     }
 
     public void TakeDamage(float damage)
     {
+        if (currentArmor.Value > 0.0f)
+        {
+            currentArmor.Value -= damage;
+            if (currentArmor.Value < 0)
+            {
+                damage = -currentArmor.Value;
+                currentArmor.Value = 0;
+            }
+            else
+            {
+                damage = 0;
+            }
+        }
         if (currentHP.Value > 0.0f)
         {
             currentHP.Value -= damage;
@@ -58,9 +96,16 @@ public class LivingEntityContext : MonoBehaviour
             // On Death
             if (IsDead)
             {
+                currentHP.Value = 0;
                 OnDeathBaseHandler(); // Placed here to avoid manual storing in event
+                if (onTakeDamageEvents != null)
+                {
+                    onTakeDamageEvents.Invoke();
+                }
                 if (onDeathEvents != null)
+                {
                     onDeathEvents.Invoke();
+                }
             }
             // On Simple Damage
             else
@@ -112,16 +157,31 @@ public class LivingEntityContext : MonoBehaviour
 
     public void AE_ManageObjectAtEndDeathAnim() // Animator Event
     {
+        if (isEnemy)
+        {
+            DropPickables();
+            GetComponentInParent<Room>().MyLivingEntities.Remove(this);
+            GetComponentInParent<Room>().CheckLivingEntities();
+        }
+
         if (exitDeathDisablesSprite)
             GetComponentInChildren<SpriteRenderer>().enabled = false;
         else if (exitDeathDestroys)
             DestroyMe();
-         
-        GetComponentInParent<Room>().CheckLivingEntities();
     }
 
     public void DestroyMe()
     {
         Destroy(gameObject);
+    }
+
+    private void DropPickables()
+    {
+        var limit = Random.Range(minDrop, maxDrop);
+        for (int i = 0; i < limit; i++)
+        {
+            var newPickable = Instantiate(myDrops[Random.Range(0, myDrops.Length)], transform);
+            newPickable.transform.parent = null;
+        }
     }
 }

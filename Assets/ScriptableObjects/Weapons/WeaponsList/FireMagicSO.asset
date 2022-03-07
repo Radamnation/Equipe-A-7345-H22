@@ -14,17 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Fire Magic
   weaponDescription: Shoots a Fireball
-  currencyValue: 35
+  isMelee: 0
+  currencyValue: 100
   canFireContinuously: 0
+  startingAmmo: 25
   currentAmmo: 25
   maxAmmo: 25
+  startingClip: 5
   currentClip: 5
   maxClip: 5
   firingRate: 0.75
   reloadTime: 2
-  damage: 35
+  damage: 10
+  knockback: 0
   spread: 0
-  range: 0
+  range: 5.26
   bulletsNumber: 0
   projectile: {fileID: 8577326024213328246, guid: f7c7dc808ce6fe14a949282368fc7d44, type: 3}
   bulletHole: {fileID: 0}

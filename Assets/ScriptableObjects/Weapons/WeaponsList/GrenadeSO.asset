@@ -16,13 +16,15 @@ MonoBehaviour:
   weaponDescription: Explosion Damage
   currencyValue: 5
   canFireContinuously: 0
+  startingAmmo: 0
   currentAmmo: 0
   maxAmmo: 0
+  startingClip: 3
   currentClip: 3
-  maxClip: 3
-  firingRate: 3
+  maxClip: 99
+  firingRate: 1
   reloadTime: 0
-  damage: 50
+  damage: 25
   spread: 0
   range: 0
   bulletsNumber: 0

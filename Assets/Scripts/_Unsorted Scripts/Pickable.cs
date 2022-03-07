@@ -6,14 +6,18 @@ using UnityEngine.Events;
 public class Pickable : MonoBehaviour
 {
     [SerializeField] private PickableSO pickableSO;
+    [SerializeField] private float spawnForce = 10f;
 
     private SpriteRenderer mySpriteRenderer;
+    private Rigidbody myRigidboby;
 
     private void Awake()
     {
         mySpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         mySpriteRenderer.sprite = pickableSO.Sprite;
         mySpriteRenderer.color = pickableSO.Color;
+        myRigidboby = GetComponent<Rigidbody>();
+        myRigidboby.AddForce(new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 1f), Random.Range(-1f, 1f)).normalized * spawnForce, ForceMode.Impulse);
     }
 
     // Update is called once per frame
@@ -22,19 +26,27 @@ public class Pickable : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.GetComponentInChildren<PickableManager>() != null)
+    //    {
+    //        ActivatePickable(collision);
+    //    }
+    //}
+
+    private void ActivatePickable(Collider other)
     {
-        if (collision.gameObject.GetComponentInChildren<PickableManager>() != null)
+        if (other.gameObject.GetComponentInChildren<PickableManager>().PickPickable(pickableSO))
         {
-            ActivatePickable(collision);
+            Destroy(gameObject);
         }
     }
 
-    private void ActivatePickable(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.GetComponentInChildren<PickableManager>().PickedPickable(pickableSO))
+        if (other.gameObject.GetComponentInChildren<PickableManager>() != null)
         {
-            Destroy(gameObject);
+            ActivatePickable(other);
         }
     }
 }

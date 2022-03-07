@@ -16,6 +16,8 @@ public class PickableSO : ScriptableObject
     [SerializeField] private bool secondaryValueIsPercent;
     [SerializeField] private float secondaryValue;
     [SerializeField] private float currencyValue;
+    [SerializeField] private Sprite pickableUISprite;
+    [SerializeField] private float merchantPrice;
 
     public Sprite Sprite { get => sprite; }
     public Color Color { get => color; }
@@ -28,4 +30,6 @@ public class PickableSO : ScriptableObject
     public bool SecondaryValueIsPercent { get => secondaryValueIsPercent; }
     public float SecondaryValue { get => secondaryValue; }
     public float CurrencyValue { get => currencyValue; }
+    public Sprite PickableUISprite { get => pickableUISprite; }
+    public float MerchantPrice { get => merchantPrice; }
 }

@@ -15,29 +15,43 @@ public class MinimapRoom : MonoBehaviour
 
     public void PlaceDoors(Room room)
     {
+        foreach (Room adjRoom in room.MyAdjacentRooms)
+        {
+            if (adjRoom.IsSecretRoom)
+            {
+                if (room.transform.localPosition - adjRoom.transform.localPosition == new Vector3(0, 0, -room.XDimension))
+                {
+                    northDoorImage.color = Color.clear;
+                }
+                if (room.transform.localPosition - adjRoom.transform.localPosition == new Vector3(0, 0, room.XDimension))
+                {
+                    southDoorImage.color = Color.clear;
+                }
+                if (room.transform.localPosition - adjRoom.transform.localPosition == new Vector3(-room.XDimension, 0, 0))
+                {
+                    eastDoorImage.color = Color.clear;
+                }
+                if (room.transform.localPosition - adjRoom.transform.localPosition == new Vector3(room.XDimension, 0, 0))
+                {
+                    westDoorImage.color = Color.clear;
+                }
+            }
+        }
         if (room.NorthDoorIsBlocked)
         {
-            var tempColor = Color.white;
-            tempColor.a = 0;
-            northDoorImage.color = tempColor;
+            northDoorImage.color = Color.clear;
         }
         if (room.SouthDoorIsBlocked)
         {
-            var tempColor = Color.white;
-            tempColor.a = 0;
-            southDoorImage.color = tempColor;
+            southDoorImage.color = Color.clear;
         }
         if (room.EastDoorIsBlocked)
         {
-            var tempColor = Color.white;
-            tempColor.a = 0;
-            eastDoorImage.color = tempColor;
+            eastDoorImage.color = Color.clear;
         }
         if (room.WestDoorIsBlocked)
         {
-            var tempColor = Color.white;
-            tempColor.a = 0;
-            westDoorImage.color = tempColor;
+            westDoorImage.color = Color.clear;
         }
         northDoorImage.gameObject.SetActive(false);
         southDoorImage.gameObject.SetActive(false);

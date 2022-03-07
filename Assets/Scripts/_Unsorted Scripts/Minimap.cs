@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class Minimap : MonoBehaviour
 {
+    //[SerializeField] private Color bossRoomColor;
+    //[SerializeField] private Color specialRoomColor;
+    //[SerializeField] private Color secretRoomColor;
+    //[SerializeField] private Color treasureRoomColor;
+
     [SerializeField] private TransformSO playerTransform;
     [SerializeField] private MapLayoutInformationSO mapLayoutInformation;
     [SerializeField] private MinimapRoom minimapRoomPrefab;
@@ -16,6 +21,8 @@ public class Minimap : MonoBehaviour
     [SerializeField] private Sprite normalRoomSprite;
     [SerializeField] private Sprite bossRoomSprite;
     [SerializeField] private Sprite treasureRoomSprite;
+    [SerializeField] private Sprite secretRoomSprite;
+    [SerializeField] private Sprite specialRoomSprite;
 
     private List<MinimapRoom> minimapRooms = new List<MinimapRoom>();
 
@@ -27,7 +34,7 @@ public class Minimap : MonoBehaviour
         for (int i = 0; i < mapLayoutInformation.RoomPositions.Count; i++)
         {
             var newMinimapRoom = Instantiate(minimapRoomPrefab);
-            newMinimapRoom.transform.parent = minimapRoomsParent;
+            newMinimapRoom.transform.SetParent(minimapRoomsParent);
             var tempPosition = mapLayoutInformation.RoomPositions[i] * minimapScale;
             newMinimapRoom.transform.localPosition = new Vector3(tempPosition.x, tempPosition.z);
             newMinimapRoom.transform.localScale = Vector3.one;
@@ -40,6 +47,14 @@ public class Minimap : MonoBehaviour
             else if (mapLayoutInformation.Rooms[i].IsTreasureRoom)
             {
                 newMinimapRoom.MyImage.sprite = treasureRoomSprite;
+            }
+            else if (mapLayoutInformation.Rooms[i].IsSecretRoom)
+            {
+                newMinimapRoom.MyImage.sprite = secretRoomSprite;
+            }
+            else if (mapLayoutInformation.Rooms[i].IsSpecialRoom)
+            {
+                newMinimapRoom.MyImage.sprite = specialRoomSprite;
             }
             else
             {
@@ -66,7 +81,7 @@ public class Minimap : MonoBehaviour
             if (mapLayoutInformation.Rooms[i].IsVisibleOnMap)
             {
                 minimapRooms[i].gameObject.SetActive(true);
-                minimapRooms[i].MyImage.color = Color.gray;
+                minimapRooms[i].MyImage.color = new Color(0.25f, 0.25f, 0.25f, 1);
             }
             if (mapLayoutInformation.Rooms[i].IsVisitedOnMap)
             {

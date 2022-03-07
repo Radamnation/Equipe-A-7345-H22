@@ -1,4 +1,5 @@
 using UnityEngine;
+using Pathfinding;
 
 public class AIManager : MonoBehaviour
 {

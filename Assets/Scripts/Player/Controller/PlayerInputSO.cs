@@ -25,6 +25,7 @@ public class PlayerInputSO : ScriptableObject
     public float LookY { get; set; }
 
     // World Interaction --------------------
+    public bool FireMeleeWeapon { get; set; }
     public bool FireMainWeapon { get; set; }
     public bool Jump { get; set; }
     public bool Reload { get; set; }
