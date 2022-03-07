@@ -20,6 +20,7 @@ public class WeaponManager : MonoBehaviour
     // [SerializeField] private WeaponSO secondaryWeapon;
     [SerializeField] private WeaponsInventorySO weaponsInventory;
 
+    [SerializeField] private UnityEvent weaponHasChanged;
     [SerializeField] private UnityEvent weaponFinishedReloading;
     [SerializeField] private UnityEvent weaponHasShot;
     [SerializeField] private UnityEvent weaponStartedReloading;
@@ -61,9 +62,10 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-    public void UpdateWeapon()
+    public void UpdateWeapon() // WeaponSO weapon
     {
-        weapon = weaponsInventory.EquippedMainWeapon;
+        this.weapon = weaponsInventory.EquippedMainWeapon; //weapon;
+        //weaponHasChanged.Invoke();
     }
 
     public void ResetReload()

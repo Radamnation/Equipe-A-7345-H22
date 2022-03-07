@@ -1744,14 +1744,6 @@ PrefabInstance:
       propertyPath: visualFeedBack
       value: 
       objectReference: {fileID: 961438174}
-    - target: {fileID: 316649817, guid: a3bba2dbe530b5241beabfbbc59adc79, type: 3}
-      propertyPath: myTargetMask.m_Bits
-      value: 448
-      objectReference: {fileID: 0}
-    - target: {fileID: 316649817, guid: a3bba2dbe530b5241beabfbbc59adc79, type: 3}
-      propertyPath: isEnemyWeaponManager
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1990362425418368980, guid: a3bba2dbe530b5241beabfbbc59adc79, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1799,22 +1791,6 @@ PrefabInstance:
     - target: {fileID: 1990362425418368986, guid: a3bba2dbe530b5241beabfbbc59adc79, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1990362425989773732, guid: a3bba2dbe530b5241beabfbbc59adc79, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1990362426275796374, guid: a3bba2dbe530b5241beabfbbc59adc79, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1990362426275796374, guid: a3bba2dbe530b5241beabfbbc59adc79, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 1990362426275796374, guid: a3bba2dbe530b5241beabfbbc59adc79, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.334
       objectReference: {fileID: 0}
     - target: {fileID: 7794977571437871941, guid: a3bba2dbe530b5241beabfbbc59adc79, type: 3}
       propertyPath: onDeathEvents.m_PersistentCalls.m_Calls.Array.data[1].m_Target

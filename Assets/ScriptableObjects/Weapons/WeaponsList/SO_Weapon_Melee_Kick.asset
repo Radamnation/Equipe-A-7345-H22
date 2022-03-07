@@ -25,7 +25,7 @@ MonoBehaviour:
   maxClip: 1000
   firingRate: 0.5
   reloadTime: 0
-  damage: 5
+  damage: 4
   knockback: 5
   spread: 0
   range: 0.96

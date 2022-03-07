@@ -204,10 +204,10 @@ public class PlayerContext : MonoBehaviour
             mainWeapon.ResetReload();
 
             weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[0];
-            mainWeapon.UpdateWeapon();
+            mainWeapon.UpdateWeapon(); // weapons.EquippedMainWeapon
             // weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
             StaticDebugger.SimpleDebugger(isDebugOn, $"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
-            // mainWeaponHasChanged.Invoke();
+            mainWeaponHasChanged.Invoke();
         }
         else if (input.WeaponTwo)       // WEAPON TWO
         {
@@ -219,10 +219,10 @@ public class PlayerContext : MonoBehaviour
             if (weapons.CarriedMainWeapons.Count > 1)
             {
                 weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[1];
-                mainWeapon.UpdateWeapon();
+                mainWeapon.UpdateWeapon(); // weapons.EquippedMainWeapon
                 // weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
                 StaticDebugger.SimpleDebugger(IsDebugOn, $"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
-                // mainWeaponHasChanged.Invoke();
+                mainWeaponHasChanged.Invoke();
             }
         }
         else if (input.WeaponScrollBackward)       // WEAPON SCROLL <=
@@ -238,10 +238,10 @@ public class PlayerContext : MonoBehaviour
                 if (index < 0)
                     index = weapons.CarriedMainWeapons.Count - 1;
                 weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[index];
-                mainWeapon.UpdateWeapon();
+                mainWeapon.UpdateWeapon(); // weapons.EquippedMainWeapon 
                 // weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
                 StaticDebugger.SimpleDebugger(IsDebugOn, $"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
-                // mainWeaponHasChanged.Invoke();
+                mainWeaponHasChanged.Invoke();
             }
         }
         else if (input.WeaponScrollForward)       // WEAPON SCROLL =>
@@ -257,10 +257,10 @@ public class PlayerContext : MonoBehaviour
                 if (index > weapons.CarriedMainWeapons.Count - 1)
                     index = 0;
                 weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[index];
-                mainWeapon.UpdateWeapon();
+                mainWeapon.UpdateWeapon(); // weapons.EquippedMainWeapon
                 // weaponHolder.MainWeapon = weapons.EquippedMainWeapon;
                 StaticDebugger.SimpleDebugger(IsDebugOn, $"MAIN WEAPON CHANGED TO ... {weapons.EquippedMainWeapon.WeaponName}");
-                // mainWeaponHasChanged.Invoke();
+                mainWeaponHasChanged.Invoke();
             }
         }
     }
