@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Melee Weapon
   weaponDescription: Some Melee Weapon
+  isMelee: 0
   currencyValue: 10
   canFireContinuously: 0
   startingAmmo: 100
@@ -24,7 +25,8 @@ MonoBehaviour:
   maxClip: 1000
   firingRate: 1.5
   reloadTime: 0
-  damage: 10
+  damage: 5
+  knockback: 0
   spread: 0
   range: 0.96
   bulletsNumber: 0

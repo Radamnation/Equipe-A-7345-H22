@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f154196a838d15246a41bfefe1660af1, type: 3}
   m_Name: SO _ Kamikaze _ Mimic _ Exploding Barrel _ MaxHP
   m_EditorClassIdentifier: 
-  Value: 50
+  Value: 25

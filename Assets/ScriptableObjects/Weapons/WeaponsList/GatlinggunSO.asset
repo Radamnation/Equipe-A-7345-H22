@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Shotgun
   weaponDescription: Pumping Action
+  isMelee: 0
   currencyValue: 150
   canFireContinuously: 1
   startingAmmo: 120
@@ -24,7 +25,8 @@ MonoBehaviour:
   maxClip: 30
   firingRate: 0.1
   reloadTime: 3
-  damage: 5
+  damage: 3
+  knockback: 0
   spread: 0
   range: 0
   bulletsNumber: 0

@@ -10,7 +10,6 @@ public class WeaponManager : MonoBehaviour
     [Header("Enemy Weapon Manager Section")]
     [SerializeField] private bool isEnemyWeaponManager = true; 
     [SerializeField] private bool tracksPlayer = true;
-                     private float enemyDamageModifier = 0.25f; // To be changed, bad design. Instantiated projectile would have to have a check for isEnemy and that will become anoying really fast to setup | healths for all should be based on average weapon damage to avoid conditional checks
 
     [Space(10)]
     [SerializeField] private TransformSO playerTransform;
@@ -84,7 +83,7 @@ public class WeaponManager : MonoBehaviour
 
                 fireRateDelay = weapon.FiringRate;
                 validationBool = ShootWeapon(weapon);
-                weaponHasShot.Invoke(); // if (validationBool) for enemies??
+                weaponHasShot.Invoke();
                 return true;
             }
             else if (!weapon.CanFireContinuously)
@@ -93,23 +92,7 @@ public class WeaponManager : MonoBehaviour
             }
         }
         return false;
-        //return validationBool;
     }
-
-    //public void TriggerSecondaryWeapon()
-    //{
-    //    if (secondaryFireRateDelay <= 0)
-    //    {
-    //        if (secondaryWeapon.ShootCheck())
-    //        {
-    //            StaticDebugger.SimpleDebugger(isDebugOn, $" {secondaryWeapon.WeaponName} ... FIRED");
-
-    //            secondaryFireRateDelay = secondaryWeapon.FiringRate;
-    //            ShootWeapon(secondaryWeapon);
-    //            secondaryWeaponHasShot.Invoke();
-    //        }
-    //    }
-    //}
 
     public void ReloadWeapon()
     {
@@ -166,7 +149,6 @@ public class WeaponManager : MonoBehaviour
     public bool ShootShortRayCast(WeaponSO weapon)
     {
         RaycastHit hit;
-        //Physics.Raycast(transform.position, transform.forward, out hit, GameManager.instance.canBeShotByPlayerMask, 1000); // myMask
         hit = StaticRayCaster.IsLineCastTouching(transform.position, transform.forward, weapon.Range, myTargetMask, isDebugOn);
         if (hit.collider != null)
         {
@@ -174,8 +156,7 @@ public class WeaponManager : MonoBehaviour
 
             if (hit.collider.GetComponent<LivingEntityContext>() != null)
             {
-                float damage = isEnemyWeaponManager ? weapon.Damage * enemyDamageModifier : weapon.Damage;
-                hit.collider.GetComponent<LivingEntityContext>().TakeDamage(damage); // weapon.Damage
+                hit.collider.GetComponent<LivingEntityContext>().TakeDamage(weapon.Damage);
                 if (weapon.Knockback > 0)
                 {
                     hit.collider.GetComponent<LivingEntityContext>().KnockBack(weapon.Knockback, transform.forward);
@@ -194,7 +175,6 @@ public class WeaponManager : MonoBehaviour
     public bool ShootSingleRayCast(WeaponSO weapon)
     {
         RaycastHit hit;
-        //Physics.Raycast(transform.position, transform.forward, out hit, GameManager.instance.canBeShotByPlayerMask, 1000); // myMask
         hit = StaticRayCaster.IsLineCastTouching(transform.position, transform.forward, 1000, myTargetMask, isDebugOn);
         if (hit.collider != null)
         {
@@ -202,8 +182,7 @@ public class WeaponManager : MonoBehaviour
 
             if (hit.collider.GetComponent<LivingEntityContext>() != null)
             {
-                float damage = isEnemyWeaponManager ? weapon.Damage * enemyDamageModifier : weapon.Damage;
-                hit.collider.GetComponent<LivingEntityContext>().TakeDamage(damage); // weapon.Damage
+                hit.collider.GetComponent<LivingEntityContext>().TakeDamage(weapon.Damage);
                 return true;
             }
             else if (!isEnemyWeaponManager)
@@ -223,7 +202,6 @@ public class WeaponManager : MonoBehaviour
         {
             RaycastHit hit;
             var spreadDirection = new Vector3(0, Random.Range(-weapon.Spread, weapon.Spread), Random.Range(-weapon.Spread, weapon.Spread));
-            //Physics.Raycast(transform.position, transform.forward + spreadDirection, out hit, GameManager.instance.canBeShotByPlayerMask, 1000);
             hit = StaticRayCaster.IsLineCastTouching(transform.position, transform.forward + spreadDirection, 1000, myTargetMask, isDebugOn);
             if (hit.collider != null)
             {
@@ -231,8 +209,7 @@ public class WeaponManager : MonoBehaviour
 
                 if (hit.collider.GetComponent<LivingEntityContext>() != null)
                 {
-                    float damage = isEnemyWeaponManager ? (weapon.Damage * enemyDamageModifier)/ weapon.BulletsNumber : weapon.Damage;
-                    hit.collider.GetComponent<LivingEntityContext>().TakeDamage(damage); // weapon.Damage / weapon.BulletsNumber
+                    hit.collider.GetComponent<LivingEntityContext>().TakeDamage(weapon.Damage / weapon.BulletsNumber);
 
                     validationBool = true;
                 }

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Handgun
   weaponDescription: Simple handgun
+  isMelee: 0
   currencyValue: 50
   canFireContinuously: 0
   startingAmmo: 80
@@ -24,7 +25,8 @@ MonoBehaviour:
   maxClip: 8
   firingRate: 0.25
   reloadTime: 1.5
-  damage: 10
+  damage: 5
+  knockback: 0
   spread: 0
   range: 0
   bulletsNumber: 0

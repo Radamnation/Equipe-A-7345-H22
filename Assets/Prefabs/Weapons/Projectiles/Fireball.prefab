@@ -172,7 +172,7 @@ MonoBehaviour:
   delayDisablesSprite: 0
   executeDelay: 0
   lingerDelay: 0.2
-  damage: 25
+  damage: 10
 --- !u!1 &6912852400933906267
 GameObject:
   m_ObjectHideFlags: 0
