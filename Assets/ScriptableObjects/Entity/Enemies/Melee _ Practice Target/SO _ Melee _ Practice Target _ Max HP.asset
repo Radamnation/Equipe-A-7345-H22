@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f154196a838d15246a41bfefe1660af1, type: 3}
-  m_Name: Ranged _ Fire Spitter _ Max HP
+  m_Name: SO _ Melee _ Practice Target _ Max HP
   m_EditorClassIdentifier: 
   Value: 30

@@ -6,7 +6,7 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: _AOC _ Melee _ Imp _ NEW SYSTEM
+  m_Name: _AOC _ Melee _ Imp
   m_Controller: {fileID: 9100000, guid: ca99d74dfef11254c899c2765b0a0f85, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 0b68ae56640f959428fdecc760017b7b, type: 2}
