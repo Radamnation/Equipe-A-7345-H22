@@ -121,6 +121,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "OnOptionMenu",
+                    "type": "Button",
+                    "id": "192c1034-275c-4f8b-ade5-915e1b07acbe",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -902,6 +911,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "OnFireMeleeWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "83d45c51-241a-4ba0-9553-abe152c7ce96",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "OnOptionMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "17da87d3-bf44-4c49-9b97-59dd5c37c2d3",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "OnOptionMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

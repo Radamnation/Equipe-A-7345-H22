@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
 
     // SECTION - Method - Utility ===================================================================
-    #region REGION - Mouse Cursor & Mouse Visible
+    #region REGION - Option & Mouse Cursor & Mouse Visible
     public void ToggleMouseCursor_ConfinedToLocked()
     {
         Cursor.lockState = (Cursor.lockState == CursorLockMode.Locked) ? CursorLockMode.Confined : CursorLockMode.Locked;
@@ -59,6 +59,19 @@ public class GameManager : MonoBehaviour
     {
         Cursor.lockState = lockMode;
         Cursor.visible = cursorVisible;
+    }
+
+    public void ToggleTimeScale()
+    {
+        if (Time.timeScale >= 1.0f)
+            Time.timeScale = 0.0f;
+        else
+            Time.timeScale = 1.0f;
+    }
+
+    public void SetTimeScale(float timeScale)
+    {
+        Time.timeScale = timeScale;
     }
     #endregion
 

@@ -33,6 +33,7 @@ public class PlayerInputSO : ScriptableObject
     public bool FireSecondaryWeapon { get; set; }
 
     // Option --------------------
+    public bool OptionMenu { get; set; }
     public bool ShowMap { get; set; }
 
     // Weapon Switching --------------------
