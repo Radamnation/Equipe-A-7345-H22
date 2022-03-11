@@ -32,21 +32,22 @@ public class BasicEnemyContext : MonoBehaviour
 
     // Parameters
     private readonly string animParam_ExitDeathAnim = "ExitDeathAnim";
-    private readonly string animParam_OnDeath = "OnDeath";
-    private readonly string animParam_OnHit = "OnHit";
-    private readonly string animParam_OnAtkRoaming = "OnAttackRoaming";
-    private readonly string animParam_OnAtkAggressive = "OnAttackAggressive";
     private readonly string animParam_maxSpeed = "maxSpeed";
     private readonly string animParam_animAngle = "animAngle";
 
-    // Animation States
+    // Animation States & Parameters
     private readonly string animState_Iddle = "Iddle";
     private readonly string animState_OnAwake = "OnAwake";
     private readonly string animState_OnMoveBlendTree = "BlendTree _ Movement";
-    private readonly string animState_OnAtkRoaming = "OnAttackRoaming";
-    private readonly string animState_OnAtkAggressive = "OnAttackAgressive";
     private readonly string animState_OnDeath = "OnDeath";
 
+    private readonly string animState_01_Transition = "State_01_Transition";
+    private readonly string animState_01_NoToken = "State_01_NoToken";
+    private readonly string animState_01_Token = "State_01_Token";
+
+    private readonly string animState_02_Transition = "State_02_Transition";
+    private readonly string animState_02_NoToken = "State_02_NoToken";
+    private readonly string animState_02_Token = "State_02_Token";
     #endregion
 
 
@@ -290,6 +291,8 @@ public class BasicEnemyContext : MonoBehaviour
     #endregion
 
     #region REGION - Utility
+
+    // Target
     public void SetMyTemporaryTargetAs(Transform setAs)
     {
         myTemporaryTargetTransform.position = setAs.position;
@@ -300,6 +303,7 @@ public class BasicEnemyContext : MonoBehaviour
         myTemporaryTargetTransform.position = setAs;
     }
 
+    // Weapon
     public bool TryFireMainWeapon()
     {
         if (currState is BasicEnemyState_One)
@@ -354,6 +358,7 @@ public class BasicEnemyContext : MonoBehaviour
         return null;
     }
 
+    // PathFinding
     public void SetSpeedAsDefault() // Note : Also used as animator event
     {
         MyAIPath.maxSpeed = maxSpeed;
@@ -362,6 +367,11 @@ public class BasicEnemyContext : MonoBehaviour
     public void SetSpeed(float newSpeed)
     {
         MyAIPath.maxSpeed = newSpeed;
+    }
+
+    public bool HasPath()
+    {
+        return MyAIPath.hasPath;
     }
 
     public void SetEndReachedDistance(float newEndReachedDistance = defaultEndReachedDistance)
@@ -391,6 +401,8 @@ public class BasicEnemyContext : MonoBehaviour
         SetEndReachedDistance();
     }
 
+
+    // State 
     public void SetFiniteStateMachine(BasicEnemy_States transitionTo)
     {
         switch (transitionTo)
@@ -413,30 +425,52 @@ public class BasicEnemyContext : MonoBehaviour
             SetFiniteStateMachine(BasicEnemy_States.ONE);
     }
 
+    // Animator
+
+    public void SetTransitionAnim()
+    {
+        if (currState is BasicEnemyState_One)
+            anim.SetTrigger(animState_01_Transition);
+        else if (currState is BasicEnemyState_Two)
+            anim.SetTrigger(animState_02_Transition);
+    }
+
     public void SetAnimTrigger(BasicEnemy_AnimTriggers trigger)
     {
         switch (trigger)
         {
             case BasicEnemy_AnimTriggers.DEATH:
-                anim.SetTrigger(animParam_OnDeath);
+                anim.SetTrigger(animState_OnDeath);
                 break;
 
             case BasicEnemy_AnimTriggers.EXITDEATH:
                 anim.SetBool(animParam_ExitDeathAnim, true);
                 break;
 
-            case BasicEnemy_AnimTriggers.ONHIT:
-                anim.SetTrigger(animParam_OnHit);
+            case BasicEnemy_AnimTriggers.STATE_01_TRANSITION:
+                anim.SetTrigger(animState_01_Transition);
                 break;
 
-            case BasicEnemy_AnimTriggers.STATEONEATTACK:
-                anim.SetTrigger(animParam_OnAtkRoaming);
+            case BasicEnemy_AnimTriggers.STATE_01_NOTOKEN:
+                anim.SetTrigger(animState_01_NoToken);
                 break;
 
-            case BasicEnemy_AnimTriggers.STATETWOATTACK:
-                anim.SetTrigger(animParam_OnAtkAggressive);
+            case BasicEnemy_AnimTriggers.STATE_01_TOKEN:
+                anim.SetTrigger(animState_01_Token);
                 break;
 
+
+            case BasicEnemy_AnimTriggers.STATE_02_TRANSITION:
+                anim.SetTrigger(animState_02_Transition);
+                break;
+
+            case BasicEnemy_AnimTriggers.STATE_02_NOTOKEN:
+                anim.SetTrigger(animState_02_NoToken);
+                break;
+
+            case BasicEnemy_AnimTriggers.STATE_02_TOKEN:
+                anim.SetTrigger(animState_02_Token);
+                break;
 
             default: Debug.Log($"An error as occured at [SetAnimTrigger()] of [EnemyContext.cs] from enemy: {gameObject.name}"); break;
         }
@@ -454,8 +488,6 @@ public class BasicEnemyContext : MonoBehaviour
 
     public bool IsInAnimationState(BasicEnemy_AnimationStates checkAnimation)
     {
-        // ADD
-        // ONREVIVE
         switch (checkAnimation)
         {
             case BasicEnemy_AnimationStates.IDDLE:
@@ -467,14 +499,30 @@ public class BasicEnemyContext : MonoBehaviour
             case BasicEnemy_AnimationStates.MOVEMENT:
                 return anim.GetCurrentAnimatorStateInfo(0).IsName(animState_OnMoveBlendTree);
 
-            case BasicEnemy_AnimationStates.STATE_ONE_ATTACK:
-                return anim.GetCurrentAnimatorStateInfo(0).IsName(animState_OnAtkRoaming);
-
-            case BasicEnemy_AnimationStates.STATE_TWO_ATTACK:
-                return anim.GetCurrentAnimatorStateInfo(0).IsName(animState_OnAtkAggressive);
-
             case BasicEnemy_AnimationStates.DEAD:
                 return anim.GetCurrentAnimatorStateInfo(0).IsName(animState_OnDeath);
+
+
+
+            case BasicEnemy_AnimationStates.STATE_01_TRANSITION:
+                return anim.GetCurrentAnimatorStateInfo(0).IsName(animState_01_Transition);
+
+            case BasicEnemy_AnimationStates.STATE_01_NOTOKEN:
+                return anim.GetCurrentAnimatorStateInfo(0).IsName(animState_01_NoToken);
+
+            case BasicEnemy_AnimationStates.STATE_01_TOKEN:
+                return anim.GetCurrentAnimatorStateInfo(0).IsName(animState_01_Token);
+
+
+            case BasicEnemy_AnimationStates.STATE_02_TRANSITION:
+                return anim.GetCurrentAnimatorStateInfo(0).IsName(animState_02_Transition);
+
+            case BasicEnemy_AnimationStates.STATE_02_NOTOKEN:
+                return anim.GetCurrentAnimatorStateInfo(0).IsName(animState_02_NoToken);
+
+            case BasicEnemy_AnimationStates.STATE_02_TOKEN:
+                return anim.GetCurrentAnimatorStateInfo(0).IsName(animState_02_Token);
+
 
             default: Debug.Log($"An error as occured at [IsInAnimationState()] of [EnemyContext.cs] from enemy: {gameObject.name}"); break;
         }
@@ -482,12 +530,18 @@ public class BasicEnemyContext : MonoBehaviour
         return false;
     }
 
+    public bool CanUseBehaviour()
+    {
+        return anim.GetCurrentAnimatorStateInfo(0).IsName(animState_Iddle) ||
+                anim.GetCurrentAnimatorStateInfo(0).IsName(animState_OnMoveBlendTree);
+    }
+
     public float GetCurrentAnimStateLength()
     {
         return anim.GetCurrentAnimatorStateInfo(0).length;
     }
 
-    private void AE_ExecuteRoamingAttack() // Animator Event
+    private void AE_ExecuteState_01_Token() // Animator Event
     {
         // TryFireMainWeapon() will execute damage regardless if there is additional behaviours
         TryFireMainWeapon();
@@ -496,7 +550,7 @@ public class BasicEnemyContext : MonoBehaviour
             behaviour_Token_1.Execute();
     }
 
-    private void AE_ExecuteAggressiveAttack() // Animator Event
+    private void AE_ExecuteState_02_Token() // Animator Event
     {
         // TryFireMainWeapon() will execute damage regardless if there is additional behaviours
         TryFireMainWeapon();

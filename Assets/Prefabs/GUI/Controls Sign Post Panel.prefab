@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2671063581913809469}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 1.0847458, y: 0.72316384}
+  m_Size: {x: 1, y: 0.7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -112,8 +112,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.93766075, y: 0.59575546, z: 0.06287985}
-  m_Center: {x: -0.018601805, y: -0.06370419, z: -0.0009212941}
+  m_Size: {x: 0.8743205, y: 0.5819909, z: 0.06287985}
+  m_Center: {x: -0.025515914, y: -0.05226031, z: -0.0009212941}
 --- !u!54 &3097988711449849535
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -128,7 +128,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &-5273606095321305031
 MonoBehaviour:

@@ -17,9 +17,9 @@ public class AB_BasicEnemyToggleStateAtEndAttack : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Toggle handler
-        if (myContext.IsInAnimationState(BasicEnemy_AnimationStates.STATE_ONE_ATTACK) && myContext.To_2_OnAtkExit)
+        if (myContext.IsInAnimationState(BasicEnemy_AnimationStates.STATE_01_TOKEN) && myContext.To_2_OnAtkExit)
             myContext.ToggleState();
-        else if (myContext.IsInAnimationState(BasicEnemy_AnimationStates.STATE_TWO_ATTACK) && myContext.To_1_OnAtkExit)
+        else if (myContext.IsInAnimationState(BasicEnemy_AnimationStates.STATE_02_TOKEN) && myContext.To_1_OnAtkExit)
             myContext.ToggleState();
     }
 }
