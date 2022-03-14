@@ -1416,6 +1416,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 476972259049671593, guid: 61eef4f389c3b29449083b458e5e48e3, type: 3}
+      propertyPath: uniqueID
+      value: 5123363233938137108
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686114649123894536, guid: 61eef4f389c3b29449083b458e5e48e3, type: 3}
+      propertyPath: uniqueID
+      value: 8272113060909563039
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308335209203605191, guid: 61eef4f389c3b29449083b458e5e48e3, type: 3}
+      propertyPath: m_Name
+      value: floor
+      objectReference: {fileID: 0}
     - target: {fileID: 6384407283595209764, guid: 61eef4f389c3b29449083b458e5e48e3, type: 3}
       propertyPath: m_Name
       value: HUB _ TEST SEB
@@ -1464,7 +1476,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6384407283595209767, guid: 61eef4f389c3b29449083b458e5e48e3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408556525366473201, guid: 61eef4f389c3b29449083b458e5e48e3, type: 3}
+      propertyPath: uniqueID
+      value: 1181965384018291011
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6384407283595209767, guid: 61eef4f389c3b29449083b458e5e48e3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 61eef4f389c3b29449083b458e5e48e3, type: 3}
 --- !u!4 &1510191712 stripped
 Transform:
