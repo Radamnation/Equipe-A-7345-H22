@@ -207,18 +207,22 @@ public class Room : MonoBehaviour
         if (!roomPositions.Contains(transform.position / xDimension + new Vector3(1, 0, 0)))
         {
             eastDoor.CloseOffWall();
+            eastDoor.RemoveTorchs();
         }
         if (!roomPositions.Contains(transform.position / xDimension + new Vector3(-1, 0, 0)))
         {
             westDoor.CloseOffWall();
+            westDoor.RemoveTorchs();
         }
         if (!roomPositions.Contains(transform.position / xDimension + new Vector3(0, 0, 1)))
         {
             northDoor.CloseOffWall();
+            northDoor.RemoveTorchs();
         }
         if (!roomPositions.Contains(transform.position / xDimension + new Vector3(0, 0, -1)))
         {
             southDoor.CloseOffWall();
+            southDoor.RemoveTorchs();
         }
     }
 
@@ -242,30 +246,38 @@ public class Room : MonoBehaviour
     {
         eastDoor.IsLocked = true;
         SetIsInteractable(eastDoor, false);
+        eastDoor.UnlitTorchs();
 
         westDoor.IsLocked = true;
         SetIsInteractable(westDoor, false);
+        westDoor.UnlitTorchs();
 
         northDoor.IsLocked = true;
         SetIsInteractable(northDoor, false);
+        northDoor.UnlitTorchs();
 
         southDoor.IsLocked = true;
         SetIsInteractable(southDoor, false);
+        southDoor.UnlitTorchs();
     }
 
     public void UnlockAllDoors()
     {
         eastDoor.IsLocked = false;
         SetIsInteractable(eastDoor, true);
+        eastDoor.LitTorchs();
 
         westDoor.IsLocked = false;
         SetIsInteractable(westDoor, true);
+        westDoor.LitTorchs();
 
         northDoor.IsLocked = false;
         SetIsInteractable(northDoor, true);
+        northDoor.LitTorchs();
 
         southDoor.IsLocked = false;
         SetIsInteractable(southDoor, true);
+        southDoor.LitTorchs();
     }
 
     public void InitiateRoom()

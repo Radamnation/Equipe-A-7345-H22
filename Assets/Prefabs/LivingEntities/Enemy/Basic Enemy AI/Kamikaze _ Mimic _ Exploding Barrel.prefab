@@ -40,6 +40,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 1e2985d7ca2971f4982bad82226840e6, type: 2}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: takeDmgAnimStr
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: exitDeathDestroys
       value: 1
       objectReference: {fileID: 0}
@@ -198,6 +202,9 @@ MonoBehaviour:
     m_Bits: 0
   weapon: {fileID: 11400000, guid: deae533e02d594d43ac71554f1db0da1, type: 2}
   weaponsInventory: {fileID: 0}
+  weaponHasChanged:
+    m_PersistentCalls:
+      m_Calls: []
   weaponFinishedReloading:
     m_PersistentCalls:
       m_Calls: []
@@ -229,7 +236,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   isDistanceCurrWeaponBased: 0
-  distance: 1.92
+  distance: 2.24
   validationType: 0
   isPassiveBehaviour: 1
   nextState: 1

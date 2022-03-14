@@ -13,16 +13,14 @@ public class BasicEnemyState_Two : IEnemyState
         context.OnDefaultMoveBehaviour();
 
         if (!context.HasToken &&
-            !context.IsInAnimationState(BasicEnemy_AnimationStates.STATE_ONE_ATTACK) &&
-            !context.IsInAnimationState(BasicEnemy_AnimationStates.STATE_TWO_ATTACK) &&
-            !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE) )
+            context.CanUseBehaviour())
         {
             // Behaviour
             if (context.Behaviour_NoToken_2 != null && context.Behaviour_NoToken_2.IsExecutionValid())
             {
                 context.Behaviour_Token_2.Execute();
 
-                //context.SetAnimTrigger(BasicEnemy_AnimTriggers.STATEONEATTACK);
+                context.SetAnimTrigger(BasicEnemy_AnimTriggers.STATE_02_NOTOKEN);
             }
         }
         else context.SetTargetAsPlayer(); // Prevents target being null
@@ -32,9 +30,7 @@ public class BasicEnemyState_Two : IEnemyState
     {
         if (context.HasToken &&
             context.MyAIPath.reachedEndOfPath &&
-            !context.IsInAnimationState(BasicEnemy_AnimationStates.STATE_ONE_ATTACK) &&
-            !context.IsInAnimationState(BasicEnemy_AnimationStates.STATE_TWO_ATTACK) &&
-            !context.IsInAnimationState(BasicEnemy_AnimationStates.ONAWAKE) )
+            context.CanUseBehaviour() )
         {
             // Check: Animation based
             if (!context.AnimExecuteAtk_2)
@@ -59,10 +55,10 @@ public class BasicEnemyState_Two : IEnemyState
 
                 // Can the animation be launched?
                 if (launchAnimation)
-                    context.SetAnimTrigger(BasicEnemy_AnimTriggers.STATETWOATTACK);
+                    context.SetAnimTrigger(BasicEnemy_AnimTriggers.STATE_02_TOKEN);
             }
             else if ((context.Behaviour_Token_2 != null && context.Behaviour_Token_2.IsExecutionValid()) || context.WeaponManager_2.IsTargetInFront())
-                context.SetAnimTrigger(BasicEnemy_AnimTriggers.STATETWOATTACK); // Animation event based execution    
+                context.SetAnimTrigger(BasicEnemy_AnimTriggers.STATE_02_TOKEN); // Animation event based execution    
         }
     }
 

@@ -34,6 +34,10 @@ public class PlayerStateDead : IPlayerState
 
     public IPlayerState OnStateExit(PlayerContext context)
     {
+        // Option Menu
+        if (context.Input.OptionMenu)
+            return new PlayerStateOptionMenu(this);
+
         return this;
     }
 }

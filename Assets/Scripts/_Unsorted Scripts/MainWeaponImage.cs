@@ -55,7 +55,7 @@ public class MainWeaponImage : MonoBehaviour
         {
             shakeTimer -= Time.deltaTime;
             var shakeOffset = new Vector3(Random.Range(-shakeAmount, shakeAmount), Random.Range(-shakeAmount, shakeAmount), 0);
-            transform.position = currentPosition + shakeOffset;
+            transform.position = currentPosition + shakeOffset * Time.timeScale;
         }
         else
         {

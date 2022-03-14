@@ -24,6 +24,7 @@ public class PlayerInputController : MonoBehaviour
         { "Weapon Scroll <= Debug", false },
         { "Weapon Scroll => Debug", false },
         { "Interact Debug", false },
+        { "Option Menu Debug", false},
         { "Show Map Debug", false },
         { "Any Key Debug", false}
     };
@@ -161,6 +162,16 @@ public class PlayerInputController : MonoBehaviour
         if (debugDico["Interact Debug"])
             if (input.Interact)
                 Debug.Log($" {gameObject.name} ... INTERACT");
+    }
+
+    public void OnOptionMenu(InputAction.CallbackContext cbc)
+    {
+        input.OptionMenu = cbc.performed;
+
+        // Debugger
+        if (debugDico["Option Menu Debug"])
+            if (input.ShowMap)
+                Debug.Log($" {gameObject.name} ... Option Menu");
     }
 
     public void OnShowMap(InputAction.CallbackContext cbc)

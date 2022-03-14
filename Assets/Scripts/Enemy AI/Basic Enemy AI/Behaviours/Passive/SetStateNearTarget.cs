@@ -21,13 +21,16 @@ public class SetStateNearTarget : AbstractBehaviour
     // SECTION - Method - Implementation Specific ============================================================
     public override void Behaviour()
     {
-        // Check for "Iddle ambush"
         if (myContext.IsInAnimationState(BasicEnemy_AnimationStates.IDDLE))
-            myContext.SetAnimTrigger(BasicEnemy_AnimTriggers.ONHIT); // -> Awake
+        {
+            // Set new state
+            if (!myContext.MyLivingEntity.IsDead)
+            {
+                myContext.SetTransitionAnim();
 
-        // Set new state
-        if (!myContext.MyLivingEntity.IsDead)
-            myContext.SetFiniteStateMachine(nextState);
+                myContext.SetFiniteStateMachine(nextState);
+            }
+        }
     }
 
     public override bool ChildSpecificValidations()
