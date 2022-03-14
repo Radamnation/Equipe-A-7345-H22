@@ -52,6 +52,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ac2e18107c0e4a64fa726c09140a1358, type: 2}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: takeDmgAnimStr
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDrops.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -74,7 +78,7 @@ PrefabInstance:
     - target: {fileID: 3831662558856893132, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: e474034abe5432f4b85ca267fc1579a2, type: 2}
+      objectReference: {fileID: 22100000, guid: 434b2f777ae023342bac3bb3becf31ed, type: 2}
     - target: {fileID: 3831662558856893135, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: traversableTags
       value: -5

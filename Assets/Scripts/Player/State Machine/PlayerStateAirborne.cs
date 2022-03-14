@@ -94,6 +94,10 @@ public class PlayerStateAirborne : IPlayerState
         if (context.LivingEntityContext.IsDead)
             return new PlayerStateDead();
 
+        // Option Menu
+        if (context.Input.OptionMenu)
+            return new PlayerStateOptionMenu(this);
+
         // Grounded
         if (context.TryRayCastGround().transform)
             return new PlayerStateGrounded();
