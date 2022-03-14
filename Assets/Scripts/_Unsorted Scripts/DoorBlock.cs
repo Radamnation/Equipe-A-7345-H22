@@ -13,10 +13,17 @@ public class DoorBlock : MonoBehaviour
     [SerializeField] private GameObject door;
     [SerializeField] private BoxCollider doorCollider;
 
+    private TorchBlock[] myTorchs;
+
     public bool IsDoor { get => isDoor; set => isDoor = value; }
     public bool IsOpen { get => isOpen; set => isOpen = value; }
     public bool IsLocked { get => isLocked; set => isLocked = value; }
     public bool IsSecret { get => isSecret; set => isSecret = value; }
+
+    private void Awake()
+    {
+        myTorchs = GetComponentsInChildren<TorchBlock>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +72,30 @@ public class DoorBlock : MonoBehaviour
     {
         Instantiate(wallPrefab, transform);
         door.SetActive(false);
+    }
+
+    public void RemoveTorchs()
+    {
+        foreach (TorchBlock torch in myTorchs)
+        {
+            torch.gameObject.SetActive(false);
+        }
+    }
+
+    public void LitTorchs()
+    {
+        foreach (TorchBlock torch in myTorchs)
+        {
+            torch.LitTorch();
+        }
+    }
+
+    public void UnlitTorchs()
+    {
+        foreach (TorchBlock torch in myTorchs)
+        {
+            torch.UnlitTorch();
+        }
     }
 
     //private void OnTriggerEnter(Collider other)

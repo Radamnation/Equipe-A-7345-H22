@@ -9,6 +9,9 @@ public class WeaponPedestal : MonoBehaviour
     [SerializeField] private float spriteVerticalRange = 0.1f;
     [SerializeField] private float spriteVerticalSpeed = 1f;
 
+    [SerializeField] private WeaponSO specificWeapon;
+    [SerializeField] private bool isInHub;
+    [SerializeField] private bool weaponIsRandom = true;
     [SerializeField] private WeaponSO[] randomWeapons;
     [SerializeField] private WeaponsInventorySO weaponInventory;
     [SerializeField] private UnityEvent mainWeaponHasChanged;
@@ -16,13 +19,22 @@ public class WeaponPedestal : MonoBehaviour
     private WeaponSO pedestalWeapon;
     private SpriteRenderer mySpriteRenderer;
     private Vector3 spriteInitialPosition;
+    private System.Random roomGenerationRandom;
 
     // Start is called before the first frame update
     void Start()
     {
         mySpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         spriteInitialPosition = mySpriteRenderer.transform.localPosition;
-        pedestalWeapon = Instantiate(randomWeapons[Random.Range(0, randomWeapons.Length)]);
+        roomGenerationRandom = RandomManager.instance.RoomGenerationRandom.SystemRandom;
+        if (weaponIsRandom)
+        {
+            pedestalWeapon = Instantiate(randomWeapons[roomGenerationRandom.Next(0, randomWeapons.Length)]);
+        }
+        else
+        {
+            pedestalWeapon = Instantiate(specificWeapon);
+        }
         UpdateSprite();
     }
 
@@ -37,14 +49,18 @@ public class WeaponPedestal : MonoBehaviour
     public void ActivatePedestal()
     {
         var otherPedestals = transform.parent.transform.GetComponentsInChildren<WeaponPedestal>();
-        foreach (WeaponPedestal pedestal in otherPedestals)
+        if (!isInHub)
         {
-            if (pedestal != this)
+            foreach (WeaponPedestal pedestal in otherPedestals)
             {
-                pedestal.EmptyPedestal();
+                if (pedestal != this)
+                {
+                    pedestal.EmptyPedestal();
+                }
             }
-        }
-        if (weaponInventory.CarriedMainWeapons.Count < weaponInventory.MaxMainWeapons)
+        }    
+        
+        if (weaponInventory.CarriedMainWeapons.Count < weaponInventory.MaxMainWeapons && !isInHub)
         {
             WeaponSO temp = pedestalWeapon;
             pedestalWeapon = null;

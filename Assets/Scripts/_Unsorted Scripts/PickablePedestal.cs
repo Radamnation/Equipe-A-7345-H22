@@ -21,6 +21,7 @@ public class PickablePedestal : MonoBehaviour
     private PickableSO pedestalPickable;
     private SpriteRenderer mySpriteRenderer;
     private Vector3 spriteInitialPosition;
+    private System.Random roomGenerationRandom;
 
     // Start is called before the first frame update
     void Start()
@@ -28,13 +29,14 @@ public class PickablePedestal : MonoBehaviour
         mySpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         spriteInitialPosition = mySpriteRenderer.transform.localPosition;
         isInShop = GetComponentInParent<Room>().IsMerchantRoom;
+        roomGenerationRandom = RandomManager.instance.RoomGenerationRandom.SystemRandom;
         if (isInShop)
         {
-            pedestalPickable = Instantiate(buyablePickablesList.PickableSO[Random.Range(0, buyablePickablesList.PickableSO.Count)]);
+            pedestalPickable = Instantiate(buyablePickablesList.PickableSO[roomGenerationRandom.Next(0, buyablePickablesList.PickableSO.Count)]);
         }
         else
         {
-            pedestalPickable = Instantiate(pickablePickablesList.PickableSO[Random.Range(0, pickablePickablesList.PickableSO.Count)]);
+            pedestalPickable = Instantiate(pickablePickablesList.PickableSO[roomGenerationRandom.Next(0, pickablePickablesList.PickableSO.Count)]);
         }
         UpdateSprite();
     }
