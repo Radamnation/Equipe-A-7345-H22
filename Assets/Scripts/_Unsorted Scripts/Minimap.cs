@@ -24,11 +24,29 @@ public class Minimap : MonoBehaviour
     [SerializeField] private Sprite secretRoomSprite;
     [SerializeField] private Sprite specialRoomSprite;
 
+    [SerializeField] private Image circleImage;
+    [SerializeField] private Image squareImage;
+    [SerializeField] private Image center;
+
+    private bool fullView = false;
+    private RectTransform myRectTransform;
+
+    [SerializeField] private Vector3 circleMapPosition;
+    [SerializeField] private Vector3 circleMapSize;
+    [SerializeField] private Vector3 squareMapPosition;
+    [SerializeField] private Vector3 squareMapSize;
+
     private List<MinimapRoom> minimapRooms = new List<MinimapRoom>();
 
     // Start is called before the first frame update
     void Start()
     {
+        myRectTransform = GetComponent<RectTransform>();
+        fullView = false;
+        squareImage.enabled = false;
+        myRectTransform.anchoredPosition = circleMapPosition;
+        myRectTransform.sizeDelta = circleMapSize;
+        
         minimapRooms.Clear();
         transform.rotation = Quaternion.Euler(0, 0, 180);
         for (int i = 0; i < mapLayoutInformation.RoomPositions.Count; i++)
@@ -69,9 +87,39 @@ public class Minimap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, playerTransform.Transform.rotation.eulerAngles.y));
-        var tempPosition = playerTransform.Transform.position / roomScale * minimapScale;
-        minimapRoomsParent.localPosition = new Vector3(-tempPosition.x, -tempPosition.z);
+        if (!fullView)
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, playerTransform.Transform.rotation.eulerAngles.y));
+            var tempPosition = playerTransform.Transform.position / roomScale * minimapScale;
+            minimapRoomsParent.localPosition = new Vector3(-tempPosition.x, -tempPosition.z);
+        }
+        else
+        {
+            var tempPosition = playerTransform.Transform.position / roomScale * minimapScale;
+            center.transform.localPosition = new Vector3(tempPosition.x, tempPosition.z);
+        }    
+    }
+
+    public void ToggleMap()
+    {
+        fullView = !fullView;
+        if (fullView)
+        {
+            circleImage.enabled = false;
+            squareImage.enabled = true;
+            myRectTransform.anchoredPosition = squareMapPosition;
+            myRectTransform.sizeDelta = squareMapSize;
+            transform.rotation = Quaternion.identity;
+            minimapRoomsParent.localPosition = Vector3.zero;
+        }
+        else
+        {
+            circleImage.enabled = true;
+            squareImage.enabled = false;
+            myRectTransform.anchoredPosition = circleMapPosition;
+            myRectTransform.sizeDelta = circleMapSize;
+            center.transform.localPosition = Vector3.zero;
+        }
     }
 
     public void UpdateMinimap()
