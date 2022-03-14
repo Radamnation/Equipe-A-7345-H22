@@ -160,8 +160,13 @@ public class LivingEntityContext : MonoBehaviour
         if (isEnemy)
         {
             DropPickables();
-            GetComponentInParent<Room>().MyLivingEntities.Remove(this);
-            GetComponentInParent<Room>().CheckLivingEntities();
+            Room myRoom = GetComponentInParent<Room>();
+
+            if (myRoom != null)
+            {
+                myRoom.MyLivingEntities.Remove(this);
+                myRoom.CheckLivingEntities();
+            }
         }
 
         if (exitDeathDisablesSprite)
