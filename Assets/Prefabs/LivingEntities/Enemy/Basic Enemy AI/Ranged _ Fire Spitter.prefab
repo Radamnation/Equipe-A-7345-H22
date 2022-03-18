@@ -67,6 +67,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: 5d7eff6e02445824aaa10e30287a6853, type: 2}
+    - target: {fileID: 3831662558856893135, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: traversableTags
+      value: -5
+      objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893136, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: endReachedDistance
       value: 5.26

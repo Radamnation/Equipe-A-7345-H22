@@ -170,7 +170,7 @@ public class PlayerInputController : MonoBehaviour
 
         // Debugger
         if (debugDico["Option Menu Debug"])
-            if (input.ShowMap)
+            if (input.OptionMenu)
                 Debug.Log($" {gameObject.name} ... Option Menu");
     }
 

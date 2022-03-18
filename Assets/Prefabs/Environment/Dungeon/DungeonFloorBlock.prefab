@@ -97,3 +97,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 736ec68b75268f54a80cddf4cc9470ae, type: 3}
+--- !u!1 &3522416506430932090 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8823828391838441760, guid: 736ec68b75268f54a80cddf4cc9470ae, type: 3}
+  m_PrefabInstance: {fileID: 5374670180779599194}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-6798977621282057456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3522416506430932090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efee954c69f0d421086729bb8df1137f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  uniqueID: 2157016342014870914
+  points: []
+  convex: 1
+  minBoundsHeight: 1
+  penaltyDelta: 0
+  modifyWalkability: 0
+  setWalkability: 0
+  applyOnStart: 1
+  applyOnScan: 1
+  updatePhysics: 0
+  resetPenaltyOnPhysics: 1
+  updateErosion: 1
+  modifyTag: 1
+  setTag: 0
+  legacyMode: 0
+  serializedVersion: 0
+  legacyUseWorldSpace: 0

@@ -83,6 +83,11 @@ public class Room : MonoBehaviour
     
     public List<Room> MyAdjacentRooms { get => myAdjacentRooms; set => myAdjacentRooms = value; }
     public List<LivingEntityContext> MyLivingEntities { get => myLivingEntities; set => myLivingEntities = value; }
+    
+    public DoorBlock EastDoor { get => eastDoor; set => eastDoor = value; }
+    public DoorBlock WestDoor { get => westDoor; set => westDoor = value; }
+    public DoorBlock SouthDoor { get => southDoor; set => southDoor = value; }
+    public DoorBlock NorthDoor { get => northDoor; set => northDoor = value; }
 
     // Start is called before the first frame update
     void Awake()
