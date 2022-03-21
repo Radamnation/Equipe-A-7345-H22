@@ -116,11 +116,21 @@ public abstract class AbstractBehaviour : MonoBehaviour
     // SECTION - Method - Utility ===================================================================
     protected void SetMyBasicEnemyContext()
     {
+        /*
         // context is located in object's parent(base parent) of attack parent(state parent)
         myContext = transform.parent.transform.parent.gameObject.GetComponent<BasicEnemyContext>();
 
         if (myContext == null)
             myContext = transform.GetComponentInParent<BasicEnemyContext>();
+        */
+
+        // context is located in object's parent(base parent) of attack parent(state parent)
+        myContext = transform.GetComponentInParent<BasicEnemyContext>();
+
+        if (myContext == null)
+            myContext = transform.parent.transform.parent.gameObject.GetComponent<BasicEnemyContext>();
+        
+
     }
 
     protected void TrySetRaycastSingleHit()

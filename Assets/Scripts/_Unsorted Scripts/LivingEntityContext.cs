@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using Pathfinding;
+using UnityEngine.UI;
 
 public class LivingEntityContext : MonoBehaviour
 {
@@ -29,14 +31,23 @@ public class LivingEntityContext : MonoBehaviour
                      private SpriteRenderer[] spriteRenderer;
                      private Rigidbody myRigidbody;
 
+    [Header("Enemy Section")] // isEnemy should be an editor variable which hides all Enemy variables if false
     [SerializeField] private bool isEnemy = true;
+    [Tooltip("Enemy Specific bool:\nEnemy deactivate upon entering a trigger zone managed by [RooomEnemyManager.cs]")]
+    [SerializeField] private bool activateEnemyOnTriggerEnter = false;
+
+
+    [Header("Drops")]
     [SerializeField] private Pickable[] myDrops;
     [SerializeField] private int minDrop = 5;
     [SerializeField] private int maxDrop = 10;
 
+ 
     // SECTION - Property =========================================================
     public bool IsDead { get => currentHP.Value <= 0.0f; }
     public bool IsEnemy { get => isEnemy; set => isEnemy = value; }
+    public bool ActivateEnemyOnTriggerEnter { get => activateEnemyOnTriggerEnter; set => activateEnemyOnTriggerEnter = value; }
+    public SpriteRenderer[] SpriteRenderer { get => spriteRenderer; set => spriteRenderer = value; }
 
 
     // SECTION - Method - Unity Specific =========================================================
@@ -44,6 +55,7 @@ public class LivingEntityContext : MonoBehaviour
     {
         FullHeal();
         spriteRenderer = GetComponentsInChildren<SpriteRenderer>();
+
         myRigidbody = GetComponent<Rigidbody>();
     }
 

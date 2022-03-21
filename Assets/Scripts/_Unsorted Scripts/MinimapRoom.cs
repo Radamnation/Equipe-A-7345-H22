@@ -22,18 +22,22 @@ public class MinimapRoom : MonoBehaviour
                 if (room.transform.localPosition - adjRoom.transform.localPosition == new Vector3(0, 0, -room.XDimension))
                 {
                     northDoorImage.color = Color.clear;
+                    room.NorthDoor.RemoveTorchs();
                 }
                 if (room.transform.localPosition - adjRoom.transform.localPosition == new Vector3(0, 0, room.XDimension))
                 {
                     southDoorImage.color = Color.clear;
+                    room.SouthDoor.RemoveTorchs();
                 }
                 if (room.transform.localPosition - adjRoom.transform.localPosition == new Vector3(-room.XDimension, 0, 0))
                 {
                     eastDoorImage.color = Color.clear;
+                    room.EastDoor.RemoveTorchs();
                 }
                 if (room.transform.localPosition - adjRoom.transform.localPosition == new Vector3(room.XDimension, 0, 0))
                 {
                     westDoorImage.color = Color.clear;
+                    room.WestDoor.RemoveTorchs();
                 }
             }
         }

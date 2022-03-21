@@ -192,6 +192,7 @@ MonoBehaviour:
   myDrops: []
   minDrop: 10
   maxDrop: 20
+  isActive: 0
 --- !u!95 &580406396174781458
 Animator:
   serializedVersion: 4

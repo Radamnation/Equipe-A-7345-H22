@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FloatingInteractableBehaviour : MonoBehaviour
+public class FloatingCanvasImageBehaviour : MonoBehaviour
 {
     // SECTION - Field ===================================================================
     [SerializeField] private float spriteRotationSpeed = 1.0f;
