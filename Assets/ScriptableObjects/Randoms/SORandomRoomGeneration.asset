@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SORandomRoomGeneration
   m_EditorClassIdentifier: 
   randomizeOnStart: 1
-  seed: 32907548
+  seed: 68686796
