@@ -206,6 +206,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 647910454032990342, guid: 61eef4f389c3b29449083b458e5e48e3, type: 3}
+      propertyPath: playerWeaponInventorySO
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 665975926119809354, guid: 61eef4f389c3b29449083b458e5e48e3, type: 3}
+      propertyPath: m_Size.x
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2445621105033378971, guid: 61eef4f389c3b29449083b458e5e48e3, type: 3}
       propertyPath: m_Size.x
       value: 12
@@ -313,6 +321,18 @@ PrefabInstance:
     - target: {fileID: 6384407283595209766, guid: 61eef4f389c3b29449083b458e5e48e3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051514691555771173, guid: 61eef4f389c3b29449083b458e5e48e3, type: 3}
+      propertyPath: rangeX
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051514691555771173, guid: 61eef4f389c3b29449083b458e5e48e3, type: 3}
+      propertyPath: rangeY
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051514691555771173, guid: 61eef4f389c3b29449083b458e5e48e3, type: 3}
+      propertyPath: rangeZ
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2445621105033378971, guid: 61eef4f389c3b29449083b458e5e48e3, type: 3}
@@ -2199,7 +2219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1990362425989773733, guid: a3bba2dbe530b5241beabfbbc59adc79, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.6468843
+      value: 1.7777778
       objectReference: {fileID: 0}
     - target: {fileID: 1990362426275796374, guid: a3bba2dbe530b5241beabfbbc59adc79, type: 3}
       propertyPath: m_LocalPosition.x

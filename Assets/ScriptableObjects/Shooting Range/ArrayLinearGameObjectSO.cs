@@ -64,7 +64,7 @@ public class ArrayLinearGameObjectSO : ScriptableObject
         }
     }
 
-    public void Sort(ref int sortFrom)
+    public void Sort_BackToBack(ref int sortFrom)
     {
         if (myArray == null || sortFrom >= myArray.Length)
             return;
@@ -82,7 +82,7 @@ public class ArrayLinearGameObjectSO : ScriptableObject
         }
 
         sortFrom++;
-        Sort(ref sortFrom);
+        Sort_BackToBack(ref sortFrom);
     }
 
     public GameObject GetElement(int index)
@@ -125,8 +125,9 @@ public class ArrayLinearGameObjectSO : ScriptableObject
                 return;
             }
 
+            // Recursive not used: Bellow is faster
             GameObject[] temp = new GameObject[myArray.Length];
-
+            
             for (int i = 0; i < removeAt; i++)
                 temp[i] = myArray[i];
 
