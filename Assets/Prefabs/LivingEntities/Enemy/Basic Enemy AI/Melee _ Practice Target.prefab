@@ -57,12 +57,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: exitDeathDisablesSprite
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893132, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: ce0208c7924675140855a428a170a149, type: 2}
+    - target: {fileID: 3831662558856893134, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: m_Height
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893134, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: m_Radius
+      value: 0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893134, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: m_Center.y
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893136, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -127,9 +139,32 @@ PrefabInstance:
       propertyPath: m_Name
       value: Melee _ Practice Target
       objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893142, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: m_TagString
+      value: Practice Target
+      objectReference: {fileID: 0}
     - target: {fileID: 3831662559004454559, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1346234633, guid: 7559a43b6db78d14ebdeccbb352f482e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+--- !u!1 &3445576315363371787 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3831662558856893142, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+  m_PrefabInstance: {fileID: 1944967541527935453}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &4183900091526826765
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3445576315363371787}
+  m_Material: {fileID: 13400000, guid: 0ec2b9f9dfa33f54795a03987ce7307a, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  m_Radius: 0.12
+  m_Height: 0.25
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.39, z: 0}
