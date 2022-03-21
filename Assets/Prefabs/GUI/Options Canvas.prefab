@@ -13350,7 +13350,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3955616685864988864}
-  - component: {fileID: 3640848736725290619}
   m_Layer: 5
   m_Name: Control Screen
   m_TagString: Untagged
@@ -13379,21 +13378,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3640848736725290619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5296210085580159408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c3df1dd6ae16ee48856235f4768d47b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gfxDropdown: {fileID: 0}
-  resDropdown: {fileID: 0}
-  fullscreenToggle: {fileID: 2823840062435625305}
 --- !u!1 &5686118105735306855
 GameObject:
   m_ObjectHideFlags: 0
