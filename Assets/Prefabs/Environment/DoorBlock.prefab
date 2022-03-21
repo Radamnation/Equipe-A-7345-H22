@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 199257001791624005}
   - component: {fileID: 199257001791624004}
   - component: {fileID: 7960532789172490383}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: DoorBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -702,7 +702,7 @@ GameObject:
   - component: {fileID: 9018724000838694716}
   - component: {fileID: 9018724000838694719}
   - component: {fileID: 9018724000838694718}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: DoorFace (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -814,7 +814,7 @@ GameObject:
   - component: {fileID: 9018724000870674331}
   - component: {fileID: 9018724000870674330}
   - component: {fileID: 9018724000870674333}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: DoorFace (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1024,7 +1024,7 @@ GameObject:
   - component: {fileID: 9018724001248723902}
   - component: {fileID: 9018724001248723841}
   - component: {fileID: 9018724001248723840}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: DoorFace (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1136,7 +1136,7 @@ GameObject:
   - component: {fileID: 9018724001540776578}
   - component: {fileID: 9018724001540776581}
   - component: {fileID: 9018724001540776580}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: DoorFace (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1346,7 +1346,7 @@ GameObject:
   - component: {fileID: 9018724001741653284}
   - component: {fileID: 9018724001741653287}
   - component: {fileID: 9018724001741653286}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: DoorFace (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1458,7 +1458,7 @@ GameObject:
   - component: {fileID: 9018724001850428274}
   - component: {fileID: 9018724001850428277}
   - component: {fileID: 9018724001850428276}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: DoorFace (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1662,7 +1662,7 @@ GameObject:
   - component: {fileID: 9018724002213328932}
   - component: {fileID: 9018724002213328935}
   - component: {fileID: 9018724002213328934}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: DoorFace (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1774,7 +1774,7 @@ GameObject:
   - component: {fileID: 9018724002542846245}
   - component: {fileID: 9018724002542846244}
   - component: {fileID: 9018724002542846247}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: DoorFace (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1885,7 +1885,7 @@ GameObject:
   - component: {fileID: 9018724002568899683}
   - component: {fileID: 9018724002568899682}
   - component: {fileID: 9018724002568899685}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CorridorFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

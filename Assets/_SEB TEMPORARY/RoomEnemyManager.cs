@@ -79,7 +79,6 @@ public class RoomEnemyManager : MonoBehaviour
     // SECTION - Method - Utility Specific =========================================================
     public void Reset()
     {
-        Debug.Log("A");
         playerhasEntered = false;
         myLivingEntityContextList.Clear();
     }

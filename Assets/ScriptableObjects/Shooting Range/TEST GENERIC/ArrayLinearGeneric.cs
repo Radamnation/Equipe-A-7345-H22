@@ -1,16 +1,16 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-
-[CreateAssetMenu(menuName = "Scriptable/Data Structure/Array Linear GameObjects", fileName = "SO_myArrayLinearGameObjects")]
-public class ArrayLinearGameObjectSO : ScriptableObject
+[CreateAssetMenu(menuName = "Scriptable/Data Structure/Array Linear Generic", fileName = "SO_myArrayLinearGeneric")]
+public class ArrayLinearGeneric<T> : ScriptableObject
 {
     // SECTION - Field ===================================================================
     private int count = 0;
-    [SerializeField] private GameObject[] myArray;
+    [SerializeField] private T[] myArray;
 
 
     // SECTION - Property ===================================================================
-    public GameObject[] GetArray { get => myArray; }
     public int Count { get => count; }
     public int Length => myArray.Length;
 
@@ -20,17 +20,21 @@ public class ArrayLinearGameObjectSO : ScriptableObject
 
 
 
-    // SECTION - Method - Unity Specific ===================================================================
+    // SECTION - Constructor ===================================================================
     private void OnEnable()
     {
         CalculateCount();
     }
 
+    public ArrayLinearGeneric()
+    {
+        CalculateCount();
+    }
 
     // SECTION - Method - Data Structure Specific ===================================================================
     public void AddLength(int length = 1)
     {
-        GameObject[] temp = new GameObject[myArray.Length + length];
+        T[] temp = new T[myArray.Length + length];
 
         for (int i = 0; i < myArray.Length; i++)
             temp[i] = myArray[i];
@@ -39,7 +43,7 @@ public class ArrayLinearGameObjectSO : ScriptableObject
     }
 
 
-    public void Copy(GameObject[] copyFrom)
+    public void Copy(T[] copyFrom)
     {
         if (copyFrom == null)
             return;
@@ -48,7 +52,7 @@ public class ArrayLinearGameObjectSO : ScriptableObject
 
         myArray = copyFrom;
 
-        foreach (GameObject item in myArray)
+        foreach (T item in myArray)
             if (item != null)
                 count++;
     }
@@ -77,7 +81,7 @@ public class ArrayLinearGameObjectSO : ScriptableObject
                 if (myArray[i] == null)
                 {
                     myArray[i] = myArray[sortFrom];
-                    myArray[sortFrom] = null;
+                    myArray[sortFrom] = default(T);//null;
                 }
             }
         }
@@ -86,12 +90,12 @@ public class ArrayLinearGameObjectSO : ScriptableObject
         Sort_BackToBack(ref sortFrom);
     }
 
-    public GameObject GetElement(int index)
+    public T GetElement(int index)
     {
         return myArray[index];
     }
 
-    public void Add(GameObject item)
+    public void Add(T item)
     {
         if (count < myArray.Length)
             for (int i = 0; i < myArray.Length; i++)
@@ -103,7 +107,7 @@ public class ArrayLinearGameObjectSO : ScriptableObject
                 }
     }
 
-    public void AddAt(GameObject item, int index)
+    public void AddAt(T item, int index)
     {
         if (index < myArray.Length)
             myArray[index] = item;
@@ -112,7 +116,7 @@ public class ArrayLinearGameObjectSO : ScriptableObject
     public void Remove()
     {
         if (myArray != null)
-            myArray[count--] = null;
+            myArray[count--] = default(T);//null;
     }
 
     public void RemoveAt(int removeAt, bool alsoSort = false)
@@ -121,14 +125,14 @@ public class ArrayLinearGameObjectSO : ScriptableObject
         {
             if (!alsoSort)
             {
-                myArray[removeAt] = null;
+                myArray[removeAt] = default(T);//null;
                 count--;
                 return;
             }
 
             // Recursive not used: Bellow is faster
-            GameObject[] temp = new GameObject[myArray.Length];
-            
+            T[] temp = new T[myArray.Length];
+
             for (int i = 0; i < removeAt; i++)
                 temp[i] = myArray[i];
 
@@ -144,12 +148,12 @@ public class ArrayLinearGameObjectSO : ScriptableObject
     {
         for (int i = 0; i < myArray.Length; i++)
             if (myArray[i] != null)
-                myArray[i] = null;
+                myArray[i] = default(T);//null;
     }
 
     public void Debugger()
     {
-        foreach (GameObject item in myArray)
+        foreach (T item in myArray)
         {
             Debug.Log($"myArray.item.name = {item}");
         }
