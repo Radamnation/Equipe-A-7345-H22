@@ -599,6 +599,7 @@ GameObject:
   - component: {fileID: 2956865446121361584}
   - component: {fileID: 6508612803806283479}
   - component: {fileID: -2683637917271783900}
+  - component: {fileID: 1083795976631716735}
   m_Layer: 10
   m_Name: PlatformBlock
   m_TagString: Untagged
@@ -639,6 +640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fcce96277f7f494eba0f419c8c4da87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBreakable: 0
 --- !u!65 &-2683637917271783900
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -652,3 +654,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.25, z: 1}
   m_Center: {x: 0, y: 0.375, z: 0}
+--- !u!114 &1083795976631716735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8823828391838441760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efee954c69f0d421086729bb8df1137f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  uniqueID: 4887864177266572768
+  points: []
+  convex: 1
+  minBoundsHeight: 1
+  penaltyDelta: 0
+  modifyWalkability: 0
+  setWalkability: 0
+  applyOnStart: 1
+  applyOnScan: 1
+  updatePhysics: 0
+  resetPenaltyOnPhysics: 1
+  updateErosion: 1
+  modifyTag: 1
+  setTag: 0
+  legacyMode: 0
+  serializedVersion: 0
+  legacyUseWorldSpace: 0

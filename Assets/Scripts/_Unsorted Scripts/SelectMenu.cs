@@ -13,7 +13,7 @@ public class SelectMenu : MonoBehaviour
     IEnumerator Start()
     {
         yield return new WaitForFixedUpdate();
-        PanelToggle(0);
+        // PanelToggle(0);
     }
 
     // Update is called once per frame
@@ -31,6 +31,14 @@ public class SelectMenu : MonoBehaviour
             {
                 StartCoroutine(SelectButton(i));
             }
+        }
+    }
+
+    public void QuitMenu()
+    {
+        for (int i = 0; i < panels.Length; i++)
+        {
+            panels[i].SetActive(false);
         }
     }
 

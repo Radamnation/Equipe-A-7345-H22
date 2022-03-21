@@ -56,3 +56,5 @@ MonoBehaviour:
   respawnMask:
     serializedVersion: 2
     m_Bits: 64
+  stringHUB: HUB
+  menuCanvas: {fileID: 0}

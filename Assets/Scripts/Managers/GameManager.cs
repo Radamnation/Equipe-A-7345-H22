@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
 
     private AsyncOperation asyncLoad;
 
+    [SerializeField] private SelectMenu menuCanvas;
+
 
     // SECTION - Property ===================================================================
     public Transform PlayerTransformRef => playerTransformRef;
@@ -75,6 +77,15 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    public void ShowMenu()
+    {
+        menuCanvas.PanelToggle(0);
+    }
+
+    public void QuitMenu()
+    {
+        menuCanvas.QuitMenu();
+    }
 
     #region REGION - Scene Load & Quit
     // Basic
