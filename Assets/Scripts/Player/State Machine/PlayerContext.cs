@@ -175,12 +175,19 @@ public class PlayerContext : MonoBehaviour
     {
         if (input.FireMainWeapon)
         {
-            if (!mainWeapon.Weapon.CanFireContinuously)
+            if (!mainWeapon.Weapon.CanBeCharged)
             {
-                input.FireMainWeapon = false;
-            }
+                if (!mainWeapon.Weapon.CanFireContinuously || mainWeapon.Weapon.CurrentClip == 0)
+                {
+                    input.FireMainWeapon = false;
+                }
 
-            mainWeapon.TriggerWeapon();
+                mainWeapon.TriggerWeapon();
+            }
+            else
+            {
+
+            }
         }
     }
 

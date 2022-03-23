@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     private Transform playerTransformRef;
 
     private AsyncOperation asyncLoad;
+    private float asyncLoadTimer;
+    private bool asyncLoadReady = false;
 
     [SerializeField] private SelectMenu menuCanvas;
 
@@ -40,6 +42,21 @@ public class GameManager : MonoBehaviour
         instance.SetMouseCursor_LockedInvisible();
 
         playerTransformRef = GameObject.Find("Player").transform;
+    }
+
+    private void Update()
+    {
+        if (asyncLoadReady)
+        {
+            if (asyncLoadTimer > 0)
+            {
+                asyncLoadTimer -= Time.deltaTime;
+            }
+            else
+            {
+                asyncLoad.allowSceneActivation = true;
+            }
+        }
     }
 
 
@@ -105,6 +122,23 @@ public class GameManager : MonoBehaviour
         // Async load desired scene
         asyncLoad = SceneManager.LoadSceneAsync(scene);
         asyncLoad.allowSceneActivation = allowSceneActivation;
+
+        Debug.Log($"asyncload: {asyncLoad}");
+
+        // Prevents unintentional inputs
+        Input.ResetInputAxes();
+
+        // Garbage collection - just in case -
+        System.GC.Collect();
+    }
+
+    public void LoadSceneAsync(int scene, float timer)
+    {
+        // Async load desired scene
+        asyncLoad = SceneManager.LoadSceneAsync(scene);
+        asyncLoad.allowSceneActivation = false;
+        asyncLoadTimer = timer;
+        asyncLoadReady = true;
 
         Debug.Log($"asyncload: {asyncLoad}");
 

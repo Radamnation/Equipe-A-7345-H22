@@ -65,11 +65,11 @@ public class NextLevelBlock : MonoBehaviour
         {
             if (isHub)
             {
-                GameManager.instance.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1, true);
+                GameManager.instance.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1, 3f);
             }
             else
             {
-                GameManager.instance.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, true);
+                GameManager.instance.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, 3f);
             }
         }
     }

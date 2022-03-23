@@ -20,11 +20,11 @@ public class TorchBlock : MonoBehaviour
 
     public void LitTorch()
     {
-        myFire.Play();
+        myFire.gameObject.SetActive(true);
     }
 
     public void UnlitTorch()
     {
-        myFire.Stop();
+        myFire.gameObject.SetActive(false);
     }
 }

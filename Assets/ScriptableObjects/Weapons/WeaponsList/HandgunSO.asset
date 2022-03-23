@@ -15,6 +15,7 @@ MonoBehaviour:
   weaponName: Handgun
   weaponDescription: Simple handgun
   isMelee: 0
+  infiniteAmmo: 0
   currencyValue: 50
   canFireContinuously: 0
   startingAmmo: 80

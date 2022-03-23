@@ -10,12 +10,14 @@ public class WeaponSO : ScriptableObject
     [SerializeField] private string weaponName;
     [SerializeField] private string weaponDescription;
     [SerializeField] private bool isMelee = false;
+    [SerializeField] private bool infiniteAmmo = false;
 
     [Header("Value")]
     [SerializeField] private int currencyValue;
 
     [Header("Statistics")]
     [SerializeField] private bool canFireContinuously;
+    [SerializeField] private bool canBeCharged;
     [SerializeField] private int startingAmmo;
     [SerializeField] private int currentAmmo;
     [SerializeField] private int maxAmmo;
@@ -41,10 +43,12 @@ public class WeaponSO : ScriptableObject
     public string WeaponName { get => weaponName; set => weaponName = value; }
     public string WeaponDescription { get => weaponDescription; set => weaponDescription = value; }
     public bool IsMelee { get => isMelee; set => isMelee = value; }
+    public bool InfiniteAmmo { get => infiniteAmmo; set => infiniteAmmo = value; }
 
     public int CurrencyValue { get => currencyValue; set => currencyValue = value; }
 
     public bool CanFireContinuously { get => canFireContinuously; set => canFireContinuously = value; }
+    public bool CanBeCharged { get => canBeCharged; set => canBeCharged = value; }
     public int CurrentAmmo { get => currentAmmo; set => currentAmmo = value; }
     public int MaxAmmo { get => maxAmmo; set => maxAmmo = value; }
     public int CurrentClip { get => currentClip; set => currentClip = value; }
@@ -74,7 +78,10 @@ public class WeaponSO : ScriptableObject
     {
         if (currentClip > 0)
         {
-            currentClip--;
+            if (!isMelee)
+            {
+                currentClip--;
+            }
             return true;
         }
         return false;
@@ -82,7 +89,7 @@ public class WeaponSO : ScriptableObject
 
     public bool ReloadCheck()
     {
-        if (currentAmmo > 0)
+        if (currentAmmo > 0 && !isMelee)
         {
             return true;
         }
@@ -93,7 +100,10 @@ public class WeaponSO : ScriptableObject
     {
         if (currentAmmo >= maxClip - currentClip)
         {
-            currentAmmo -= (maxClip - currentClip);
+            if (!infiniteAmmo)
+            {
+                currentAmmo -= (maxClip - currentClip);
+            }
             currentClip = maxClip;
         }
         else

@@ -88,7 +88,7 @@ public class WeaponManager : MonoBehaviour
                 weaponHasShot.Invoke();
                 return true;
             }
-            else if (!weapon.CanFireContinuously)
+            else if (!weapon.CanFireContinuously || weapon.CurrentClip == 0)
             {
                 ReloadWeapon();
             }
