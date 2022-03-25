@@ -44589,6 +44589,10 @@ PrefabInstance:
       propertyPath: myPracticeTargetsSO
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1507049204663758160, guid: 2cc1a516bff269d4989dcfa082f762e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 3845450508836965805, guid: 2cc1a516bff269d4989dcfa082f762e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4
@@ -44597,6 +44601,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -6
       objectReference: {fileID: 0}
+    - target: {fileID: 6023294873425586512, guid: 2cc1a516bff269d4989dcfa082f762e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+    - target: {fileID: 7548212063655222749, guid: 2cc1a516bff269d4989dcfa082f762e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 8449476920213036228, guid: 2cc1a516bff269d4989dcfa082f762e4, type: 3}
       propertyPath: m_Name
       value: Shooting Range Bell
@@ -44698,10 +44710,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4215974183726952755, guid: 8197de0789689214f80272e9cdb7c3ef, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 4215974183726952756, guid: 8197de0789689214f80272e9cdb7c3ef, type: 3}
       propertyPath: m_Name
       value: Gargoyle _ Quit
       objectReference: {fileID: 0}
+    - target: {fileID: 7163104242677476886, guid: 8197de0789689214f80272e9cdb7c3ef, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8197de0789689214f80272e9cdb7c3ef, type: 3}
 --- !u!1001 &7074636961240761824
@@ -52586,6 +52606,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUB _ TEST SEB
       objectReference: {fileID: 0}
+    - target: {fileID: 5585384642215294544, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+    - target: {fileID: 6200839944286670379, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 6824925770155736519, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
       propertyPath: m_Size.x
       value: 30
@@ -54578,6 +54606,10 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[118].second.m_TileObjectToInstantiateIndex
       value: 65535
       objectReference: {fileID: 0}
+    - target: {fileID: 8417233666034931987, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 8426313561995024683, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
       propertyPath: m_Size.x
       value: 31

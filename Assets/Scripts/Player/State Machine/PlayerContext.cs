@@ -68,6 +68,7 @@ public class PlayerContext : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         playerTransform.Transform = transform;
     }
 

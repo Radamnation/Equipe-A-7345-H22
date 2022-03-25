@@ -59,5 +59,9 @@ PrefabInstance:
       propertyPath: pickableSO
       value: 
       objectReference: {fileID: 11400000, guid: edab0581f2c5904458a90bcd3c940c27, type: 2}
+    - target: {fileID: 9081413802567273650, guid: 4b79c6e662dbf804c8a0ad37fee74290, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b79c6e662dbf804c8a0ad37fee74290, type: 3}

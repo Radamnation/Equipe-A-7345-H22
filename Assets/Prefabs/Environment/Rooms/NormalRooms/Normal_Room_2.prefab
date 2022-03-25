@@ -9911,6 +9911,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Normal_Room_2
       objectReference: {fileID: 0}
+    - target: {fileID: 5585384642215294544, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+    - target: {fileID: 6200839944286670379, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+    - target: {fileID: 8417233666034931987, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
 --- !u!4 &1838326061724857575 stripped
