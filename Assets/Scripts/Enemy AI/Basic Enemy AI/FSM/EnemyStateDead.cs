@@ -27,6 +27,9 @@ public class EnemyStateDead : IEnemyState
 
         // Disable State Machine
         context.enabled = false;
+
+        // Replace Token uppon death
+        AIManager.instance.MyTokenHandlerSO.ReturnToken();
     }
 
     public void OnStateUpdate(BasicEnemyContext context)

@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using Pathfinding;
 
 public class MoveToRandomNodeBehaviour : AbstractBehaviour
 {
@@ -39,8 +38,8 @@ public class MoveToRandomNodeBehaviour : AbstractBehaviour
         ResetCurrentMoveQuantity();
 
         // Make it so ai must be ON target to reach it
-        if (myContext.MyAIPath.endReachedDistance != 0.32f)
-            myContext.SetEndReachedDistance(0.32f);
+        if (myContext.MyAIPath.endReachedDistance != 0.64f)
+            myContext.SetEndReachedDistance(0.64f);
 
         if (moveAtSpeed != 0)
             myContext.SetSpeed(moveAtSpeed);
@@ -52,7 +51,7 @@ public class MoveToRandomNodeBehaviour : AbstractBehaviour
     {
         if (currentMove < maxQuantityOfMove)      // Set new Target when applicable
         {
-            myContext.SetMyTemporaryTargetAs(myDesiredRangeOfPositions.GetRandomTransform());
+            myContext.SetMyTemporaryTargetAs(myDesiredRangeOfPositions.GetRandomTransform(myContext));
 
             myContext.SetTarget(myContext.MyTemporaryTargetTransform);
             currentMove++;
@@ -61,9 +60,13 @@ public class MoveToRandomNodeBehaviour : AbstractBehaviour
         {
             // NOTE
             //      -To be changed for desired target
-            myContext.SetTarget(GameObject.Find("Player").transform); // myContext.SetTargetAsPlayer() don't work here only???
-            //myContext.SetTargetAsPlayer(); // Doesn't work here only???
-            myContext.SetEndReachedDistance_ToCurrState();
+            if (myContext.HasToken)
+            {
+                myContext.SetTarget(GameObject.Find("Player").transform); // myContext.SetTargetAsPlayer() don't work here only???
+                //myContext.SetTargetAsPlayer(); // Doesn't work here only???
+                myContext.SetEndReachedDistance_ToCurrState();
+            }
+
             myContext.SetSpeedAsDefault();
             currentMove++;
         }
@@ -76,7 +79,7 @@ public class MoveToRandomNodeBehaviour : AbstractBehaviour
             SetNextPosition();
             yield return new WaitForSeconds(1.0f); // Debugger, endReachedDistance always true for attack otherwise
             yield return new WaitUntil(() => myContext.MyAIPath.reachedEndOfPath);
-        } while (!myContext.GetTarget().CompareTag("Player")) ;
+        } while (currentMove < maxQuantityOfMove+1); // (!myContext.GetTargetTransform().CompareTag("Player"));
         // NOTE
         //      -Condition to be changed for desired target
 

@@ -29,8 +29,8 @@ public class BasicEnemyState_One : IEnemyState
     public void WithTokenBehaviour(BasicEnemyContext context)
     {
         if (context.HasToken &&
-            context.MyAIPath.reachedEndOfPath &&
-            context.CanUseBehaviour())
+            (context.IsTargetNear()) &&
+            context.CanUseBehaviour()) // context.IsInRangeForAttack() &&     context.HasReachedEndOfPath() &&       
         {
             // Check: Animation based
             if (!context.AnimExecuteAtk_1)
@@ -64,6 +64,7 @@ public class BasicEnemyState_One : IEnemyState
 
     public void OnManageToken(BasicEnemyContext context)
     {
+        context.OnDefaultManageToken();
     }
 
 
@@ -75,6 +76,9 @@ public class BasicEnemyState_One : IEnemyState
 
     public void OnStateUpdate(BasicEnemyContext context)
     {
+        if (!context.HasPath())
+            Debug.Log($"{context.name} Dont have path");
+
         WithoutTokenBehaviour(context);
         WithTokenBehaviour(context);
         OnManageToken(context);

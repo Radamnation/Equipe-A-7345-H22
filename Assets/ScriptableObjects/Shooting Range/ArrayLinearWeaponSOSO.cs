@@ -7,6 +7,7 @@ public class ArrayLinearWeaponSOSO : ScriptableObject
 {
     // SECTION - Field ===================================================================
     private int count = 0;
+    private int currentIndex = 0;
     [SerializeField] private WeaponSO[] myArray;
 
 
@@ -25,6 +26,7 @@ public class ArrayLinearWeaponSOSO : ScriptableObject
     // SECTION - Method - Unity Specific ===================================================================
     private void OnEnable()
     {
+        currentIndex = 0;
         CalculateCount();
     }
 
@@ -40,6 +42,27 @@ public class ArrayLinearWeaponSOSO : ScriptableObject
         myArray = temp;
     }
 
+    public WeaponSO GetPrevious()
+    {
+        if (currentIndex - 1 >= 0 && myArray[currentIndex - 1] != null)
+        {
+            currentIndex--;
+            return myArray[currentIndex];
+        }
+
+        return myArray[currentIndex];
+    }
+
+    public WeaponSO GetNext()
+    {
+        if (currentIndex + 1 <= count - 1 && myArray[currentIndex + 1] != null)
+        {
+            currentIndex++;
+            return myArray[currentIndex];
+        }
+
+        return myArray[currentIndex];
+    }
 
     public void Copy(WeaponSO[] copyFrom)
     {
@@ -95,14 +118,24 @@ public class ArrayLinearWeaponSOSO : ScriptableObject
 
     public void Add(WeaponSO item)
     {
-        if (count < myArray.Length)
-            for (int i = 0; i < myArray.Length; i++)
-                if (myArray[i] == null)
-                {
-                    myArray[i] = item;
-                    count++;
-                    return;
-                }
+        bool canAdd = true;
+
+        foreach (WeaponSO weaponSO in myArray)
+        {
+            if (item.WeaponName == weaponSO.WeaponName)
+            {
+                canAdd = false;
+                break;
+            }
+        }
+
+        if (canAdd)
+        {
+            AddLength();
+
+            myArray[Length] = item;
+            count++;
+        }
     }
 
     public void AddAt(WeaponSO item, int index)

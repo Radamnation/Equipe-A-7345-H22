@@ -617,7 +617,7 @@ PrefabInstance:
     - target: {fileID: 647910454032990342, guid: 61eef4f389c3b29449083b458e5e48e3, type: 3}
       propertyPath: playerWeaponInventorySO
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: a281a8a3b05e1994aa74255a14e2dd2e, type: 2}
     - target: {fileID: 649133788369270778, guid: 61eef4f389c3b29449083b458e5e48e3, type: 3}
       propertyPath: uniqueID
       value: 5797709343759440351
@@ -5787,6 +5787,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7542567995541475901, guid: 2f902c65c628a4541b4cf61f301226ad, type: 3}
+      propertyPath: data.dataString
+      value: UEsDBBQAAAgIAACYn+vRY05jUwIAABQFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFtVF2TmjAU/StOnrsdtLqVvrXqun1wdZZ29oWXkFwkY0iYJKjo+N+bBBBk+ySec+69537AFTGhCyBGqrVidCMpoB8j5J7Rl1FHvsIZ76WI2AVazQejJnMi7DXv2DBp8bEL0zIHoxj5KfbciQMLloKlUuUruoeF1EZbOMVcg6WUNC5aWOg6QucmoGp+L+53dLNPBIQB9Vn1NP46exCWgnCcF0Cd4U7/3cuq+skLhW2m0QSeJJJzphsvyFSF7zUqMlDgmqUM29a8ibpoBmyfGft30o/epqkG01hUuFoyZWdUp0W/ZD24HOtDbe6IeekKzcYTb6tOuvkPP596Qapk/tpWHrsiJmPk8I4rgrXDjCphgC571v2MTpgfcMLhIwPxJtdKloJ2oaWGybK3pHtviwzIodPVXgdgWXze0rhb0c13f15wlid+9NMaiLj0Aw9dDCi7nN/WsL8N3WSwqDPxV8MfvO8fUUO8MKWNpRq5cO4SWSonRSs/MddMaRZSCfBw47kAgbmpdjaNGa5wwPXKDpgX7F6XpnjDtW/BIMTDnT4IBtROnu7L0pk8bUBn29JwJqAz7Yg3O6eFFKK+MP1IuqioVCkmvah9yejjZaE0CL8FCSHP85QATMInOsdkNn0maRJOcZiEyB8eE7ZNzHe1z2Y6dmmiSy7smbUfkdFa4cIfO1X4tGaXXPb8MZHKiCgAsa0ztBPSoGwR+17SFWV2PhEYw4RfN7rGiEtyABrfE8W+09XZKBx3WWJUsKM0DonRwn86YuTg+yXvFBwZnFzxNtkN3f4BUEsDBBQAAAgIAACYn+u1Q5yXbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrRSmoGlsUFScrKZRVpyaqqRpW6KRWKyqYlZclqSpUmiZZKlUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAACYn+vRY05jUwIAABQFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAACYn+u1Q5yXbQAAAHgAAAAJACQAAAAAAAAAAAAAAKACAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAWAMAAAAA
+      objectReference: {fileID: 0}
     - target: {fileID: 7542567995541475903, guid: 2f902c65c628a4541b4cf61f301226ad, type: 3}
       propertyPath: m_Name
       value: AStar
@@ -6607,17 +6611,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7542567995541475900, guid: 2f902c65c628a4541b4cf61f301226ad, type: 3}
   m_PrefabInstance: {fileID: 322940645}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &651920249 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7542567995541475901, guid: 2f902c65c628a4541b4cf61f301226ad, type: 3}
-  m_PrefabInstance: {fileID: 322940645}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78396926cbbfc4ac3b48fc5fc34a87d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &667335183
 GameObject:
   m_ObjectHideFlags: 0
@@ -7575,10 +7568,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AIManager
       objectReference: {fileID: 0}
-    - target: {fileID: 3010744016642382766, guid: 37652dbf4734ed744bc243c647c00b36, type: 3}
-      propertyPath: myAstarPath
-      value: 
-      objectReference: {fileID: 651920249}
     - target: {fileID: 3010744016642382767, guid: 37652dbf4734ed744bc243c647c00b36, type: 3}
       propertyPath: m_RootOrder
       value: 2

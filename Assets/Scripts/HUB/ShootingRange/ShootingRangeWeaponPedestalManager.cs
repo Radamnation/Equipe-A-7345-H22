@@ -1,45 +1,118 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class ShootingRangeWeaponPedestalManager : MonoBehaviour
 {
     // SECTION - Field ===================================================================
-    [Header("Player Weapons Inventory")]
+    [Header("Weapons Inventories")]
     [SerializeField] private WeaponsInventorySO playerWeaponInventorySO;
 
     [Header("Weapon Rack")]
-                     private List<WeaponSO> defaultWeapons;
-    [SerializeField] private WeaponsInventorySO playerWeaponInventory;
+    [SerializeField] private Sprite[] AddChangeCue;
+    [Space(10)]
+    [SerializeField] private WeaponSO pedestalWeapon;
     [SerializeField] private ArrayLinearWeaponSOSO availableWeaponsSO;
+                     private bool isAddToInventory = false;
+                     private Image mySpriteRenderer;
+                     private SpriteRenderer AddOrChangeSprite;
 
 
+    // SECTION - Method - Unity Specific ===================================================================
+    private void Start()
+    {
+        mySpriteRenderer = transform.GetChild(1).GetComponentInChildren<Image>();
+        AddOrChangeSprite = transform.GetChild(3).GetComponent<SpriteRenderer>();
+        pedestalWeapon = availableWeaponsSO.GetElement(0);
+        UpdatePedestalSprite();
+    }
 
 
     // SECTION - Method - Utility Specific ===================================================================
-    private void Awake()
+    public void ToggleAddOrChange()
     {
-        // Set default weapon in case of reset to weapons uppon entering HUB
-        /*
-        if (playerWeaponInventory.CarriedMainWeapons != null)
-            foreach (WeaponSO weapon in playerWeaponInventory.CarriedMainWeapons)
-            {
-                defaultWeapons.Add(weapon);
-            }
+        isAddToInventory = !isAddToInventory;
+        AddOrChangeSprite.sprite = AddChangeCue[(isAddToInventory) ? 1 : 0];
+    }
 
-        if (playerWeaponInventory.CarriedSecondaryWeapons != null)
-            foreach (WeaponSO weapon in playerWeaponInventory.CarriedSecondaryWeapons)
-            {
-                defaultWeapons.Add(weapon);
-            }
-        */
+    public void ChangePedestalWeapon_LeftOrRight(bool getNext = false)
+    {
+        if (getNext)
+            pedestalWeapon = availableWeaponsSO.GetNext();
+        else if (!getNext)
+            pedestalWeapon = availableWeaponsSO.GetPrevious();
+
+        UpdatePedestalSprite();
+    }
+
+    private void UpdatePedestalSprite()
+    {
+        mySpriteRenderer.sprite = pedestalWeapon.WeaponUISprite;
     }
 
 
-    private void SetArrayLinearGenerics()
+    // Main weapon
+    #region REGION - Main Weapon
+    public void AddOrChange_MainWeapon()
     {
-        //if (availableWeaponsSO.IsEmpty)
-            //availableWeaponsSO.Copy(defaultWeapons);
+        if (isAddToInventory)
+            AddMainWeapon();
+        else
+            ChangeMainWeapon();
     }
 
+    private void AddMainWeapon()
+    {
+        playerWeaponInventorySO.AddWeapon_Main(pedestalWeapon);
+    }
+
+    private void ChangeMainWeapon()
+    {
+        playerWeaponInventorySO.ChangeWeapon_Main(pedestalWeapon);
+    }
+    #endregion
+
+    // Secondary Weapon
+    #region REGION - Secondary Weapon
+    public void AddOrChange_SecondaryWeapon()
+    {
+        if (isAddToInventory)
+            AddSecondaryWeapon();
+        else
+            ChangeSecondaryWeapon();
+    }
+
+    private void AddSecondaryWeapon()
+    {
+        playerWeaponInventorySO.AddWeapon_Secondary(pedestalWeapon);
+    }
+
+    private void ChangeSecondaryWeapon()
+    {
+        playerWeaponInventorySO.ChangeWeapon_Secondary(pedestalWeapon);
+    }
+
+    #endregion
+
+
+    // Melee Weapon
+    #region REGION - Melee Weapon
+    public void AddOrChange_MeleeWeapon()
+    {
+        if (isAddToInventory)
+            AddMeleeWeapon();
+        else
+            ChangeMeleeWeapon();
+    }
+
+    private void AddMeleeWeapon()
+    {
+        playerWeaponInventorySO.AddWeapon_Melee(pedestalWeapon);
+    }
+
+    private void ChangeMeleeWeapon()
+    {
+        playerWeaponInventorySO.ChangeWeapon_Melee(pedestalWeapon);
+    }
+    #endregion
 }

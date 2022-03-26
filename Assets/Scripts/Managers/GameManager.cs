@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
 
         playerTransformRef = GameObject.Find("Player").transform;
     }
+    
 
     private void Update()
     {

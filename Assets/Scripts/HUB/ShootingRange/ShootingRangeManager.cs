@@ -50,6 +50,8 @@ public class ShootingRangeManager : MonoBehaviour
 
         SetAstarPathAndScan();
 
+        InstantiateShootingRange(true); // Instantiate default set of practice targets
+
         SetArrayLinearGenerics();
     }
 
@@ -62,16 +64,6 @@ public class ShootingRangeManager : MonoBehaviour
             if (myPracticeTargetInstances.Count != 0)
             {
                 outlineAnimator.SetBool(outlineAnimString, true);
-
-                // Set prefabs from scriptable as hitable
-                if (!myPracticeTargetPrefabsSO.IsEmpty)
-                    foreach (GameObject instance in myPracticeTargetInstances)
-                    {
-                        //instance.GetComponent<Collider>().enabled = true;
-
-                       // instance.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                       // instance.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-                    }
             }
         }
     }
@@ -162,14 +154,6 @@ public class ShootingRangeManager : MonoBehaviour
                 {
                     for (int index = 0; index < myPracticeTargetPrefabsSO.Length; index++)
                         OnGridInstantiate(myPracticeTargetPrefabsSO.GetElement(index));
-
-                    // Prevents attacking from outside
-                    foreach (GameObject instance in myPracticeTargetInstances)
-                    {
-                        //instance.GetComponent<Collider>().enabled = false;
-
-                        //instance.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-                    }
                 }
             }
             else // Instantiate defaults

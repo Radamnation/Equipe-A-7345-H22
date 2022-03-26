@@ -10,9 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9304e181e0dbfb4793e0676f4bf88b7, type: 3}
-  m_Name: SO _ myArrayLinear _ WeaponSO _ MAIN
+  m_Name: SO _ myArrayLinear _ WeaponSO _ MELEE
   m_EditorClassIdentifier: 
   myArray:
-  - {fileID: 11400000, guid: 2fec7de208af184448023900d178369c, type: 2}
-  - {fileID: 11400000, guid: 9b3bd99fc8d650141a02a158c813cfa7, type: 2}
-  - {fileID: 11400000, guid: f85df85a504f5804db1afc427de2431b, type: 2}
+  - {fileID: 11400000, guid: 535c270d77980b5409d80cd57b74af53, type: 2}

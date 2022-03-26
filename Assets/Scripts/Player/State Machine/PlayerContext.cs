@@ -294,7 +294,6 @@ public class PlayerContext : MonoBehaviour
 
             if (hit.transform != null)
             {
-                Debug.Log($"hit name is : {hit.transform.name}");
                 Interactable interactable = hit.transform.GetComponentInChildren<Interactable>();
 
                 // Canvas visual cue

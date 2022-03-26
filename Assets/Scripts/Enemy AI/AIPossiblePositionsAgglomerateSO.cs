@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Scriptable/AI/AI Possible Positions Agglomerate", fileName = "AI Possible Positions Agglomerate SO")]
+[CreateAssetMenu(menuName = "Scriptable/AI/AI Possible Positions Agglomerate", fileName = "SO _ AI Possible Positions Agglomerate")]
 public class AIPossiblePositionsAgglomerateSO : ScriptableObject
 {
     // SECTION - Field ===================================================================
