@@ -12,22 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dd5b66272fae1e428361bba782974d5, type: 3}
   m_Name: PlayerWeaponsInventorySO
   m_EditorClassIdentifier: 
-  weaponHasChangedGE: {fileID: 11400000, guid: d3db51151e5bad64096e27886a5b4b05, type: 2}
-  weaponHasChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: d3db51151e5bad64096e27886a5b4b05, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  mainWeaponHasChangedGE: {fileID: 11400000, guid: d3db51151e5bad64096e27886a5b4b05, type: 2}
+  secondaryWeaponHasChangedGE: {fileID: 11400000, guid: be689ae7513c6ff4698930948edbc9c8, type: 2}
   maxMeleeWeapons: 1
   maxMainWeapons: 2
   maxSecodnaryWeapons: 1
@@ -43,7 +29,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f85df85a504f5804db1afc427de2431b, type: 2}
   carriedMainWeapons:
   - {fileID: 0}
-  - {fileID: 11400000, guid: f85df85a504f5804db1afc427de2431b, type: 2}
   equippedMainWeapon: {fileID: 0}
   defaultSecondaryWeapons:
   - {fileID: 11400000, guid: 4f46119e318ec2d4b854a0b36d9a0856, type: 2}

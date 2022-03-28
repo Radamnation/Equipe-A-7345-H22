@@ -63,7 +63,8 @@ public class BasicEnemyState_Two : IEnemyState
 
     public void OnManageToken(BasicEnemyContext context)
     {
-        context.OnDefaultManageToken();
+        context.HasToken = true;
+        //context.OnDefaultManageToken();
     }
 
 

@@ -11,7 +11,7 @@ public class BasicEnemyState_One : IEnemyState
     {
         context.OnDefaultSetMoveAnim();
         context.OnDefaultMoveBehaviour();
-
+        Debug.Log($"{context.name} has no token");
         if (!context.HasToken &&
             context.CanUseBehaviour())
         {       
@@ -29,7 +29,7 @@ public class BasicEnemyState_One : IEnemyState
     public void WithTokenBehaviour(BasicEnemyContext context)
     {
         if (context.HasToken &&
-            (context.IsTargetNear()) &&
+            context.IsTargetNear() &&
             context.CanUseBehaviour()) // context.IsInRangeForAttack() &&     context.HasReachedEndOfPath() &&       
         {
             // Check: Animation based
@@ -64,7 +64,8 @@ public class BasicEnemyState_One : IEnemyState
 
     public void OnManageToken(BasicEnemyContext context)
     {
-        context.OnDefaultManageToken();
+        context.HasToken = true;
+        //context.OnDefaultManageToken();
     }
 
 

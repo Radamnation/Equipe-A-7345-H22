@@ -10,7 +10,8 @@ using UnityEngine.Events;
 [CreateAssetMenu(menuName = "Scriptable/Weapons/WeaponInventory", fileName = "WeaponsInventorySO")]
 public class WeaponsInventorySO : ScriptableObject
 {
-    [SerializeField] private GameEvent weaponHasChangedGE;
+    [SerializeField] private GameEvent mainWeaponHasChangedGE;
+    [SerializeField] private GameEvent secondaryWeaponHasChangedGE;
 
     [SerializeField] private int maxMeleeWeapons = 1;
     [SerializeField] private int maxMainWeapons = 2;
@@ -83,10 +84,10 @@ public class WeaponsInventorySO : ScriptableObject
 
         if (alsoEquip)
         {
-            equippedMainWeapon = otherWeaponSO;
+            equippedMainWeapon = carriedMainWeapons[carriedMainWeapons.Count-1];
 
-            if (weaponHasChangedGE != null)
-                weaponHasChangedGE.Raise();
+            if (mainWeaponHasChangedGE != null)
+                mainWeaponHasChangedGE.Raise();
         }
     }
 
@@ -103,8 +104,8 @@ public class WeaponsInventorySO : ScriptableObject
                 {
                     equippedMainWeapon = carriedMainWeapons[i];
 
-                    if (weaponHasChangedGE != null)
-                        weaponHasChangedGE.Raise();
+                    if (mainWeaponHasChangedGE != null)
+                        mainWeaponHasChangedGE.Raise();
                 }
 
                 break;
@@ -120,21 +121,35 @@ public class WeaponsInventorySO : ScriptableObject
         carriedSecondaryWeapons.Add(Instantiate(otherWeaponSO));
 
         if (alsoEquip)
-            equippedSecondaryWeapon = otherWeaponSO;
+        {
+            equippedSecondaryWeapon = carriedSecondaryWeapons[carriedSecondaryWeapons.Count - 1];
+
+            if (secondaryWeaponHasChangedGE != null)
+                secondaryWeaponHasChangedGE.Raise();
+        }
+
     }
 
     public void ChangeWeapon_Secondary(WeaponSO otherWeaponSO, bool alsoEquip = true)
     {
         // Find Weapon from carried list and switcharoo with pedestal weapon before equipping it
-        for (int i = 0; i < carriedMainWeapons.Count; i++)
+        for (int i = 0; i < carriedSecondaryWeapons.Count; i++)
             if (carriedSecondaryWeapons[i].GetInstanceID() == equippedSecondaryWeapon.GetInstanceID())
             {
                 Destroy(carriedSecondaryWeapons[i]);
                 carriedSecondaryWeapons[i] = Instantiate(otherWeaponSO);
 
                 if (alsoEquip)
-                    equippedSecondaryWeapon = otherWeaponSO;
+                {
+                    equippedSecondaryWeapon = carriedSecondaryWeapons[i];
 
+                    if (secondaryWeaponHasChangedGE != null)
+                        secondaryWeaponHasChangedGE.Raise();
+
+                    Debug.Log("RAISED");
+                    Debug.Log($"Clip: {equippedSecondaryWeapon.CurrentClip}");
+                }
+                    
                 break;
             }
     }
@@ -145,23 +160,23 @@ public class WeaponsInventorySO : ScriptableObject
         if (carriedMeleeWeapons.Count >= maxMeleeWeapons)
             return;
 
-        carriedMeleeWeapons.Add(otherWeaponSO);
+        carriedMeleeWeapons.Add(Instantiate(otherWeaponSO));
 
         if (alsoEquip)
-            equippedMeleeWeapon = otherWeaponSO;
+            equippedMeleeWeapon = carriedMeleeWeapons[carriedMeleeWeapons.Count-1];
     }
 
     public void ChangeWeapon_Melee(WeaponSO otherWeaponSO, bool alsoEquip = true)
     {
         // Find Weapon from carried list and switcharoo with pedestal weapon before equipping it
-        for (int i = 0; i < carriedMainWeapons.Count; i++)
+        for (int i = 0; i < carriedMeleeWeapons.Count; i++)
             if (carriedMeleeWeapons[i].GetInstanceID() == equippedMeleeWeapon.GetInstanceID())
             {
                 Destroy(carriedMeleeWeapons[i]);
                 carriedMeleeWeapons[i] = Instantiate(otherWeaponSO);
 
                 if (alsoEquip)
-                    equippedMeleeWeapon = otherWeaponSO;
+                    equippedMeleeWeapon = carriedMeleeWeapons[i];
 
                 break;
             }

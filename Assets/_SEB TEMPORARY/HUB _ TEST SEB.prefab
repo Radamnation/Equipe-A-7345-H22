@@ -50729,6 +50729,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 6863298601811865917}
     m_Modifications:
     - target: {fileID: 9750687630548914, guid: 2cc1a516bff269d4989dcfa082f762e4, type: 3}
+      propertyPath: rangeX
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9750687630548914, guid: 2cc1a516bff269d4989dcfa082f762e4, type: 3}
+      propertyPath: rangeY
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9750687630548914, guid: 2cc1a516bff269d4989dcfa082f762e4, type: 3}
+      propertyPath: rangeZ
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9750687630548914, guid: 2cc1a516bff269d4989dcfa082f762e4, type: 3}
       propertyPath: myWeaponsSO
       value: 
       objectReference: {fileID: 0}
@@ -50746,7 +50758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3845450508836965805, guid: 2cc1a516bff269d4989dcfa082f762e4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 6023294873425586512, guid: 2cc1a516bff269d4989dcfa082f762e4, type: 3}
       propertyPath: m_Materials.Array.data[0]

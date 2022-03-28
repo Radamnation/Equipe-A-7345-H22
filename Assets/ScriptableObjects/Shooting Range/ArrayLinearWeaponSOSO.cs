@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Scriptable/Data Structure/Array Linear WeaponSOs", fileName = "SO_myArrayLinearWeaponSOs")]
-public class ArrayLinearWeaponSOSO : ScriptableObject
+public class ArrayLinearWeaponSOSO : ScriptableObject, IArrayLinear
 {
     // SECTION - Field ===================================================================
     private int count = 0;
@@ -14,6 +14,9 @@ public class ArrayLinearWeaponSOSO : ScriptableObject
     // SECTION - Property ===================================================================
 
     public WeaponSO[] GetArray { get => myArray; }
+
+
+    // SECTION - Method - Interface Implementation ===================================================================
     public int Count { get => count; }
     public int Length => myArray.Length;
 
@@ -21,6 +24,7 @@ public class ArrayLinearWeaponSOSO : ScriptableObject
     public bool IsEmpty => count == 0;
     public bool IsFull => count == myArray.Length;
 
+    public int CurrentIndex { get => currentIndex; }
 
 
     // SECTION - Method - Unity Specific ===================================================================
@@ -78,7 +82,7 @@ public class ArrayLinearWeaponSOSO : ScriptableObject
                 count++;
     }
 
-    private void CalculateCount()
+    public void CalculateCount()
     {
         count = 0;
 

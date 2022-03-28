@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class ShootingRangeWeaponPedestalManager : MonoBehaviour
 {
     // SECTION - Field ===================================================================
-    [Header("Weapons Inventories")]
+    [Header("Weapons Inventory Scriptable")]
     [SerializeField] private WeaponsInventorySO playerWeaponInventorySO;
 
     [Header("Weapon Rack")]
@@ -16,6 +16,10 @@ public class ShootingRangeWeaponPedestalManager : MonoBehaviour
                      private bool isAddToInventory = false;
                      private Image mySpriteRenderer;
                      private SpriteRenderer AddOrChangeSprite;
+
+
+    // SECTION - Property ===================================================================
+    public ArrayLinearWeaponSOSO AvailableWeaponsSO { get => availableWeaponsSO; }
 
 
     // SECTION - Method - Unity Specific ===================================================================
@@ -49,7 +53,6 @@ public class ShootingRangeWeaponPedestalManager : MonoBehaviour
     {
         mySpriteRenderer.sprite = pedestalWeapon.WeaponUISprite;
     }
-
 
     // Main weapon
     #region REGION - Main Weapon
@@ -91,9 +94,7 @@ public class ShootingRangeWeaponPedestalManager : MonoBehaviour
     {
         playerWeaponInventorySO.ChangeWeapon_Secondary(pedestalWeapon);
     }
-
     #endregion
-
 
     // Melee Weapon
     #region REGION - Melee Weapon

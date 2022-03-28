@@ -68,6 +68,18 @@ public class WeaponManager : MonoBehaviour
         //weaponHasChanged.Invoke();
     }
 
+    public void UpdateSecondaryWeapon() // WeaponSO weapon
+    {
+        this.weapon = weaponsInventory.EquippedSecondaryWeapon; //weapon;
+        //weaponHasChanged.Invoke();
+    }
+
+    public void UpdateMeleeWeapon() // WeaponSO weapon
+    {
+        this.weapon = weaponsInventory.EquippedMeleeWeapon; //weapon;
+        //weaponHasChanged.Invoke();
+    }
+
     public void ResetReload()
     {
         reloadDelay = 0;

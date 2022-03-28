@@ -589,6 +589,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a6cc58fe58ac34daa036896bf92e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerTag: Player
+  toLeft: {fileID: 8176034410084379229}
+  toRight: {fileID: 9050977420968734145}
 --- !u!1 &7522380179890101250
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,6 +843,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1177048025282964825}
         m_TargetAssemblyTypeName: ShootingRangeWeaponPedestalManager, Assembly-CSharp
         m_MethodName: ChangePedestalWeapon_LeftOrRight
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2608068617479788916}
+        m_TargetAssemblyTypeName: ShootingRangePedestalUIHandler, Assembly-CSharp
+        m_MethodName: SetToUIVisual
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1173,9 +1188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b52a2532b338e454fa28f1e1aad9b0a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hubWeaponInventory: {fileID: 0}
   playerWeaponInventorySO: {fileID: 11400000, guid: a281a8a3b05e1994aa74255a14e2dd2e, type: 2}
-  isAddToInventory: 0
   AddChangeCue:
   - {fileID: 1292521903, guid: ca5ed2dbe06da4c44ae030d56a8f2077, type: 3}
   - {fileID: 306070414, guid: ca5ed2dbe06da4c44ae030d56a8f2077, type: 3}
@@ -1609,6 +1622,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1177048025282964825}
         m_TargetAssemblyTypeName: ShootingRangeWeaponPedestalManager, Assembly-CSharp
         m_MethodName: ChangePedestalWeapon_LeftOrRight
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2608068617479788916}
+        m_TargetAssemblyTypeName: ShootingRangePedestalUIHandler, Assembly-CSharp
+        m_MethodName: SetToUIVisual
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

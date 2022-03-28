@@ -28,7 +28,7 @@ public class AITokenHandlerSO : ScriptableObject
     // SECTION - Method ===================================================================
     public bool TryGetToken()
     {
-        if (currentToken == Length && tokens[currentToken] == false)
+        if (currentToken == Length || tokens[currentToken] == false)
             return false;
 
         tokens[currentToken] = false;

@@ -295,11 +295,14 @@ public class BasicEnemyContext : MonoBehaviour
 
     public void OnDefaultManageToken()
     {
+        // TODO:
+        //      - REFACTORISE WHAT DICTATES RETURN TOKEN
+
         if (CanUseBehaviour() && IsTargetNear())
         {
             HasToken = AIManager.instance.MyTokenHandlerSO.TryGetToken();
         }
-        else if (HasToken && (!HasPath() && !HasReachedEndOfPath())) // Replace token when out of reach
+        else if (HasToken && (!HasPath() || HasReachedEndOfPath())) // Replace token when out of reach
         {
             HasToken = false;
             AIManager.instance.MyTokenHandlerSO.ReturnToken();
