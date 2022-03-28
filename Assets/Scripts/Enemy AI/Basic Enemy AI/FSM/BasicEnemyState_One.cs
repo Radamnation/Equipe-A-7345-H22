@@ -72,7 +72,8 @@ public class BasicEnemyState_One : IEnemyState
     // SECTION - Method - General ===================================================================
     public void OnStateEnter(BasicEnemyContext context)
     {
-        context.SetEndReachedDistance(context.WeaponManager_1.Weapon.Range);
+        if (context.WeaponManager_1 != null)
+            context.SetEndReachedDistance(context.WeaponManager_1.Weapon.Range);
     }
 
     public void OnStateUpdate(BasicEnemyContext context)

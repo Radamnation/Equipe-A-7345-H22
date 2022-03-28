@@ -171,7 +171,8 @@ public class MapLayout : MonoBehaviour
 
     public void PlaceRooms()
     {
-        AstarPath myAstarPathRef = GameObject.Find("----------------------- TERRAIN").GetComponentInChildren<AstarPath>();
+        AstarPath myAstarPathRef = GameObject.Find("AStar").GetComponentInChildren<AstarPath>();
+        //AstarPath myAstarPathRef = GameObject.Find("----------------------- TERRAIN").GetComponentInChildren<AstarPath>();
 
         // Place Starting Room
         var newStartingRoom = RotateAndPlaceRoom(startingRoomsList, mapLayoutInformation.RoomPositions[0]);

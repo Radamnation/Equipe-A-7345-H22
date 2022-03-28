@@ -152,7 +152,7 @@ public class ShootingRangeManager : MonoBehaviour
             {
                 if (!myPracticeTargetPrefabsSO.IsEmpty)
                 {
-                    for (int index = 0; index < myPracticeTargetPrefabsSO.Length; index++)
+                    for (int index = 0; index < myPracticeTargetPrefabsSO.Count; index++)
                         if (myPracticeTargetPrefabsSO.GetArray[index] != null)
                             OnGridInstantiate(myPracticeTargetPrefabsSO.GetElement(index));
                 }
@@ -161,7 +161,7 @@ public class ShootingRangeManager : MonoBehaviour
             {
                 if (!myPracticeTargetPrefabsSO.IsEmpty)
                 {
-                    for (int index = 0; index < myDefaultPracticeTargetPrefabsSO.Length; index++)
+                    for (int index = 0; index < myDefaultPracticeTargetPrefabsSO.Count; index++)
                         if (myDefaultPracticeTargetPrefabsSO.GetArray[index] != null)
                             OnGridInstantiate(myDefaultPracticeTargetPrefabsSO.GetElement(index));
                 }

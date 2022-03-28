@@ -509,7 +509,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1873684466489294638}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ShootingRangePedestalUIHandler, Assembly-CSharp
         m_MethodName: SetToUIVisual
         m_Mode: 6
@@ -796,7 +796,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1873684466489294638}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ShootingRangePedestalUIHandler, Assembly-CSharp
         m_MethodName: SetToUIVisual
         m_Mode: 6
@@ -1501,10 +1501,6 @@ MonoBehaviour:
   rangeX: 7
   rangeY: 7
   rangeZ: 7
-  defaultPracticeTargetPrefabs:
-  - {fileID: 3445576315363371787, guid: 0dba9aee6d882964dbad11e19b424f7d, type: 3}
-  - {fileID: 0}
-  - {fileID: 3445576315363371787, guid: 0dba9aee6d882964dbad11e19b424f7d, type: 3}
   myDefaultPracticeTargetPrefabsSO: {fileID: 11400000, guid: cca654723e4d2e542a5ab6cfcb18917a, type: 2}
   myPracticeTargetPrefabsSO: {fileID: 11400000, guid: e04c4073fc71306419b620f310c2548e, type: 2}
   myPracticeTargetInstances: []
@@ -1518,7 +1514,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2219205489769265342}
   - component: {fileID: 7575395833708725308}
-  - component: {fileID: 1873684466489294638}
+  - component: {fileID: 5331365887172236928}
+  - component: {fileID: 5935866043504687496}
   m_Layer: 0
   m_Name: UI Elements
   m_TagString: Untagged
@@ -1556,7 +1553,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1873684466489294638
+--- !u!114 &5331365887172236928
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1565,12 +1562,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 8665095843652740155}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26a6cc58fe58ac34daa036896bf92e1a, type: 3}
+  m_Script: {fileID: 11500000, guid: 21383eb5d3819c944aad50d77c6474e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   triggerTag: Player
   toLeft: {fileID: 3941116380751693241}
   toRight: {fileID: 3620664638603348898}
+--- !u!114 &5935866043504687496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8665095843652740155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a9cc67f94e68194699083ec79feadc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 11400000, guid: bb659ba3eaf28be498f4674f9cbb480c, type: 2}
 --- !u!1 &8810738523174754727
 GameObject:
   m_ObjectHideFlags: 0
