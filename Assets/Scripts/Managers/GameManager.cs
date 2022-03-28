@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     public LayerMask interactableMask;
     public LayerMask canBeShotByPlayerMask;
     public LayerMask respawnMask;
+    public bool levelIsReady = false;
 
     [Header("Important Scenes")]
     [SerializeField] private string stringHUB = "HUB";
@@ -18,9 +20,11 @@ public class GameManager : MonoBehaviour
     private Transform playerTransformRef;
 
     private AsyncOperation asyncLoad;
+    private float asyncLoadTimer;
+    private bool asyncLoadReady = false;
 
     [SerializeField] private SelectMenu menuCanvas;
-
+    [SerializeField] private LoadingTube loadingTube;
 
     // SECTION - Property ===================================================================
     public Transform PlayerTransformRef => playerTransformRef;
@@ -33,13 +37,33 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         if (instance == null)
+        {
             instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         else
+        {
             Destroy(this.gameObject);
+        } 
 
         instance.SetMouseCursor_LockedInvisible();
 
         playerTransformRef = GameObject.Find("Player").transform;
+    }
+
+    private void Update()
+    {
+        if (asyncLoadReady)
+        {
+            if (asyncLoadTimer > 0)
+            {
+                asyncLoadTimer -= Time.deltaTime;
+            }
+            else
+            {
+                asyncLoad.allowSceneActivation = true;
+            }
+        }
     }
 
 
@@ -98,6 +122,45 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(scene);
     }
+
+    public void StartLoadLoadingTube()
+    {
+        levelIsReady = false;
+        loadingTube.GetComponent<Collider>().enabled = true;
+        StartCoroutine(LoadLoadingTube());
+    }
+
+    private IEnumerator LoadLoadingTube()
+    {
+        var currentScene = SceneManager.GetActiveScene().name;
+        var asynchScene = SceneManager.LoadSceneAsync("Loading_Sandbox", LoadSceneMode.Additive);
+        asynchScene.allowSceneActivation = true;
+
+        yield return new WaitForSeconds(2.5f);
+
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Loading_Sandbox"));
+        SceneManager.UnloadSceneAsync(currentScene);
+        StartCoroutine(LoadMainLevel());
+    }
+
+    private IEnumerator LoadMainLevel()
+    {
+        var asynchScene = SceneManager.LoadSceneAsync("Level_Sandbox", LoadSceneMode.Additive);
+        asynchScene.allowSceneActivation = true;
+
+        yield return new WaitForSeconds(2.5f);
+
+        SceneManager.UnloadSceneAsync("Loading_Sandbox");
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Level_Sandbox"));
+        loadingTube.GetComponent<Collider>().enabled = false;
+    }
+
+    //private IEnumerator UnloadLoadingTube()
+    //{
+    //    yield return new WaitForSeconds(3.0f);
+    //    SceneManager.UnloadSceneAsync("Loading_Sandbox");
+    //}
+
 
     // Async
     public void LoadSceneAsync(int scene, bool allowSceneActivation = false)

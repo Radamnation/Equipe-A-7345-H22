@@ -22,7 +22,11 @@ MonoBehaviour:
   equippedMeleeWeapon: {fileID: 0}
   defaultMainWeapons:
   - {fileID: 11400000, guid: 2fec7de208af184448023900d178369c, type: 2}
+  - {fileID: 11400000, guid: 38e6bcc42d089514091064afffb4928c, type: 2}
+  - {fileID: 11400000, guid: 9b3bd99fc8d650141a02a158c813cfa7, type: 2}
+  - {fileID: 11400000, guid: f85df85a504f5804db1afc427de2431b, type: 2}
   carriedMainWeapons:
+  - {fileID: 0}
   - {fileID: 0}
   equippedMainWeapon: {fileID: 0}
   defaultSecondaryWeapons:

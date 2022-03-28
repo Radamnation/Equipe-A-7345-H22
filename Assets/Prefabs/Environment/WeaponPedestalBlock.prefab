@@ -444,7 +444,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 30c10184cc17eba428173db956fd31d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -627,6 +627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fcce96277f7f494eba0f419c8c4da87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBreakable: 0
 --- !u!65 &-2683637917271783900
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -655,6 +656,9 @@ MonoBehaviour:
   spriteRotationSpeed: 0.25
   spriteVerticalRange: 0.1
   spriteVerticalSpeed: 1
+  specificWeapon: {fileID: 0}
+  isInHub: 0
+  weaponIsRandom: 1
   randomWeapons:
   - {fileID: 11400000, guid: f85df85a504f5804db1afc427de2431b, type: 2}
   - {fileID: 11400000, guid: 38e6bcc42d089514091064afffb4928c, type: 2}

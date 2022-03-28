@@ -28,7 +28,7 @@ public class NextLevelBlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void PressButton()
@@ -63,15 +63,22 @@ public class NextLevelBlock : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (isHub)
-            {
-                GameManager.instance.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1, true);
-            }
-            else
-            {
-                GameManager.instance.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, true);
-            }
+            var gameManager = GameManager.instance;
+            other.transform.position = gameManager.GetComponentInChildren<LoadingTube>().RespawnHeight.position;
+            GameManager.instance.StartLoadLoadingTube();
         }
+
+        //if (other.CompareTag("Player"))
+        //{
+        //    if (isHub)
+        //    {
+        //        GameManager.instance.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1, 3f);
+        //    }
+        //    else
+        //    {
+        //        GameManager.instance.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, 3f);
+        //    }
+        //}
     }
 
     public void ShowButton()

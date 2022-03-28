@@ -15,14 +15,15 @@ MonoBehaviour:
   weaponName: Boot Kick
   weaponDescription: A good old boot
   isMelee: 1
+  infiniteAmmo: 0
   currencyValue: 0
   canFireContinuously: 0
-  startingAmmo: 100
-  currentAmmo: 100
-  maxAmmo: 1000
-  startingClip: 1000
-  currentClip: 1000
-  maxClip: 1000
+  startingAmmo: 1
+  currentAmmo: 1
+  maxAmmo: 1
+  startingClip: 1
+  currentClip: 1
+  maxClip: 1
   firingRate: 0.5
   reloadTime: 0
   damage: 4

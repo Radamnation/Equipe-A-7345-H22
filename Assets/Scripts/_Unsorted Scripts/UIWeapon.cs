@@ -23,7 +23,14 @@ public class UIWeapon : MonoBehaviour
         if (!isSecondary)
         {
             weaponImage.sprite = weaponsInventory.EquippedMainWeapon.WeaponUISprite;
-            ammoValue.text = weaponsInventory.EquippedMainWeapon.CurrentAmmo + " / " + weaponsInventory.EquippedMainWeapon.MaxAmmo;
+            if (weaponsInventory.EquippedMainWeapon.InfiniteAmmo)
+            {
+                ammoValue.text = "INFINITE";
+            }
+            else
+            {
+                ammoValue.text = weaponsInventory.EquippedMainWeapon.CurrentAmmo + " / " + weaponsInventory.EquippedMainWeapon.MaxAmmo;
+            }
             clipValue.text = weaponsInventory.EquippedMainWeapon.CurrentClip + " / " + weaponsInventory.EquippedMainWeapon.MaxClip;
         }
         else
