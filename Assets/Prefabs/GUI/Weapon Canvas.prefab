@@ -294,7 +294,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 33b32e9b4ffcfa443a07ebd6248ee8d4, type: 3}
+  m_Sprite: {fileID: 1597755461, guid: bc17827da149c514ca5ea7f929e4b86a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -319,7 +319,7 @@ MonoBehaviour:
   weaponInventory: {fileID: 11400000, guid: a281a8a3b05e1994aa74255a14e2dd2e, type: 2}
   reloadOffset: {x: 0, y: 30, z: 0}
   shakeAmount: 10
-  shakeTime: 0.1
+  shakeTime: 0.05
 --- !u!114 &4201661615785751644
 MonoBehaviour:
   m_ObjectHideFlags: 0

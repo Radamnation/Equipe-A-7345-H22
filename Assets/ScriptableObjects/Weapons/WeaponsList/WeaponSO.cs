@@ -37,6 +37,7 @@ public class WeaponSO : ScriptableObject
     [SerializeField] private BulletHole bulletHole;
     [SerializeField] private Sprite weaponUISprite;
     [SerializeField] private Sprite weaponPlayerSprite;
+    [SerializeField] private Sprite weaponFiringPlayerSprite;
     [SerializeField] private Animator animator;
 
     // SECTION - Property ===================================================================
@@ -65,6 +66,7 @@ public class WeaponSO : ScriptableObject
     public BulletHole BulletHole { get => bulletHole; set => bulletHole = value; }
     public Sprite WeaponUISprite { get => weaponUISprite; set => weaponUISprite = value; }
     public Sprite WeaponPlayerSprite { get => weaponPlayerSprite; set => weaponPlayerSprite = value; }
+    public Sprite WeaponFiringPlayerSprite { get => weaponFiringPlayerSprite; set => weaponFiringPlayerSprite = value; }
     public Animator Animator { get => animator; set => animator = value; }
 
     // Start is called before the first frame update
