@@ -11,7 +11,7 @@ public class BasicEnemyState_One : IEnemyState
     {
         context.OnDefaultSetMoveAnim();
         context.OnDefaultMoveBehaviour();
-
+        Debug.Log($"{context.name} has no token");
         if (!context.HasToken &&
             context.CanUseBehaviour())
         {       
@@ -29,8 +29,8 @@ public class BasicEnemyState_One : IEnemyState
     public void WithTokenBehaviour(BasicEnemyContext context)
     {
         if (context.HasToken &&
-            context.MyAIPath.reachedEndOfPath &&
-            context.CanUseBehaviour())
+            context.IsTargetNear() &&
+            context.CanUseBehaviour()) // context.IsInRangeForAttack() &&     context.HasReachedEndOfPath() &&       
         {
             // Check: Animation based
             if (!context.AnimExecuteAtk_1)
@@ -64,17 +64,23 @@ public class BasicEnemyState_One : IEnemyState
 
     public void OnManageToken(BasicEnemyContext context)
     {
+        context.HasToken = true;
+        //context.OnDefaultManageToken();
     }
 
 
     // SECTION - Method - General ===================================================================
     public void OnStateEnter(BasicEnemyContext context)
     {
-        context.SetEndReachedDistance(context.WeaponManager_1.Weapon.Range);
+        if (context.WeaponManager_1 != null)
+            context.SetEndReachedDistance(context.WeaponManager_1.Weapon.Range);
     }
 
     public void OnStateUpdate(BasicEnemyContext context)
     {
+        if (!context.HasPath())
+            Debug.Log($"{context.name} Dont have path");
+
         WithoutTokenBehaviour(context);
         WithTokenBehaviour(context);
         OnManageToken(context);

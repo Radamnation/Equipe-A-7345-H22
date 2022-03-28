@@ -8,7 +8,7 @@ public class MainWeaponImage : MonoBehaviour
     [SerializeField] private WeaponsInventorySO weaponInventory;
     [SerializeField] private Vector3 reloadOffset;
     [SerializeField] private float shakeAmount = 30f;
-    [SerializeField] private float shakeTime = 0.5f;
+    [SerializeField] private float shakeTime = 0.1f;
 
     private float shakeTimer = 0;
     private Vector3 initialPosition;
@@ -31,6 +31,7 @@ public class MainWeaponImage : MonoBehaviour
 
     public void ShakeWeapon()
     {
+        weaponImage.sprite = weaponInventory.EquippedMainWeapon.WeaponFiringPlayerSprite;
         shakeTimer = shakeTime;
     }
 
@@ -59,6 +60,7 @@ public class MainWeaponImage : MonoBehaviour
         }
         else
         {
+            weaponImage.sprite = weaponInventory.EquippedMainWeapon.WeaponPlayerSprite;
             transform.position = currentPosition;
         }
     }

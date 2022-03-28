@@ -1451,6 +1451,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Treasure_Room_1
       objectReference: {fileID: 0}
+    - target: {fileID: 5585384642215294544, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+    - target: {fileID: 6200839944286670379, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 6824925770155736519, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
       propertyPath: m_Tiles.Array.size
       value: 56
@@ -3343,6 +3351,10 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[90].second.m_TileObjectToInstantiateIndex
       value: 65535
       objectReference: {fileID: 0}
+    - target: {fileID: 8417233666034931987, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 8426313561995024683, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
       propertyPath: m_Tiles.Array.size
       value: 53

@@ -16,6 +16,8 @@ public class WeaponPedestal : MonoBehaviour
     [SerializeField] private WeaponsInventorySO weaponInventory;
     [SerializeField] private UnityEvent mainWeaponHasChanged;
 
+    [SerializeField] private ArrayLinearWeaponSOSO hubWeaponArray;
+
     private WeaponSO pedestalWeapon;
     private SpriteRenderer mySpriteRenderer;
     private Vector3 spriteInitialPosition;

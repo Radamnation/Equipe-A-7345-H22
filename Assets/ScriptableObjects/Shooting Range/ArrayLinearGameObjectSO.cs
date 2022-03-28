@@ -2,10 +2,11 @@ using UnityEngine;
 
 
 [CreateAssetMenu(menuName = "Scriptable/Data Structure/Array Linear GameObjects", fileName = "SO_myArrayLinearGameObjects")]
-public class ArrayLinearGameObjectSO : ScriptableObject
+public class ArrayLinearGameObjectSO : ScriptableObject, IArrayLinear
 {
     // SECTION - Field ===================================================================
     private int count = 0;
+    private int currentIndex = 0;
     [SerializeField] private GameObject[] myArray;
 
 
@@ -18,6 +19,7 @@ public class ArrayLinearGameObjectSO : ScriptableObject
     public bool IsEmpty => count == 0;
     public bool IsFull => count == myArray.Length;
 
+    public int CurrentIndex { get => currentIndex; }
 
 
     // SECTION - Method - Unity Specific ===================================================================
@@ -38,6 +40,28 @@ public class ArrayLinearGameObjectSO : ScriptableObject
         myArray = temp;
     }
 
+    public GameObject GetPrevious()
+    {
+        if (currentIndex - 1 >= 0 && myArray[currentIndex - 1] != null)
+        {
+            currentIndex--;
+            return myArray[currentIndex];
+        }
+
+        return myArray[currentIndex];
+    }
+
+    public GameObject GetNext()
+    {
+        if (currentIndex + 1 <= count - 1 && myArray[currentIndex + 1] != null)
+        {
+            currentIndex++;
+            return myArray[currentIndex];
+        }
+
+        return myArray[currentIndex];
+    }
+
 
     public void Copy(GameObject[] copyFrom)
     {
@@ -53,7 +77,7 @@ public class ArrayLinearGameObjectSO : ScriptableObject
                 count++;
     }
 
-    private void CalculateCount()
+    public void CalculateCount()
     {
         count = 0;
 

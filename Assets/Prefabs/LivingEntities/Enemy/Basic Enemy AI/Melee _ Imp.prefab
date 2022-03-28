@@ -83,9 +83,29 @@ PrefabInstance:
       propertyPath: traversableTags
       value: -5
       objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893135, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: startEndModifier.addPoints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893135, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: tagPenalties.Array.data[2]
+      value: 100000
+      objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893136, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: maxSpeed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893136, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: autoRepath.mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893136, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: alwaysDrawGizmos
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893136, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: constrainInsideGraph
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893138, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: uniqueID
@@ -143,8 +163,40 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -268848824, guid: 6e7cae24fc9876d4694421b4e42d3d37, type: 3}
+    - target: {fileID: 3831662559004454559, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 30c10184cc17eba428173db956fd31d4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+--- !u!1 &198941390604739682 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3831662558199758472, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+  m_PrefabInstance: {fileID: 4030164144152320746}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7541152399880046016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198941390604739682}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de675a62d85831b4b9644c83367e5655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDebuggerOn: 0
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 0
+  isDistanceCurrWeaponBased: 0
+  distance: 0.16
+  validationType: 1
+  isDebugOn: 0
+  moveNearDesiredRange: 0
+  myDesiredRangeOfPositions: {fileID: 0}
+  moveAfterIddleTime: 2
 --- !u!1 &198941392648530677 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3831662558613925919, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
@@ -204,9 +256,9 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 8
-  isDistanceCurrWeaponBased: 1
-  distance: 0
+  isDistanceCurrWeaponBased: 0
+  distance: 0.16
   validationType: 1
   myDesiredRangeOfPositions: {fileID: 11400000, guid: fc07bcacc6da4cb4db7e79c230044866, type: 2}
-  maxQuantityOfMove: 2
+  maxQuantityOfMove: 3
   moveAtSpeed: 4

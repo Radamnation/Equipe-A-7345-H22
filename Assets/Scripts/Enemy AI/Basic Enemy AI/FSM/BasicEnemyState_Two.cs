@@ -29,7 +29,6 @@ public class BasicEnemyState_Two : IEnemyState
     public void WithTokenBehaviour(BasicEnemyContext context)
     {
         if (context.HasToken &&
-            context.MyAIPath.reachedEndOfPath &&
             context.CanUseBehaviour() )
         {
             // Check: Animation based
@@ -64,13 +63,16 @@ public class BasicEnemyState_Two : IEnemyState
 
     public void OnManageToken(BasicEnemyContext context)
     {
+        context.HasToken = true;
+        //context.OnDefaultManageToken();
     }
 
 
     // SECTION - Method - General ===================================================================
     public void OnStateEnter(BasicEnemyContext context)
     {
-        context.SetEndReachedDistance(context.WeaponManager_2.Weapon.Range);
+        if (context.WeaponManager_2.Weapon != null)
+            context.SetEndReachedDistance(context.WeaponManager_2.Weapon.Range);
     }
 
     public void OnStateUpdate(BasicEnemyContext context)

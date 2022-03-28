@@ -17,7 +17,7 @@ public class ShootingRangeManager : MonoBehaviour
                      private Vector3Int pZero = new Vector3Int();
 
     [Header("Practice Targets")]
-    [SerializeField] private GameObject[] defaultPracticeTargetPrefabs;
+    [SerializeField] private ArrayLinearGameObjectSO myDefaultPracticeTargetPrefabsSO;
     [SerializeField] private ArrayLinearGameObjectSO myPracticeTargetPrefabsSO;
     [SerializeField] private List<GameObject> myPracticeTargetInstances = new List<GameObject>();
 
@@ -50,6 +50,8 @@ public class ShootingRangeManager : MonoBehaviour
 
         SetAstarPathAndScan();
 
+        InstantiateShootingRange(true); // Instantiate default set of practice targets
+
         SetArrayLinearGenerics();
     }
 
@@ -62,16 +64,6 @@ public class ShootingRangeManager : MonoBehaviour
             if (myPracticeTargetInstances.Count != 0)
             {
                 outlineAnimator.SetBool(outlineAnimString, true);
-
-                // Set prefabs from scriptable as hitable
-                if (!myPracticeTargetPrefabsSO.IsEmpty)
-                    foreach (GameObject instance in myPracticeTargetInstances)
-                    {
-                        //instance.GetComponent<Collider>().enabled = true;
-
-                       // instance.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                       // instance.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-                    }
             }
         }
     }
@@ -119,7 +111,7 @@ public class ShootingRangeManager : MonoBehaviour
     private void SetArrayLinearGenerics()
     {
         if (myPracticeTargetPrefabsSO.IsEmpty)
-            myPracticeTargetPrefabsSO.Copy(defaultPracticeTargetPrefabs);
+            myPracticeTargetPrefabsSO.Copy(myDefaultPracticeTargetPrefabsSO.GetArray);
     }
 
     private void SetAstarPathAndScan()
@@ -160,24 +152,19 @@ public class ShootingRangeManager : MonoBehaviour
             {
                 if (!myPracticeTargetPrefabsSO.IsEmpty)
                 {
-                    for (int index = 0; index < myPracticeTargetPrefabsSO.Length; index++)
-                        OnGridInstantiate(myPracticeTargetPrefabsSO.GetElement(index));
-
-                    // Prevents attacking from outside
-                    foreach (GameObject instance in myPracticeTargetInstances)
-                    {
-                        //instance.GetComponent<Collider>().enabled = false;
-
-                        //instance.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-                    }
+                    for (int index = 0; index < myPracticeTargetPrefabsSO.Count; index++)
+                        if (myPracticeTargetPrefabsSO.GetArray[index] != null)
+                            OnGridInstantiate(myPracticeTargetPrefabsSO.GetElement(index));
                 }
             }
             else // Instantiate defaults
             {
-                if (defaultPracticeTargetPrefabs.Length != 0)
-                    for (int index = 0; index < defaultPracticeTargetPrefabs.Length; index++)
-                        if(defaultPracticeTargetPrefabs[index] != null)
-                            OnGridInstantiate(defaultPracticeTargetPrefabs[index]);
+                if (!myPracticeTargetPrefabsSO.IsEmpty)
+                {
+                    for (int index = 0; index < myDefaultPracticeTargetPrefabsSO.Count; index++)
+                        if (myDefaultPracticeTargetPrefabsSO.GetArray[index] != null)
+                            OnGridInstantiate(myDefaultPracticeTargetPrefabsSO.GetElement(index));
+                }
             }
         }
     }

@@ -27,7 +27,7 @@ public class MapLayout : MonoBehaviour
     void Awake()
     {
         roomGenerationRandom = RandomManager.instance.RoomGenerationRandom.SystemRandom;
-        InitializeMapLayout();
+        StartCoroutine(InitializeMapLayout());
     }
 
     // Update is called once per frame
@@ -36,7 +36,7 @@ public class MapLayout : MonoBehaviour
         
     }
 
-    private void InitializeMapLayout()
+    private IEnumerator InitializeMapLayout()
     {
         GenerateMapLayout();
         PlaceRooms();
@@ -45,6 +45,8 @@ public class MapLayout : MonoBehaviour
         CloseOffWalls();
         mapLayoutInformation.Rooms[0].OpenAllDoors();
         mapLayoutInformation.Rooms[0].IsCompleted = true;
+        yield return new WaitForSeconds(1f);
+        GameManager.instance.levelIsReady = true;
     }
 
     public void GenerateMapLayout()
@@ -169,7 +171,8 @@ public class MapLayout : MonoBehaviour
 
     public void PlaceRooms()
     {
-        AstarPath myAstarPathRef = GameObject.Find("----------------------- TERRAIN").GetComponentInChildren<AstarPath>();
+        AstarPath myAstarPathRef = GameObject.Find("AStar").GetComponentInChildren<AstarPath>();
+        //AstarPath myAstarPathRef = GameObject.Find("----------------------- TERRAIN").GetComponentInChildren<AstarPath>();
 
         // Place Starting Room
         var newStartingRoom = RotateAndPlaceRoom(startingRoomsList, mapLayoutInformation.RoomPositions[0]);
