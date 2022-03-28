@@ -29,7 +29,6 @@ public class BasicEnemyState_Two : IEnemyState
     public void WithTokenBehaviour(BasicEnemyContext context)
     {
         if (context.HasToken &&
-            context.MyAIPath.reachedEndOfPath &&
             context.CanUseBehaviour() )
         {
             // Check: Animation based
@@ -64,6 +63,8 @@ public class BasicEnemyState_Two : IEnemyState
 
     public void OnManageToken(BasicEnemyContext context)
     {
+        context.HasToken = true;
+        //context.OnDefaultManageToken();
     }
 
 

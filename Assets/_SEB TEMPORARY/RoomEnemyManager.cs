@@ -98,7 +98,7 @@ public class RoomEnemyManager : MonoBehaviour
             }
             else
             {
-                Enemy_SetComponents(lec, false, RigidbodyConstraints.FreezeAll);
+                Enemy_SetComponents(lec, false, RigidbodyConstraints.FreezeAll);          
             }
 
             lec.ActivateEnemyOnTriggerEnter = !lec.ActivateEnemyOnTriggerEnter;
@@ -115,7 +115,6 @@ public class RoomEnemyManager : MonoBehaviour
         foreach (SpriteRenderer sprite in other.SpriteRenderer)
             sprite.color = desiredColor;
 
-
         other.GetComponent<Collider>().enabled = setAs;
 
         other.GetComponent<Rigidbody>().constraints = desiredRigidBodyConstraint;
@@ -126,8 +125,10 @@ public class RoomEnemyManager : MonoBehaviour
 
 
         if (other.CompareTag("Enemy"))
-        {     
-            other.GetComponent<BasicEnemyContext>().enabled = setAs;
+        {
+            BasicEnemyContext enemyContext = other.GetComponent<BasicEnemyContext>();
+            enemyContext.enabled = setAs;
+            enemyContext.SetRigidBodyConstraint_Y();
             other.transform.GetChild(4).gameObject.SetActive(setAs); // Enemy Passives
             other.GetComponent<AIPath>().enabled = setAs;
         }

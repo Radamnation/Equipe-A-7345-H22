@@ -141,8 +141,6 @@ public class LivingEntityContext : MonoBehaviour
         // Animator
         if (anim != null && deathAnimStr != "")
             anim.SetTrigger(deathAnimStr);
-
-        // Extend default behaviours on death here
     }
 
     private void OnTakeDamageBaseHandler()

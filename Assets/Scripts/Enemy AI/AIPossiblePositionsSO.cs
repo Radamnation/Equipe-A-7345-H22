@@ -14,14 +14,11 @@ public class AIPossiblePositionsSO : ScriptableObject
 
 
     // SECTION - Method ===================================================================
-    public Transform GetRandomTransform()
+    public Transform GetRandomTransform(BasicEnemyContext context)
     {
         //var gg = AstarPath.active.data.gridGraph; // Get graph
         //var nodes = gg.nodes; // Get nodes ... Can check individually for .walkable
 
-        // Note:
-        //      - May need refactoring where a VALID node CAN be found.
-        //      - Currenttly cannot find a way to get the nearest valid node, only the nearest node although it should return valid node
         Transform myDesiredTransform = null;
         for (int i = 0; i < possiblePositions.Count; i++)
         {
@@ -29,7 +26,9 @@ public class AIPossiblePositionsSO : ScriptableObject
 
             GraphNode node = AstarPath.active.GetNearest(myDesiredTransform.position, NNConstraint.Default).node;
 
-            if (node != null && node.Walkable)
+            context.SetTarget(myDesiredTransform);
+
+            if (node != null && node.Walkable && context.HasPath())
                 return myDesiredTransform;
         }
 

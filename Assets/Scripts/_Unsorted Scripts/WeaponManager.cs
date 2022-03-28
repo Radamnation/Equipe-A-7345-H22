@@ -68,6 +68,18 @@ public class WeaponManager : MonoBehaviour
         //weaponHasChanged.Invoke();
     }
 
+    public void UpdateSecondaryWeapon() // WeaponSO weapon
+    {
+        this.weapon = weaponsInventory.EquippedSecondaryWeapon; //weapon;
+        //weaponHasChanged.Invoke();
+    }
+
+    public void UpdateMeleeWeapon() // WeaponSO weapon
+    {
+        this.weapon = weaponsInventory.EquippedMeleeWeapon; //weapon;
+        //weaponHasChanged.Invoke();
+    }
+
     public void ResetReload()
     {
         reloadDelay = 0;
@@ -231,6 +243,14 @@ public class WeaponManager : MonoBehaviour
         RaycastHit hit;
         hit = StaticRayCaster.IsLineCastTouching(transform.position, transform.forward, Weapon.Range, myTargetMask, true);
 
-        return !(hit.transform == null);
+        return hit.transform != null;
+    }
+
+    public bool IsTargetAround()
+    {
+        Collider[] hit;
+        hit = StaticRayCaster.IsOverlapSphereTouching(transform, Weapon.Range, myTargetMask, true);
+
+        return !(hit == null && hit[0].transform != null);
     }
 }

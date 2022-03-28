@@ -1,5 +1,6 @@
 using UnityEngine;
 using Pathfinding; // Aaron Granberg A*
+using System.Collections;
 
 public class BasicEnemyContext : MonoBehaviour
 {
@@ -61,6 +62,9 @@ public class BasicEnemyContext : MonoBehaviour
     [Tooltip("Allows to keep last sprite for lingering dead enemies")]
     [SerializeField] private bool exitDeathAnim = true;
 
+    [Header("    ======= Other Specifications =======\n")]
+    [SerializeField] private bool isHoveringEnemy = false;
+
     [Space(10)]
     [Header("    ========== State One ==========\n")]
     [Header("Weapon Manager")]
@@ -89,7 +93,7 @@ public class BasicEnemyContext : MonoBehaviour
     private AbstractBehaviour behaviour_NoToken_2;
     private AbstractBehaviour behaviour_Token_2;
 
-    private bool hasToken = true;
+    [SerializeField] private bool hasToken = false;
     // SECTION - Property ===================================================================
     #region REGION - PROPERTY
     // State
@@ -284,13 +288,55 @@ public class BasicEnemyContext : MonoBehaviour
         myAIDestinationSetter.target = newTarget;
     }
 
-    public Transform GetTarget()
+    public Transform GetTargetTransform()
     {
         return myAIDestinationSetter.target;
+    }
+
+    public void OnDefaultManageToken()
+    {
+        // TODO:
+        //      - REFACTORISE WHAT DICTATES RETURN TOKEN
+
+        if (CanUseBehaviour() && IsTargetNear())
+        {
+            HasToken = AIManager.instance.MyTokenHandlerSO.TryGetToken();
+        }
+        else if (HasToken && (!HasPath() || HasReachedEndOfPath())) // Replace token when out of reach
+        {
+            HasToken = false;
+            AIManager.instance.MyTokenHandlerSO.ReturnToken();
+        }
+        else if (!HasToken && (HasPath() && GetTargetTransform().CompareTag("Player"))) // || context.HasReachedEndOfPath()))       // Try get Token
+        {
+            HasToken = AIManager.instance.MyTokenHandlerSO.TryGetToken();
+        }
     }
     #endregion
 
     #region REGION - Utility
+    // Miscellaneous
+    public void SetRigidBodyConstraint_Y()
+    {
+        if (isHoveringEnemy)
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
+    }
+
+    public bool IsTargetNear()
+    {
+
+        if (GetCurrentWeaponManager() == null)
+        {
+            Collider[] hit;
+            hit = StaticRayCaster.IsOverlapSphereTouching(transform, MyAIPath.endReachedDistance, myAIDestinationSetter.target.gameObject.layer, true);
+
+            return !(hit[0].transform == null);
+            // return true;
+        }
+
+
+        return GetCurrentWeaponManager().IsTargetInFront();
+    }
 
     // Target
     public void SetMyTemporaryTargetAs(Transform setAs)
@@ -301,6 +347,11 @@ public class BasicEnemyContext : MonoBehaviour
     public void SetMyTemporaryTargetAs(Vector3 setAs)
     {
         myTemporaryTargetTransform.position = setAs;
+    }
+
+    public bool HasReachedEndOfPath()
+    {
+        return myAIPath.reachedEndOfPath;
     }
 
     // Weapon
@@ -401,7 +452,6 @@ public class BasicEnemyContext : MonoBehaviour
         SetEndReachedDistance();
     }
 
-
     // State 
     public void SetFiniteStateMachine(BasicEnemy_States transitionTo)
     {
@@ -425,7 +475,24 @@ public class BasicEnemyContext : MonoBehaviour
             SetFiniteStateMachine(BasicEnemy_States.ONE);
     }
 
+
     // Animator
+    public void SetAwakingTransitionOnHit(bool shouldToggleState)
+    {
+        if (IsInAnimationState(BasicEnemy_AnimationStates.IDDLE))
+        {
+            SetTransitionAnim();
+
+            if (shouldToggleState)
+            {
+                if (currState is BasicEnemyState_One)
+                    currState = new BasicEnemyState_Two();
+                else if (currState is BasicEnemyState_Two)
+                    currState = new BasicEnemyState_One();
+            }
+        }
+
+    }
 
     public void SetTransitionAnim()
     {

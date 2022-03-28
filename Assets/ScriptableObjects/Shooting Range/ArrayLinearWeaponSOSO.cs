@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Scriptable/Data Structure/Array Linear WeaponSOs", fileName = "SO_myArrayLinearWeaponSOs")]
-public class ArrayLinearWeaponSOSO : ScriptableObject
+public class ArrayLinearWeaponSOSO : ScriptableObject, IArrayLinear
 {
     // SECTION - Field ===================================================================
     private int count = 0;
+    private int currentIndex = 0;
     [SerializeField] private WeaponSO[] myArray;
 
 
     // SECTION - Property ===================================================================
 
     public WeaponSO[] GetArray { get => myArray; }
+
+
+    // SECTION - Method - Interface Implementation ===================================================================
     public int Count { get => count; }
     public int Length => myArray.Length;
 
@@ -20,11 +24,13 @@ public class ArrayLinearWeaponSOSO : ScriptableObject
     public bool IsEmpty => count == 0;
     public bool IsFull => count == myArray.Length;
 
+    public int CurrentIndex { get => currentIndex; }
 
 
     // SECTION - Method - Unity Specific ===================================================================
     private void OnEnable()
     {
+        currentIndex = 0;
         CalculateCount();
     }
 
@@ -40,6 +46,27 @@ public class ArrayLinearWeaponSOSO : ScriptableObject
         myArray = temp;
     }
 
+    public WeaponSO GetPrevious()
+    {
+        if (currentIndex - 1 >= 0 && myArray[currentIndex - 1] != null)
+        {
+            currentIndex--;
+            return myArray[currentIndex];
+        }
+
+        return myArray[currentIndex];
+    }
+
+    public WeaponSO GetNext()
+    {
+        if (currentIndex + 1 <= count - 1 && myArray[currentIndex + 1] != null)
+        {
+            currentIndex++;
+            return myArray[currentIndex];
+        }
+
+        return myArray[currentIndex];
+    }
 
     public void Copy(WeaponSO[] copyFrom)
     {
@@ -55,7 +82,7 @@ public class ArrayLinearWeaponSOSO : ScriptableObject
                 count++;
     }
 
-    private void CalculateCount()
+    public void CalculateCount()
     {
         count = 0;
 
@@ -95,14 +122,24 @@ public class ArrayLinearWeaponSOSO : ScriptableObject
 
     public void Add(WeaponSO item)
     {
-        if (count < myArray.Length)
-            for (int i = 0; i < myArray.Length; i++)
-                if (myArray[i] == null)
-                {
-                    myArray[i] = item;
-                    count++;
-                    return;
-                }
+        bool canAdd = true;
+
+        foreach (WeaponSO weaponSO in myArray)
+        {
+            if (item.WeaponName == weaponSO.WeaponName)
+            {
+                canAdd = false;
+                break;
+            }
+        }
+
+        if (canAdd)
+        {
+            AddLength();
+
+            myArray[Length] = item;
+            count++;
+        }
     }
 
     public void AddAt(WeaponSO item, int index)

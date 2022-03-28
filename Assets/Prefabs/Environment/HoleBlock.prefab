@@ -145,7 +145,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   uniqueID: 3391085450957628216
-  points: []
+  points:
+  - {x: 0.64, y: 0, z: 0.64}
+  - {x: 0.64, y: 0, z: -0.64}
+  - {x: -0.64, y: 0, z: 0.48}
+  - {x: -0.64, y: 0, z: -0.64}
   convex: 1
   minBoundsHeight: 1
   penaltyDelta: 0

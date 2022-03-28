@@ -1573,6 +1573,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4670481494135956097}
   - component: {fileID: 4465828145769734466}
+  - component: {fileID: 9213782794541072085}
   m_Layer: 0
   m_Name: MeleeWeapon
   m_TagString: Untagged
@@ -1640,6 +1641,34 @@ MonoBehaviour:
   weaponStartedReloading:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9213782794541072085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2268364065600329266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8783334f93d39bf4f92d0cdf1f5eaecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 863e9afa2891f604e819cbb186c940ac, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4465828145769734466}
+        m_TargetAssemblyTypeName: WeaponManager, Assembly-CSharp
+        m_MethodName: UpdateMeleeWeapon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2299263538989107576
 GameObject:
   m_ObjectHideFlags: 0
@@ -2149,6 +2178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8004266524932734654}
   - component: {fileID: 5010664872695834764}
+  - component: {fileID: 2709067075507455402}
   m_Layer: 0
   m_Name: SecondaryWeapon
   m_TagString: Untagged
@@ -2216,6 +2246,34 @@ MonoBehaviour:
   weaponStartedReloading:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2709067075507455402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5683024124913023218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8783334f93d39bf4f92d0cdf1f5eaecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: be689ae7513c6ff4698930948edbc9c8, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5010664872695834764}
+        m_TargetAssemblyTypeName: WeaponManager, Assembly-CSharp
+        m_MethodName: UpdateSecondaryWeapon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5771832302660310550
 GameObject:
   m_ObjectHideFlags: 0
