@@ -17,7 +17,7 @@ public class ShootingRangeManager : MonoBehaviour
                      private Vector3Int pZero = new Vector3Int();
 
     [Header("Practice Targets")]
-    [SerializeField] private GameObject[] defaultPracticeTargetPrefabs;
+    [SerializeField] private ArrayLinearGameObjectSO myDefaultPracticeTargetPrefabsSO;
     [SerializeField] private ArrayLinearGameObjectSO myPracticeTargetPrefabsSO;
     [SerializeField] private List<GameObject> myPracticeTargetInstances = new List<GameObject>();
 
@@ -111,7 +111,7 @@ public class ShootingRangeManager : MonoBehaviour
     private void SetArrayLinearGenerics()
     {
         if (myPracticeTargetPrefabsSO.IsEmpty)
-            myPracticeTargetPrefabsSO.Copy(defaultPracticeTargetPrefabs);
+            myPracticeTargetPrefabsSO.Copy(myDefaultPracticeTargetPrefabsSO.GetArray);
     }
 
     private void SetAstarPathAndScan()
@@ -153,15 +153,18 @@ public class ShootingRangeManager : MonoBehaviour
                 if (!myPracticeTargetPrefabsSO.IsEmpty)
                 {
                     for (int index = 0; index < myPracticeTargetPrefabsSO.Length; index++)
-                        OnGridInstantiate(myPracticeTargetPrefabsSO.GetElement(index));
+                        if (myPracticeTargetPrefabsSO.GetArray[index] != null)
+                            OnGridInstantiate(myPracticeTargetPrefabsSO.GetElement(index));
                 }
             }
             else // Instantiate defaults
             {
-                if (defaultPracticeTargetPrefabs.Length != 0)
-                    for (int index = 0; index < defaultPracticeTargetPrefabs.Length; index++)
-                        if(defaultPracticeTargetPrefabs[index] != null)
-                            OnGridInstantiate(defaultPracticeTargetPrefabs[index]);
+                if (!myPracticeTargetPrefabsSO.IsEmpty)
+                {
+                    for (int index = 0; index < myDefaultPracticeTargetPrefabsSO.Length; index++)
+                        if (myDefaultPracticeTargetPrefabsSO.GetArray[index] != null)
+                            OnGridInstantiate(myDefaultPracticeTargetPrefabsSO.GetElement(index));
+                }
             }
         }
     }

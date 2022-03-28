@@ -1505,6 +1505,7 @@ MonoBehaviour:
   - {fileID: 3445576315363371787, guid: 0dba9aee6d882964dbad11e19b424f7d, type: 3}
   - {fileID: 0}
   - {fileID: 3445576315363371787, guid: 0dba9aee6d882964dbad11e19b424f7d, type: 3}
+  myDefaultPracticeTargetPrefabsSO: {fileID: 11400000, guid: cca654723e4d2e542a5ab6cfcb18917a, type: 2}
   myPracticeTargetPrefabsSO: {fileID: 11400000, guid: e04c4073fc71306419b620f310c2548e, type: 2}
   myPracticeTargetInstances: []
 --- !u!1 &8665095843652740155

@@ -307,7 +307,7 @@ public class BasicEnemyContext : MonoBehaviour
             HasToken = false;
             AIManager.instance.MyTokenHandlerSO.ReturnToken();
         }
-        else if (!HasToken && (HasPath() && GetTargetTransform().CompareTag("Player")))// || context.HasReachedEndOfPath()))       // Try get Token
+        else if (!HasToken && (HasPath() && GetTargetTransform().CompareTag("Player"))) // || context.HasReachedEndOfPath()))       // Try get Token
         {
             HasToken = AIManager.instance.MyTokenHandlerSO.TryGetToken();
         }

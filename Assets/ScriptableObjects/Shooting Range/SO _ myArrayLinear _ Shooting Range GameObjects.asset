@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3aac3f78e85c0a4186c5f0b0f66ca72, type: 3}
-  m_Name: SO _ myArrayLinear GameObjects
+  m_Name: SO _ myArrayLinear _ Shooting Range GameObjects
   m_EditorClassIdentifier: 
   myArray:
   - {fileID: 198941392135997500, guid: 28c19a4a718965e4cbeab4047eab33f0, type: 3}
