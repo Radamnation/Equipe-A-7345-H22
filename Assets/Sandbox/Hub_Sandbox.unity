@@ -5492,6 +5492,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1990362425989773733, guid: a3bba2dbe530b5241beabfbbc59adc79, type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.7785715
+      objectReference: {fileID: 0}
     - target: {fileID: 7794977571437871941, guid: a3bba2dbe530b5241beabfbbc59adc79, type: 3}
       propertyPath: onDeathEvents.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 

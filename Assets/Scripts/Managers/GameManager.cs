@@ -126,6 +126,7 @@ public class GameManager : MonoBehaviour
     public void StartLoadLoadingTube()
     {
         levelIsReady = false;
+        loadingTube.GetComponent<Collider>().enabled = true;
         StartCoroutine(LoadLoadingTube());
     }
 
