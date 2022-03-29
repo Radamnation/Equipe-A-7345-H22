@@ -4,6 +4,8 @@ using UnityEngine.Events;
 public class PlayerContext : MonoBehaviour
 {
     // SECTION - Field ===================================================================
+    public static PlayerContext instance = null;
+
     private IPlayerState currState;
     private IPlayerState oldState;
 
@@ -68,8 +70,20 @@ public class PlayerContext : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        /*
+        if (instance == null)
+        {
+            instance = this;
+            
+        }
+        else if (instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        */
+
         playerTransform.Transform = transform;
+        DontDestroyOnLoad(gameObject);
     }
 
     // SECTION - Method - Unity ===================================================================

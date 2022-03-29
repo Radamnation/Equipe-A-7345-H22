@@ -73,7 +73,6 @@ public class PhysicalProjectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log($"COLLISION with {collision.transform.name}");
         if (!explodeOnImpact) return;
 
         Death();
