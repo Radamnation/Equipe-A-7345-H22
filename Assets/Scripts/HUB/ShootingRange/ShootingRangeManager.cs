@@ -21,7 +21,6 @@ public class ShootingRangeManager : MonoBehaviour
     [SerializeField] private ArrayLinearGameObjectSO myPracticeTargetPrefabsSO;
     [SerializeField] private List<GameObject> myPracticeTargetInstances = new List<GameObject>();
 
-                     private const string myAStarString = "AStar";
                      private AstarPath myAstarPath; // Width and Depth are : (grid.N * 2) + 4
 
     //[Header("Shooting Range Ground")]
@@ -98,7 +97,7 @@ public class ShootingRangeManager : MonoBehaviour
         shootingRangeCenterCollider = shootingRangeCenter.GetComponent<BoxCollider>();
         shootingRangeCenterCollider.size = new Vector3(rangeX, rangeY, rangeZ);
 
-        myAstarPath = GameObject.Find(myAStarString).GetComponent<AstarPath>();
+        myAstarPath = AIManager.instance.MyAstarPath;
 
         // Sprite Renderer
         shootingRange_GroundSprite = transform.GetChild(2).GetComponent<SpriteRenderer>();

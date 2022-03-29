@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3d6a9626ed5a21449bdf70e9c0d1c76, type: 3}
-  m_Name: SpawnPositionRotationSO
+  m_Script: {fileID: 11500000, guid: 82a2e48b1ca3fde408e3527125ec762c, type: 3}
+  m_Name: SO _ Canvas _ Minimap
   m_EditorClassIdentifier: 
-  Position: {x: 0, y: 0, z: 0}
-  Rotation: {x: 0, y: 0, z: 0, w: 0}
+  Transform: {fileID: 0}

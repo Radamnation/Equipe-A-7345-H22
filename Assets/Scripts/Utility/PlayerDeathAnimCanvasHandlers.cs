@@ -3,41 +3,38 @@ using UnityEngine;
 public class PlayerDeathAnimCanvasHandlers : MonoBehaviour
 {
     // SECTION - Field ===================================================================
-    [SerializeField] private GameObject UICanvas;
-    [SerializeField] private GameObject minimapCanvas;
-    [SerializeField] private GameObject weaponCanvas;
-    [SerializeField] private GameObject visualFeedBack;
-    [SerializeField] private OnDeathManager onDeathManager;
+    [SerializeField] private TransformSO onDeathManagerTransformSO;
+                     private OnDeathManager onDeathManager;
 
 
-    // SECTION - Method - Script Specific ===================================================================
-    public void Toggle_UICanvas()
+    // SECTION - Method - Utility Specific ===================================================================
+    private void Start()
     {
-        if (UICanvas != null)
-            UICanvas.SetActive(!UICanvas.activeSelf);
+        Invoke("LateStart", 1.0f);
     }
 
-    public void Toggle_MiniMapCanvas()
+
+    // SECTION - Method - Utility Specific ===================================================================
+    private void LateStart()
     {
-        if (minimapCanvas != null)
-            minimapCanvas.SetActive(!minimapCanvas.activeSelf);
+        onDeathManager = onDeathManagerTransformSO.Transform.GetComponent<OnDeathManager>();
     }
 
-    public void Toggle_WeaponCanvas()
+    public void ToggleActiveCanvasRef(TransformSO gameObjectRef = null)
     {
-        if (weaponCanvas != null)
-            weaponCanvas.SetActive(!weaponCanvas.activeSelf);
-    }
-
-    public void Toggle_VisualFeedback()
-    {
-        if (weaponCanvas != null)
-            visualFeedBack.SetActive(!visualFeedBack.activeSelf);
+       if (gameObjectRef != null && gameObjectRef.Transform != null)
+           gameObjectRef.Transform.gameObject.SetActive(!gameObjectRef.Transform.gameObject.activeSelf);
     }
 
     public void CheckEndAsync()
     {
         if (onDeathManager != null)
             onDeathManager.OnDeathAnimationEnd();
+    }
+
+    public void EnableOnDeathManager()
+    {
+        if (onDeathManager != null)
+            onDeathManager.enabled = true;
     }
 }
