@@ -38,3 +38,5 @@ MonoBehaviour:
   weaponPlayerSprite: {fileID: -466836361, guid: 33b32e9b4ffcfa443a07ebd6248ee8d4, type: 3}
   weaponFiringPlayerSprite: {fileID: -1231431401, guid: 33b32e9b4ffcfa443a07ebd6248ee8d4, type: 3}
   animator: {fileID: 0}
+  shootingSound:
+  - {fileID: 8300000, guid: b0c3bd3f114c82844a41e6143250c922, type: 3}

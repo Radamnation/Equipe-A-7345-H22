@@ -40,6 +40,9 @@ public class WeaponSO : ScriptableObject
     [SerializeField] private Sprite weaponFiringPlayerSprite;
     [SerializeField] private Animator animator;
 
+    [Header("Sound")]
+    [SerializeField] private AudioClip[] shootingSound;
+
     // SECTION - Property ===================================================================
     public string WeaponName { get => weaponName; set => weaponName = value; }
     public string WeaponDescription { get => weaponDescription; set => weaponDescription = value; }
@@ -68,6 +71,8 @@ public class WeaponSO : ScriptableObject
     public Sprite WeaponPlayerSprite { get => weaponPlayerSprite; set => weaponPlayerSprite = value; }
     public Sprite WeaponFiringPlayerSprite { get => weaponFiringPlayerSprite; set => weaponFiringPlayerSprite = value; }
     public Animator Animator { get => animator; set => animator = value; }
+    
+    public AudioClip[] ShootingSound { get => shootingSound; set => shootingSound = value; }
 
     // Start is called before the first frame update
     void OnEnable()

@@ -32,12 +32,19 @@ public class WeaponManager : MonoBehaviour
 
     private bool weaponIsReloading = false;
 
+    private AudioSource weaponAudioSource;
+
     public WeaponSO Weapon { get => weapon; set => weapon = value; }
     // public WeaponSO SecondaryWeapon { get => secondaryWeapon; set => secondaryWeapon = value; }
     public bool WeaponIsReloading { get => weaponIsReloading; }
     public LayerMask MyTargetMask { get => myTargetMask; }
 
     // public float SecondaryFireRateDelay { get => secondaryFireRateDelay; set => secondaryFireRateDelay = value; }
+
+    private void Awake()
+    {
+        weaponAudioSource = GetComponent<AudioSource>();
+    }
 
     private void Update()
     {
@@ -93,6 +100,19 @@ public class WeaponManager : MonoBehaviour
         {
             if (weapon.ShootCheck())
             {
+                if (weaponAudioSource != null)
+                {
+                    if (CompareTag("Player"))
+                    {
+                        weaponAudioSource.PlayOneShot(weapon.ShootingSound[Random.Range(0, weapon.ShootingSound.Length)]);
+                    }
+                    else
+                    {
+                        // weaponAudioSource.clip = weapon.ShootingSound[Random.Range(0, weapon.ShootingSound.Length)];
+                        weaponAudioSource.PlayOneShot(weapon.ShootingSound[Random.Range(0, weapon.ShootingSound.Length)]);
+                    }
+                }
+
                 StaticDebugger.SimpleDebugger(isDebugOn, $" {weapon.WeaponName} ... FIRED");
 
                 fireRateDelay = weapon.FiringRate;
