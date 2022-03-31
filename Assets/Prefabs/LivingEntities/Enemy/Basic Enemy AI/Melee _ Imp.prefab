@@ -343,7 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302ed520c0a045543bbc07729b6e4645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDebugOn: 1
+  isDebugOn: 0
   isEnemyWeaponManager: 1
   tracksPlayer: 1
   playerTransform: {fileID: 11400000, guid: bb659ba3eaf28be498f4674f9cbb480c, type: 2}

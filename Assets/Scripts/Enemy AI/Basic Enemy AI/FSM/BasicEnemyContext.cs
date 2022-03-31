@@ -298,7 +298,7 @@ public class BasicEnemyContext : MonoBehaviour
         // TODO:
         //      - REFACTORISE WHAT DICTATES RETURN TOKEN
 
-        if (CanUseBehaviour() && IsTargetNear())
+        if (IsIddleOrMoving() && IsTargetNear())
         {
             HasToken = AIManager.instance.MyTokenHandlerSO.TryGetToken();
         }
@@ -330,12 +330,15 @@ public class BasicEnemyContext : MonoBehaviour
             Collider[] hit;
             hit = StaticRayCaster.IsOverlapSphereTouching(transform, MyAIPath.endReachedDistance, myAIDestinationSetter.target.gameObject.layer, true);
 
-            return !(hit[0].transform == null);
+            return hit == null;
+            //return !(hit[0].transform == null);
             // return true;
         }
 
+        if (GetCurrentWeaponManager().TracksPlayer)
+            return GetCurrentWeaponManager().IsTargetInFront();
 
-        return GetCurrentWeaponManager().IsTargetInFront();
+        return GetCurrentWeaponManager().IsTargetAround();
     }
 
     // Target
@@ -364,7 +367,7 @@ public class BasicEnemyContext : MonoBehaviour
             if (weaponManager_2 != null)
                 return weaponManager_2.TriggerWeapon();
 
-        return true; // true == prevent using main weapon when checking !IsMainWeaponReloading()
+        return false; // true == prevent using main weapon when checking !IsMainWeaponReloading()
     }
 
     public bool TryFireMainWeapon(BasicEnemy_States stateSpecificCheck)
@@ -376,7 +379,7 @@ public class BasicEnemyContext : MonoBehaviour
             if (weaponManager_2 != null)
                 return weaponManager_2.TriggerWeapon();
 
-        return true; // true == prevent using main weapon when checking !IsMainWeaponReloading()
+        return false; // true == prevent using main weapon when checking !IsMainWeaponReloading()
     }
 
     public bool IsCurrentWeaponManagerNull()
@@ -597,7 +600,7 @@ public class BasicEnemyContext : MonoBehaviour
         return false;
     }
 
-    public bool CanUseBehaviour()
+    public bool IsIddleOrMoving()
     {
         return anim.GetCurrentAnimatorStateInfo(0).IsName(animState_Iddle) ||
                 anim.GetCurrentAnimatorStateInfo(0).IsName(animState_OnMoveBlendTree);

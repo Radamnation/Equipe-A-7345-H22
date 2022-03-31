@@ -11,9 +11,9 @@ public class BasicEnemyState_One : IEnemyState
     {
         context.OnDefaultSetMoveAnim();
         context.OnDefaultMoveBehaviour();
-        Debug.Log($"{context.name} has no token");
+
         if (!context.HasToken &&
-            context.CanUseBehaviour())
+            context.IsIddleOrMoving())
         {       
             // Behaviour
             if (context.Behaviour_NoToken_1 != null && context.Behaviour_NoToken_1.IsExecutionValid())
@@ -30,7 +30,7 @@ public class BasicEnemyState_One : IEnemyState
     {
         if (context.HasToken &&
             context.IsTargetNear() &&
-            context.CanUseBehaviour()) // context.IsInRangeForAttack() &&     context.HasReachedEndOfPath() &&       
+            context.IsIddleOrMoving() ) // context.IsInRangeForAttack() &&     context.HasReachedEndOfPath() &&       
         {
             // Check: Animation based
             if (!context.AnimExecuteAtk_1)
@@ -52,12 +52,12 @@ public class BasicEnemyState_One : IEnemyState
                         context.Behaviour_Token_1.Execute();
                     }
                 }
- 
+
                 // Can the animation be launched?
                 if (launchAnimation)
                     context.SetAnimTrigger(BasicEnemy_AnimTriggers.STATE_01_TOKEN);
             }
-            else if ((context.Behaviour_Token_1 != null && context.Behaviour_Token_1.IsExecutionValid()) || context.WeaponManager_1.IsTargetInFront())
+            else if ((context.Behaviour_Token_1 != null && context.Behaviour_Token_1.IsExecutionValid()) || context.IsTargetNear())//context.WeaponManager_1.IsTargetInFront())
                 context.SetAnimTrigger(BasicEnemy_AnimTriggers.STATE_01_TOKEN); // Animation event based execution      
         }
     }
@@ -78,9 +78,7 @@ public class BasicEnemyState_One : IEnemyState
 
     public void OnStateUpdate(BasicEnemyContext context)
     {
-        if (!context.HasPath())
-            Debug.Log($"{context.name} Dont have path");
-
+        Debug.Log("Mimic in state ONE");
         WithoutTokenBehaviour(context);
         WithTokenBehaviour(context);
         OnManageToken(context);

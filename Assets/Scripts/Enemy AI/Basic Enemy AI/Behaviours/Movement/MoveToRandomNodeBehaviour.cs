@@ -20,7 +20,7 @@ public class MoveToRandomNodeBehaviour : AbstractBehaviour
 
     public override bool ChildSpecificValidations() 
     {
-        if (myContext.CanUseBehaviour())
+        if (myContext.IsIddleOrMoving())
             return false;
 
         return true;        
