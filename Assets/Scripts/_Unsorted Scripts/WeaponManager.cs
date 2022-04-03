@@ -102,15 +102,7 @@ public class WeaponManager : MonoBehaviour
             {
                 if (weaponAudioSource != null)
                 {
-                    if (CompareTag("Player"))
-                    {
-                        weaponAudioSource.PlayOneShot(weapon.ShootingSound[Random.Range(0, weapon.ShootingSound.Length)]);
-                    }
-                    else
-                    {
-                        // weaponAudioSource.clip = weapon.ShootingSound[Random.Range(0, weapon.ShootingSound.Length)];
-                        weaponAudioSource.PlayOneShot(weapon.ShootingSound[Random.Range(0, weapon.ShootingSound.Length)]);
-                    }
+                    weaponAudioSource.PlayOneShot(weapon.ShootingSound[Random.Range(0, weapon.ShootingSound.Length)]);
                 }
 
                 StaticDebugger.SimpleDebugger(isDebugOn, $" {weapon.WeaponName} ... FIRED");
@@ -122,9 +114,22 @@ public class WeaponManager : MonoBehaviour
             }
             else if (!weapon.CanFireContinuously || weapon.CurrentClip == 0)
             {
+                if (weaponAudioSource != null)
+                {
+                    weaponAudioSource.PlayOneShot(weapon.EmptyClickSound);
+                }
                 ReloadWeapon();
             }
         }
+        else if (fireRateDelay <= 0 && reloadDelay > 0)
+        {
+            if (weaponAudioSource != null)
+            {
+                weaponAudioSource.PlayOneShot(weapon.EmptyClickSound);
+            }
+            fireRateDelay = weapon.FiringRate;
+        }
+            
         return false;
     }
 
@@ -139,6 +144,14 @@ public class WeaponManager : MonoBehaviour
                 weaponStartedReloading.Invoke();
                 reloadDelay = weapon.ReloadTime;
             }
+        }
+    }
+
+    public void PlayReloadSound()
+    {
+        if (weaponAudioSource != null)
+        {
+            weaponAudioSource.PlayOneShot(weapon.ReloadSound);
         }
     }
 

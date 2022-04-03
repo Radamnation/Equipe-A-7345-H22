@@ -21,6 +21,11 @@ public class PickableManager : MonoBehaviour
     [SerializeField] private UnityEvent secondaryAsChange;
     [SerializeField] private UnityEvent currencyAsChange;
 
+    [SerializeField] private AudioClip pickupSound;
+
+    private AudioSource myAudioSource;
+    private float myAudioSourcePitch;
+
     private void Awake()
     {
         if (instance == null)
@@ -36,7 +41,8 @@ public class PickableManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        myAudioSource = GetComponent<AudioSource>();
+        myAudioSourcePitch = myAudioSource.pitch;
     }
 
     // Update is called once per frame
@@ -162,6 +168,19 @@ public class PickableManager : MonoBehaviour
                 currencyAsChange.Invoke();
             }
         }
+        if (verification)
+        {
+            StopCoroutine(ResetPitch());
+            myAudioSource.PlayOneShot(pickupSound);
+            myAudioSource.pitch += 0.05f;
+            StartCoroutine(ResetPitch());
+        }
         return verification;
+    }
+
+    private IEnumerator ResetPitch()
+    {
+        yield return new WaitForSeconds(1.0f);
+        myAudioSource.pitch = myAudioSourcePitch;
     }
 }

@@ -77,7 +77,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893138, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: uniqueID
-      value: 5054476664607969944
+      value: 1025347340334673829
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893141, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_RootOrder
@@ -163,9 +163,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 16
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0

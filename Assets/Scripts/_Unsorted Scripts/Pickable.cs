@@ -26,14 +26,6 @@ public class Pickable : MonoBehaviour
         
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.GetComponentInChildren<PickableManager>() != null)
-    //    {
-    //        ActivatePickable(collision);
-    //    }
-    //}
-
     private void ActivatePickable(Collider other)
     {
         if (other.gameObject.GetComponentInChildren<PickableManager>().PickPickable(pickableSO))
