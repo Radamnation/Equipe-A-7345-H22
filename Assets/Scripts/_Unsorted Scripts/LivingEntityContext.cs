@@ -69,10 +69,12 @@ public class LivingEntityContext : MonoBehaviour
     public void FullHeal()
     {
         currentHP.Value = maxHP.Value;
+        /*
         if (gameObject.CompareTag("Player") && onTakeDamageEvents != null)
         {
             onTakeDamageEvents.Invoke();
         }
+        */
     }
 
     public void FullArmor()

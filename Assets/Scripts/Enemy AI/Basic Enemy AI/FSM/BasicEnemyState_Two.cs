@@ -13,7 +13,7 @@ public class BasicEnemyState_Two : IEnemyState
         context.OnDefaultMoveBehaviour();
 
         if (!context.HasToken &&
-            context.CanUseBehaviour())
+            context.IsIddleOrMoving())
         {
             // Behaviour
             if (context.Behaviour_NoToken_2 != null && context.Behaviour_NoToken_2.IsExecutionValid())
@@ -29,7 +29,9 @@ public class BasicEnemyState_Two : IEnemyState
     public void WithTokenBehaviour(BasicEnemyContext context)
     {
         if (context.HasToken &&
-            context.CanUseBehaviour() )
+            !context.IsWeaponReloading() &&
+            context.IsTargetNear() &&
+            context.IsIddleOrMoving() )
         {
             // Check: Animation based
             if (!context.AnimExecuteAtk_2)
@@ -39,6 +41,7 @@ public class BasicEnemyState_Two : IEnemyState
                 // Weapon
                 if (context.TryFireMainWeapon())
                 {
+                    Debug.Log("Fire main weapon state two");
                     launchAnimation = true;
 
                     context.OnDefaultAttackBehaviour();
@@ -49,6 +52,8 @@ public class BasicEnemyState_Two : IEnemyState
                         //launchAnimation = true;
 
                         context.Behaviour_Token_2.Execute();
+
+                        Debug.Log("Execute behaviour State two");
                     }
                 }
 
@@ -56,7 +61,7 @@ public class BasicEnemyState_Two : IEnemyState
                 if (launchAnimation)
                     context.SetAnimTrigger(BasicEnemy_AnimTriggers.STATE_02_TOKEN);
             }
-            else if ((context.Behaviour_Token_2 != null && context.Behaviour_Token_2.IsExecutionValid()) || context.WeaponManager_2.IsTargetInFront())
+            else if ((context.Behaviour_Token_2 != null && context.Behaviour_Token_2.IsExecutionValid()) || context.IsTargetNear())//context.WeaponManager_2.IsTargetInFront())
                 context.SetAnimTrigger(BasicEnemy_AnimTriggers.STATE_02_TOKEN); // Animation event based execution    
         }
     }
@@ -77,6 +82,9 @@ public class BasicEnemyState_Two : IEnemyState
 
     public void OnStateUpdate(BasicEnemyContext context)
     {
+
+        Debug.Log("Mimic in state TWO");
+
         WithoutTokenBehaviour(context);
         WithTokenBehaviour(context);
         OnManageToken(context);

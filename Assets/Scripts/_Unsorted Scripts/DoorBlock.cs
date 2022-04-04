@@ -43,9 +43,10 @@ public class DoorBlock : MonoBehaviour
 
     public void OpenDoor()
     {
-        if (!isLocked)
+        if (!isLocked && !isOpen)
         {
-            GetComponent<Animator>().SetTrigger("OpenDoor");         
+            isOpen = true;
+            GetComponent<Animator>().SetTrigger("OpenDoor");      
         }
     }
 
@@ -64,8 +65,12 @@ public class DoorBlock : MonoBehaviour
 
     public void CloseDoor()
     {
-        doorCollider.enabled = true;
-        GetComponent<Animator>().SetTrigger("CloseDoor");
+        if (isOpen)
+        {
+            isOpen = false;
+            doorCollider.enabled = true;
+            GetComponent<Animator>().SetTrigger("CloseDoor");
+        }
     }
 
     public void CloseOffWall()

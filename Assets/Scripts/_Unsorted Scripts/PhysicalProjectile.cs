@@ -66,7 +66,7 @@ public class PhysicalProjectile : MonoBehaviour
             }
             else
             {
-                Death();
+                Death();               
             }
         }
     }
@@ -86,5 +86,9 @@ public class PhysicalProjectile : MonoBehaviour
     private void Death()
     {
         onDeathEvents.Invoke();
+        this.enabled = false;
+
+        myRigidbody.constraints = RigidbodyConstraints.FreezePosition;
+        myCollider.enabled = false;
     }
 }

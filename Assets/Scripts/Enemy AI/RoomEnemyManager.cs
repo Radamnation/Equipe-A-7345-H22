@@ -20,6 +20,7 @@ public class RoomEnemyManager : MonoBehaviour
 
     private List<LivingEntityContext> myLivingEntityContextList = new List<LivingEntityContext>();
 
+    private Room myRoom;
 
 
 
@@ -29,12 +30,44 @@ public class RoomEnemyManager : MonoBehaviour
         myTriggerZone = GetComponent<BoxCollider>();
         if (!isRoomShootingRange)
         {
-            Room myRoom = transform.parent.GetComponent<Room>();
-            myTriggerZone.size = new Vector3(myRoom.XDimension-2, myRoom.XDimension-2, myRoom.ZDimension-2);
+            myRoom = transform.parent.GetComponent<Room>();
+            myTriggerZone.size = new Vector3(myRoom.XDimension-4, myRoom.XDimension-2, myRoom.ZDimension-4);
         }
     }
 
     private void OnTriggerEnter(Collider other)
+    {
+        //if (isRoomShootingRange)
+            Manager(other);
+
+        if (!isRoomShootingRange && other.CompareTag("Player") && !myRoom.IsCompleted)
+        {
+            myRoom.CloseAllDoors();
+            Debug.Log(other.name);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (name == "ShootingRangeCenter" && other.CompareTag("Player"))
+        {
+            other.GetComponent<LivingEntityContext>().FullHeal(); // Heal player in hub
+            Reset();
+        }
+
+        if (!isRoomShootingRange)
+            Manager(other);
+    }
+
+
+    // SECTION - Method - Utility Specific =========================================================
+    public void Reset()
+    {
+        playerhasEntered = false;
+        myLivingEntityContextList.Clear();
+    }
+
+    private void Manager(Collider other)
     {
         if (other.gameObject.layer == 8 && !playerhasEntered) // Layer int # for LIVING ENTITY
         {
@@ -47,9 +80,9 @@ public class RoomEnemyManager : MonoBehaviour
 
             LivingEntityContext otherLEC = other.GetComponent<LivingEntityContext>();
 
-            if ( otherLEC != null && 
-                !otherLEC.ActivateEnemyOnTriggerEnter && 
-                !myLivingEntityContextList.Contains(otherLEC) )
+            if (otherLEC != null &&
+                !otherLEC.ActivateEnemyOnTriggerEnter &&
+                !myLivingEntityContextList.Contains(otherLEC))
             {
                 myLivingEntityContextList.Add(otherLEC);
                 ToggleActive(otherLEC);
@@ -64,23 +97,6 @@ public class RoomEnemyManager : MonoBehaviour
                 ToggleActive(otherLEC, true);
             }
         }
-
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (name == "ShootingRangeCenter" && other.CompareTag("Player"))
-        {
-            Reset();
-        }
-    }
-
-
-    // SECTION - Method - Utility Specific =========================================================
-    public void Reset()
-    {
-        playerhasEntered = false;
-        myLivingEntityContextList.Clear();
     }
 
     public void ToggleActive(LivingEntityContext lec, bool forceActivation = false)

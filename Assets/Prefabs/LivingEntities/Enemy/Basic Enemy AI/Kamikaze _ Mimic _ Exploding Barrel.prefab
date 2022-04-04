@@ -31,6 +31,10 @@ PrefabInstance:
       propertyPath: weaponManager_2
       value: 
       objectReference: {fileID: 6404246582735429935}
+    - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: animExecuteAtk_2
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDeathSFX
       value: 
@@ -243,11 +247,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDebugOn: 0
   isEnemyWeaponManager: 1
-  tracksPlayer: 0
+  tracksPlayer: 1
   playerTransform: {fileID: 11400000, guid: bb659ba3eaf28be498f4674f9cbb480c, type: 2}
   myTargetMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   weapon: {fileID: 11400000, guid: deae533e02d594d43ac71554f1db0da1, type: 2}
   weaponsInventory: {fileID: 0}
   weaponHasChanged:
@@ -309,7 +313,7 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 264
-  isDebugOn: 0
+  isDebugOn: 1
   delayDestroys: 0
   delayDisablesSprite: 0
   executeDelay: 0.6
@@ -455,7 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab2fd8d43a408e4da855ba091f87d11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDebuggerOn: 0
+  isDebuggerOn: 1
   targetMask:
     serializedVersion: 2
     m_Bits: 8

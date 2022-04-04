@@ -38,6 +38,7 @@ public class WeaponManager : MonoBehaviour
     // public WeaponSO SecondaryWeapon { get => secondaryWeapon; set => secondaryWeapon = value; }
     public bool WeaponIsReloading { get => weaponIsReloading; }
     public LayerMask MyTargetMask { get => myTargetMask; }
+    public bool TracksPlayer { get => tracksPlayer; }
 
     // public float SecondaryFireRateDelay { get => secondaryFireRateDelay; set => secondaryFireRateDelay = value; }
 
@@ -50,6 +51,13 @@ public class WeaponManager : MonoBehaviour
     {
         fireRateDelay -= Time.deltaTime;
         // secondaryFireRateDelay -= Time.deltaTime;
+
+        // Reload for enemy before they try to shoot | Prevents launching animation when they can't attack
+        if (isEnemyWeaponManager && !WeaponIsReloading && weapon.CurrentClip == 0)
+        {
+            ReloadWeapon();
+            weaponIsReloading = true;
+        }
 
         if (reloadDelay > 0)
         {
@@ -280,7 +288,9 @@ public class WeaponManager : MonoBehaviour
     public bool IsTargetInFront()
     {
         RaycastHit hit;
-        hit = StaticRayCaster.IsLineCastTouching(transform.position, transform.forward, Weapon.Range, myTargetMask, true);
+        hit = StaticRayCaster.IsLineCastTouching(transform.position, transform.forward, Weapon.Range, myTargetMask, isDebugOn);
+
+        //Debug.Log($"Is raycast hit null: {hit.transform == null}");
 
         return hit.transform != null;
     }
@@ -288,8 +298,11 @@ public class WeaponManager : MonoBehaviour
     public bool IsTargetAround()
     {
         Collider[] hit;
-        hit = StaticRayCaster.IsOverlapSphereTouching(transform, Weapon.Range, myTargetMask, true);
+        hit = StaticRayCaster.IsOverlapSphereTouching(transform.position, Weapon.Range, myTargetMask, isDebugOn);
 
-        return !(hit == null && hit[0].transform != null);
+        Debug.Log($"Is overlapsphere hit null: {hit == null}");
+
+        return hit != null;
+        //return !(hit == null && hit[0].transform != null);
     }
 }

@@ -38,7 +38,7 @@ public class DontStayIddleBehaviour : AbstractBehaviour
         if (myContext.HasToken && currTimer != 0.0f)
             currTimer = 0.0f;
 
-        return myContext.CanUseBehaviour();
+        return myContext.IsIddleOrMoving();
             
 
         //return isExecutionDone && isValidForExecute;

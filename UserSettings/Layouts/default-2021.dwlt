@@ -23,7 +23,7 @@ MonoBehaviour:
   m_RootView: {fileID: 3}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
-  m_Maximized: 1
+  m_Maximized: 0
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -2146,7 +2146,7 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_PreviewWindow: {fileID: 0}
---- !u!114 &17
+--- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2269,7 +2269,7 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 50300000
       m_LastClickedID: 0
       m_ExpandedIDs: 78cea9fe7ecea9fe88cea9fe8ecea9fe98cea9fe9ecea9feaecea9febecea9fececea9fed6cea9fe4ae6a9fe4ee6a9fe5a8255ff908255ff9a8255ffa28255ffd88255ff1a8355fff8995fff90fb8bffd4298cffd8298cff946b8cffaafafffff8faffff3efbfffff4ffffff3871000032c80b00
       m_RenameOverlay:
@@ -2403,8 +2403,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: 04250000
+    m_LastClickedInstanceID: 9476
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000b43b00002a4100005e4100006a410000f62f0000602e0000c82e0000162e0000462e0000543200005c320000583200005a3a00009a710000d4380000603700007432000058fd0000acff00001c9600007efa0000ba5b0000963e0000663200004c8200003284000084880000468a0000d89e0000623e00009a4e0000925900005a3100000e3000000c3900005c2101005c850000b2810000fa820000c83f00000a3600007a5e0000667500002079000072470000064700000000000034550000a247000040ee0000900701005a9f010026470000aa110000de850000346200006e5900002c470000c47c000068480000923e0000d08b00006e6200008e79000088b00000e24b0000169e0000
     m_RenameOverlay:
@@ -2535,7 +2535,7 @@ MonoBehaviour:
       displayed: 1
       snapOffset: {x: 0, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 0
+      snapCorner: 2
       id: unity-transform-toolbar
       index: 0
       layout: 2
@@ -2568,7 +2568,7 @@ MonoBehaviour:
       displayed: 0
       snapOffset: {x: 0, y: 0}
       snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 0
+      snapCorner: 3
       id: Scene View/Camera
       index: 1
       layout: 4
@@ -2953,6 +2953,54 @@ MonoBehaviour:
       e11: 1.0499411
       e12: 0
       e13: 46.971043
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    - e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    - e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    - e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
       e20: 0
       e21: 0
       e22: 1
