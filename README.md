@@ -47,6 +47,6 @@ WORK QUALITY NOTE <br />
 ... CREDITS<br />
 ... ... All sprites were made by the owners of the game<br />
 ... ... Some sonds were made by René Adam-Riché (player's voice) <br />
-... Float variables, Game event : https://www.youtube.com/watch?v=raQ3iHhE_Kk&t=2415s<br />
-... 8-directional animation blend tree angle detection: https://www.youtube.com/watch?v=qcXEcZmZ8kA<br />
-... Aron Granberg A* project: https://arongranberg.com/astar/download <br />
+... ... Float variables, Game event : https://www.youtube.com/watch?v=raQ3iHhE_Kk&t=2415s<br />
+... ... 8-directional animation blend tree angle detection: https://www.youtube.com/watch?v=qcXEcZmZ8kA<br />
+... ... Aron Granberg A* project: https://arongranberg.com/astar/download <br />
