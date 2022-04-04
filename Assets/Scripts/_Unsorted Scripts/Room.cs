@@ -299,6 +299,7 @@ public class Room : MonoBehaviour
         mapHasChanged.Invoke();
         if (locksOnEnter && !isCompleted)
         {
+            MusicManager.instance.SwitchToInCombat();
             LockAllDoors();
             ActivateLivingEntities();
             foreach (Room room in myAdjacentRooms)
@@ -351,6 +352,7 @@ public class Room : MonoBehaviour
 
     private void FinishRoom()
     {
+        MusicManager.instance.SwitchToOutOfCombat();
         IsCompleted = true;
         if (nextLevelBlock != null)
         {

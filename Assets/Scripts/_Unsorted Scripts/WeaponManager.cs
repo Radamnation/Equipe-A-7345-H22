@@ -32,12 +32,19 @@ public class WeaponManager : MonoBehaviour
 
     private bool weaponIsReloading = false;
 
+    private AudioSource weaponAudioSource;
+
     public WeaponSO Weapon { get => weapon; set => weapon = value; }
     // public WeaponSO SecondaryWeapon { get => secondaryWeapon; set => secondaryWeapon = value; }
     public bool WeaponIsReloading { get => weaponIsReloading; }
     public LayerMask MyTargetMask { get => myTargetMask; }
 
     // public float SecondaryFireRateDelay { get => secondaryFireRateDelay; set => secondaryFireRateDelay = value; }
+
+    private void Awake()
+    {
+        weaponAudioSource = GetComponent<AudioSource>();
+    }
 
     private void Update()
     {
@@ -93,6 +100,11 @@ public class WeaponManager : MonoBehaviour
         {
             if (weapon.ShootCheck())
             {
+                if (weaponAudioSource != null)
+                {
+                    weaponAudioSource.PlayOneShot(weapon.ShootingSound[Random.Range(0, weapon.ShootingSound.Length)]);
+                }
+
                 StaticDebugger.SimpleDebugger(isDebugOn, $" {weapon.WeaponName} ... FIRED");
 
                 fireRateDelay = weapon.FiringRate;
@@ -102,9 +114,22 @@ public class WeaponManager : MonoBehaviour
             }
             else if (!weapon.CanFireContinuously || weapon.CurrentClip == 0)
             {
+                if (weaponAudioSource != null && CompareTag("Player"))
+                {
+                    weaponAudioSource.PlayOneShot(weapon.EmptyClickSound);
+                }
                 ReloadWeapon();
             }
         }
+        else if (fireRateDelay <= 0 && reloadDelay > 0)
+        {
+            if (weaponAudioSource != null && CompareTag("Player"))
+            {
+                weaponAudioSource.PlayOneShot(weapon.EmptyClickSound);
+            }
+            fireRateDelay = weapon.FiringRate;
+        }
+            
         return false;
     }
 
@@ -114,11 +139,24 @@ public class WeaponManager : MonoBehaviour
         {
             if (weapon.ReloadCheck())
             {
+                if (weaponAudioSource != null && CompareTag("Player"))
+                {
+                    weaponAudioSource.PlayOneShot(weapon.ReloadSentenceSound[Random.Range(0, weapon.ReloadSentenceSound.Length)]);
+                }
+
                 StaticDebugger.SimpleDebugger(isDebugOn, $" {weapon.WeaponName} ... RELOADED");
 
                 weaponStartedReloading.Invoke();
                 reloadDelay = weapon.ReloadTime;
             }
+        }
+    }
+
+    public void PlayReloadSound()
+    {
+        if (weaponAudioSource != null && CompareTag("Player"))
+        {
+            weaponAudioSource.PlayOneShot(weapon.ReloadSound);
         }
     }
 
@@ -215,7 +253,8 @@ public class WeaponManager : MonoBehaviour
         for (int i = 0; i < weapon.BulletsNumber; i++)
         {
             RaycastHit hit;
-            var spreadDirection = new Vector3(0, Random.Range(-weapon.Spread, weapon.Spread), Random.Range(-weapon.Spread, weapon.Spread));
+
+            var spreadDirection = transform.TransformVector(new Vector3(Random.Range(-weapon.Spread, weapon.Spread), Random.Range(-weapon.Spread, weapon.Spread), 0));
             hit = StaticRayCaster.IsLineCastTouching(transform.position, transform.forward + spreadDirection, 1000, myTargetMask, isDebugOn);
             if (hit.collider != null)
             {

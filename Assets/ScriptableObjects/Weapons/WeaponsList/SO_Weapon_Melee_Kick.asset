@@ -18,6 +18,7 @@ MonoBehaviour:
   infiniteAmmo: 0
   currencyValue: 0
   canFireContinuously: 0
+  canBeCharged: 0
   startingAmmo: 1
   currentAmmo: 1
   maxAmmo: 1
@@ -35,4 +36,13 @@ MonoBehaviour:
   bulletHole: {fileID: 0}
   weaponUISprite: {fileID: 0}
   weaponPlayerSprite: {fileID: 21300000, guid: 1cab85b27fff8f34fa7bcab5f0e300ef, type: 3}
+  weaponFiringPlayerSprite: {fileID: 0}
   animator: {fileID: 0}
+  shootingSound:
+  - {fileID: 8300000, guid: faa9a4d250efc5b4396e1f56d0d866bf, type: 3}
+  - {fileID: 8300000, guid: 6fbc3565d01c3624fbf9bb819e083ce0, type: 3}
+  - {fileID: 8300000, guid: 7bb034c079950754db16f99f0d16bbc4, type: 3}
+  - {fileID: 8300000, guid: e476886fd62864f40b29f41687b78f24, type: 3}
+  - {fileID: 8300000, guid: e843b687ea310434e9bab7b45866c298, type: 3}
+  reloadSound: {fileID: 0}
+  emptyClickSound: {fileID: 0}

@@ -42,7 +42,12 @@ public class LivingEntityContext : MonoBehaviour
     [SerializeField] private int minDrop = 5;
     [SerializeField] private int maxDrop = 10;
 
- 
+    [Header("SFX")]
+    [SerializeField] private AudioClip[] myHurtSFX;
+    [SerializeField] private AudioClip myDeathSFX;
+
+    private AudioSource myAudioSource;
+
     // SECTION - Property =========================================================
     public bool IsDead { get => currentHP.Value <= 0.0f; }
     public bool IsEnemy { get => isEnemy; set => isEnemy = value; }
@@ -55,8 +60,8 @@ public class LivingEntityContext : MonoBehaviour
     {
         FullHeal();
         spriteRenderer = GetComponentsInChildren<SpriteRenderer>();
-
         myRigidbody = GetComponent<Rigidbody>();
+        myAudioSource = GetComponent<AudioSource>();
     }
 
 
@@ -108,6 +113,10 @@ public class LivingEntityContext : MonoBehaviour
             // On Death
             if (IsDead)
             {
+                if (myAudioSource != null)
+                {
+                    myAudioSource.PlayOneShot(myDeathSFX);
+                }
                 currentHP.Value = 0;
                 OnDeathBaseHandler(); // Placed here to avoid manual storing in event
                 if (onTakeDamageEvents != null)
@@ -122,6 +131,10 @@ public class LivingEntityContext : MonoBehaviour
             // On Simple Damage
             else
             {
+                if (myAudioSource != null)
+                {
+                    myAudioSource.PlayOneShot(myHurtSFX[Random.Range(0, myHurtSFX.Length)]);
+                }
                 OnTakeDamageBaseHandler(); // Placed here to avoid manual storing in event
                 if (onTakeDamageEvents != null)
                     onTakeDamageEvents.Invoke();

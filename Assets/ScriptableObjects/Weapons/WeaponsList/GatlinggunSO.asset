@@ -38,3 +38,14 @@ MonoBehaviour:
   weaponPlayerSprite: {fileID: 443672183, guid: 1f178f2daf596f24f94b13e54c481ed5, type: 3}
   weaponFiringPlayerSprite: {fileID: -906676929, guid: 1f178f2daf596f24f94b13e54c481ed5, type: 3}
   animator: {fileID: 0}
+  shootingSound:
+  - {fileID: 8300000, guid: cfd98bec9b9485449bde7a3e542b6dbc, type: 3}
+  - {fileID: 8300000, guid: 35cccb2717a5923428298e2f67a6549c, type: 3}
+  - {fileID: 8300000, guid: 1925ed2e513fe024ab81861c8e244d4d, type: 3}
+  - {fileID: 8300000, guid: 339bc1a915d19c942bc6e0c499dd2258, type: 3}
+  reloadSentenceSound:
+  - {fileID: 8300000, guid: 5d240e5c580e9e7419b913460135938b, type: 3}
+  - {fileID: 8300000, guid: ae2d3601ced01ef44bf3c050f4435bd4, type: 3}
+  - {fileID: 8300000, guid: 463335d120814bc48b2af6bb98b01182, type: 3}
+  reloadSound: {fileID: 8300000, guid: 1412cd1eb5fdd7a4e8fd614be3204862, type: 3}
+  emptyClickSound: {fileID: 8300000, guid: 944bd3f25f83dad4baea5cd7afb251a3, type: 3}
