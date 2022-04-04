@@ -30,6 +30,8 @@ public class EnemyStateDead : IEnemyState
 
         // Replace Token uppon death
         AIManager.instance.MyTokenHandlerSO.ReturnToken(context.HasToken);
+
+        context.DestroyAllWeaponSO();
     }
 
     public void OnStateUpdate(BasicEnemyContext context)

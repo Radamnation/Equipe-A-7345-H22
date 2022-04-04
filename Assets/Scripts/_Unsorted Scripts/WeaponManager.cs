@@ -290,7 +290,7 @@ public class WeaponManager : MonoBehaviour
         RaycastHit hit;
         hit = StaticRayCaster.IsLineCastTouching(transform.position, transform.forward, Weapon.Range, myTargetMask, isDebugOn);
 
-        Debug.Log($"Is raycast hit null: {hit.transform == null}");
+        //Debug.Log($"Is raycast hit null: {hit.transform == null}");
 
         return hit.transform != null;
     }

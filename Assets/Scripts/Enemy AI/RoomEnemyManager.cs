@@ -31,7 +31,7 @@ public class RoomEnemyManager : MonoBehaviour
         if (!isRoomShootingRange)
         {
             myRoom = transform.parent.GetComponent<Room>();
-            myTriggerZone.size = new Vector3(myRoom.XDimension-2, myRoom.XDimension-2, myRoom.ZDimension-2);
+            myTriggerZone.size = new Vector3(myRoom.XDimension-4, myRoom.XDimension-2, myRoom.ZDimension-4);
         }
     }
 
@@ -39,6 +39,12 @@ public class RoomEnemyManager : MonoBehaviour
     {
         //if (isRoomShootingRange)
             Manager(other);
+
+        if (!isRoomShootingRange && other.CompareTag("Player") && !myRoom.IsCompleted)
+        {
+            myRoom.CloseAllDoors();
+            Debug.Log(other.name);
+        }
     }
 
     private void OnTriggerExit(Collider other)

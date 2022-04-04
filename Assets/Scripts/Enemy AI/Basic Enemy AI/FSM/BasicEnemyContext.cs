@@ -245,6 +245,11 @@ public class BasicEnemyContext : MonoBehaviour
         if (!startAtMaxSpeed)
             SetSpeed(0.0f);
 
+        // Weapons ========================================
+        // Instantiate SO as unique && set infinite clip
+        SetNewWeaponSO(BasicEnemy_States.ONE);
+        SetNewWeaponSO(BasicEnemy_States.TWO);
+
 
         // Miscellaneous ========================================
         myLivingEntity = GetComponentInChildren<LivingEntityContext>();
@@ -258,6 +263,8 @@ public class BasicEnemyContext : MonoBehaviour
         behaviour_NoToken_2 = transform.GetChild(2).transform.GetChild(0).GetComponentInChildren<AbstractBehaviour>();
         behaviour_Token_2 = transform.GetChild(2).transform.GetChild(1).GetComponentInChildren<AbstractBehaviour>();
     }
+
+
     #endregion
 
     #region REGION - Default Behaviours
@@ -414,6 +421,27 @@ public class BasicEnemyContext : MonoBehaviour
         return null;
     }
 
+
+    public void SetNewWeaponSO(BasicEnemy_States atState, WeaponSO myDesiredWeaponSO = null)
+    {
+        WeaponManager myWeaponManager = GetSpecificWeaponManager(atState);
+
+        if (myWeaponManager != null)
+        {
+            WeaponSO myNewWeaponSO;
+
+            // Check for specific or current WeaponSO instantiate
+            if (myDesiredWeaponSO == null)
+                myNewWeaponSO = Instantiate(myWeaponManager.Weapon);
+            else
+                myNewWeaponSO = Instantiate(myDesiredWeaponSO);
+
+            myNewWeaponSO.InfiniteAmmo = true;
+
+            myWeaponManager.Weapon = myNewWeaponSO;
+        }
+    }
+
     public bool IsWeaponReloading()
     {
         WeaponManager myWeaponManager = GetCurrentWeaponManager();
@@ -429,6 +457,19 @@ public class BasicEnemyContext : MonoBehaviour
         }
 
         return myWeaponManager.WeaponIsReloading;
+    }
+
+    public void DestroyAllWeaponSO()
+    {
+        WeaponManager myWeaponManager = GetSpecificWeaponManager(BasicEnemy_States.ONE);
+
+        if (myWeaponManager != null)
+            Destroy(myWeaponManager.Weapon);
+
+        myWeaponManager = GetSpecificWeaponManager(BasicEnemy_States.TWO);
+
+        if (myWeaponManager != null)
+            Destroy(myWeaponManager.Weapon);
     }
 
     // PathFinding

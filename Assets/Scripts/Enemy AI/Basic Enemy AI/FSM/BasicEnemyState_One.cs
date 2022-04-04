@@ -79,7 +79,6 @@ public class BasicEnemyState_One : IEnemyState
 
     public void OnStateUpdate(BasicEnemyContext context)
     {
-        Debug.Log("Mimic in state ONE");
         WithoutTokenBehaviour(context);
         WithTokenBehaviour(context);
         OnManageToken(context);

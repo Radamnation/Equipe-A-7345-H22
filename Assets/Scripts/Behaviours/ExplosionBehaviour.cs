@@ -24,7 +24,8 @@ public class ExplosionBehaviour : MonoBehaviour
     // SECTION - Method ============================================================
     private void FixedUpdate()
     {
-        StaticRayCaster.RaycastSphereDebugger(transform.parent.transform, radius, isDebugOn);
+        if (isDebugOn)
+            StaticRayCaster.RaycastSphereDebugger(transform.parent.transform, radius, isDebugOn);
     }
 
     public void Explosion()

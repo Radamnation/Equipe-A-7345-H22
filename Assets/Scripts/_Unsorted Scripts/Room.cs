@@ -386,7 +386,7 @@ public class Room : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log($"is Room {gameObject.name} completed: {isCompleted}");
     }
 
     private void OnTriggerEnter(Collider other)
