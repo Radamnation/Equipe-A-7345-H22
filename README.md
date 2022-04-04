@@ -26,7 +26,7 @@ Sébastien Lévesque: https://github.com/SebastienLevesque?tab=repositories <br 
 ... DESIGN LOGIC <br />
 ... ... The goal was to create a modern twist on the old-school 2.5D games from id Software and the likes <br />
 ... ... Map layout is to be generated dynamically based on prefabs of rooms <br />
-... ... A diegetic HUB is to exist for player to relax and test weapons between runs <br />
+... ... A diegetic HUB is to exist for the player to relax in and to test weapons between runs <br />
 
 ... WHO DID WHAT <br />
 ... ... René Adam-Riché <br />
