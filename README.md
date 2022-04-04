@@ -31,7 +31,7 @@ WORK QUALITY NOTE <br />
 ... WHO DID WHAT <br />
 ... ... René Adam-Riché <br />
 ... ... ... Dynamic creation of map layout <br />
-... ... ... Room templates
+... ... ... Room templates <br />
 ... ... ... Weapon inventory & Weapon Manager <br />
 ... ... ... Weapon Pedestal <br />
 ... ... ... Option Menu <br />
