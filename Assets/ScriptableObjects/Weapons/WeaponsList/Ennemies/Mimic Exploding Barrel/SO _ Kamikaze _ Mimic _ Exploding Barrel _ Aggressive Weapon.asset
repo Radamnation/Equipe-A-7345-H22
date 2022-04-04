@@ -14,20 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Aggressive _ Mimic Exploding Barrel
   weaponDescription: Aggressive _ Mimic Exploding Barrel
+  isMelee: 0
+  infiniteAmmo: 1
   currencyValue: 0
   canFireContinuously: 0
-  currentAmmo: 100
-  maxAmmo: 100
-  currentClip: 100
-  maxClip: 100
-  firingRate: 0.1
-  reloadTime: 0.1
+  canBeCharged: 0
+  startingAmmo: 1000
+  currentAmmo: 1000
+  maxAmmo: 1000
+  startingClip: 1
+  currentClip: 1
+  maxClip: 1000
+  firingRate: 0.2
+  reloadTime: 0.2
   damage: 5
+  knockback: 0
   spread: 0
   range: 0.64
-  bulletsNumber: 100
+  bulletsNumber: 1000
   projectile: {fileID: 0}
   bulletHole: {fileID: 0}
   weaponUISprite: {fileID: 0}
   weaponPlayerSprite: {fileID: 0}
+  weaponFiringPlayerSprite: {fileID: 0}
   animator: {fileID: 0}

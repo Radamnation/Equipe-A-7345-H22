@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-[System.Serializable]
 public class ShootingRangeManager : MonoBehaviour
 {
     // SECTION - Field ===================================================================
@@ -21,8 +21,16 @@ public class ShootingRangeManager : MonoBehaviour
     [SerializeField] private ArrayLinearGameObjectSO myPracticeTargetPrefabsSO;
     [SerializeField] private List<GameObject> myPracticeTargetInstances = new List<GameObject>();
 
-                     private const string myAStarString = "AStar";
-                     private AstarPath myAstarPath; // Width and Depth are : (grid.N * 2) + 4
+    [Header("Preview")]
+    [SerializeField] private int quantityPerLine = 6;
+    [SerializeField] private GameObject myImagesPrefab;
+    [SerializeField] private Transform horizontalLayoutTransform;
+                     private List<GameObject> myPreviewList = new List<GameObject>();
+                     private float horizontalLayoutOffset = 0.1f;
+
+
+
+    private AstarPath myAstarPath; // Width and Depth are : (grid.N * 2) + 4
 
     //[Header("Shooting Range Ground")]
     // Note:
@@ -98,7 +106,7 @@ public class ShootingRangeManager : MonoBehaviour
         shootingRangeCenterCollider = shootingRangeCenter.GetComponent<BoxCollider>();
         shootingRangeCenterCollider.size = new Vector3(rangeX, rangeY, rangeZ);
 
-        myAstarPath = GameObject.Find(myAStarString).GetComponent<AstarPath>();
+        myAstarPath = AIManager.instance.MyAstarPath;
 
         // Sprite Renderer
         shootingRange_GroundSprite = transform.GetChild(2).GetComponent<SpriteRenderer>();
@@ -108,10 +116,47 @@ public class ShootingRangeManager : MonoBehaviour
         outlineAnimator = shootingRange_OutlineSprite.GetComponent<Animator>();
     }
 
+    private void SetPreviewsImage(GameObject[] myPracticeTargets = null)
+    {
+        if (myPracticeTargets == null)
+            return;
+
+        if (myPreviewList != null && myPreviewList.Count > 0)
+            foreach (GameObject obj in myPreviewList)
+            {
+                Destroy(obj);
+            }
+
+        myPreviewList.Clear();
+
+        foreach (GameObject obj in myPracticeTargets)
+        {
+            myPreviewList.Add(Instantiate(myImagesPrefab, horizontalLayoutTransform));
+            myPreviewList[myPreviewList.Count-1].GetComponent<Image>().sprite = obj.GetComponentInChildren<SpriteRenderer>().sprite;
+
+            // Move up to prevent clipping
+            if (myPreviewList.Count % quantityPerLine == 0)
+            {
+                RectTransform myCanvasRect = horizontalLayoutTransform.GetComponent<RectTransform>();
+
+                float x = myCanvasRect.position.x;
+                float y = myCanvasRect.position.y + horizontalLayoutOffset;
+                float z = myCanvasRect.position.z;
+
+
+                myCanvasRect.position = new Vector3(x, y, z);
+            }         
+        }
+    }
+
     private void SetArrayLinearGenerics()
     {
         if (myPracticeTargetPrefabsSO.IsEmpty)
+        {
             myPracticeTargetPrefabsSO.Copy(myDefaultPracticeTargetPrefabsSO.GetArray);
+        }
+
+        SetPreviewsImage(myPracticeTargetPrefabsSO.GetArray);
     }
 
     private void SetAstarPathAndScan()

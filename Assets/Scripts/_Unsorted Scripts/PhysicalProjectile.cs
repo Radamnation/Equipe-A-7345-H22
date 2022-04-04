@@ -66,14 +66,13 @@ public class PhysicalProjectile : MonoBehaviour
             }
             else
             {
-                Death();
+                Death();               
             }
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log($"COLLISION with {collision.transform.name}");
         if (!explodeOnImpact) return;
 
         Death();
@@ -87,5 +86,9 @@ public class PhysicalProjectile : MonoBehaviour
     private void Death()
     {
         onDeathEvents.Invoke();
+        this.enabled = false;
+
+        myRigidbody.constraints = RigidbodyConstraints.FreezePosition;
+        myCollider.enabled = false;
     }
 }

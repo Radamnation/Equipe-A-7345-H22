@@ -31,6 +31,14 @@ PrefabInstance:
       propertyPath: weaponManager_2
       value: 
       objectReference: {fileID: 6404246582735429935}
+    - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: animExecuteAtk_2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: myDeathSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 95710ac81e50bee4ca7c9f940b5c3496, type: 3}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: deathDestroys
       value: 1
@@ -52,6 +60,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: myHurtSFX.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDrops.Array.data[0]
       value: 
       objectReference: {fileID: 418731571920632839, guid: 67d2eb267d4dd404299b59ec5eaa6bc1, type: 3}
@@ -71,6 +83,10 @@ PrefabInstance:
       propertyPath: currentHP.ConstantValue
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: myHurtSFX.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: b3e3c813053517c4c930d4fd757380ad, type: 3}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: onDeathEvents.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -145,7 +161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893138, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: uniqueID
-      value: 7571589750310670837
+      value: 5968586391197550489
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893138, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: modifyWalkability
@@ -231,11 +247,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDebugOn: 0
   isEnemyWeaponManager: 1
-  tracksPlayer: 0
+  tracksPlayer: 1
   playerTransform: {fileID: 11400000, guid: bb659ba3eaf28be498f4674f9cbb480c, type: 2}
   myTargetMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   weapon: {fileID: 11400000, guid: deae533e02d594d43ac71554f1db0da1, type: 2}
   weaponsInventory: {fileID: 0}
   weaponHasChanged:
@@ -297,18 +313,119 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 264
-  isDebugOn: 0
+  isDebugOn: 1
   delayDestroys: 0
   delayDisablesSprite: 0
   executeDelay: 0.6
   lingerDelay: 0
   damage: 25
+--- !u!1 &2340426115854998733 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3831662558856893142, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+  m_PrefabInstance: {fileID: 1537436033157811739}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &2599508089855480245
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2340426115854998733}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 4714353098867990287, guid: 0ef6498b562ac7f4eae9f1cc6f5ed08c, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 16
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &2340426115854998736 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
   m_PrefabInstance: {fileID: 1537436033157811739}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2340426115854998733}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c90645798fce34449b0614fcef0538ae, type: 3}
@@ -319,7 +436,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
   m_PrefabInstance: {fileID: 1537436033157811739}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2340426115854998733}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e26b433ecaa2da543b1fc23d41cd03bc, type: 3}
@@ -342,7 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab2fd8d43a408e4da855ba091f87d11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDebuggerOn: 0
+  isDebuggerOn: 1
   targetMask:
     serializedVersion: 2
     m_Bits: 8

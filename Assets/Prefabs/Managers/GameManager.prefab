@@ -53,7 +53,7 @@ MonoBehaviour:
     m_Bits: 128
   canBeShotByPlayerMask:
     serializedVersion: 2
-    m_Bits: 448
+    m_Bits: 960
   respawnMask:
     serializedVersion: 2
     m_Bits: 64
@@ -110,6 +110,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3499511539489523208, guid: 64b0b00b696729c4d82c00071dc3e453, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3499511539489523209, guid: 64b0b00b696729c4d82c00071dc3e453, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3499511539489523211, guid: 64b0b00b696729c4d82c00071dc3e453, type: 3}

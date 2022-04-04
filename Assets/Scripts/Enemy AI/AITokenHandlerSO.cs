@@ -41,8 +41,11 @@ public class AITokenHandlerSO : ScriptableObject
         return true;
     }
 
-    public void ReturnToken()
+    public void ReturnToken(bool tokenDoubleCheck)
     {
+        if (!tokenDoubleCheck)
+            return;
+
         tokens[currentToken] = true;
 
         if (currentToken != 0)

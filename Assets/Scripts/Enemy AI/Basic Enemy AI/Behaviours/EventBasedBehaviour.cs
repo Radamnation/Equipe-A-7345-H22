@@ -19,6 +19,6 @@ public class EventBasedBehaviour : AbstractBehaviour
 
     public override bool ChildSpecificValidations()
     {
-        throw new System.NotImplementedException();
+        return myContext.IsTargetNear() && myContext.HasReachedEndOfPath();
     }
 }

@@ -999,8 +999,8 @@ Light:
   serializedVersion: 10
   m_Type: 3
   m_Shape: 0
-  m_Color: {r: 1, g: 0.52981305, b: 0.25943398, a: 1}
-  m_Intensity: 2
+  m_Color: {r: 1, g: 0.5853417, b: 0.2588235, a: 1}
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1891,8 +1891,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 49880565624357477}
-  - component: {fileID: 7531414213970193265}
   - component: {fileID: 8446849667610099827}
+  - component: {fileID: 7531414213970193265}
   m_Layer: 0
   m_Name: Room Enemy Manager
   m_TagString: Untagged
@@ -1915,19 +1915,6 @@ Transform:
   m_Father: {fileID: 3992321305335836165}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7531414213970193265
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8442511016013032239}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 11.46265, y: 2.633139, z: 12.183939}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8446849667610099827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1943,6 +1930,19 @@ MonoBehaviour:
   isRoomShootingRange: 0
   doNotManageTheseTags:
   - Practice Target
+--- !u!65 &7531414213970193265
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8442511016013032239}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 3, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9197914071512653938
 GameObject:
   m_ObjectHideFlags: 0

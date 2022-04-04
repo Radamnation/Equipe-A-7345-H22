@@ -32,17 +32,32 @@ public class WeaponManager : MonoBehaviour
 
     private bool weaponIsReloading = false;
 
+    private AudioSource weaponAudioSource;
+
     public WeaponSO Weapon { get => weapon; set => weapon = value; }
     // public WeaponSO SecondaryWeapon { get => secondaryWeapon; set => secondaryWeapon = value; }
     public bool WeaponIsReloading { get => weaponIsReloading; }
     public LayerMask MyTargetMask { get => myTargetMask; }
+    public bool TracksPlayer { get => tracksPlayer; }
 
     // public float SecondaryFireRateDelay { get => secondaryFireRateDelay; set => secondaryFireRateDelay = value; }
+
+    private void Awake()
+    {
+        weaponAudioSource = GetComponent<AudioSource>();
+    }
 
     private void Update()
     {
         fireRateDelay -= Time.deltaTime;
         // secondaryFireRateDelay -= Time.deltaTime;
+
+        // Reload for enemy before they try to shoot | Prevents launching animation when they can't attack
+        if (isEnemyWeaponManager && !WeaponIsReloading && weapon.CurrentClip == 0)
+        {
+            ReloadWeapon();
+            weaponIsReloading = true;
+        }
 
         if (reloadDelay > 0)
         {
@@ -93,6 +108,11 @@ public class WeaponManager : MonoBehaviour
         {
             if (weapon.ShootCheck())
             {
+                if (weaponAudioSource != null)
+                {
+                    weaponAudioSource.PlayOneShot(weapon.ShootingSound[Random.Range(0, weapon.ShootingSound.Length)]);
+                }
+
                 StaticDebugger.SimpleDebugger(isDebugOn, $" {weapon.WeaponName} ... FIRED");
 
                 fireRateDelay = weapon.FiringRate;
@@ -102,9 +122,22 @@ public class WeaponManager : MonoBehaviour
             }
             else if (!weapon.CanFireContinuously || weapon.CurrentClip == 0)
             {
+                if (weaponAudioSource != null && CompareTag("Player"))
+                {
+                    weaponAudioSource.PlayOneShot(weapon.EmptyClickSound);
+                }
                 ReloadWeapon();
             }
         }
+        else if (fireRateDelay <= 0 && reloadDelay > 0)
+        {
+            if (weaponAudioSource != null && CompareTag("Player"))
+            {
+                weaponAudioSource.PlayOneShot(weapon.EmptyClickSound);
+            }
+            fireRateDelay = weapon.FiringRate;
+        }
+            
         return false;
     }
 
@@ -114,11 +147,24 @@ public class WeaponManager : MonoBehaviour
         {
             if (weapon.ReloadCheck())
             {
+                if (weaponAudioSource != null && CompareTag("Player"))
+                {
+                    weaponAudioSource.PlayOneShot(weapon.ReloadSentenceSound[Random.Range(0, weapon.ReloadSentenceSound.Length)]);
+                }
+
                 StaticDebugger.SimpleDebugger(isDebugOn, $" {weapon.WeaponName} ... RELOADED");
 
                 weaponStartedReloading.Invoke();
                 reloadDelay = weapon.ReloadTime;
             }
+        }
+    }
+
+    public void PlayReloadSound()
+    {
+        if (weaponAudioSource != null && CompareTag("Player"))
+        {
+            weaponAudioSource.PlayOneShot(weapon.ReloadSound);
         }
     }
 
@@ -215,7 +261,8 @@ public class WeaponManager : MonoBehaviour
         for (int i = 0; i < weapon.BulletsNumber; i++)
         {
             RaycastHit hit;
-            var spreadDirection = new Vector3(0, Random.Range(-weapon.Spread, weapon.Spread), Random.Range(-weapon.Spread, weapon.Spread));
+
+            var spreadDirection = transform.TransformVector(new Vector3(Random.Range(-weapon.Spread, weapon.Spread), Random.Range(-weapon.Spread, weapon.Spread), 0));
             hit = StaticRayCaster.IsLineCastTouching(transform.position, transform.forward + spreadDirection, 1000, myTargetMask, isDebugOn);
             if (hit.collider != null)
             {
@@ -241,7 +288,9 @@ public class WeaponManager : MonoBehaviour
     public bool IsTargetInFront()
     {
         RaycastHit hit;
-        hit = StaticRayCaster.IsLineCastTouching(transform.position, transform.forward, Weapon.Range, myTargetMask, true);
+        hit = StaticRayCaster.IsLineCastTouching(transform.position, transform.forward, Weapon.Range, myTargetMask, isDebugOn);
+
+        //Debug.Log($"Is raycast hit null: {hit.transform == null}");
 
         return hit.transform != null;
     }
@@ -249,8 +298,11 @@ public class WeaponManager : MonoBehaviour
     public bool IsTargetAround()
     {
         Collider[] hit;
-        hit = StaticRayCaster.IsOverlapSphereTouching(transform, Weapon.Range, myTargetMask, true);
+        hit = StaticRayCaster.IsOverlapSphereTouching(transform.position, Weapon.Range, myTargetMask, isDebugOn);
 
-        return !(hit == null && hit[0].transform != null);
+        Debug.Log($"Is overlapsphere hit null: {hit == null}");
+
+        return hit != null;
+        //return !(hit == null && hit[0].transform != null);
     }
 }

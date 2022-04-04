@@ -18,6 +18,7 @@ public class BasicEnemyContext : MonoBehaviour
 
 
     #region REGION - HIDDEN - AStar Specific
+    private bool canUseBehaviour = true;
     private Transform myTemporaryTargetTransform;
     private AIPath myAIPath;                           // Movement, rotation, End Reached Distance, etc.
     private AIDestinationSetter myAIDestinationSetter; // Pathfinding Target
@@ -122,6 +123,7 @@ public class BasicEnemyContext : MonoBehaviour
     public AbstractBehaviour Behaviour_Token_2 { get => behaviour_Token_2; }
 
     public bool HasToken { get => hasToken; set => hasToken = value; }
+    public bool CanUseBehaviour { get => canUseBehaviour; set => canUseBehaviour = value; }
     #endregion
 
 
@@ -243,6 +245,11 @@ public class BasicEnemyContext : MonoBehaviour
         if (!startAtMaxSpeed)
             SetSpeed(0.0f);
 
+        // Weapons ========================================
+        // Instantiate SO as unique && set infinite clip
+        SetNewWeaponSO(BasicEnemy_States.ONE);
+        SetNewWeaponSO(BasicEnemy_States.TWO);
+
 
         // Miscellaneous ========================================
         myLivingEntity = GetComponentInChildren<LivingEntityContext>();
@@ -256,6 +263,8 @@ public class BasicEnemyContext : MonoBehaviour
         behaviour_NoToken_2 = transform.GetChild(2).transform.GetChild(0).GetComponentInChildren<AbstractBehaviour>();
         behaviour_Token_2 = transform.GetChild(2).transform.GetChild(1).GetComponentInChildren<AbstractBehaviour>();
     }
+
+
     #endregion
 
     #region REGION - Default Behaviours
@@ -298,14 +307,14 @@ public class BasicEnemyContext : MonoBehaviour
         // TODO:
         //      - REFACTORISE WHAT DICTATES RETURN TOKEN
 
-        if (CanUseBehaviour() && IsTargetNear())
+        if (IsIddleOrMoving() && IsTargetNear())
         {
             HasToken = AIManager.instance.MyTokenHandlerSO.TryGetToken();
         }
         else if (HasToken && (!HasPath() || HasReachedEndOfPath())) // Replace token when out of reach
         {
             HasToken = false;
-            AIManager.instance.MyTokenHandlerSO.ReturnToken();
+            AIManager.instance.MyTokenHandlerSO.ReturnToken(hasToken);
         }
         else if (!HasToken && (HasPath() && GetTargetTransform().CompareTag("Player"))) // || context.HasReachedEndOfPath()))       // Try get Token
         {
@@ -330,12 +339,15 @@ public class BasicEnemyContext : MonoBehaviour
             Collider[] hit;
             hit = StaticRayCaster.IsOverlapSphereTouching(transform, MyAIPath.endReachedDistance, myAIDestinationSetter.target.gameObject.layer, true);
 
-            return !(hit[0].transform == null);
+            return hit == null;
+            //return !(hit[0].transform == null);
             // return true;
         }
 
+        if (GetCurrentWeaponManager().TracksPlayer)
+            return GetCurrentWeaponManager().IsTargetInFront();
 
-        return GetCurrentWeaponManager().IsTargetInFront();
+        return GetCurrentWeaponManager().IsTargetAround();
     }
 
     // Target
@@ -364,7 +376,7 @@ public class BasicEnemyContext : MonoBehaviour
             if (weaponManager_2 != null)
                 return weaponManager_2.TriggerWeapon();
 
-        return true; // true == prevent using main weapon when checking !IsMainWeaponReloading()
+        return false; // true == prevent using main weapon when checking !IsMainWeaponReloading()
     }
 
     public bool TryFireMainWeapon(BasicEnemy_States stateSpecificCheck)
@@ -376,7 +388,7 @@ public class BasicEnemyContext : MonoBehaviour
             if (weaponManager_2 != null)
                 return weaponManager_2.TriggerWeapon();
 
-        return true; // true == prevent using main weapon when checking !IsMainWeaponReloading()
+        return false; // true == prevent using main weapon when checking !IsMainWeaponReloading()
     }
 
     public bool IsCurrentWeaponManagerNull()
@@ -407,6 +419,57 @@ public class BasicEnemyContext : MonoBehaviour
             return WeaponManager_1;
 
         return null;
+    }
+
+
+    public void SetNewWeaponSO(BasicEnemy_States atState, WeaponSO myDesiredWeaponSO = null)
+    {
+        WeaponManager myWeaponManager = GetSpecificWeaponManager(atState);
+
+        if (myWeaponManager != null)
+        {
+            WeaponSO myNewWeaponSO;
+
+            // Check for specific or current WeaponSO instantiate
+            if (myDesiredWeaponSO == null)
+                myNewWeaponSO = Instantiate(myWeaponManager.Weapon);
+            else
+                myNewWeaponSO = Instantiate(myDesiredWeaponSO);
+
+            myNewWeaponSO.InfiniteAmmo = true;
+
+            myWeaponManager.Weapon = myNewWeaponSO;
+        }
+    }
+
+    public bool IsWeaponReloading()
+    {
+        WeaponManager myWeaponManager = GetCurrentWeaponManager();
+
+        if (myWeaponManager == null)
+            return false;
+
+        // Manage token in case of reload
+        if (myWeaponManager.WeaponIsReloading && hasToken)
+        {
+            AIManager.instance.MyTokenHandlerSO.ReturnToken(hasToken);
+            hasToken = false;
+        }
+
+        return myWeaponManager.WeaponIsReloading;
+    }
+
+    public void DestroyAllWeaponSO()
+    {
+        WeaponManager myWeaponManager = GetSpecificWeaponManager(BasicEnemy_States.ONE);
+
+        if (myWeaponManager != null)
+            Destroy(myWeaponManager.Weapon);
+
+        myWeaponManager = GetSpecificWeaponManager(BasicEnemy_States.TWO);
+
+        if (myWeaponManager != null)
+            Destroy(myWeaponManager.Weapon);
     }
 
     // PathFinding
@@ -597,7 +660,7 @@ public class BasicEnemyContext : MonoBehaviour
         return false;
     }
 
-    public bool CanUseBehaviour()
+    public bool IsIddleOrMoving()
     {
         return anim.GetCurrentAnimatorStateInfo(0).IsName(animState_Iddle) ||
                 anim.GetCurrentAnimatorStateInfo(0).IsName(animState_OnMoveBlendTree);
