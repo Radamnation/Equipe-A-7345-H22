@@ -590,7 +590,7 @@ Light:
   m_InnerSpotAngle: 45
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -1646,7 +1646,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9956647, y: 1}
+    m_SensorSize: {x: 2.2690582, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

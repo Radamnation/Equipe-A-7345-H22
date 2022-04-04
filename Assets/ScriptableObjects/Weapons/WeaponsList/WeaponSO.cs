@@ -42,6 +42,7 @@ public class WeaponSO : ScriptableObject
 
     [Header("Sound")]
     [SerializeField] private AudioClip[] shootingSound;
+    [SerializeField] private AudioClip[] reloadSentenceSound;
     [SerializeField] private AudioClip reloadSound;
     [SerializeField] private AudioClip emptyClickSound;
 
@@ -75,6 +76,7 @@ public class WeaponSO : ScriptableObject
     public Animator Animator { get => animator; set => animator = value; }
     
     public AudioClip[] ShootingSound { get => shootingSound; set => shootingSound = value; }
+    public AudioClip[] ReloadSentenceSound { get => reloadSentenceSound; set => reloadSentenceSound = value; }
     public AudioClip ReloadSound { get => reloadSound; set => reloadSound = value; }
     public AudioClip EmptyClickSound { get => emptyClickSound; set => emptyClickSound = value; }
 

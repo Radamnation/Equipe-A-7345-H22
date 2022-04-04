@@ -44,5 +44,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ce30e7cff616e424fb39befaece9a168, type: 3}
   - {fileID: 8300000, guid: 816ea8b2bccadc14980d7356b70c2228, type: 3}
   - {fileID: 8300000, guid: 7db19f2829728ff459b466658b95ef83, type: 3}
+  reloadSentenceSound:
+  - {fileID: 8300000, guid: 5d240e5c580e9e7419b913460135938b, type: 3}
+  - {fileID: 8300000, guid: ae2d3601ced01ef44bf3c050f4435bd4, type: 3}
+  - {fileID: 8300000, guid: 463335d120814bc48b2af6bb98b01182, type: 3}
   reloadSound: {fileID: 8300000, guid: 786448ee4598f524aa6a26c7c54211aa, type: 3}
   emptyClickSound: {fileID: 8300000, guid: 944bd3f25f83dad4baea5cd7afb251a3, type: 3}

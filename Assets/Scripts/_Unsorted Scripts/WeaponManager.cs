@@ -114,7 +114,7 @@ public class WeaponManager : MonoBehaviour
             }
             else if (!weapon.CanFireContinuously || weapon.CurrentClip == 0)
             {
-                if (weaponAudioSource != null)
+                if (weaponAudioSource != null && CompareTag("Player"))
                 {
                     weaponAudioSource.PlayOneShot(weapon.EmptyClickSound);
                 }
@@ -123,7 +123,7 @@ public class WeaponManager : MonoBehaviour
         }
         else if (fireRateDelay <= 0 && reloadDelay > 0)
         {
-            if (weaponAudioSource != null)
+            if (weaponAudioSource != null && CompareTag("Player"))
             {
                 weaponAudioSource.PlayOneShot(weapon.EmptyClickSound);
             }
@@ -139,6 +139,11 @@ public class WeaponManager : MonoBehaviour
         {
             if (weapon.ReloadCheck())
             {
+                if (weaponAudioSource != null && CompareTag("Player"))
+                {
+                    weaponAudioSource.PlayOneShot(weapon.ReloadSentenceSound[Random.Range(0, weapon.ReloadSentenceSound.Length)]);
+                }
+
                 StaticDebugger.SimpleDebugger(isDebugOn, $" {weapon.WeaponName} ... RELOADED");
 
                 weaponStartedReloading.Invoke();
@@ -149,7 +154,7 @@ public class WeaponManager : MonoBehaviour
 
     public void PlayReloadSound()
     {
-        if (weaponAudioSource != null)
+        if (weaponAudioSource != null && CompareTag("Player"))
         {
             weaponAudioSource.PlayOneShot(weapon.ReloadSound);
         }
@@ -248,7 +253,8 @@ public class WeaponManager : MonoBehaviour
         for (int i = 0; i < weapon.BulletsNumber; i++)
         {
             RaycastHit hit;
-            var spreadDirection = new Vector3(0, Random.Range(-weapon.Spread, weapon.Spread), Random.Range(-weapon.Spread, weapon.Spread));
+
+            var spreadDirection = transform.TransformVector(new Vector3(Random.Range(-weapon.Spread, weapon.Spread), Random.Range(-weapon.Spread, weapon.Spread), 0));
             hit = StaticRayCaster.IsLineCastTouching(transform.position, transform.forward + spreadDirection, 1000, myTargetMask, isDebugOn);
             if (hit.collider != null)
             {
