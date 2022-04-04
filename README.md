@@ -9,7 +9,7 @@ Sébastien Lévesque: https://github.com/SebastienLevesque?tab=repositories <br 
 [Project Doomlike] <br />
 
 
-WORK QUALITY NOTE <br />
+[WORK QUALITY NOTE] <br />
 
 
 ... DATE OF PRODUCTION <br />
@@ -20,7 +20,7 @@ WORK QUALITY NOTE <br />
 
 ... CODE QUALITY <br />
 ... ... Done during our fourth semester studying programmation <br />
-... ... The main goal for both owner was to implement as much quality scriptable Object oriented architecture as possible, referencing ourselves to the Unite Austin 2017 - Game Architecture with Scriptable Objects's video <br />
+... ... The main goal for both owners was to implement as much quality scriptable Object oriented architecture as possible, referencing ourselves to the [Unite Austin 2017 - Game Architecture with Scriptable Objects]'s video <br />
 
 
 ... DESIGN LOGIC <br />
