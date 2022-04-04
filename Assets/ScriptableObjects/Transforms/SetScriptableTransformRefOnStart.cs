@@ -7,7 +7,7 @@ public class SetScriptableTransformRefOnStart : MonoBehaviour
 
 
     // SECTION - Method ===================================================================
-    void Awake()
+    void OnEnable()
     {
         myTransformRef.Transform = GetComponent<Transform>();
     }

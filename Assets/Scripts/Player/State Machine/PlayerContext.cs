@@ -70,7 +70,7 @@ public class PlayerContext : MonoBehaviour
 
     private void Awake()
     {
-        /*
+        
         if (instance == null)
         {
             instance = this;
@@ -80,7 +80,7 @@ public class PlayerContext : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        */
+        
 
         playerTransform.Transform = transform;
         DontDestroyOnLoad(gameObject);
@@ -95,6 +95,9 @@ public class PlayerContext : MonoBehaviour
         // TO BE DELETED
         // livingEntityContext.FullHeal();
         // TO BE MOVED
+
+        weapons.SetDefaultWeapons();
+
         meleeWeapon.Weapon = weapons.EquippedMeleeWeapon;
         mainWeapon.Weapon = weapons.EquippedMainWeapon;
         secondaryWeapon.Weapon = weapons.EquippedSecondaryWeapon;
