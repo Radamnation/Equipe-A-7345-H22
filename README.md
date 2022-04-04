@@ -1,7 +1,7 @@
 # Equipe-A-7345-H22
 Équipe de René Adam Richer et Sébastien Lévesque <br />
 
-... OWNERS' GITHUB <br />
+... OWNERS' GITHUBS <br />
 René Adam-Richer: https://github.com/Radamnation?tab=repositories <br />
 Sébastien Lévesque: https://github.com/SebastienLevesque?tab=repositories <br />
 
