@@ -14,11 +14,11 @@ WORK QUALITY NOTE <br />
 
 ... DATE OF PRODUCTION <br />
 ... ... Winter 2022 <br />
-... ... 3 month schoool project <br />
+... ... 3 months schoool project <br />
 ... ... ... As part of the [Game Engine II] project with self imposed theme by & René Adam-Riché & Sébastien Léveques: "DoomLike" <br />
 
 
-... CODE QUALITY
+... CODE QUALITY <br />
 ... ... Done during our fourth semester studying programmation <br />
 ... ... The main goal for both owner was to implement as much quality scriptable Object oriented architecture as possible, referencing ourselves to the Unite Austin 2017 - Game Architecture with Scriptable Objects's video <br />
 
@@ -26,7 +26,7 @@ WORK QUALITY NOTE <br />
 ... DESIGN LOGIC <br />
 ... ... The goal was to create a modern twist on the old-school 2.5D games from id Software and the likes <br />
 ... ... Map layout is to be generated dynamically based on prefabs of rooms <br />
-... ... A diegetic HUB is to exist for player to relax and test weapons between two run <br />
+... ... A diegetic HUB is to exist for player to relax and test weapons between runs <br />
 
 ... WHO DID WHAT <br />
 ... ... René Adam-Riché <br />
@@ -46,6 +46,7 @@ WORK QUALITY NOTE <br />
 
 ... CREDITS<br />
 ... ... All sprites were made by the owners of the game<br />
+... ... Some sonds were made by René Adam-Riché (player's voice)
 ... Float variables, Game event : https://www.youtube.com/watch?v=raQ3iHhE_Kk&t=2415s<br />
 ... 8-directional animation blend tree angle detection: https://www.youtube.com/watch?v=qcXEcZmZ8kA<br />
 ... Aron Granberg A* project: https://arongranberg.com/astar/download <br />
