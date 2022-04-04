@@ -18,6 +18,7 @@ public class BasicEnemyContext : MonoBehaviour
 
 
     #region REGION - HIDDEN - AStar Specific
+    private bool canUseBehaviour = true;
     private Transform myTemporaryTargetTransform;
     private AIPath myAIPath;                           // Movement, rotation, End Reached Distance, etc.
     private AIDestinationSetter myAIDestinationSetter; // Pathfinding Target
@@ -122,6 +123,7 @@ public class BasicEnemyContext : MonoBehaviour
     public AbstractBehaviour Behaviour_Token_2 { get => behaviour_Token_2; }
 
     public bool HasToken { get => hasToken; set => hasToken = value; }
+    public bool CanUseBehaviour { get => canUseBehaviour; set => canUseBehaviour = value; }
     #endregion
 
 
@@ -305,7 +307,7 @@ public class BasicEnemyContext : MonoBehaviour
         else if (HasToken && (!HasPath() || HasReachedEndOfPath())) // Replace token when out of reach
         {
             HasToken = false;
-            AIManager.instance.MyTokenHandlerSO.ReturnToken();
+            AIManager.instance.MyTokenHandlerSO.ReturnToken(hasToken);
         }
         else if (!HasToken && (HasPath() && GetTargetTransform().CompareTag("Player"))) // || context.HasReachedEndOfPath()))       // Try get Token
         {
@@ -410,6 +412,23 @@ public class BasicEnemyContext : MonoBehaviour
             return WeaponManager_1;
 
         return null;
+    }
+
+    public bool IsWeaponReloading()
+    {
+        WeaponManager myWeaponManager = GetCurrentWeaponManager();
+
+        if (myWeaponManager == null)
+            return false;
+
+        // Manage token in case of reload
+        if (myWeaponManager.WeaponIsReloading && hasToken)
+        {
+            AIManager.instance.MyTokenHandlerSO.ReturnToken(hasToken);
+            hasToken = false;
+        }
+
+        return myWeaponManager.WeaponIsReloading;
     }
 
     // PathFinding

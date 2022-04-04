@@ -29,6 +29,7 @@ public class BasicEnemyState_One : IEnemyState
     public void WithTokenBehaviour(BasicEnemyContext context)
     {
         if (context.HasToken &&
+            !context.IsWeaponReloading() && 
             context.IsTargetNear() &&
             context.IsIddleOrMoving() ) // context.IsInRangeForAttack() &&     context.HasReachedEndOfPath() &&       
         {

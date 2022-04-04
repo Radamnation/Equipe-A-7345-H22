@@ -52,6 +52,13 @@ public class WeaponManager : MonoBehaviour
         fireRateDelay -= Time.deltaTime;
         // secondaryFireRateDelay -= Time.deltaTime;
 
+        // Reload for enemy before they try to shoot | Prevents launching animation when they can't attack
+        if (isEnemyWeaponManager && !WeaponIsReloading && weapon.CurrentClip == 0)
+        {
+            ReloadWeapon();
+            weaponIsReloading = true;
+        }
+
         if (reloadDelay > 0)
         {
             reloadDelay -= Time.deltaTime;
