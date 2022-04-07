@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c3e16e75a46a1e742b544180ac23bee1
+guid: d5cc628b039761e43af6304cf3bd8ae5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -128,385 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mimic EB _ South_ 00
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 84cef06ba660b7f45bf36569caa574bf
-      internalID: -1815776113
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic EB _ South _ 01
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8066388f6fdee2d438091c41c1f921b1
-      internalID: 936534365
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic EB _ South _ 02
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 527a117c31dcc6548aabaadbbd02974b
-      internalID: -1045849567
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic EB _ South _ 03
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 64
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f5f47bd95743da54c92d80ed7a135c70
-      internalID: -995119251
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic EB _ East _ 00
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 590f5a0dd5572c2499d4e65f44f3756b
-      internalID: -827844027
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic EB _ East _ 01
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f721c32d1a4d5674ab0a9485e55b94f3
-      internalID: 863471886
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic EB _ East _ 02
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f21c5df9936657c4193bba3f3fd688cf
-      internalID: -831786796
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic EB _ East _ 03
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 32
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 14c642f4d826b324a84c8d4f1c1c5f5c
-      internalID: -662478973
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic EB _ East _ 04
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 32
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3a5d6d3ac0347a34cbcf3e8ed8163be1
-      internalID: -322621478
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic EB _ Death _ 00
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f321da5c4159fa94aaffc37dfe96d350
-      internalID: 740958578
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic EB _ Death _ 01
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 716cc512dab14c2488815e09068c58dc
-      internalID: 2085913198
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic EB _ Death _ 02
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3460b5f6f825f624798ddf30be4defaf
-      internalID: -928163528
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic EB _ Death _ 03
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 47d6e744b8ec4414f9de7e67aab519b7
-      internalID: -1732388570
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic EB _ Death _ 04
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3d3eba13604b2e5468571b2a7288e804
-      internalID: 487665304
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic EB _ Death _ 05
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1a44d2c0b4804ab498f821dc65d813d1
-      internalID: -1018907859
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic EB _ Death _ 06
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: df541cb1957676b4789c8484ccf1ae54
-      internalID: 1730657175
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic EB _ Death _ 07
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 0
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dd30b55fe38a8124db461def8378a6dc
-      internalID: 1550579094
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic EB _ Death _ 08
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e1bf2540c3fe10a4a80c5a4957b81067
-      internalID: -1635894803
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic EB _ Awaking _ 00
+      name: Fire Spitter _ North _ 00
       rect:
         serializedVersion: 2
         x: 0
@@ -520,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5bcc247a00028543a6fc3a34bc7b0c1
-      internalID: -1423705391
+      spriteID: 93af97ee371769e4d9ea27c05e6dbace
+      internalID: -133588798
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mimic EB _ Awaking _ 01
+      name: Fire Spitter _ North _ 01
       rect:
         serializedVersion: 2
         x: 32
@@ -541,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7bcabb5d465f6b4aa660007d01e5094
-      internalID: 2063526437
+      spriteID: c386cbc1b8786d4469d3adcf09a8f166
+      internalID: -638652039
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mimic EB _ Awaking _ 02
+      name: Fire Spitter _ North _ 02
       rect:
         serializedVersion: 2
         x: 64
@@ -562,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a5bc57f15125b740bf68b0e9ad6e1bf
-      internalID: -572471377
+      spriteID: a94bcb9db540f6b40a87e3708eed578a
+      internalID: 1890554553
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mimic EB _ Awaking _ 03
+      name: Fire Spitter _ North _ 03
       rect:
         serializedVersion: 2
         x: 96
@@ -583,119 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c96badb166a014346862f7a9217d05d8
-      internalID: -775504632
+      spriteID: c33e52a740d89da47ad60629ba70ed01
+      internalID: -373368152
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mimic EB _ Awaking _ 04
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 128
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a7ddf1fd4b064dc438d9967d7d931d89
-      internalID: -238701971
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic EB _ Awaking _ 05
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 128
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 05ffbafe464b1e440821f68396da424f
-      internalID: -2078258738
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic EB _ Awaking _ 06
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 128
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c63b51ba9c224df4b9dd039cf9ec14a9
-      internalID: -436947919
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic EB _ Awaking _ 07
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 128
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d545b9f437f6aa044bbd23904d78f8d2
-      internalID: 417708712
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic EB _ Awaking _ 08
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 128
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0b343d2f11cfe6f459643cee54ac8699
-      internalID: -1115787985
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic EB _ North _ 00
+      name: Fire Spitter _ South _ 00
       rect:
         serializedVersion: 2
         x: 0
@@ -709,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c08bdfebfe41784aae39f9b8b935f27
-      internalID: 658041833
+      spriteID: 439342f99f25f5f45abe359cb6fcc5d3
+      internalID: 2048155271
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mimic EB _ North _ 01
+      name: Fire Spitter _ South _ 01
       rect:
         serializedVersion: 2
         x: 32
@@ -730,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9421ea615fe9e9d4295ab3bac0b4f6fc
-      internalID: 256346406
+      spriteID: ded917b5ee4a51a4bb5d23beebafb39b
+      internalID: -1675744066
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mimic EB _ North _ 02
+      name: Fire Spitter _ South _ 02
       rect:
         serializedVersion: 2
         x: 64
@@ -751,14 +268,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26a6e44df67dc8d4594a621107f9367c
-      internalID: 206409412
+      spriteID: 71e2be197887ceb42aa2ead8bc0a1616
+      internalID: 159290573
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mimic EB _ North _ 03
+      name: Fire Spitter _ South _ 03
       rect:
         serializedVersion: 2
         x: 96
@@ -772,8 +289,239 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fd7808b6af228d4498540f3a674c6b3
-      internalID: 919514405
+      spriteID: 6a0f7fd0a4036b642b867de0e697fff3
+      internalID: 95167296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Spitter _ East _ 00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 599df82903c62a34ca872234ed5d88a5
+      internalID: -1536572717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Spitter _ East _ 01
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b4667ef1b70c494f8f989aa9996bb32
+      internalID: -1604688599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Spitter _ East _ 02
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 64
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcd355b72c484b94081f59533671f074
+      internalID: 1043802762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Spitter _ East _ 03
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b2d1cf443bd68f45bf23b6c2e1ff36b
+      internalID: -1995134740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Spitter _ Death _ 00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30c19fb129d4b5d4f9387f3b6e5c0291
+      internalID: -866873296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Spitter _ Death _ 01
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b4bb06de5351f74694272ca5c497e8b
+      internalID: 848612229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Spitter _ Death _ 02
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: add594c54a3e1dd42838940acc200dec
+      internalID: 1161957952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Spitter _ Death _ 03
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f78f10f27bbebb14091f27157216451e
+      internalID: -885947469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Spitter _ Front
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa56dbde65863eb4e899c8a16ca073a1
+      internalID: -2110564875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Spitter _ Back
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a85ae980bb69804cb600a475abc1923
+      internalID: -1134091859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Spitter _ Side
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0817e6bbcc6fd48478b11aac1bff4aa1
+      internalID: -717186642
       vertices: []
       indices: 
       edges: []
@@ -781,7 +529,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: d6dbdfe75df05074bbf4592ee9517755
+    spriteID: 5ee262c7c939d8e43b9f02f88e98ab25
     internalID: 0
     vertices: []
     indices: 
@@ -789,37 +537,25 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Mimic EB _ South_ 00: -1815776113
-      Mimic EB _ North _ 00: 658041833
-      Mimic EB _ East _ 02: -831786796
-      Mimic EB _ Death _ 03: -1732388570
-      Mimic EB _ South _ 03: -995119251
-      Mimic EB _ North _ 03: 919514405
-      Mimic EB _ Awaking _ 02: -572471377
-      Mimic EB _ East _ 00: -827844027
-      Mimic EB _ Awaking _ 05: -2078258738
-      Mimic EB _ South _ 01: 936534365
-      Mimic EB _ Death _ 08: -1635894803
-      Mimic EB _ North _ 01: 256346406
-      Mimic EB _ East _ 04: -322621478
-      Mimic EB _ Awaking _ 06: -436947919
-      Mimic EB _ Awaking _ 07: 417708712
-      Mimic EB _ Awaking _ 03: -775504632
-      Mimic EB _ Death _ 02: -928163528
-      Mimic EB _ Death _ 05: -1018907859
-      Mimic EB _ Death _ 06: 1730657175
-      Mimic EB _ Awaking _ 08: -1115787985
-      Mimic EB _ East _ 01: 863471886
-      Mimic EB _ Death _ 00: 740958578
-      Mimic EB _ Death _ 01: 2085913198
-      Mimic EB _ Death _ 04: 487665304
-      Mimic EB _ Awaking _ 00: -1423705391
-      Mimic EB _ Awaking _ 04: -238701971
-      Mimic EB _ North _ 02: 206409412
-      Mimic EB _ Awaking _ 01: 2063526437
-      Mimic EB _ East _ 03: -662478973
-      Mimic EB _ South _ 02: -1045849567
-      Mimic EB _ Death _ 07: 1550579094
+      Fire Spitter _ Death _ 03: -885947469
+      Fire Spitter _ North _ 03: -373368152
+      Fire Spitter _ Front: -2110564875
+      Fire Spitter _ Death _ 00: -866873296
+      Fire Spitter _ East _ 00: -1536572717
+      Fire Spitter _ North _ 02: 1890554553
+      Fire Spitter _ North _ 00: -133588798
+      Fire Spitter _ Side: -717186642
+      Fire Spitter _ East _ 03: -1995134740
+      Fire Spitter _ East _ 01: -1604688599
+      Fire Spitter _ South _ 03: 95167296
+      Fire Spitter _ South _ 02: 159290573
+      Fire Spitter _ East _ 02: 1043802762
+      Fire Spitter _ Death _ 01: 848612229
+      Fire Spitter _ North _ 01: -638652039
+      Fire Spitter _ South _ 00: 2048155271
+      Fire Spitter _ South _ 01: -1675744066
+      Fire Spitter _ Back: -1134091859
+      Fire Spitter _ Death _ 02: 1161957952
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
