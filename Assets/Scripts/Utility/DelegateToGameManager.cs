@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class DelegateToGameManager : MonoBehaviour
 {
+    // SECTION - Field ===================================================================
     [SerializeField] private bool isGargoyle = false;
 
+
+    // SECTION - Method - Unity Specific ===================================================================
     private void Start()
     {
         if (isGargoyle)
@@ -14,6 +17,8 @@ public class DelegateToGameManager : MonoBehaviour
         }
     }
 
+
+    // SECTION - Method - Utility Specific ===================================================================
     public void DelegateQuitGame()
     {
         GameManager.instance.QuitGame();

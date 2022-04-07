@@ -127,6 +127,48 @@ public class ArrayLinearGameObjectSO : ScriptableObject, IArrayLinear
                 }
     }
 
+    public bool AddUnique(GameObject item)
+    {
+        if (Length == 0)
+        {
+            AddLength();
+            myArray[0] = item;
+        }
+
+        bool canAdd = true;
+        bool thereWasNull = false;
+
+        foreach (GameObject weaponSO in myArray)
+        {
+            if (weaponSO == null)
+            {
+                thereWasNull = true;
+                continue;
+            }
+
+            if (item.GetInstanceID() == weaponSO.GetInstanceID())
+            {
+                canAdd = false;
+                break;
+            }
+        }
+
+        if (canAdd)
+        {
+            if (thereWasNull)
+                Add(item);
+            else if (count != 0)
+            {
+                AddLength();
+
+                myArray[count] = item;
+                count++;
+            }
+        }
+
+        return canAdd;
+    }
+
     public void AddAt(GameObject item, int index)
     {
         if (index < myArray.Length)
@@ -169,6 +211,21 @@ public class ArrayLinearGameObjectSO : ScriptableObject, IArrayLinear
         for (int i = 0; i < myArray.Length; i++)
             if (myArray[i] != null)
                 myArray[i] = null;
+    }
+
+
+    public void Reset(bool keepItemZero = false)
+    {
+        int resetWithQty = keepItemZero ? 1 : 0;
+
+        GameObject itemZero = myArray[0];
+
+        myArray = new GameObject[resetWithQty];
+
+        if (keepItemZero)
+            myArray[0] = itemZero;
+
+        CalculateCount();
     }
 
     public void Debugger()

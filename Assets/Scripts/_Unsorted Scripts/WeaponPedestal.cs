@@ -16,13 +16,16 @@ public class WeaponPedestal : MonoBehaviour
     [SerializeField] private WeaponsInventorySO weaponInventory;
     [SerializeField] private UnityEvent mainWeaponHasChanged;
 
-    [SerializeField] private ArrayLinearWeaponSOSO hubWeaponArray;
+    [SerializeField] private ArrayLinearWeaponSOSO hubWeaponArray_Main;
+    [SerializeField] private ArrayLinearWeaponSOSO hubWeaponArray_Secondary;
+    [SerializeField] private ArrayLinearWeaponSOSO hubWeaponArray_Melee;
 
     private WeaponSO pedestalWeapon;
     private SpriteRenderer mySpriteRenderer;
     private Vector3 spriteInitialPosition;
     private System.Random roomGenerationRandom;
 
+    int randomIndex;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +34,8 @@ public class WeaponPedestal : MonoBehaviour
         roomGenerationRandom = RandomManager.instance.RoomGenerationRandom.SystemRandom;
         if (weaponIsRandom)
         {
-            pedestalWeapon = Instantiate(randomWeapons[roomGenerationRandom.Next(0, randomWeapons.Length)]);
+            randomIndex = roomGenerationRandom.Next(0, randomWeapons.Length);
+            pedestalWeapon = Instantiate(randomWeapons[randomIndex]);
         }
         else
         {
@@ -65,6 +69,20 @@ public class WeaponPedestal : MonoBehaviour
         if (weaponInventory.CarriedMainWeapons.Count < weaponInventory.MaxMainWeapons && !isInHub)
         {
             WeaponSO temp = pedestalWeapon;
+
+            /// <NOTE>
+            /// 
+            /// If conditional is a TEMPORARY DEBUGGER
+            ///     - Get rid of conditional when merging of weaponPedestal.cs with ShootingRangePedestal.cs
+            /// 
+            /// </NOTE>
+            if (!pedestalWeapon.name.Contains("Melee") && !pedestalWeapon.name.Contains("Grenade")) // !pedestalWeapon.HasPlayerUsedOnce && 
+            {
+                hubWeaponArray_Main.AddUnique(randomWeapons[randomIndex]); // Hub linear array update
+            }
+
+
+
             pedestalWeapon = null;
             weaponInventory.CarriedMainWeapons.Add(temp);
             weaponInventory.EquippedMainWeapon = temp;

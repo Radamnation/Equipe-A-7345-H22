@@ -40,8 +40,9 @@ public class ArrayLinearWeaponSOSO : ScriptableObject, IArrayLinear
     {
         WeaponSO[] temp = new WeaponSO[myArray.Length + length];
 
-        for (int i = 0; i < myArray.Length; i++)
-            temp[i] = myArray[i];
+        if (Length != 0)
+            for (int i = 0; i < myArray.Length; i++)
+                temp[i] = myArray[i];
 
         myArray = temp;
     }
@@ -122,11 +123,36 @@ public class ArrayLinearWeaponSOSO : ScriptableObject, IArrayLinear
 
     public void Add(WeaponSO item)
     {
+        if (count < myArray.Length)
+            for (int i = 0; i < myArray.Length; i++)
+                if (myArray[i] == null)
+                {
+                    myArray[i] = item;
+                    count++;
+                    return;
+                }
+    }
+
+    public void AddUnique(WeaponSO item)
+    {
+        if (Length == 0)
+        {
+            AddLength();
+            myArray[0] = item;
+        }
+
         bool canAdd = true;
+        bool thereWasNull = false;
 
         foreach (WeaponSO weaponSO in myArray)
         {
-            if (item.WeaponName == weaponSO.WeaponName)
+            if (weaponSO == null)
+            {
+                thereWasNull = true;
+                continue;
+            }
+
+            if(item.GetInstanceID() == weaponSO.GetInstanceID())
             {
                 canAdd = false;
                 break;
@@ -135,10 +161,15 @@ public class ArrayLinearWeaponSOSO : ScriptableObject, IArrayLinear
 
         if (canAdd)
         {
-            AddLength();
+            if (thereWasNull)
+                Add(item);
+            else if (count != 0)
+            {
+                AddLength();
 
-            myArray[Length] = item;
-            count++;
+                myArray[count] = item;
+                count++;
+            }
         }
     }
 
@@ -184,6 +215,20 @@ public class ArrayLinearWeaponSOSO : ScriptableObject, IArrayLinear
         for (int i = 0; i < myArray.Length; i++)
             if (myArray[i] != null)
                 myArray[i] = null;
+    }
+
+    public void Reset(bool keepItemZero = false)
+    {
+        int resetWithQty = keepItemZero ? 1 : 0;
+
+        WeaponSO itemZero = myArray[0];
+
+        myArray = new WeaponSO[resetWithQty];
+
+        if (keepItemZero)
+            myArray[0] = itemZero;
+
+        CalculateCount();
     }
 
     public void Debugger()
