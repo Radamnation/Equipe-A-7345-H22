@@ -77,6 +77,8 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
+    
+
     public void UpdateWeapon() // WeaponSO weapon
     {
         this.weapon = weaponsInventory.EquippedMainWeapon; //weapon;
@@ -156,6 +158,8 @@ public class WeaponManager : MonoBehaviour
 
                 weaponStartedReloading.Invoke();
                 reloadDelay = weapon.ReloadTime;
+
+                weaponIsReloading = true;
             }
         }
     }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Pathfinding;
 
 public class ShootingRangeManager : MonoBehaviour
 {
@@ -164,12 +165,26 @@ public class ShootingRangeManager : MonoBehaviour
         // Pathfinding
         //myAstarPath = GameObject.Find(myAStarString).GetComponent<AstarPath>();
 
-        myAstarPath.data.gridGraph.center = shootingRangeCenter.position;
-        myAstarPath.data.gridGraph.center.y = -1.0f; // Must be at ground level
+       // myAstarPath.data.gridGraph.center = shootingRangeCenter.position;
+       // myAstarPath.data.gridGraph.center.y = -1.0f; // Must be at ground level
 
-        myAstarPath.data.gridGraph.SetDimensions((rangeX * 2) + 4, (rangeZ * 2) + 4, myAstarPath.data.gridGraph.nodeSize);
+       // myAstarPath.data.gridGraph.SetDimensions((rangeX * 2) + 4, (rangeZ * 2) + 4, myAstarPath.data.gridGraph.nodeSize);
+
+        //myAstarPath.Scan();
+
+
+        // Set ALL GRIDGRAPHS available to desired settings
+        for (int index = 0; index < myAstarPath.data.graphs.Length; index++)
+        {
+            GridGraph gg = myAstarPath.data.graphs[index] as GridGraph;
+            gg.center = shootingRangeCenter.position;
+            gg.center.y = -1.0f; // Must be at ground level
+            gg.SetDimensions((rangeX * 2) + 4, (rangeZ * 2) + 4, myAstarPath.data.gridGraph.nodeSize);
+        }
 
         myAstarPath.Scan();
+
+
 
         // Shooting range's ground
         float x = shootingRangeCenter.position.x;

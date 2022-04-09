@@ -284,13 +284,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDebuggerOn: 0
+  isPassive: 1
   targetMask:
     serializedVersion: 2
     m_Bits: 8
   isDistanceCurrWeaponBased: 0
   distance: 2.24
   validationType: 0
-  isPassiveBehaviour: 1
   nextState: 1
 --- !u!1 &2340426114970463942 stripped
 GameObject:
@@ -460,6 +460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDebuggerOn: 1
+  isPassive: 0
   targetMask:
     serializedVersion: 2
     m_Bits: 8

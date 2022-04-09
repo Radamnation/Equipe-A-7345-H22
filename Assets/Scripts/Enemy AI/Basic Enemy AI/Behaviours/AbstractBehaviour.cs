@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 /// <How_To_Use>
 /// 
@@ -24,6 +25,7 @@ using System.Collections.Generic;
 /// 
 /// </How_To_Use>
 
+using Pathfinding;
 
 public abstract class AbstractBehaviour : MonoBehaviour
 {
@@ -35,12 +37,14 @@ public abstract class AbstractBehaviour : MonoBehaviour
     protected readonly float sharedDefaultDistance = 0.64f;
 
     [Header("Misc")]
-    [SerializeField] private bool isDebuggerOn = false;
+    [SerializeField] protected bool isDebuggerOn = false;
+    [Space(10)]
+    [SerializeField] protected bool isPassive = false;
+    [Space(10)]
     [SerializeField] protected LayerMask targetMask;
     [SerializeField] private bool isDistanceCurrWeaponBased;
     [SerializeField] protected float distance;
                      protected bool isValidForExecute = false;
-                     protected bool isExecutionDone = true;
 
     [Header("Type of validation check")]
     [SerializeField] private ValidationCheckTypes validationType = ValidationCheckTypes.ALWAYSVALID;
@@ -57,31 +61,38 @@ public abstract class AbstractBehaviour : MonoBehaviour
     // SECTION - Method - System Specific ===================================================================
     public void Execute()
     {
-        // [ANIMATION EVENT] - Check Validity
-        // Otherwise checked in FSM
-        if (myContext.IsAnimExecuteAttack())
+        // [ANIMATION OR PASSIVE]
+        //      - Check Validity
+        //      - Otherwise checked in FSM
+        if (myContext.IsAnimExecuteAttack() || isPassive)
             IsExecutionValid();
 
-        // Set Distance
+        // Set Distance -When Distance is Weapon Based-
         if (isDistanceCurrWeaponBased && !myContext.IsCurrentWeaponManagerNull() && distance != myContext.GetCurrentWeaponManager().Weapon.Range)
             distance = myContext.GetCurrentWeaponManager().Weapon.Range;
 
         // Execute
         if (isValidForExecute)
-        {
-            isExecutionDone = false;
-            Behaviour();
-            myHitsObjs.Clear();
-        }
+            StartCoroutine(ExecutionCoroutine());
     }
+
+    private IEnumerator ExecutionCoroutine()
+    {
+        myContext.CanUseBehaviour = false; // IMPORTANT: Must be set back to true inside of CHILD'S BEHAVIOUR whenever behaviour ends
+        Behaviour();
+        yield return new WaitUntil(() => myContext.CanUseBehaviour);
+        myHitsObjs.Clear();
+    }
+
+    public abstract void Behaviour();
 
     public bool IsExecutionValid()
     {
-        // If currently executing, not need to process the switch
-        if (!isExecutionDone)
-            return isExecutionDone;
+        // If currently executing, no need to process the switch
+        if (!myContext.CanUseBehaviour)
+            return myContext.CanUseBehaviour;
 
-        switch(validationType)
+        switch (validationType)
         {
             case ValidationCheckTypes.CHILDSPECIFIC:            // Set By child
                 isValidForExecute = ChildSpecificValidations();
@@ -105,10 +116,8 @@ public abstract class AbstractBehaviour : MonoBehaviour
 
         }
 
-        return isValidForExecute && isExecutionDone;
+        return isValidForExecute && myContext.CanUseBehaviour;
     }
-
-    public abstract void Behaviour();
 
     public abstract bool ChildSpecificValidations();
 
@@ -116,14 +125,6 @@ public abstract class AbstractBehaviour : MonoBehaviour
     // SECTION - Method - Utility ===================================================================
     protected void SetMyBasicEnemyContext()
     {
-        /*
-        // context is located in object's parent(base parent) of attack parent(state parent)
-        myContext = transform.parent.transform.parent.gameObject.GetComponent<BasicEnemyContext>();
-
-        if (myContext == null)
-            myContext = transform.GetComponentInParent<BasicEnemyContext>();
-        */
-
         // context is located in object's parent(base parent) of attack parent(state parent)
         myContext = transform.GetComponentInParent<BasicEnemyContext>();
 
@@ -133,41 +134,49 @@ public abstract class AbstractBehaviour : MonoBehaviour
 
     }
 
-    protected void TrySetRaycastSingleHit()
+    protected bool TrySetRaycastSingleHit()
     {
         RaycastHit hit = StaticRayCaster.IsLineCastTouching(myContext.transform.position, myContext.transform.forward, distance, targetMask, isDebuggerOn);
 
-        if (hit.transform)
+        if (hit.transform && hit.transform.GetInstanceID() != transform.parent.GetInstanceID())
         {
             myHitsObjs.Add(hit.transform.gameObject);
 
             isValidForExecute = true;
         }
+
+        return isValidForExecute;
     }
 
-    protected void TrySetRaycastMultipleHits()
+    protected bool TrySetRaycastMultipleHits()
     {
         RaycastHit[] hits = StaticRayCaster.IsLineCastTouchingMultiple(myContext.transform.position, myContext.transform.forward, distance, targetMask, isDebuggerOn);
 
-        if (hits != null)
+        if (hits != null && hits[0].transform.GetInstanceID() != transform.parent.GetInstanceID())
         {
             foreach (RaycastHit hit in hits)
-                myHitsObjs.Add(hit.transform.gameObject);
+                if (hit.transform != null)
+                    myHitsObjs.Add(hit.transform.gameObject);
 
             isValidForExecute = true;
         }
+
+        return isValidForExecute;
     }
 
-    protected void TrySetOverlapSphereHits()
+    protected bool TrySetOverlapSphereHits()
     {
         Collider[] hits = StaticRayCaster.IsOverlapSphereTouching(myContext.transform, distance, targetMask, isDebuggerOn);
 
         if (hits != null)
         {
             foreach(Collider hit in hits)
-                myHitsObjs.Add(hit.gameObject);
+                if(hit.transform != null)
+                    myHitsObjs.Add(hit.gameObject);
 
-            isValidForExecute = true;
+                isValidForExecute = true;
         }
+
+        return isValidForExecute;
     }
 }
