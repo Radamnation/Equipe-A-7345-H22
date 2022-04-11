@@ -18,12 +18,12 @@ public class BasicEnemyState_Two : IEnemyState
             // Behaviour
             if (context.Behaviour_NoToken_2 != null && context.Behaviour_NoToken_2.IsExecutionValid())
             {
-                context.Behaviour_Token_2.Execute();
+                //context.Behaviour_NoToken_2.Execute();
 
                 context.SetAnimTrigger(BasicEnemy_AnimTriggers.STATE_02_NOTOKEN);
             }
         }
-        else context.SetTargetAsPlayer(); // Prevents target being null
+        //else context.SetTargetAsPlayer(); // Prevents target being null
     }
 
     public void WithTokenBehaviour(BasicEnemyContext context)
@@ -37,7 +37,6 @@ public class BasicEnemyState_Two : IEnemyState
             if (!context.AnimExecuteAtk_2)
             {
                 launchAnimation = false;
-
                 // Weapon
                 if (context.TryFireMainWeapon())
                 {
@@ -68,23 +67,21 @@ public class BasicEnemyState_Two : IEnemyState
 
     public void OnManageToken(BasicEnemyContext context)
     {
-        context.HasToken = true;
-        //context.OnDefaultManageToken();
+        //context.HasToken = true;
+        if (!context.IsBoss)
+            context.OnDefaultManageToken();
     }
 
 
     // SECTION - Method - General ===================================================================
     public void OnStateEnter(BasicEnemyContext context)
     {
-        if (context.WeaponManager_2.Weapon != null)
+        if (context.WeaponManager_2 != null)
             context.SetEndReachedDistance(context.WeaponManager_2.Weapon.Range);
     }
 
     public void OnStateUpdate(BasicEnemyContext context)
     {
-
-        Debug.Log("Mimic in state TWO");
-
         WithoutTokenBehaviour(context);
         WithTokenBehaviour(context);
         OnManageToken(context);

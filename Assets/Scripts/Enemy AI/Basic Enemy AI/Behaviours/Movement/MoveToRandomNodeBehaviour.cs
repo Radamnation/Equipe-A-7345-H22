@@ -14,6 +14,7 @@ public class MoveToRandomNodeBehaviour : AbstractBehaviour
     // SECTION - Method - Implementation ===================================================================
     public override void Behaviour()
     {
+        myContext.SetTargetNull();
         OnStartBehaviour();
         StartCoroutine(StartBehaviour());
     }
@@ -51,9 +52,11 @@ public class MoveToRandomNodeBehaviour : AbstractBehaviour
     {
         if (currentMove < maxQuantityOfMove)      // Set new Target when applicable
         {
-            myContext.SetMyTemporaryTargetAs(myDesiredRangeOfPositions.GetRandomTransform(myContext));
+            if (myDesiredRangeOfPositions != null)
+                myDesiredRangeOfPositions.SetRandomTargetPosition(myContext);
+            else
+                AIManager.instance.SetRandomTargetPosition(myContext);
 
-            myContext.SetTarget(myContext.MyTemporaryTargetTransform);
             currentMove++;
         }
         else if (currentMove == maxQuantityOfMove) // Quit behaviour
@@ -63,7 +66,7 @@ public class MoveToRandomNodeBehaviour : AbstractBehaviour
             if (myContext.HasToken)
             {
                 myContext.SetTarget(GameObject.Find("Player").transform); // myContext.SetTargetAsPlayer() don't work here only???
-                //myContext.SetTargetAsPlayer(); // Doesn't work here only???
+                myContext.SetTargetAsPlayer(); // Doesn't work here only???
                 myContext.SetEndReachedDistance_ToCurrState();
             }
 
@@ -73,17 +76,28 @@ public class MoveToRandomNodeBehaviour : AbstractBehaviour
     }
 
     private IEnumerator StartBehaviour()
-    {
+    { 
         do
         {
             SetNextPosition();
             yield return new WaitForSeconds(1.0f); // Debugger, endReachedDistance always true for attack otherwise
             yield return new WaitUntil(() => myContext.MyAIPath.reachedEndOfPath);
         } while (currentMove < maxQuantityOfMove+1); // (!myContext.GetTargetTransform().CompareTag("Player"));
-        // NOTE
-        //      -Condition to be changed for desired target
-
-        isExecutionDone = true;
+                                                     // NOTE
+                                                     //      -Condition to be changed for desired target
+        myContext.CanUseBehaviour = true;
         isValidForExecute = false;
     }
 }
+
+
+// SET PATH WITH DESTINATION (VECTOR 3) INSTEAD OF TARGET
+/*
+SetNextPosition();
+myContext.MyAIPath.SearchPath();
+// Wait until we know for sure that the agent has calculated a path to the destination we set above
+while (myContext.MyAIPath.pathPending || !myContext.MyAIPath.reachedDestination)
+    yield return null;
+
+myContext.SetDestination(GameManager.instance.PlayerTransformRef.transform.position);
+*/

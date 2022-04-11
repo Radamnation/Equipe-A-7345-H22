@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Grenade
   weaponDescription: Explosion Damage
+  isMelee: 0
+  infiniteAmmo: 0
   currencyValue: 5
   canFireContinuously: 0
+  canBeCharged: 0
   startingAmmo: 0
   currentAmmo: 0
   maxAmmo: 0
@@ -25,6 +28,7 @@ MonoBehaviour:
   firingRate: 1
   reloadTime: 0
   damage: 25
+  knockback: 0
   spread: 0
   range: 0
   bulletsNumber: 0
@@ -32,4 +36,9 @@ MonoBehaviour:
   bulletHole: {fileID: 0}
   weaponUISprite: {fileID: -205887807, guid: a3663b8204d1d194895c7d7299a3526c, type: 3}
   weaponPlayerSprite: {fileID: 0}
+  weaponFiringPlayerSprite: {fileID: 0}
   animator: {fileID: 0}
+  shootingSound: []
+  reloadSentenceSound: []
+  reloadSound: {fileID: 0}
+  emptyClickSound: {fileID: 0}

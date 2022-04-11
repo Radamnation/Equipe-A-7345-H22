@@ -496,6 +496,8 @@ MonoBehaviour:
   myDrops: []
   minDrop: 0
   maxDrop: 0
+  myHurtSFX: []
+  myDeathSFX: {fileID: 0}
 --- !u!65 &8449476920213036225
 BoxCollider:
   m_ObjectHideFlags: 0

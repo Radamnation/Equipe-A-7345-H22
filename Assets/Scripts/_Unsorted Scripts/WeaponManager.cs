@@ -38,7 +38,11 @@ public class WeaponManager : MonoBehaviour
     // public WeaponSO SecondaryWeapon { get => secondaryWeapon; set => secondaryWeapon = value; }
     public bool WeaponIsReloading { get => weaponIsReloading; }
     public LayerMask MyTargetMask { get => myTargetMask; }
-    public bool TracksPlayer { get => tracksPlayer; }
+    public bool TracksPlayer { get => tracksPlayer; set => tracksPlayer = value;  }
+    public UnityEvent WeaponHasChanged { get => weaponHasChanged; }
+    public UnityEvent WeaponFinishedReloading { get => weaponFinishedReloading; }
+    public UnityEvent WeaponHasShot { get => weaponHasShot; }
+    public UnityEvent WeaponStartedReloading { get => weaponStartedReloading; }
 
     // public float SecondaryFireRateDelay { get => secondaryFireRateDelay; set => secondaryFireRateDelay = value; }
 
@@ -76,6 +80,8 @@ public class WeaponManager : MonoBehaviour
             transform.forward = playerTransform.Transform.position - transform.position;
         }
     }
+
+    
 
     public void UpdateWeapon() // WeaponSO weapon
     {
@@ -156,6 +162,8 @@ public class WeaponManager : MonoBehaviour
 
                 weaponStartedReloading.Invoke();
                 reloadDelay = weapon.ReloadTime;
+
+                weaponIsReloading = true;
             }
         }
     }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Practice Target
+  - Boss
   layers:
   - Default
   - TransparentFX

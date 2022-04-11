@@ -44,5 +44,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7bb034c079950754db16f99f0d16bbc4, type: 3}
   - {fileID: 8300000, guid: e476886fd62864f40b29f41687b78f24, type: 3}
   - {fileID: 8300000, guid: e843b687ea310434e9bab7b45866c298, type: 3}
+  reloadSentenceSound: []
   reloadSound: {fileID: 0}
   emptyClickSound: {fileID: 0}

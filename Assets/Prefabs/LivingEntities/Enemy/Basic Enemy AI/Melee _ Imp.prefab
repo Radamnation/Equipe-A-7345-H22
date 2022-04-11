@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: isDebugOn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: startingState
       value: 0
       objectReference: {fileID: 0}
@@ -103,10 +107,42 @@ PrefabInstance:
       propertyPath: myHurtSFX.Array.data[4]
       value: 
       objectReference: {fileID: 8300000, guid: bbe91d186f0b30c46a87dc6927d6b609, type: 3}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: onTakeDamageEvents.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: onTakeDamageEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: onTakeDamageEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3965439695855229149}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: onTakeDamageEvents.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: onTakeDamageEvents.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Execute
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: onTakeDamageEvents.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AbstractBehaviour, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: onTakeDamageEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893132, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: 434b2f777ae023342bac3bb3becf31ed, type: 2}
+    - target: {fileID: 3831662558856893135, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: graphMask.value
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893135, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: traversableTags
       value: -5
@@ -118,6 +154,14 @@ PrefabInstance:
     - target: {fileID: 3831662558856893135, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: tagPenalties.Array.data[2]
       value: 100000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893136, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: height
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893136, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: radius
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893136, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: maxSpeed
@@ -133,6 +177,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893136, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: constrainInsideGraph
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893136, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: autoRepath.visualizeSensitivity
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893138, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
@@ -190,7 +238,7 @@ PrefabInstance:
     - target: {fileID: 3831662559004454559, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -268848824, guid: 6e7cae24fc9876d4694421b4e42d3d37, type: 3}
+      objectReference: {fileID: -859627783, guid: 6e4c1be9990e5a04b8537dd9e0489495, type: 3}
     - target: {fileID: 3831662559004454559, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -202,7 +250,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3831662558199758472, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
   m_PrefabInstance: {fileID: 4030164144152320746}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7541152399880046016
+--- !u!114 &7996793537301420719
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,16 +263,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDebuggerOn: 0
+  isPassive: 1
   targetMask:
     serializedVersion: 2
-    m_Bits: 0
-  isDistanceCurrWeaponBased: 0
-  distance: 0.16
-  validationType: 1
-  isDebugOn: 0
-  moveNearDesiredRange: 0
+    m_Bits: 8
+  isDistanceCurrWeaponBased: 1
+  distance: 0
+  validationType: 0
   myDesiredRangeOfPositions: {fileID: 0}
-  moveAfterIddleTime: 2
+  moveAfterIddleTime: 1.5
 --- !u!1 &198941392135997500 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3831662558856893142, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
@@ -382,6 +429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDebuggerOn: 0
+  isPassive: 0
   targetMask:
     serializedVersion: 2
     m_Bits: 8
@@ -389,5 +437,5 @@ MonoBehaviour:
   distance: 0.16
   validationType: 1
   myDesiredRangeOfPositions: {fileID: 11400000, guid: fc07bcacc6da4cb4db7e79c230044866, type: 2}
-  maxQuantityOfMove: 3
+  maxQuantityOfMove: 2
   moveAtSpeed: 4

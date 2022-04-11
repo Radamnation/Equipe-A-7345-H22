@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 84bb84bb9c7d8bd4b9659a8859f69afb
+guid: c3e16e75a46a1e742b544180ac23bee1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -128,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mimic _ Awakening _ 00
+      name: Mimic EB _ South_ 00
       rect:
         serializedVersion: 2
         x: 0
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c121ca372391acb46b3fcec26711e55e
-      internalID: -1645485370
+      spriteID: 84cef06ba660b7f45bf36569caa574bf
+      internalID: -1815776113
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mimic _ Awakening _ 01
+      name: Mimic EB _ South _ 01
       rect:
         serializedVersion: 2
         x: 32
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5ed9813a4a2d7243a0131f7a78fae20
-      internalID: -1839075152
+      spriteID: 8066388f6fdee2d438091c41c1f921b1
+      internalID: 936534365
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mimic _ Awakening _ 02
+      name: Mimic EB _ South _ 02
       rect:
         serializedVersion: 2
         x: 64
@@ -184,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7c56ec84e7847641ad62b222606247d
-      internalID: -98023651
+      spriteID: 527a117c31dcc6548aabaadbbd02974b
+      internalID: -1045849567
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mimic _ Awakening _ 03
+      name: Mimic EB _ South _ 03
       rect:
         serializedVersion: 2
         x: 96
@@ -205,122 +205,101 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1029e353ec52774c8dac1a6dd2b3022
-      internalID: 405521940
+      spriteID: f5f47bd95743da54c92d80ed7a135c70
+      internalID: -995119251
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mimic _ Awakening _ 04
+      name: Mimic EB _ East _ 00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 590f5a0dd5572c2499d4e65f44f3756b
+      internalID: -827844027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mimic EB _ East _ 01
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f721c32d1a4d5674ab0a9485e55b94f3
+      internalID: 863471886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mimic EB _ East _ 02
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f21c5df9936657c4193bba3f3fd688cf
+      internalID: -831786796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mimic EB _ East _ 03
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14c642f4d826b324a84c8d4f1c1c5f5c
+      internalID: -662478973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mimic EB _ East _ 04
       rect:
         serializedVersion: 2
         x: 128
-        y: 64
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 29e8c2ef53537594484545ba458088a7
-      internalID: -472007361
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic _ Awakening _ 05
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 64
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 95fb6ed0926d58441ae245b2e220b87b
-      internalID: 1638526551
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic _ Awakening _ 06
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 64
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 042634256c53cd14498f67885eb76fe0
-      internalID: -1284483721
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic _ Awakening _ 07
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 64
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 21ab750268418624dac7673f13fcdc80
-      internalID: 1312250668
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic _ Awakening _ 08
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 64
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8370465388d4c8542a98da221c166db1
-      internalID: -60718901
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic _ Run _ South_ 00
-      rect:
-        serializedVersion: 2
-        x: 0
         y: 32
         width: 32
         height: 32
@@ -331,77 +310,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db1fe349c57f65b41893591f3ae2be53
-      internalID: 1406560547
+      spriteID: 3a5d6d3ac0347a34cbcf3e8ed8163be1
+      internalID: -322621478
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mimic _ Run _ South_ 01
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 36ca33f7736afa642995e99f28a84852
-      internalID: 490190712
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic _ Run _ South_ 02
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7420d7ae5a9131e458e4c2b27a98d5c5
-      internalID: 2037454560
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic _ Run _ South_ 03
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 32
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1469f246b5efccc4e8025b3286f9b2d9
-      internalID: -1169947720
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mimic _ Death _ 00
+      name: Mimic EB _ Death _ 00
       rect:
         serializedVersion: 2
         x: 0
@@ -415,14 +331,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 959f064f9bbd71c4d929ec7b57dcbb4a
-      internalID: -350951896
+      spriteID: f321da5c4159fa94aaffc37dfe96d350
+      internalID: 740958578
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mimic _ Death _ 01
+      name: Mimic EB _ Death _ 01
       rect:
         serializedVersion: 2
         x: 32
@@ -436,14 +352,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 267b815b9eb29c44d913bd9e1c249843
-      internalID: -954289373
+      spriteID: 716cc512dab14c2488815e09068c58dc
+      internalID: 2085913198
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mimic _ Death _ 02
+      name: Mimic EB _ Death _ 02
       rect:
         serializedVersion: 2
         x: 64
@@ -457,14 +373,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a727a167083fcce48af5c330e1094447
-      internalID: 500590116
+      spriteID: 3460b5f6f825f624798ddf30be4defaf
+      internalID: -928163528
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mimic _ Death _ 03
+      name: Mimic EB _ Death _ 03
       rect:
         serializedVersion: 2
         x: 96
@@ -478,14 +394,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06bf3431ac86ea04da3470c8620c26ce
-      internalID: 1042695397
+      spriteID: 47d6e744b8ec4414f9de7e67aab519b7
+      internalID: -1732388570
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mimic _ Death _ 04
+      name: Mimic EB _ Death _ 04
       rect:
         serializedVersion: 2
         x: 128
@@ -499,14 +415,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: baf1b16e689eb194889e470949aa0c7c
-      internalID: -1184705555
+      spriteID: 3d3eba13604b2e5468571b2a7288e804
+      internalID: 487665304
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mimic _ Death _ 05
+      name: Mimic EB _ Death _ 05
       rect:
         serializedVersion: 2
         x: 160
@@ -520,14 +436,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6dde56dfe7585942a0078e1e01acc20
-      internalID: -2083356014
+      spriteID: 1a44d2c0b4804ab498f821dc65d813d1
+      internalID: -1018907859
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mimic _ Death _ 06
+      name: Mimic EB _ Death _ 06
       rect:
         serializedVersion: 2
         x: 192
@@ -541,14 +457,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d81c4aec0eccdff4a8fdcc7c7af35842
-      internalID: -1168972652
+      spriteID: df541cb1957676b4789c8484ccf1ae54
+      internalID: 1730657175
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mimic _ Death _ 07
+      name: Mimic EB _ Death _ 07
       rect:
         serializedVersion: 2
         x: 224
@@ -562,14 +478,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08cc9308bcbbdaf4493f65d2145eb8ef
-      internalID: 53080286
+      spriteID: dd30b55fe38a8124db461def8378a6dc
+      internalID: 1550579094
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mimic _ Death _ 08
+      name: Mimic EB _ Death _ 08
       rect:
         serializedVersion: 2
         x: 256
@@ -583,8 +499,281 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f57f2ae283da8ad4890703e4abd556a6
-      internalID: 273434929
+      spriteID: e1bf2540c3fe10a4a80c5a4957b81067
+      internalID: -1635894803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mimic EB _ Awaking _ 00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5bcc247a00028543a6fc3a34bc7b0c1
+      internalID: -1423705391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mimic EB _ Awaking _ 01
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7bcabb5d465f6b4aa660007d01e5094
+      internalID: 2063526437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mimic EB _ Awaking _ 02
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a5bc57f15125b740bf68b0e9ad6e1bf
+      internalID: -572471377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mimic EB _ Awaking _ 03
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c96badb166a014346862f7a9217d05d8
+      internalID: -775504632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mimic EB _ Awaking _ 04
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7ddf1fd4b064dc438d9967d7d931d89
+      internalID: -238701971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mimic EB _ Awaking _ 05
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 128
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05ffbafe464b1e440821f68396da424f
+      internalID: -2078258738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mimic EB _ Awaking _ 06
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c63b51ba9c224df4b9dd039cf9ec14a9
+      internalID: -436947919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mimic EB _ Awaking _ 07
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 128
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d545b9f437f6aa044bbd23904d78f8d2
+      internalID: 417708712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mimic EB _ Awaking _ 08
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b343d2f11cfe6f459643cee54ac8699
+      internalID: -1115787985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mimic EB _ North _ 00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c08bdfebfe41784aae39f9b8b935f27
+      internalID: 658041833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mimic EB _ North _ 01
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9421ea615fe9e9d4295ab3bac0b4f6fc
+      internalID: 256346406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mimic EB _ North _ 02
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26a6e44df67dc8d4594a621107f9367c
+      internalID: 206409412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mimic EB _ North _ 03
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fd7808b6af228d4498540f3a674c6b3
+      internalID: 919514405
       vertices: []
       indices: 
       edges: []
@@ -592,38 +781,45 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 7f20db5a6ea3aad47a85fe3f2dfe2c6f
+    spriteID: d6dbdfe75df05074bbf4592ee9517755
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
-    secondaryTextures:
-    - texture: {fileID: 2800000, guid: 3c8bda302526128469e3f41ad48bc8b9, type: 3}
-      name: _NormalMap
+    secondaryTextures: []
     nameFileIdTable:
-      Mimic _ Awakening _ 01: -652435420
-      Mimic _ Awakening _ 08: 547644669
-      Mimic _ Run _ South_ 03: -882721075
-      Mimic _ Death _ 05: -1671368015
-      Mimic _ Awakening _ 00: 347873543
-      Mimic _ Run _ South_ 00: 1325524642
-      Mimic _ Awakening _ 05: -127493779
-      Mimic _ Death _ 00: -1306947830
-      Mimic _ Death _ 02: -1671274482
-      Mimic _ Awakening _ 06: 1782506156
-      Mimic _ Awakening _ 03: -247940794
-      Mimic _ Death _ 06: -1037147928
-      Mimic _ Death _ 04: -1010995251
-      Mimic _ Death _ 01: -1423085186
-      Mimic _ Awakening _ 02: 840286253
-      Mimic _ Death _ 03: 755131910
-      Mimic _ Awakening _ 07: 1403810695
-      Mimic _ Run _ South_ 01: 1681920509
-      Mimic _ Awakening _ 04: 794555767
-      Mimic _ Death _ 07: -1237315903
-      Mimic _ Run _ South_ 02: -223963396
-      Mimic _ Death _ 08: -1933288040
+      Mimic EB _ South_ 00: -1815776113
+      Mimic EB _ North _ 00: 658041833
+      Mimic EB _ East _ 02: -831786796
+      Mimic EB _ Death _ 03: -1732388570
+      Mimic EB _ South _ 03: -995119251
+      Mimic EB _ North _ 03: 919514405
+      Mimic EB _ Awaking _ 02: -572471377
+      Mimic EB _ East _ 00: -827844027
+      Mimic EB _ Awaking _ 05: -2078258738
+      Mimic EB _ South _ 01: 936534365
+      Mimic EB _ Death _ 08: -1635894803
+      Mimic EB _ North _ 01: 256346406
+      Mimic EB _ East _ 04: -322621478
+      Mimic EB _ Awaking _ 06: -436947919
+      Mimic EB _ Awaking _ 07: 417708712
+      Mimic EB _ Awaking _ 03: -775504632
+      Mimic EB _ Death _ 02: -928163528
+      Mimic EB _ Death _ 05: -1018907859
+      Mimic EB _ Death _ 06: 1730657175
+      Mimic EB _ Awaking _ 08: -1115787985
+      Mimic EB _ East _ 01: 863471886
+      Mimic EB _ Death _ 00: 740958578
+      Mimic EB _ Death _ 01: 2085913198
+      Mimic EB _ Death _ 04: 487665304
+      Mimic EB _ Awaking _ 00: -1423705391
+      Mimic EB _ Awaking _ 04: -238701971
+      Mimic EB _ North _ 02: 206409412
+      Mimic EB _ Awaking _ 01: 2063526437
+      Mimic EB _ East _ 03: -662478973
+      Mimic EB _ South _ 02: -1045849567
+      Mimic EB _ Death _ 07: 1550579094
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

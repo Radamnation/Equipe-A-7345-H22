@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class PhysicalProjectile : MonoBehaviour
 {
     // [SerializeField] private float colliderActivationDelay = 0.1f;
+    [SerializeField] private bool isStartAsCollider = false;
+
     [SerializeField] private bool affectedByGravity = true;
     
     [SerializeField] private float impulsion = 5f;
@@ -52,7 +54,8 @@ public class PhysicalProjectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (isStartAsCollider)
+            myCollider.isTrigger = false;
     }
 
     // Update is called once per frame
@@ -83,7 +86,7 @@ public class PhysicalProjectile : MonoBehaviour
         myCollider.isTrigger = false;
     }
 
-    private void Death()
+    public void Death()
     {
         onDeathEvents.Invoke();
         this.enabled = false;
