@@ -232,3 +232,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myWeapon: {fileID: 11400000, guid: 7739079b4ea9f834da614cb1845413a6, type: 2}
   additionalDamage: 0
+  ignoreDamageForTags:
+  - Boss

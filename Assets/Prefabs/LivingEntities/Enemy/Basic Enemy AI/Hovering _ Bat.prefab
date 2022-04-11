@@ -43,6 +43,10 @@ PrefabInstance:
       propertyPath: animExecuteAtk_2
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: isBypassTokenSystem
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDeathSFX
       value: 

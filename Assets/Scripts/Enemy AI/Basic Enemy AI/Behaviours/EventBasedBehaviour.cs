@@ -14,6 +14,7 @@ public class EventBasedBehaviour : AbstractBehaviour
 
     public override void Behaviour()
     {
+        myContext.CanUseBehaviour = true;
         myEvents.Invoke();
     }
 

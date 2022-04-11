@@ -37,6 +37,8 @@ public abstract class AbstractBehaviour : MonoBehaviour
     protected readonly float sharedDefaultDistance = 0.64f;
 
     [Header("Misc")]
+    [SerializeField] private bool isBypassCanUseBehaviour = false; 
+    [Space(10)]
     [SerializeField] protected bool isDebuggerOn = false;
     [Space(10)]
     [SerializeField] protected bool isPassive = false;
@@ -72,7 +74,7 @@ public abstract class AbstractBehaviour : MonoBehaviour
             distance = myContext.GetCurrentWeaponManager().Weapon.Range;
 
         // Execute
-        if (isValidForExecute)
+        if (isValidForExecute || isBypassCanUseBehaviour)
             StartCoroutine(ExecutionCoroutine());
     }
 

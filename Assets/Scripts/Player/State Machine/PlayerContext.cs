@@ -82,6 +82,9 @@ public class PlayerContext : MonoBehaviour
         }
         
         DontDestroyOnLoad(gameObject);
+
+
+        GetComponentInChildren<Camera>().backgroundColor = new Color(50, 40, 35);
     }
 
     // SECTION - Method - Unity ===================================================================

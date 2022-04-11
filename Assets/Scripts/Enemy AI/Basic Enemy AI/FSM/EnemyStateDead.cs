@@ -29,7 +29,8 @@ public class EnemyStateDead : IEnemyState
         context.enabled = false;
 
         // Replace Token uppon death
-        AIManager.instance.MyTokenHandlerSO.ReturnToken(context.HasToken);
+        if (!context.IsBoss)
+            AIManager.instance.MyTokenHandlerSO.ReturnToken(context.HasToken);
 
         context.DestroyAllWeaponSO();
     }

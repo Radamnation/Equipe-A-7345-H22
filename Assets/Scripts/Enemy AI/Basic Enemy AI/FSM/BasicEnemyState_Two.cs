@@ -18,7 +18,7 @@ public class BasicEnemyState_Two : IEnemyState
             // Behaviour
             if (context.Behaviour_NoToken_2 != null && context.Behaviour_NoToken_2.IsExecutionValid())
             {
-                context.Behaviour_Token_2.Execute();
+                context.Behaviour_NoToken_2.Execute();
 
                 context.SetAnimTrigger(BasicEnemy_AnimTriggers.STATE_02_NOTOKEN);
             }

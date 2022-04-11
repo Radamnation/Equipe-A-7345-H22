@@ -9,15 +9,27 @@ public class OnCollisionDoDamage : MonoBehaviour
     [SerializeField] private WeaponSO myWeapon;
     [SerializeField] private float additionalDamage = 0;
 
+    [Header("Target Management")]
+    [SerializeField] private string[] ignoreDamageForTags;
+
     private float GetTotalDamageOutput => (myWeapon) ? myWeapon.Damage + additionalDamage : additionalDamage;
 
 
     // SECTION - Method - Unity Specific ===================================================================
     private void OnCollisionEnter(Collision other)
     {
-        LivingEntityContext otherLEC = other.transform.GetComponent<LivingEntityContext>();
+        foreach (string tag in ignoreDamageForTags)
+        {
+            if (other.gameObject.CompareTag(tag))
+            {
+                Destroy(gameObject);
+                return;
+            }
 
-        if (otherLEC != null)
-            otherLEC.TakeDamage(GetTotalDamageOutput);
+            LivingEntityContext otherLEC = other.transform.GetComponent<LivingEntityContext>();
+
+            if (otherLEC != null)
+                otherLEC.TakeDamage(GetTotalDamageOutput);
+        }
     }
 }

@@ -54,7 +54,7 @@ public class BasicEnemyContext : MonoBehaviour
 
 
     [Header("    ======= On Start Specifications =======\n")]
-    [SerializeField] private bool isBoss = false;
+    [SerializeField] private bool isBypassTokenSystem = false;
     [Space(10)]
     [SerializeField] private GameObject myTemporaryTargetPrefab;
     [Space(10)]
@@ -105,7 +105,7 @@ public class BasicEnemyContext : MonoBehaviour
     // State
     public IEnemyState CurrState { get => currState; set => currState = value; }
 
-    public bool IsBoss { get => isBoss; }
+    public bool IsBoss { get => isBypassTokenSystem; }
 
     // General
     public LivingEntityContext MyLivingEntity { get => myLivingEntity; set => myLivingEntity = value; }
@@ -486,7 +486,7 @@ public class BasicEnemyContext : MonoBehaviour
             return false;
 
         // Manage token in case of reload
-        if (!isBoss && myWeaponManager.WeaponIsReloading && hasToken)
+        if (!isBypassTokenSystem && myWeaponManager.WeaponIsReloading && hasToken)
         {
             AIManager.instance.MyTokenHandlerSO.ReturnToken(hasToken);
             hasToken = false;
@@ -506,6 +506,29 @@ public class BasicEnemyContext : MonoBehaviour
 
         if (myWeaponManager != null)
             Destroy(myWeaponManager.Weapon);
+    }
+
+    public AbstractBehaviour GetCurrentBehaviour()
+    {
+        // Reminder
+        //      - Will return null if behaviour is null | Proceed accordingly
+
+        if (currState is BasicEnemyState_One)
+        {
+            if (HasToken)
+                return behaviour_Token_1;
+            else
+                return behaviour_NoToken_1;
+        }
+        else if (currState is BasicEnemyState_Two)
+        {
+            if (HasToken)
+                return behaviour_Token_2;
+            else
+                return behaviour_NoToken_2;
+        }
+
+        return null;
     }
 
     // PathFinding
@@ -590,7 +613,6 @@ public class BasicEnemyContext : MonoBehaviour
                     currState = new BasicEnemyState_One();
             }
         }
-
     }
 
     public void SetTransitionAnim()
@@ -605,7 +627,7 @@ public class BasicEnemyContext : MonoBehaviour
     {
         switch (trigger)
         {
-            case BasicEnemy_AnimTriggers.DEATH:
+            case BasicEnemy_AnimTriggers.DEATH:                 // MISC
                 anim.SetTrigger(animState_OnDeath);
                 break;
 
@@ -613,7 +635,8 @@ public class BasicEnemyContext : MonoBehaviour
                 anim.SetBool(animParam_ExitDeathAnim, true);
                 break;
 
-            case BasicEnemy_AnimTriggers.STATE_01_TRANSITION:
+
+            case BasicEnemy_AnimTriggers.STATE_01_TRANSITION:   // STATE ONE
                 anim.SetTrigger(animState_01_Transition);
                 break;
 
@@ -626,7 +649,7 @@ public class BasicEnemyContext : MonoBehaviour
                 break;
 
 
-            case BasicEnemy_AnimTriggers.STATE_02_TRANSITION:
+            case BasicEnemy_AnimTriggers.STATE_02_TRANSITION:   // STATE TWO
                 anim.SetTrigger(animState_02_Transition);
                 break;
 
@@ -642,6 +665,7 @@ public class BasicEnemyContext : MonoBehaviour
         }
     }
 
+    // DEPRECATED - Should be changed in both states and deleted (also delete associated booleans)
     public bool IsAnimExecuteAttack()
     {
         if (currState is BasicEnemyState_One)
@@ -707,8 +731,11 @@ public class BasicEnemyContext : MonoBehaviour
         return anim.GetCurrentAnimatorStateInfo(0).length;
     }
 
-
-    private void AE_ExecuteState_01_NoToken(bool alsoTryMainWeapon = false) // Animator Event
+    // DEPRECATED: SHOULD BE CHANGED FOR AE_ExecuteCurrentBehaviour()
+    // NOTE FOR AE_ExecuteCurrentBehaviour()
+    //      - Should implement TWO booleans isBehaviourAlsoTryFire_StateXXX so that...
+    //        ... Animation events also have the possibility to fire weapon
+    private void AE_ExecuteState_01_NoToken(bool alsoTryMainWeapon) // Animator Event
     {
         // TryFireMainWeapon() will execute damage regardless if there is additional behaviours
         if (alsoTryMainWeapon)
@@ -718,7 +745,11 @@ public class BasicEnemyContext : MonoBehaviour
             behaviour_Token_1.Execute();
     }
 
-    private void AE_ExecuteState_02_NoToken(bool alsoTryMainWeapon = false) // Animator Event
+    // DEPRECATED: SHOULD BE CHANGED FOR AE_ExecuteCurrentBehaviour()
+    // NOTE FOR AE_ExecuteCurrentBehaviour()
+    //      - Should implement TWO booleans isBehaviourAlsoTryFire_StateXXX so that...
+    //        ... Animation events also have the possibility to fire weapon
+    private void AE_ExecuteState_02_NoToken(bool alsoTryMainWeapon) // Animator Event
     {
         // TryFireMainWeapon() will execute damage regardless if there is additional behaviours
         if (alsoTryMainWeapon)
@@ -728,6 +759,10 @@ public class BasicEnemyContext : MonoBehaviour
             behaviour_Token_2.Execute();
     }
 
+    // DEPRECATED: SHOULD BE CHANGED FOR AE_ExecuteCurrentBehaviour()
+    // NOTE FOR AE_ExecuteCurrentBehaviour()
+    //      - Should implement TWO booleans isBehaviourAlsoTryFire_StateXXX so that...
+    //        ... Animation events also have the possibility to fire weapon
     private void AE_ExecuteState_01_Token() // Animator Event
     {
         // TryFireMainWeapon() will execute damage regardless if there is additional behaviours
@@ -737,6 +772,10 @@ public class BasicEnemyContext : MonoBehaviour
             behaviour_Token_1.Execute();
     }
 
+    // DEPRECATED: SHOULD BE CHANGED FOR AE_ExecuteCurrentBehaviour()
+    // NOTE FOR AE_ExecuteCurrentBehaviour()
+    //      - Should implement TWO booleans isBehaviourAlsoTryFire_StateXXX so that...
+    //        ... Animation events also have the possibility to fire weapon
     private void AE_ExecuteState_02_Token() // Animator Event
     {
         Debug.Log("TOKEN 2 AE USED");
@@ -746,6 +785,62 @@ public class BasicEnemyContext : MonoBehaviour
         if (behaviour_Token_2 != null)
             behaviour_Token_2.Execute();
     }
+
+    private void AE_ExecuteCurrentBehaviour(WeaponEvent desiredEvent = WeaponEvent.NONE) 
+    {
+        // NOTE
+        //      - Should implement TWO booleans isBehaviourAlsoTryFire_StateXXX so that...
+        //        ... Animation events also have the possibility to fire weapon
+
+        AbstractBehaviour myCurrentBehaviour = GetCurrentBehaviour();
+
+        if (!myCurrentBehaviour)
+        {
+            StaticDebugger.SimpleDebugger(isDebugOn, "No weapon manager was found");
+            return;
+        }
+
+        myCurrentBehaviour.Execute();
+
+        StartCoroutine(WaitUntilBehaviourThenCallWeaponEvent(desiredEvent));
+    }
+
+    private IEnumerator WaitUntilBehaviourThenCallWeaponEvent(WeaponEvent desiredEvent = WeaponEvent.NONE)
+    {
+        yield return new WaitUntil(() => CanUseBehaviour);
+
+        switch (desiredEvent)
+        {
+            case WeaponEvent.NONE:
+                break;
+
+            case WeaponEvent.ALL:
+                GetCurrentWeaponManager().WeaponHasChanged.Invoke();
+                GetCurrentWeaponManager().WeaponFinishedReloading.Invoke();
+                GetCurrentWeaponManager().WeaponHasShot.Invoke();
+                GetCurrentWeaponManager().WeaponStartedReloading.Invoke();
+                break;
+
+            case WeaponEvent.HASCHANGED:
+                GetCurrentWeaponManager().WeaponHasChanged.Invoke();
+                break;
+
+            case WeaponEvent.FINISHEDRELOADING:
+                GetCurrentWeaponManager().WeaponFinishedReloading.Invoke();
+                break;
+
+            case WeaponEvent.HASSHOT:
+                GetCurrentWeaponManager().WeaponHasShot.Invoke();
+                break;
+
+            case WeaponEvent.STARTEDRELOADING:
+                GetCurrentWeaponManager().WeaponStartedReloading.Invoke();
+                break;
+
+            default: Debug.Log("AN ERROR HAS OCCURED"); break;
+        }
+    }
+
 
     private void AE_FreezeRigidBodyDisableCollider()
     {

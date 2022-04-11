@@ -70,6 +70,8 @@ public class ShootingRangeManager : MonoBehaviour
         {
             isPlayerPresent = true;
 
+            GetComponent<Collider>().enabled = false;
+
             if (myPracticeTargetInstances.Count != 0)
             {
                 outlineAnimator.SetBool(outlineAnimString, true);
@@ -85,14 +87,30 @@ public class ShootingRangeManager : MonoBehaviour
         {
             isPlayerPresent = false;
 
+            GetComponent<Collider>().enabled = true;
+
             outlineAnimator.SetBool(outlineAnimString, false);
 
             // Prevents first spawn of practice targets when moving around empty shooting range
             if (myPracticeTargetInstances.Count != 0)
                 InstantiateShootingRange(true);
         }
-        else if (other.gameObject.layer == 8) // Layer int # for LIVING ENTITY
+        else if (other.gameObject.layer == 8)// && ) // Layer int # for LIVING ENTITY
         {
+            
+            // Manage untagged entites leaving the shooting range
+            if (CompareTag("Untagged"))
+            {
+                /* // In case of need, Use this to kill off entitites instead of spawning them in the middle of the shooting range
+                LivingEntityContext otherLEC = other.GetComponent<LivingEntityContext>();
+                if (otherLEC)
+                    otherLEC.InstantDeath();
+                else
+                    Destroy(otherLEC);
+                */
+                return;
+            }
+
             other.transform.position = shootingRangeCenter.position;
             other.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
