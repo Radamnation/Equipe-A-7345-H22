@@ -14,10 +14,6 @@ public class AIPossiblePositionsSO : ScriptableObject
 
 
     // SECTION - Method ===================================================================
-    private void OnEnable()
-    {
-        
-    }
     /*
     public Transform GetRandomTransform(BasicEnemyContext context)
     {

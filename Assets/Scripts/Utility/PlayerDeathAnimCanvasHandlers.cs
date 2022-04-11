@@ -13,6 +13,17 @@ public class PlayerDeathAnimCanvasHandlers : MonoBehaviour
         Invoke("LateStart", 1.0f);
     }
 
+    private void Update()
+    {
+        if(onDeathManager == null)
+        {
+            GameObject myCanvasObject = GameObject.Find("Death Canvas");
+
+            if (myCanvasObject)
+                onDeathManager = myCanvasObject.GetComponent<OnDeathManager>();
+        }
+    }
+
 
     // SECTION - Method - Utility Specific ===================================================================
     private void LateStart()
@@ -29,7 +40,11 @@ public class PlayerDeathAnimCanvasHandlers : MonoBehaviour
     public void CheckEndAsync()
     {
         if (onDeathManager != null)
+        {
+            EnableOnDeathManager();
             onDeathManager.OnDeathAnimationEnd();
+        }
+
     }
 
     public void EnableOnDeathManager()
