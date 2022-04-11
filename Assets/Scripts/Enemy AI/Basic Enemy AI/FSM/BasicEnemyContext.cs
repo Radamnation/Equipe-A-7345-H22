@@ -54,6 +54,8 @@ public class BasicEnemyContext : MonoBehaviour
 
 
     [Header("    ======= On Start Specifications =======\n")]
+    [SerializeField] private bool isBypassTokenSystem = false;
+    [Space(10)]
     [SerializeField] private GameObject myTemporaryTargetPrefab;
     [Space(10)]
     [SerializeField] private BasicEnemy_States startingState = BasicEnemy_States.ONE;
@@ -64,6 +66,7 @@ public class BasicEnemyContext : MonoBehaviour
     [SerializeField] private bool exitDeathAnim = true;
 
     [Header("    ======= Other Specifications =======\n")]
+    [SerializeField] private BasicEnemy_Types type = BasicEnemy_Types.GROUNDED;
     [SerializeField] private bool isHoveringEnemy = false;
 
     [Space(10)]
@@ -95,10 +98,14 @@ public class BasicEnemyContext : MonoBehaviour
     private AbstractBehaviour behaviour_Token_2;
 
     [SerializeField] private bool hasToken = false;
+
+
     // SECTION - Property ===================================================================
     #region REGION - PROPERTY
     // State
     public IEnemyState CurrState { get => currState; set => currState = value; }
+
+    public bool IsBoss { get => isBypassTokenSystem; }
 
     // General
     public LivingEntityContext MyLivingEntity { get => myLivingEntity; set => myLivingEntity = value; }
@@ -124,6 +131,9 @@ public class BasicEnemyContext : MonoBehaviour
 
     public bool HasToken { get => hasToken; set => hasToken = value; }
     public bool CanUseBehaviour { get => canUseBehaviour; set => canUseBehaviour = value; }
+    public BasicEnemy_States GetCurrentStateHasEnum => (currState is BasicEnemyState_One) ? BasicEnemy_States.ONE : BasicEnemy_States.TWO;
+
+    public BasicEnemy_Types Type { get => type; }
     #endregion
 
 
@@ -143,6 +153,7 @@ public class BasicEnemyContext : MonoBehaviour
         FirstStateHandler();
     }
 
+    public bool isDebugOn = false;
     private void FixedUpdate()
     {
         if (oldState != currState)
@@ -153,6 +164,9 @@ public class BasicEnemyContext : MonoBehaviour
 
         OnStateUpdate();
         OnStateExit();
+
+        if (isDebugOn)
+            Debug.Log($"Enemy hasreachedendofpath: {HasReachedEndOfPath()} | HasPath {HasPath()}");
     }
 
 
@@ -292,9 +306,25 @@ public class BasicEnemyContext : MonoBehaviour
             myAIDestinationSetter.target = GameManager.instance.PlayerTransformRef;
     }
 
-    public void SetTarget(Transform newTarget)
+    public void SetTarget(Transform newTarget = null)
     {
+        if (newTarget == null)
+        {
+            myAIDestinationSetter.target = myTemporaryTargetTransform;
+            return;
+        }
+
         myAIDestinationSetter.target = newTarget;
+    }
+
+    public void SetTargetNull()
+    {
+        myAIDestinationSetter.target = null;
+    }
+
+    public void SetDestination(Vector3 destination)
+    {
+        myAIPath.destination = destination;
     }
 
     public Transform GetTargetTransform()
@@ -305,20 +335,16 @@ public class BasicEnemyContext : MonoBehaviour
     public void OnDefaultManageToken()
     {
         // TODO:
-        //      - REFACTORISE WHAT DICTATES RETURN TOKEN
+        //      - Prioritisation for some enemies?
 
-        if (IsIddleOrMoving() && IsTargetNear())
+        if (!HasToken)
         {
             HasToken = AIManager.instance.MyTokenHandlerSO.TryGetToken();
         }
-        else if (HasToken && (!HasPath() || HasReachedEndOfPath())) // Replace token when out of reach
-        {
-            HasToken = false;
+        else if (HasToken && !HasPath()) // Replace token when out of reach
+        {         
             AIManager.instance.MyTokenHandlerSO.ReturnToken(hasToken);
-        }
-        else if (!HasToken && (HasPath() && GetTargetTransform().CompareTag("Player"))) // || context.HasReachedEndOfPath()))       // Try get Token
-        {
-            HasToken = AIManager.instance.MyTokenHandlerSO.TryGetToken();
+            HasToken = false;
         }
     }
     #endregion
@@ -373,8 +399,12 @@ public class BasicEnemyContext : MonoBehaviour
             if (weaponManager_1 != null)
                 return weaponManager_1.TriggerWeapon();
         else if (currState is BasicEnemyState_Two)
+        {
+                Debug.Log("FIRE MAIN WEAPON STATE TWO");
             if (weaponManager_2 != null)
                 return weaponManager_2.TriggerWeapon();
+        }
+
 
         return false; // true == prevent using main weapon when checking !IsMainWeaponReloading()
     }
@@ -428,6 +458,9 @@ public class BasicEnemyContext : MonoBehaviour
 
         if (myWeaponManager != null)
         {
+            if (myWeaponManager.Weapon == null)
+                return;
+
             WeaponSO myNewWeaponSO;
 
             // Check for specific or current WeaponSO instantiate
@@ -436,7 +469,7 @@ public class BasicEnemyContext : MonoBehaviour
             else
                 myNewWeaponSO = Instantiate(myDesiredWeaponSO);
 
-            myNewWeaponSO.InfiniteAmmo = true;
+            myNewWeaponSO.InfiniteAmmo = true; // Just in case
 
             myWeaponManager.Weapon = myNewWeaponSO;
         }
@@ -449,14 +482,17 @@ public class BasicEnemyContext : MonoBehaviour
         if (myWeaponManager == null)
             return false;
 
+        if (myWeaponManager.Weapon == null)
+            return false;
+
         // Manage token in case of reload
-        if (myWeaponManager.WeaponIsReloading && hasToken)
+        if (!isBypassTokenSystem && myWeaponManager.WeaponIsReloading && hasToken)
         {
             AIManager.instance.MyTokenHandlerSO.ReturnToken(hasToken);
             hasToken = false;
         }
 
-        return myWeaponManager.WeaponIsReloading;
+        return myWeaponManager.WeaponIsReloading || myWeaponManager.Weapon.CurrentClip == 0;
     }
 
     public void DestroyAllWeaponSO()
@@ -470,6 +506,29 @@ public class BasicEnemyContext : MonoBehaviour
 
         if (myWeaponManager != null)
             Destroy(myWeaponManager.Weapon);
+    }
+
+    public AbstractBehaviour GetCurrentBehaviour()
+    {
+        // Reminder
+        //      - Will return null if behaviour is null | Proceed accordingly
+
+        if (currState is BasicEnemyState_One)
+        {
+            if (HasToken)
+                return behaviour_Token_1;
+            else
+                return behaviour_NoToken_1;
+        }
+        else if (currState is BasicEnemyState_Two)
+        {
+            if (HasToken)
+                return behaviour_Token_2;
+            else
+                return behaviour_NoToken_2;
+        }
+
+        return null;
     }
 
     // PathFinding
@@ -554,7 +613,6 @@ public class BasicEnemyContext : MonoBehaviour
                     currState = new BasicEnemyState_One();
             }
         }
-
     }
 
     public void SetTransitionAnim()
@@ -569,7 +627,7 @@ public class BasicEnemyContext : MonoBehaviour
     {
         switch (trigger)
         {
-            case BasicEnemy_AnimTriggers.DEATH:
+            case BasicEnemy_AnimTriggers.DEATH:                 // MISC
                 anim.SetTrigger(animState_OnDeath);
                 break;
 
@@ -577,7 +635,8 @@ public class BasicEnemyContext : MonoBehaviour
                 anim.SetBool(animParam_ExitDeathAnim, true);
                 break;
 
-            case BasicEnemy_AnimTriggers.STATE_01_TRANSITION:
+
+            case BasicEnemy_AnimTriggers.STATE_01_TRANSITION:   // STATE ONE
                 anim.SetTrigger(animState_01_Transition);
                 break;
 
@@ -590,7 +649,7 @@ public class BasicEnemyContext : MonoBehaviour
                 break;
 
 
-            case BasicEnemy_AnimTriggers.STATE_02_TRANSITION:
+            case BasicEnemy_AnimTriggers.STATE_02_TRANSITION:   // STATE TWO
                 anim.SetTrigger(animState_02_Transition);
                 break;
 
@@ -606,6 +665,7 @@ public class BasicEnemyContext : MonoBehaviour
         }
     }
 
+    // DEPRECATED - Should be changed in both states and deleted (also delete associated booleans)
     public bool IsAnimExecuteAttack()
     {
         if (currState is BasicEnemyState_One)
@@ -671,23 +731,116 @@ public class BasicEnemyContext : MonoBehaviour
         return anim.GetCurrentAnimatorStateInfo(0).length;
     }
 
+    // DEPRECATED: SHOULD BE CHANGED FOR AE_ExecuteCurrentBehaviour()
+    // NOTE FOR AE_ExecuteCurrentBehaviour()
+    //      - Should implement TWO booleans isBehaviourAlsoTryFire_StateXXX so that...
+    //        ... Animation events also have the possibility to fire weapon
+    private void AE_ExecuteState_01_NoToken(bool alsoTryMainWeapon) // Animator Event
+    {
+        // TryFireMainWeapon() will execute damage regardless if there is additional behaviours
+        if (alsoTryMainWeapon)
+            TryFireMainWeapon();
+
+        if (behaviour_Token_1 != null)
+            behaviour_Token_1.Execute();
+    }
+
+    // DEPRECATED: SHOULD BE CHANGED FOR AE_ExecuteCurrentBehaviour()
+    // NOTE FOR AE_ExecuteCurrentBehaviour()
+    //      - Should implement TWO booleans isBehaviourAlsoTryFire_StateXXX so that...
+    //        ... Animation events also have the possibility to fire weapon
+    private void AE_ExecuteState_02_NoToken(bool alsoTryMainWeapon) // Animator Event
+    {
+        // TryFireMainWeapon() will execute damage regardless if there is additional behaviours
+        if (alsoTryMainWeapon)
+            TryFireMainWeapon();
+
+        if (behaviour_Token_2 != null)
+            behaviour_Token_2.Execute();
+    }
+
+    // DEPRECATED: SHOULD BE CHANGED FOR AE_ExecuteCurrentBehaviour()
+    // NOTE FOR AE_ExecuteCurrentBehaviour()
+    //      - Should implement TWO booleans isBehaviourAlsoTryFire_StateXXX so that...
+    //        ... Animation events also have the possibility to fire weapon
     private void AE_ExecuteState_01_Token() // Animator Event
     {
         // TryFireMainWeapon() will execute damage regardless if there is additional behaviours
         TryFireMainWeapon();
 
-        if ( behaviour_Token_1 != null)
+        if (behaviour_Token_1 != null)
             behaviour_Token_1.Execute();
     }
 
+    // DEPRECATED: SHOULD BE CHANGED FOR AE_ExecuteCurrentBehaviour()
+    // NOTE FOR AE_ExecuteCurrentBehaviour()
+    //      - Should implement TWO booleans isBehaviourAlsoTryFire_StateXXX so that...
+    //        ... Animation events also have the possibility to fire weapon
     private void AE_ExecuteState_02_Token() // Animator Event
     {
+        Debug.Log("TOKEN 2 AE USED");
         // TryFireMainWeapon() will execute damage regardless if there is additional behaviours
         TryFireMainWeapon();
 
         if (behaviour_Token_2 != null)
             behaviour_Token_2.Execute();
     }
+
+    private void AE_ExecuteCurrentBehaviour(WeaponEvent desiredEvent = WeaponEvent.NONE) 
+    {
+        // NOTE
+        //      - Should implement TWO booleans isBehaviourAlsoTryFire_StateXXX so that...
+        //        ... Animation events also have the possibility to fire weapon
+
+        AbstractBehaviour myCurrentBehaviour = GetCurrentBehaviour();
+
+        if (!myCurrentBehaviour)
+        {
+            StaticDebugger.SimpleDebugger(isDebugOn, "No weapon manager was found");
+            return;
+        }
+
+        myCurrentBehaviour.Execute();
+
+        StartCoroutine(WaitUntilBehaviourThenCallWeaponEvent(desiredEvent));
+    }
+
+    private IEnumerator WaitUntilBehaviourThenCallWeaponEvent(WeaponEvent desiredEvent = WeaponEvent.NONE)
+    {
+        yield return new WaitUntil(() => CanUseBehaviour);
+
+        switch (desiredEvent)
+        {
+            case WeaponEvent.NONE:
+                break;
+
+            case WeaponEvent.ALL:
+                GetCurrentWeaponManager().WeaponHasChanged.Invoke();
+                GetCurrentWeaponManager().WeaponFinishedReloading.Invoke();
+                GetCurrentWeaponManager().WeaponHasShot.Invoke();
+                GetCurrentWeaponManager().WeaponStartedReloading.Invoke();
+                break;
+
+            case WeaponEvent.HASCHANGED:
+                GetCurrentWeaponManager().WeaponHasChanged.Invoke();
+                break;
+
+            case WeaponEvent.FINISHEDRELOADING:
+                GetCurrentWeaponManager().WeaponFinishedReloading.Invoke();
+                break;
+
+            case WeaponEvent.HASSHOT:
+                GetCurrentWeaponManager().WeaponHasShot.Invoke();
+                break;
+
+            case WeaponEvent.STARTEDRELOADING:
+                GetCurrentWeaponManager().WeaponStartedReloading.Invoke();
+                break;
+
+            default: Debug.Log("AN ERROR HAS OCCURED"); break;
+        }
+    }
+
 
     private void AE_FreezeRigidBodyDisableCollider()
     {

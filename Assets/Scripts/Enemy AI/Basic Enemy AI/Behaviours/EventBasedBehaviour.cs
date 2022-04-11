@@ -10,10 +10,11 @@ public class EventBasedBehaviour : AbstractBehaviour
     [SerializeField] private UnityEvent myEvents;
 
 
-    // SECTION - Method ===================================================================
+    // SECTION - Method - Implementation Specific ===================================================================
 
     public override void Behaviour()
     {
+        myContext.CanUseBehaviour = true;
         myEvents.Invoke();
     }
 

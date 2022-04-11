@@ -4,7 +4,6 @@ public class SetStateNearTarget : AbstractBehaviour
 {
     // SECTION - Field ============================================================
     [Header("Important Variables")]
-    [SerializeField] private bool isPassiveBehaviour = false;
     [SerializeField] private BasicEnemy_States nextState;
 
     private Collider[] hits;
@@ -13,7 +12,8 @@ public class SetStateNearTarget : AbstractBehaviour
     // SECTION - Method - Unity Specific ============================================================
     private void FixedUpdate()
     {
-        if (isPassiveBehaviour && IsExecutionValid())
+        //if (isPassive && myContext.GetCurrentStateHasEnum != nextState && IsExecutionValid())
+        if (myContext.GetCurrentStateHasEnum != nextState)
             Execute();
     }
 
@@ -31,15 +31,18 @@ public class SetStateNearTarget : AbstractBehaviour
                 myContext.SetFiniteStateMachine(nextState);
             }
         }
+
+        myContext.CanUseBehaviour = true;
+        isValidForExecute = false;
     }
 
     public override bool ChildSpecificValidations()
-    {
+    {     
         hits = StaticRayCaster.IsOverlapSphereTouching
-                    (myContext.transform, distance, targetMask);
+                    (myContext.transform, distance, targetMask, isDebuggerOn);
 
         foreach (Collider hit in hits) // May need debug : this.entity takes itself into account even when conditioning against
-            if (hit.transform != null && hit.name != transform.parent.name)
+            if (hit.transform != null && hit.transform.GetInstanceID() != transform.parent.GetInstanceID()) //hit.name != transform.parent.name)
                 return true;
 
         return false;

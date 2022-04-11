@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455a97e78b9efdb49a994949547da343, type: 3}
   m_Name: SORandomRoomGeneration
   m_EditorClassIdentifier: 
-  randomizeOnStart: 1
-  seed: 68686796
+  randomizeOnStart: 0
+  seed: 101010

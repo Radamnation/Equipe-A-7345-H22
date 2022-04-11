@@ -41,6 +41,10 @@ public class PlayerContext : MonoBehaviour
     [Header("Events")]
     [SerializeField] private UnityEvent mainWeaponHasChanged;
 
+    [SerializeField] private AIPossiblePositionsSO myBackSO;
+    [SerializeField] private AIPossiblePositionsSO myCloseSO;
+    [SerializeField] private AIPossiblePositionsSO myMidSO;
+
 
     // SECTION - Property ===================================================================
     #region REGION - PROPERTY
@@ -81,9 +85,9 @@ public class PlayerContext : MonoBehaviour
             Destroy(this.gameObject);
         }
         
-
-        playerTransform.Transform = transform;
         DontDestroyOnLoad(gameObject);
+
+        GetComponentInChildren<Camera>().backgroundColor = new Color(50, 40, 35);
     }
 
     // SECTION - Method - Unity ===================================================================
@@ -103,6 +107,7 @@ public class PlayerContext : MonoBehaviour
         secondaryWeapon.Weapon = weapons.EquippedSecondaryWeapon;
     }
 
+
     private void Update()
     {
         if (oldState != currState)
@@ -111,8 +116,27 @@ public class PlayerContext : MonoBehaviour
             OnStateEnter();
         }
 
+        if (playerTransform.Transform == null)
+            playerTransform.Transform = transform;
+
         OnStateUpdate();
-        OnStateExit();  
+        OnStateExit();
+
+        //if (myBackSO.PossiblePositions[0] == null)
+        //{
+            //SetNodesReference(myBackSO, 0);
+            // SetNodesReference(myBackSO, 1);
+            //SetNodesReference(myBackSO, 2);
+       // }
+    }
+
+    private void SetNodesReference(AIPossiblePositionsSO myNodeRange, int childIndex = 0)
+    {
+        myNodeRange.PossiblePositions.Clear();
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            myBackSO.PossiblePositions.Add(transform.GetChild(9).transform.GetChild(childIndex).transform.GetChild(i));
+        }
     }
 
 

@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3831662557995219415}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -88,7 +88,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3831662558613925919}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -191,6 +191,8 @@ MonoBehaviour:
   - {fileID: 1904513868067826317, guid: dd77c72568d1be44fa3b9ad678e743d8, type: 3}
   minDrop: 5
   maxDrop: 10
+  myHurtSFX: []
+  myDeathSFX: {fileID: 0}
 --- !u!114 &3831662558856893129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,16 +205,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26b433ecaa2da543b1fc23d41cd03bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBypassTokenSystem: 0
   myTemporaryTargetPrefab: {fileID: 3480657260901902752, guid: eea5978212187864eaa3c060c97a4793, type: 3}
   startingState: 0
   startAtMaxSpeed: 1
   exitDeathAnim: 1
+  type: 1
+  isHoveringEnemy: 0
   weaponManager_1: {fileID: 0}
   to_2_OnAtkExit: 0
   animExecuteAtk_1: 0
   weaponManager_2: {fileID: 0}
   to_1_OnAtkExit: 0
   animExecuteAtk_2: 0
+  hasToken: 0
+  isDebugOn: 0
 --- !u!95 &3831662558856893132
 Animator:
   serializedVersion: 4

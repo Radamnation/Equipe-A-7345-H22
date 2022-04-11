@@ -15,7 +15,6 @@ public class AITokenHandlerSO : ScriptableObject
             true,
             true,
             true,
-            true
         };
 
     private short currentToken = 0;

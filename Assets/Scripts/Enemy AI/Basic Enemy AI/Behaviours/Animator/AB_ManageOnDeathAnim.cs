@@ -12,10 +12,13 @@ public class AB_ManageOnDeathAnim : StateMachineBehaviour
         // Get BasicEnemyContext
         if (myContext == null)
             myContext = animator.GetComponent<LivingEntityContext>();
+        if (myContext == null)
+            myContext = animator.GetComponentInParent<LivingEntityContext>();
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        myContext.AE_ManageObjectAtEndDeathAnim();
+        if (myContext != null)
+            myContext.AE_ManageObjectAtEndDeathAnim();
     }
 }

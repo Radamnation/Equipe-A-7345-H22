@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: hasToken
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: exitDeathAnim
       value: 1
       objectReference: {fileID: 0}
@@ -33,6 +37,10 @@ PrefabInstance:
       objectReference: {fileID: 6404246582735429935}
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: animExecuteAtk_2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: isBypassTokenSystem
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
@@ -218,7 +226,7 @@ PrefabInstance:
     - target: {fileID: 3831662559004454559, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -60718901, guid: 84bb84bb9c7d8bd4b9659a8859f69afb, type: 3}
+      objectReference: {fileID: -1815776113, guid: c3e16e75a46a1e742b544180ac23bee1, type: 3}
     - target: {fileID: 3831662559004454559, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -283,14 +291,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44cad9dbd72d0d44d835380b79927ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBypassCanUseBehaviour: 0
   isDebuggerOn: 0
+  isPassive: 1
   targetMask:
     serializedVersion: 2
     m_Bits: 8
   isDistanceCurrWeaponBased: 0
   distance: 2.24
   validationType: 0
-  isPassiveBehaviour: 1
   nextState: 1
 --- !u!1 &2340426114970463942 stripped
 GameObject:
@@ -459,7 +468,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab2fd8d43a408e4da855ba091f87d11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBypassCanUseBehaviour: 0
   isDebuggerOn: 1
+  isPassive: 0
   targetMask:
     serializedVersion: 2
     m_Bits: 8

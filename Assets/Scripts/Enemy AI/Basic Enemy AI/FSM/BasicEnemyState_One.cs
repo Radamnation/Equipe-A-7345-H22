@@ -16,19 +16,23 @@ public class BasicEnemyState_One : IEnemyState
             context.IsIddleOrMoving())
         {       
             // Behaviour
-            if (context.Behaviour_NoToken_1 != null && context.Behaviour_NoToken_1.IsExecutionValid())
+            /*if (context.Behaviour_NoToken_1 != null && context.Behaviour_NoToken_1.IsExecutionValid())
             {
                 context.Behaviour_Token_1.Execute();
 
                 context.SetAnimTrigger(BasicEnemy_AnimTriggers.STATE_01_NOTOKEN);
-            }              
+            }
+            */
+            if (context.CanUseBehaviour)
+                context.SetAnimTrigger(BasicEnemy_AnimTriggers.STATE_01_NOTOKEN);
         }
-        else context.SetTargetAsPlayer(); // Prevents target being null     
+        //else context.SetTargetAsPlayer(); // Prevents target being null     
     }
 
     public void WithTokenBehaviour(BasicEnemyContext context)
     {
         if (context.HasToken &&
+            context.CanUseBehaviour &&
             !context.IsWeaponReloading() && 
             context.IsTargetNear() &&
             context.IsIddleOrMoving() ) // context.IsInRangeForAttack() &&     context.HasReachedEndOfPath() &&       
@@ -65,8 +69,9 @@ public class BasicEnemyState_One : IEnemyState
 
     public void OnManageToken(BasicEnemyContext context)
     {
-        context.HasToken = true;
-        //context.OnDefaultManageToken();
+        //context.HasToken = true;
+        if (!context.IsBoss)
+            context.OnDefaultManageToken();
     }
 
 

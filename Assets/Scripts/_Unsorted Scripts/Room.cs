@@ -25,6 +25,7 @@ public class Room : MonoBehaviour
     [SerializeField] private bool layoutCanBeMirroredX = false;
     [SerializeField] private bool layoutCanBeMirroredY = false;
 
+    [SerializeField] private bool hasCeiling = true;
     [SerializeField] private bool isCompleted = false;
     [SerializeField] private bool isVisibleOnMap = false;
     [SerializeField] private bool isVisitedOnMap = false;
@@ -145,7 +146,7 @@ public class Room : MonoBehaviour
                         newCeiling.transform.localPosition = new Vector3(i, yHeight, j);
                     }
                 }
-                else
+                else if (hasCeiling)
                 {
                     // var newFloor = Instantiate(floorPrefab, transform);
                     // newFloor.transform.localPosition = new Vector3(i, -1, j);
@@ -309,11 +310,15 @@ public class Room : MonoBehaviour
                     room.CloseAllDoors();
                     room.LockAllDoors();
 
-                    // Set Path Finding uppon entering new room
-                    // +1 to dimensions so that enemies can go in between two doors
-                    myAstarPath.data.gridGraph.center = gameObject.transform.localPosition;
-                    myAstarPath.data.gridGraph.center.y = -1.0f; // Must be at ground level
-                    myAstarPath.data.gridGraph.SetDimensions(XDimension * 2 + 2, ZDimension * 2 + 2, myAstarPath.data.gridGraph.nodeSize);
+                    // Set ALL GRIDGRAPHS available to desired settings
+                    for (int index = 0; index < myAstarPath.data.graphs.Length; index++)
+                    {
+                        GridGraph gg = myAstarPath.data.graphs[index] as GridGraph;
+                        gg.center = gameObject.transform.localPosition;
+                        gg.center.y = -1.0f; // Must be at ground level
+                        gg.SetDimensions(XDimension * 2 + 3, ZDimension * 2 + 3, myAstarPath.data.gridGraph.nodeSize);
+                    }
+
                     myAstarPath.Scan();
                 }
             }
@@ -382,12 +387,6 @@ public class Room : MonoBehaviour
             }
         }
     }    
-
-    // Update is called once per frame
-    void Update()
-    {
-        Debug.Log($"is Room {gameObject.name} completed: {isCompleted}");
-    }
 
     private void OnTriggerEnter(Collider other)
     {
