@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     [Header("Important Scenes")]
     [SerializeField] private string stringHUB = "HUB";
 
+    [SerializeField] private TransformSO playerTransform;
     private Transform playerTransformRef;
 
     private AsyncOperation asyncLoad;
@@ -34,7 +35,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LoadingTube loadingTube;
 
     // SECTION - Property ===================================================================
-    public Transform PlayerTransformRef => playerTransformRef;
+    // public Transform PlayerTransformRef => playerTransformRef;
+    public Transform PlayerTransformRef => playerTransform.Transform;
 
     public AsyncOperation AsyncLoad { get => asyncLoad; }
     public string StringHUB { get => stringHUB; }
@@ -55,7 +57,7 @@ public class GameManager : MonoBehaviour
 
         instance.SetMouseCursor_LockedInvisible();
 
-        playerTransformRef = GameObject.Find("Player").transform;
+        // playerTransformRef = GameObject.Find("Player").transform;
     }
     
 

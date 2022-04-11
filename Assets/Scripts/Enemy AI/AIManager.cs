@@ -27,7 +27,7 @@ public class AIManager : MonoBehaviour
             myAstarPath = GetComponent<AstarPath>();
             myAstarPath.enabled = true;
 
-            DontDestroyOnLoad(this.gameObject);
+            // DontDestroyOnLoad(this.gameObject);
         }
         else if (instance != this)
             Destroy(this.gameObject);
