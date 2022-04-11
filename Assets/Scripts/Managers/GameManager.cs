@@ -123,6 +123,7 @@ public class GameManager : MonoBehaviour
     {
         Destroy(FindObjectOfType<PlayerContext>().gameObject);
         LoadScene("Hub_Sandbox");
+        Time.timeScale = 1;
     }
 
     #region REGION - Scene Load & Quit
