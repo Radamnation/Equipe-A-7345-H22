@@ -51,10 +51,11 @@ public class SelectMenu : MonoBehaviour
 
     public void QuitToDesktop()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        GameManager.instance.QuitGame();
+    }
+
+    public void ReturnToHub()
+    {
+        GameManager.instance.ReturnToHub();
     }
 }

@@ -81,8 +81,6 @@ public class PlayerContext : MonoBehaviour
             Destroy(this.gameObject);
         }
         
-
-        playerTransform.Transform = transform;
         DontDestroyOnLoad(gameObject);
     }
 
@@ -110,6 +108,8 @@ public class PlayerContext : MonoBehaviour
             oldState = currState;
             OnStateEnter();
         }
+
+        playerTransform.Transform = transform;
 
         OnStateUpdate();
         OnStateExit();  
