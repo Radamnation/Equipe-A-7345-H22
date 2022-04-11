@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: hasToken
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: isDebugOn
       value: 0
       objectReference: {fileID: 0}
@@ -50,6 +54,10 @@ PrefabInstance:
     - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: animExecuteAtk_2
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893129, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: isBypassTokenSystem
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDeathSFX
@@ -262,6 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de675a62d85831b4b9644c83367e5655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBypassCanUseBehaviour: 0
   isDebuggerOn: 0
   isPassive: 1
   targetMask:
@@ -428,6 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6695a6738e985644fb3fb330ef6a35dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBypassCanUseBehaviour: 0
   isDebuggerOn: 0
   isPassive: 0
   targetMask:
