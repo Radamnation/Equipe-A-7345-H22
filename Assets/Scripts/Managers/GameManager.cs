@@ -17,17 +17,26 @@ public class GameManager : MonoBehaviour
     [Header("Important Scenes")]
     [SerializeField] private string stringHUB = "HUB";
 
+    [SerializeField] private TransformSO playerTransform;
     private Transform playerTransformRef;
 
     private AsyncOperation asyncLoad;
     private float asyncLoadTimer;
     private bool asyncLoadReady = false;
 
-    [SerializeField] private SelectMenu menuCanvas;
+    [SerializeField] private GameEvent mainWeaponHasChanged;
+    [SerializeField] private GameEvent secondaryWeaponHasChanged;
+    [SerializeField] private GameEvent meleeWeaponHasChanged;
+
+    [SerializeField] private WeaponsInventorySO myWeaponsInventory;
+    [SerializeField] private TransformSO menuCanvas;
+    // [SerializeField] private SelectMenu menuCanvas;
+
     [SerializeField] private LoadingTube loadingTube;
 
     // SECTION - Property ===================================================================
-    public Transform PlayerTransformRef => playerTransformRef;
+    // public Transform PlayerTransformRef => playerTransformRef;
+    public Transform PlayerTransformRef => playerTransform.Transform;
 
     public AsyncOperation AsyncLoad { get => asyncLoad; }
     public string StringHUB { get => stringHUB; }
@@ -48,7 +57,7 @@ public class GameManager : MonoBehaviour
 
         instance.SetMouseCursor_LockedInvisible();
 
-        playerTransformRef = GameObject.Find("Player").transform;
+        // playerTransformRef = GameObject.Find("Player").transform;
     }
     
 
@@ -104,12 +113,19 @@ public class GameManager : MonoBehaviour
 
     public void ShowMenu()
     {
-        menuCanvas.PanelToggle(0);
+        menuCanvas.Transform.GetComponent<SelectMenu>().PanelToggle(0);
     }
 
     public void QuitMenu()
     {
-        menuCanvas.QuitMenu();
+        menuCanvas.Transform.GetComponent<SelectMenu>().QuitMenu();
+    }
+
+    public void ReturnToHub()
+    {
+        Destroy(FindObjectOfType<PlayerContext>().gameObject);
+        LoadScene("Hub_Sandbox");
+        Time.timeScale = 1;
     }
 
     #region REGION - Scene Load & Quit
@@ -139,6 +155,13 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(2.5f);
 
+        if (currentScene == "Hub_Sandbox")
+        {
+            myWeaponsInventory.SetDefaultWeapons();
+            mainWeaponHasChanged.Raise();
+            secondaryWeaponHasChanged.Raise();
+            meleeWeaponHasChanged.Raise();
+        }
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("Loading_Sandbox"));
         SceneManager.UnloadSceneAsync(currentScene);
         StartCoroutine(LoadMainLevel());
@@ -153,6 +176,7 @@ public class GameManager : MonoBehaviour
 
         SceneManager.UnloadSceneAsync("Loading_Sandbox");
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("Level_Sandbox"));
+
         loadingTube.GetComponent<Collider>().enabled = false;
     }
 
@@ -195,7 +219,11 @@ public class GameManager : MonoBehaviour
     // Quit Game
     public void QuitGame()
     {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
         Application.Quit();
+#endif
     }
     #endregion
 }

@@ -14,7 +14,7 @@ public class NextLevelBlock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        control.SetActive(isHub);
+        control.SetActive(false);
         foreach (BuildingBlock floorBlock in floorBlocks)
         {
             floorBlock.gameObject.SetActive(!isHub);

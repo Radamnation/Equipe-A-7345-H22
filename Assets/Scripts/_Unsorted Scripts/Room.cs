@@ -25,6 +25,7 @@ public class Room : MonoBehaviour
     [SerializeField] private bool layoutCanBeMirroredX = false;
     [SerializeField] private bool layoutCanBeMirroredY = false;
 
+    [SerializeField] private bool hasCeiling = true;
     [SerializeField] private bool isCompleted = false;
     [SerializeField] private bool isVisibleOnMap = false;
     [SerializeField] private bool isVisitedOnMap = false;
@@ -145,7 +146,7 @@ public class Room : MonoBehaviour
                         newCeiling.transform.localPosition = new Vector3(i, yHeight, j);
                     }
                 }
-                else
+                else if (hasCeiling)
                 {
                     // var newFloor = Instantiate(floorPrefab, transform);
                     // newFloor.transform.localPosition = new Vector3(i, -1, j);

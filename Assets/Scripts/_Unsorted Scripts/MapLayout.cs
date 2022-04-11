@@ -21,6 +21,8 @@ public class MapLayout : MonoBehaviour
     [SerializeField] private RoomsListSO specialRoomsList;
     [SerializeField] private RoomsListSO treasureRoomsList;
 
+    private float restartMapGenerationTime = 5f;
+    private float restartMapGenerationTimer = 0;
     private System.Random roomGenerationRandom;
 
     // Start is called before the first frame update
@@ -33,11 +35,23 @@ public class MapLayout : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!GameManager.instance.levelIsReady)
+        {
+            if (restartMapGenerationTimer > 0)
+            {
+                restartMapGenerationTimer -= Time.deltaTime;
+            }
+            else
+            {
+                StopCoroutine(InitializeMapLayout());
+                StartCoroutine(InitializeMapLayout());
+            }
+        }
     }
 
     private IEnumerator InitializeMapLayout()
     {
+        restartMapGenerationTimer = restartMapGenerationTime;
         GenerateMapLayout();
         PlaceRooms();
         GetNearbyRooms();

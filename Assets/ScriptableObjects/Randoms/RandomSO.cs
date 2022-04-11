@@ -16,11 +16,7 @@ public class RandomSO : ScriptableObject
     // Start is called before the first frame update
     void OnEnable()
     {
-        if (randomizeOnStart)
-        {
-            seed = Random.Range(0, 100000000);
-        }
-        systemRandom = new System.Random(seed);
+        UpdateSeed();
     }
 
     // Update is called once per frame
@@ -29,5 +25,12 @@ public class RandomSO : ScriptableObject
         
     }
 
-
+    public void UpdateSeed()
+    {
+        if (randomizeOnStart)
+        {
+            seed = Random.Range(0, 1000000);
+        }
+        systemRandom = new System.Random(seed);
+    }
 }
