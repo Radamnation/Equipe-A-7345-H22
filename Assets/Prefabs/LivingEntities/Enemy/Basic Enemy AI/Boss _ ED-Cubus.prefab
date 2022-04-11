@@ -252,6 +252,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: maxDrop
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
+      propertyPath: minDrop
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDeathSFX
       value: 
       objectReference: {fileID: 8300000, guid: 4252f1a9521983544be6e0bbf6d9f44f, type: 3}
@@ -261,7 +269,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 454d05193cc59164a8b5e82982deb428, type: 2}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDrops.Array.size
-      value: 34
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myHurtSFX.Array.size
@@ -270,11 +278,11 @@ PrefabInstance:
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDrops.Array.data[0]
       value: 
-      objectReference: {fileID: 1904513868067826317, guid: dd77c72568d1be44fa3b9ad678e743d8, type: 3}
+      objectReference: {fileID: 953420585989087192, guid: d23f4139bcba855448e288810e114b8a, type: 3}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDrops.Array.data[1]
       value: 
-      objectReference: {fileID: 1904513868067826317, guid: dd77c72568d1be44fa3b9ad678e743d8, type: 3}
+      objectReference: {fileID: 953420585989087192, guid: d23f4139bcba855448e288810e114b8a, type: 3}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDrops.Array.data[2]
       value: 
@@ -282,11 +290,11 @@ PrefabInstance:
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDrops.Array.data[4]
       value: 
-      objectReference: {fileID: 1904513868067826317, guid: dd77c72568d1be44fa3b9ad678e743d8, type: 3}
+      objectReference: {fileID: 8885371961672961268, guid: 9424ad161811c0948aa6625c8fc42112, type: 3}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDrops.Array.data[5]
       value: 
-      objectReference: {fileID: 1904513868067826317, guid: dd77c72568d1be44fa3b9ad678e743d8, type: 3}
+      objectReference: {fileID: 8885371961672961268, guid: 9424ad161811c0948aa6625c8fc42112, type: 3}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDrops.Array.data[6]
       value: 
@@ -302,23 +310,23 @@ PrefabInstance:
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDrops.Array.data[9]
       value: 
-      objectReference: {fileID: 2989215637769811154, guid: 7737965b165c68641b2c5ab578b243e5, type: 3}
+      objectReference: {fileID: 2939536461459547275, guid: f025b833fc3ca3b42bb286eecb03af11, type: 3}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDrops.Array.data[10]
       value: 
-      objectReference: {fileID: 2989215637769811154, guid: 7737965b165c68641b2c5ab578b243e5, type: 3}
+      objectReference: {fileID: 2939536461459547275, guid: f025b833fc3ca3b42bb286eecb03af11, type: 3}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDrops.Array.data[11]
       value: 
-      objectReference: {fileID: 2989215637769811154, guid: 7737965b165c68641b2c5ab578b243e5, type: 3}
+      objectReference: {fileID: 2939536461459547275, guid: f025b833fc3ca3b42bb286eecb03af11, type: 3}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDrops.Array.data[12]
       value: 
-      objectReference: {fileID: 2989215637769811154, guid: 7737965b165c68641b2c5ab578b243e5, type: 3}
+      objectReference: {fileID: 2939536461459547275, guid: f025b833fc3ca3b42bb286eecb03af11, type: 3}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDrops.Array.data[13]
       value: 
-      objectReference: {fileID: 2989215637769811154, guid: 7737965b165c68641b2c5ab578b243e5, type: 3}
+      objectReference: {fileID: 2939536461459547275, guid: f025b833fc3ca3b42bb286eecb03af11, type: 3}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDrops.Array.data[14]
       value: 
@@ -362,31 +370,31 @@ PrefabInstance:
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDrops.Array.data[24]
       value: 
-      objectReference: {fileID: 7546089093656136656, guid: 5caafb63497f0504b8d5b08390a600fa, type: 3}
+      objectReference: {fileID: 953420585989087192, guid: d23f4139bcba855448e288810e114b8a, type: 3}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDrops.Array.data[25]
       value: 
-      objectReference: {fileID: 7546089093656136656, guid: 5caafb63497f0504b8d5b08390a600fa, type: 3}
+      objectReference: {fileID: 953420585989087192, guid: d23f4139bcba855448e288810e114b8a, type: 3}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDrops.Array.data[26]
       value: 
-      objectReference: {fileID: 7546089093656136656, guid: 5caafb63497f0504b8d5b08390a600fa, type: 3}
+      objectReference: {fileID: 953420585989087192, guid: d23f4139bcba855448e288810e114b8a, type: 3}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDrops.Array.data[27]
       value: 
-      objectReference: {fileID: 7546089093656136656, guid: 5caafb63497f0504b8d5b08390a600fa, type: 3}
+      objectReference: {fileID: 953420585989087192, guid: d23f4139bcba855448e288810e114b8a, type: 3}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDrops.Array.data[28]
       value: 
-      objectReference: {fileID: 7546089093656136656, guid: 5caafb63497f0504b8d5b08390a600fa, type: 3}
+      objectReference: {fileID: 953420585989087192, guid: d23f4139bcba855448e288810e114b8a, type: 3}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDrops.Array.data[29]
       value: 
-      objectReference: {fileID: 7546089093656136656, guid: 5caafb63497f0504b8d5b08390a600fa, type: 3}
+      objectReference: {fileID: 953420585989087192, guid: d23f4139bcba855448e288810e114b8a, type: 3}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDrops.Array.data[30]
       value: 
-      objectReference: {fileID: 7546089093656136656, guid: 5caafb63497f0504b8d5b08390a600fa, type: 3}
+      objectReference: {fileID: 953420585989087192, guid: d23f4139bcba855448e288810e114b8a, type: 3}
     - target: {fileID: 3831662558856893131, guid: 65a0072a7fed89d43b2af0f7df0c10a3, type: 3}
       propertyPath: myDrops.Array.data[31]
       value: 
