@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Sandbox/SplashScreenScene.unity
+    guid: 92b31506b0a48ab428c0b65a818d46a1
+  - enabled: 1
+    path: Assets/Sandbox/FakeLoading.unity
+    guid: 1177b2f55315e244dae1fc35f8c8809d
+  - enabled: 1
     path: Assets/Sandbox/Hub_Sandbox.unity
     guid: 7b716a002cd832e4281345a045ab7e51
   - enabled: 1

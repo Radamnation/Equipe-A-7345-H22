@@ -7,7 +7,7 @@ public class IsFacingPlayer : MonoBehaviour
     public TransformSO playerTransform;
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         transform.rotation = playerTransform.Transform.rotation;
     }

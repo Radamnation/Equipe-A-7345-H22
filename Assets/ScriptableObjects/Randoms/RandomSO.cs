@@ -16,6 +16,7 @@ public class RandomSO : ScriptableObject
     // Start is called before the first frame update
     void OnEnable()
     {
+        randomizeOnStart = true;
         UpdateSeed();
     }
 

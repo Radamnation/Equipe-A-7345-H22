@@ -121,11 +121,16 @@ public class GameManager : MonoBehaviour
         menuCanvas.Transform.GetComponent<SelectMenu>().QuitMenu();
     }
 
+    public void FakeLoading()
+    {
+        LoadSceneAsync("FakeLoading", true);
+    }
+
     public void ReturnToHub()
     {
-        Destroy(FindObjectOfType<PlayerContext>().gameObject);
+        // Destroy(FindObjectOfType<PlayerContext>().gameObject);
         LoadScene("Hub_Sandbox");
-        Time.timeScale = 1;
+        // Time.timeScale = 1;
     }
 
     #region REGION - Scene Load & Quit
@@ -152,9 +157,10 @@ public class GameManager : MonoBehaviour
         var currentScene = SceneManager.GetActiveScene().name;
         var asynchScene = SceneManager.LoadSceneAsync("Loading_Sandbox", LoadSceneMode.Additive);
         asynchScene.allowSceneActivation = true;
-
+        
         yield return new WaitForSeconds(2.5f);
 
+        MusicManager.instance.StopMusic();
         if (currentScene == "Hub_Sandbox")
         {
             myWeaponsInventory.SetDefaultWeapons();
@@ -171,6 +177,7 @@ public class GameManager : MonoBehaviour
     {
         var asynchScene = SceneManager.LoadSceneAsync("Level_Sandbox", LoadSceneMode.Additive);
         asynchScene.allowSceneActivation = true;
+        MusicManager.instance.SwitchToOutOfCombat();
 
         yield return new WaitForSeconds(2.5f);
 

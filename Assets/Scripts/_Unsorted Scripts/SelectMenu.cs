@@ -56,6 +56,6 @@ public class SelectMenu : MonoBehaviour
 
     public void ReturnToHub()
     {
-        GameManager.instance.ReturnToHub();
+        GameManager.instance.FakeLoading();
     }
 }

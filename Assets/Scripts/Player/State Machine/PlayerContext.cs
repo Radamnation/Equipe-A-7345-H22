@@ -250,7 +250,10 @@ public class PlayerContext : MonoBehaviour
             input.WeaponOne = false;
 
             // EVENT GO HERE
-            mainWeapon.ResetReload();
+            if (weapons.CarriedMainWeapons.Count > 1)
+            {
+                mainWeapon.ResetReload();
+            }
 
             weapons.EquippedMainWeapon = weapons.CarriedMainWeapons[0];
             mainWeapon.UpdateWeapon(); // weapons.EquippedMainWeapon
@@ -262,7 +265,10 @@ public class PlayerContext : MonoBehaviour
         {
             input.WeaponTwo = false;
 
-            mainWeapon.ResetReload();
+            if (weapons.CarriedMainWeapons.Count > 1)
+            {
+                mainWeapon.ResetReload();
+            }
 
             // EVENT GO HERE
             if (weapons.CarriedMainWeapons.Count > 1)
@@ -278,7 +284,10 @@ public class PlayerContext : MonoBehaviour
         {
             input.WeaponScrollBackward = false;
 
-            mainWeapon.ResetReload();
+            if (weapons.CarriedMainWeapons.Count > 1)
+            {
+                mainWeapon.ResetReload();
+            }
 
             // EVENT GO HERE
             if (weapons.CarriedMainWeapons.Count > 1)
@@ -297,7 +306,10 @@ public class PlayerContext : MonoBehaviour
         {
             input.WeaponScrollForward = false;
 
-            mainWeapon.ResetReload();
+            if (weapons.CarriedMainWeapons.Count > 1)
+            {
+                mainWeapon.ResetReload();
+            }
 
             // EVENT GO HERE
             if (weapons.CarriedMainWeapons.Count > 1)

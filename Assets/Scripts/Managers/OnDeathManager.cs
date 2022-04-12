@@ -33,7 +33,7 @@ public class OnDeathManager : MonoBehaviour
         if (myLoadSceneEndCue.gameObject.activeSelf == true && playerInputSO.AnyKey)
         {
             myLoadSceneEndCue.GetComponent<TextMeshProUGUI>().text = loadingText;
-            GameManager.instance.ReturnToHub();
+            GameManager.instance.FakeLoading();
         }
 
         Debug.Log("LOAD SYNC PROGRESS: " + GameManager.instance.AsyncLoad.progress);
@@ -43,7 +43,7 @@ public class OnDeathManager : MonoBehaviour
     // SECTION - Method - Utility ===================================================================
     public void OnDeathAnimationEnd()
     {
-        GameManager.instance.ReturnToHub();
+        GameManager.instance.FakeLoading();
 
         /*
         //if (GameManager.instance.AsyncLoad == null)

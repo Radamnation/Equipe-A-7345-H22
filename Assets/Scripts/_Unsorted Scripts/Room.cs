@@ -300,7 +300,14 @@ public class Room : MonoBehaviour
         mapHasChanged.Invoke();
         if (locksOnEnter && !isCompleted)
         {
-            MusicManager.instance.SwitchToInCombat();
+            if (isBossRoom)
+            {
+                MusicManager.instance.SwitchToBoss();
+            }
+            else
+            {
+                MusicManager.instance.SwitchToInCombat();
+            }
             LockAllDoors();
             ActivateLivingEntities();
             foreach (Room room in myAdjacentRooms)

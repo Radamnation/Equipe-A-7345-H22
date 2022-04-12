@@ -6,8 +6,10 @@ public class MusicManager : MonoBehaviour
 {
     public static MusicManager instance;
 
+    [SerializeField] private AudioClip hubTheme;
     [SerializeField] private AudioClip explorationThemeOutOfCombat;
     [SerializeField] private AudioClip explorationThemeInCombat;
+    [SerializeField] private AudioClip bossTheme;
 
     private AudioSource myAudioSource;
 
@@ -28,7 +30,8 @@ public class MusicManager : MonoBehaviour
     void Start()
     {
         myAudioSource = GetComponent<AudioSource>();
-        SwitchToOutOfCombat();
+        myAudioSource.loop = true;
+        PlayHubTheme();
     }
 
     // Update is called once per frame
@@ -37,19 +40,32 @@ public class MusicManager : MonoBehaviour
         
     }
 
+    public void StopMusic()
+    {
+        myAudioSource.Stop();
+    }
+
+    public void PlayHubTheme()
+    {
+        myAudioSource.clip = hubTheme;
+        myAudioSource.Play();
+    }
+
+    public void SwitchToBoss()
+    {
+        myAudioSource.clip = bossTheme;
+        myAudioSource.Play();
+    }
+
     public void SwitchToInCombat()
     {
-        var temp = myAudioSource.time;
         myAudioSource.clip = explorationThemeInCombat;
-        myAudioSource.time = temp;
         myAudioSource.Play();
     }
 
     public void SwitchToOutOfCombat()
     {
-        var temp = myAudioSource.time;
         myAudioSource.clip = explorationThemeOutOfCombat;
-        myAudioSource.time = temp;
         myAudioSource.Play();
     }
 }

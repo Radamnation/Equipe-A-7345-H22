@@ -131,8 +131,8 @@ TextureImporter:
       name: Fire Spitter _ North _ 00
       rect:
         serializedVersion: 2
-        x: 0
-        y: 128
+        x: 1
+        y: 137
         width: 32
         height: 32
       alignment: 9
@@ -142,7 +142,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93af97ee371769e4d9ea27c05e6dbace
+      spriteID: bb53eddb22f33dc4abd9d2bb4b5f530a
       internalID: -133588798
       vertices: []
       indices: 
@@ -152,8 +152,8 @@ TextureImporter:
       name: Fire Spitter _ North _ 01
       rect:
         serializedVersion: 2
-        x: 32
-        y: 128
+        x: 35
+        y: 137
         width: 32
         height: 32
       alignment: 9
@@ -163,7 +163,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c386cbc1b8786d4469d3adcf09a8f166
+      spriteID: 84f540b4db2adb0488c364e7c8831877
       internalID: -638652039
       vertices: []
       indices: 
@@ -173,8 +173,8 @@ TextureImporter:
       name: Fire Spitter _ North _ 02
       rect:
         serializedVersion: 2
-        x: 64
-        y: 128
+        x: 69
+        y: 137
         width: 32
         height: 32
       alignment: 9
@@ -184,7 +184,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a94bcb9db540f6b40a87e3708eed578a
+      spriteID: 4d2704f3a34074048819f0db12e4e7b4
       internalID: 1890554553
       vertices: []
       indices: 
@@ -194,8 +194,8 @@ TextureImporter:
       name: Fire Spitter _ North _ 03
       rect:
         serializedVersion: 2
-        x: 96
-        y: 128
+        x: 103
+        y: 137
         width: 32
         height: 32
       alignment: 9
@@ -205,7 +205,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c33e52a740d89da47ad60629ba70ed01
+      spriteID: ba111e1bc62316f48aa48107e27805c5
       internalID: -373368152
       vertices: []
       indices: 
@@ -215,8 +215,8 @@ TextureImporter:
       name: Fire Spitter _ South _ 00
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
+        x: 1
+        y: 103
         width: 32
         height: 32
       alignment: 9
@@ -226,7 +226,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 439342f99f25f5f45abe359cb6fcc5d3
+      spriteID: eb6c99d2f4297c346b032fdd42c4d1cd
       internalID: 2048155271
       vertices: []
       indices: 
@@ -236,8 +236,8 @@ TextureImporter:
       name: Fire Spitter _ South _ 01
       rect:
         serializedVersion: 2
-        x: 32
-        y: 96
+        x: 35
+        y: 103
         width: 32
         height: 32
       alignment: 9
@@ -247,7 +247,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ded917b5ee4a51a4bb5d23beebafb39b
+      spriteID: 17fc4dc4a720ece4cb8a15b48b0421cb
       internalID: -1675744066
       vertices: []
       indices: 
@@ -257,8 +257,8 @@ TextureImporter:
       name: Fire Spitter _ South _ 02
       rect:
         serializedVersion: 2
-        x: 64
-        y: 96
+        x: 69
+        y: 103
         width: 32
         height: 32
       alignment: 9
@@ -268,7 +268,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71e2be197887ceb42aa2ead8bc0a1616
+      spriteID: f16f02710c7f96e4892cdd8f28b24666
       internalID: 159290573
       vertices: []
       indices: 
@@ -278,8 +278,8 @@ TextureImporter:
       name: Fire Spitter _ South _ 03
       rect:
         serializedVersion: 2
-        x: 96
-        y: 96
+        x: 103
+        y: 103
         width: 32
         height: 32
       alignment: 9
@@ -289,7 +289,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a0f7fd0a4036b642b867de0e697fff3
+      spriteID: a44ab9cae79382642abf8f12663916a4
       internalID: 95167296
       vertices: []
       indices: 
@@ -299,8 +299,8 @@ TextureImporter:
       name: Fire Spitter _ East _ 00
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
+        x: 1
+        y: 69
         width: 32
         height: 32
       alignment: 9
@@ -310,7 +310,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 599df82903c62a34ca872234ed5d88a5
+      spriteID: 0c9e24ec4f06459429d4cf77c73403da
       internalID: -1536572717
       vertices: []
       indices: 
@@ -320,8 +320,8 @@ TextureImporter:
       name: Fire Spitter _ East _ 01
       rect:
         serializedVersion: 2
-        x: 32
-        y: 64
+        x: 35
+        y: 69
         width: 32
         height: 32
       alignment: 9
@@ -331,7 +331,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b4667ef1b70c494f8f989aa9996bb32
+      spriteID: e12c8a3d9a2013540a4da433246edaf2
       internalID: -1604688599
       vertices: []
       indices: 
@@ -341,8 +341,8 @@ TextureImporter:
       name: Fire Spitter _ East _ 02
       rect:
         serializedVersion: 2
-        x: 63
-        y: 64
+        x: 69
+        y: 69
         width: 32
         height: 32
       alignment: 9
@@ -352,7 +352,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fcd355b72c484b94081f59533671f074
+      spriteID: 1849ed80a00bf0b4b9f413c5a60516e0
       internalID: 1043802762
       vertices: []
       indices: 
@@ -362,8 +362,8 @@ TextureImporter:
       name: Fire Spitter _ East _ 03
       rect:
         serializedVersion: 2
-        x: 96
-        y: 64
+        x: 103
+        y: 69
         width: 32
         height: 32
       alignment: 9
@@ -373,7 +373,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b2d1cf443bd68f45bf23b6c2e1ff36b
+      spriteID: 2744c7f3af6d6644b825196981cfbd2a
       internalID: -1995134740
       vertices: []
       indices: 
@@ -383,8 +383,8 @@ TextureImporter:
       name: Fire Spitter _ Death _ 00
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 1
+        y: 35
         width: 32
         height: 32
       alignment: 9
@@ -394,7 +394,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30c19fb129d4b5d4f9387f3b6e5c0291
+      spriteID: f8de8ff1ef3bb3b41bc73e90ea484429
       internalID: -866873296
       vertices: []
       indices: 
@@ -404,8 +404,8 @@ TextureImporter:
       name: Fire Spitter _ Death _ 01
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 35
+        y: 35
         width: 32
         height: 32
       alignment: 9
@@ -415,7 +415,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b4bb06de5351f74694272ca5c497e8b
+      spriteID: 57311db1981eb0d43bee36c36098d71a
       internalID: 848612229
       vertices: []
       indices: 
@@ -425,8 +425,8 @@ TextureImporter:
       name: Fire Spitter _ Death _ 02
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
+        x: 69
+        y: 35
         width: 32
         height: 32
       alignment: 9
@@ -436,7 +436,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: add594c54a3e1dd42838940acc200dec
+      spriteID: 6e1e5beec09b1da47b46d77bfbc192c7
       internalID: 1161957952
       vertices: []
       indices: 
@@ -446,8 +446,8 @@ TextureImporter:
       name: Fire Spitter _ Death _ 03
       rect:
         serializedVersion: 2
-        x: 96
-        y: 32
+        x: 103
+        y: 35
         width: 32
         height: 32
       alignment: 9
@@ -457,7 +457,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f78f10f27bbebb14091f27157216451e
+      spriteID: c0c537029b0ba90449fe23c5ad68b14e
       internalID: -885947469
       vertices: []
       indices: 
@@ -467,8 +467,8 @@ TextureImporter:
       name: Fire Spitter _ Front
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 1
+        y: 1
         width: 32
         height: 32
       alignment: 9
@@ -478,7 +478,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa56dbde65863eb4e899c8a16ca073a1
+      spriteID: de3c1f9749b0d4c4e81c1feb699311de
       internalID: -2110564875
       vertices: []
       indices: 
@@ -488,8 +488,8 @@ TextureImporter:
       name: Fire Spitter _ Back
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 35
+        y: 1
         width: 32
         height: 32
       alignment: 9
@@ -499,7 +499,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a85ae980bb69804cb600a475abc1923
+      spriteID: 8017eac31d73a934693baf131e769777
       internalID: -1134091859
       vertices: []
       indices: 
@@ -509,8 +509,8 @@ TextureImporter:
       name: Fire Spitter _ Side
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
+        x: 69
+        y: 1
         width: 32
         height: 32
       alignment: 9
@@ -520,7 +520,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0817e6bbcc6fd48478b11aac1bff4aa1
+      spriteID: 0693e8facc018e447ad6425138d36491
       internalID: -717186642
       vertices: []
       indices: 
