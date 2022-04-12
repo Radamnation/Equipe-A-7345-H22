@@ -66,18 +66,20 @@ public class ShootingRangeArrowUIHandlerWeaponPedestal : MonoBehaviour
 
     public void SetToUIVisual(bool isRight)
     {
+        Debug.Log($"Current index is: {availableItemsSO.CurrentIndex}");
+        Debug.Log($"Current count is: {availableItemsSO.Count}");
         if (!isRight)     // <-
         {
             if (availableItemsSO.CurrentIndex == 0)                                 // At min index
                 toLeft.SetActive(false);
-            else if (availableItemsSO.CurrentIndex == availableItemsSO.Count - 2) // At max index
+            if (availableItemsSO.CurrentIndex == availableItemsSO.Count - 2) // At max index
                 toRight.SetActive(true);
         }
         else if (isRight) // ->
         {
             if (availableItemsSO.CurrentIndex == availableItemsSO.Count - 1)     // At max index
                 toRight.SetActive(false);
-            else if (availableItemsSO.CurrentIndex == 1)                           // At min index
+            if (availableItemsSO.CurrentIndex == 1)                           // At min index
                 toLeft.SetActive(true);
         }
     }
