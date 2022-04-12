@@ -1025,6 +1025,10 @@ GameObject:
   - component: {fileID: 3992321305335836165}
   - component: {fileID: 3992321305335836164}
   - component: {fileID: 539145505761517670}
+  - component: {fileID: 5088682649274310614}
+  - component: {fileID: 2611922659209056951}
+  - component: {fileID: 6362469109419614423}
+  - component: {fileID: 5168809340858812835}
   m_Layer: 0
   m_Name: Base_1x1_Room
   m_TagString: Untagged
@@ -1113,8 +1117,60 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 1, z: 30}
+  m_Size: {x: 15, y: 1, z: 15}
   m_Center: {x: 0, y: -3, z: 0}
+--- !u!65 &5088682649274310614
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3992321305335836167}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3, z: 15}
+  m_Center: {x: -7, y: -2, z: 0}
+--- !u!65 &2611922659209056951
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3992321305335836167}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3, z: 15}
+  m_Center: {x: 7, y: -2, z: 0}
+--- !u!65 &6362469109419614423
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3992321305335836167}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15, y: 3, z: 1}
+  m_Center: {x: 1, y: -2, z: -7}
+--- !u!65 &5168809340858812835
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3992321305335836167}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15, y: 3, z: 1}
+  m_Center: {x: 1, y: -2, z: 7}
 --- !u!1 &5953908950711534954
 GameObject:
   m_ObjectHideFlags: 0

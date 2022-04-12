@@ -18,7 +18,7 @@ public class MainWeaponImage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        initialPosition = transform.position;
+        initialPosition = transform.localPosition;
         currentPosition = initialPosition;
         weaponImage = GetComponent<Image>();
         UpdateWeaponImage();
@@ -39,29 +39,30 @@ public class MainWeaponImage : MonoBehaviour
     {
         weaponImage.color = Color.grey;
         currentPosition = initialPosition - reloadOffset;
-        transform.position = currentPosition;
+        transform.localPosition = currentPosition;
     }
 
     public void MoveGunUp()
     {
         weaponImage.color = Color.white;
         currentPosition = initialPosition;
-        transform.position = currentPosition;
+        transform.localPosition = currentPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // transform.position = Vector3.zero;
         if (shakeTimer > 0)
         {
             shakeTimer -= Time.deltaTime;
             var shakeOffset = new Vector3(Random.Range(-shakeAmount, shakeAmount), Random.Range(-shakeAmount, shakeAmount), 0);
-            transform.position = currentPosition + shakeOffset * Time.timeScale;
+            transform.localPosition = currentPosition + shakeOffset * Time.timeScale;
         }
         else
         {
             weaponImage.sprite = weaponInventory.EquippedMainWeapon.WeaponPlayerSprite;
-            transform.position = currentPosition;
+            transform.localPosition = currentPosition;
         }
     }
 }

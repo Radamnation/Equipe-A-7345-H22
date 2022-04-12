@@ -9,6 +9,7 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private AudioClip hubTheme;
     [SerializeField] private AudioClip explorationThemeOutOfCombat;
     [SerializeField] private AudioClip explorationThemeInCombat;
+    [SerializeField] private AudioClip bossTheme;
 
     private AudioSource myAudioSource;
 
@@ -50,19 +51,21 @@ public class MusicManager : MonoBehaviour
         myAudioSource.Play();
     }
 
+    public void SwitchToBoss()
+    {
+        myAudioSource.clip = bossTheme;
+        myAudioSource.Play();
+    }
+
     public void SwitchToInCombat()
     {
-        var temp = myAudioSource.time;
         myAudioSource.clip = explorationThemeInCombat;
-        myAudioSource.time = temp;
         myAudioSource.Play();
     }
 
     public void SwitchToOutOfCombat()
     {
-        var temp = myAudioSource.time;
         myAudioSource.clip = explorationThemeOutOfCombat;
-        myAudioSource.time = temp;
         myAudioSource.Play();
     }
 }

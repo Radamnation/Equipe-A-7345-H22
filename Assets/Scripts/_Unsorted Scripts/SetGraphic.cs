@@ -73,6 +73,7 @@ public class SetGraphic : MonoBehaviour
     {
         Resolution res = resNames[resDropdown.value];
         Screen.SetResolution(res.width, res.height, Screen.fullScreenMode);
+
     }
 
     private void SetFullscreen()

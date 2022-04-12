@@ -197,6 +197,7 @@ MonoBehaviour:
   myHurtSFX:
   - {fileID: 8300000, guid: 93186c6da46edf24fadc259a7bb3c0e0, type: 3}
   myDeathSFX: {fileID: 8300000, guid: 95710ac81e50bee4ca7c9f940b5c3496, type: 3}
+  myAwakeSFX: []
 --- !u!95 &580406396174781458
 Animator:
   serializedVersion: 4
@@ -421,7 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d613873f442ac404bbef14939145ef69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 2
+  radius: 1.5
   targetMask:
     serializedVersion: 2
     m_Bits: 969
