@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f154196a838d15246a41bfefe1660af1, type: 3}
   m_Name: SO _ Boss _ ED-Cubus _ MaxHP
   m_EditorClassIdentifier: 
-  Value: 500
+  Value: 300

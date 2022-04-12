@@ -18,6 +18,7 @@ public class CircularProjectileAttackBehaviour : AbstractBehaviour
 
     [Space(10)]
     [Header("Modifiers")]
+    [Tooltip("Parent.forward * projectileSpeedModifier\nOverride the base projectile speed of projectile [PhysicalProjectile.cs]")]
     [SerializeField] private float projectileSpeedModifier = 0.25f;
     [Space(10)]
     [Tooltip("If true, will override desired angle to fit projectiles into a circle's circumference\n 360 / instantiationQuantity")]
@@ -149,8 +150,8 @@ public class CircularProjectileAttackBehaviour : AbstractBehaviour
     public void ShootProjectile(WeaponSO weapon)
     {
         var newProjectile = Instantiate(weapon.Projectile, transform);
-        newProjectile.MyRigidbody.velocity += weaponManagerTransform.parent.GetComponent<Rigidbody>().velocity * projectileSpeedModifier;
+        //newProjectile.MyRigidbody.velocity = Vector3.zero;
+        newProjectile.MyRigidbody.velocity = weaponManagerTransform.forward * projectileSpeedModifier;
         newProjectile.transform.parent = null;
-    }
-    
+    }   
 }

@@ -208,6 +208,12 @@ public class WeaponManager : MonoBehaviour
     public void ShootProjectile(WeaponSO weapon)
     {
         var newProjectile = Instantiate(weapon.Projectile, transform);
+
+        if (transform.parent.CompareTag("Enemy")) // Last minute debug just in case: forces collider instead of trigger
+        {
+            newProjectile.MyCollider.isTrigger = false;
+        }
+
         newProjectile.MyRigidbody.velocity += transform.parent.GetComponent<Rigidbody>().velocity * 0.25f;
         newProjectile.transform.parent = null;
 
