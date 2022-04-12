@@ -6,6 +6,7 @@ public class MusicManager : MonoBehaviour
 {
     public static MusicManager instance;
 
+    [SerializeField] private AudioClip hubTheme;
     [SerializeField] private AudioClip explorationThemeOutOfCombat;
     [SerializeField] private AudioClip explorationThemeInCombat;
 
@@ -28,13 +29,25 @@ public class MusicManager : MonoBehaviour
     void Start()
     {
         myAudioSource = GetComponent<AudioSource>();
-        SwitchToOutOfCombat();
+        myAudioSource.loop = true;
+        PlayHubTheme();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void StopMusic()
+    {
+        myAudioSource.Stop();
+    }
+
+    public void PlayHubTheme()
+    {
+        myAudioSource.clip = hubTheme;
+        myAudioSource.Play();
     }
 
     public void SwitchToInCombat()

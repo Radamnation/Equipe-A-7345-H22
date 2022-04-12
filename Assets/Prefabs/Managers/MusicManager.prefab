@@ -141,5 +141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd65af201c2cab947a477f5e2bca52b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hubTheme: {fileID: 8300000, guid: 9cdf7a3a4b00d9349a9ebf71138b8569, type: 3}
   explorationThemeOutOfCombat: {fileID: 8300000, guid: 10a8e8c56f5447e429f34292f2babb99, type: 3}
   explorationThemeInCombat: {fileID: 8300000, guid: 7988abc634072b546914a4157e161d26, type: 3}

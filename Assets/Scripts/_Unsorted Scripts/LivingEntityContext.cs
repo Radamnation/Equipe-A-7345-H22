@@ -45,6 +45,7 @@ public class LivingEntityContext : MonoBehaviour
     [Header("SFX")]
     [SerializeField] private AudioClip[] myHurtSFX;
     [SerializeField] private AudioClip myDeathSFX;
+    [SerializeField] private AudioClip[] myAwakeSFX;
 
     private AudioSource myAudioSource;
 
@@ -75,6 +76,14 @@ public class LivingEntityContext : MonoBehaviour
             onTakeDamageEvents.Invoke();
         }
         */
+    }
+
+    public void PlayAwakeSFX()
+    {
+        if (myAudioSource != null)
+        {
+            myAudioSource.PlayOneShot(myAwakeSFX[Random.Range(0, myAwakeSFX.Length)]);
+        }
     }
 
     public void FullArmor()
