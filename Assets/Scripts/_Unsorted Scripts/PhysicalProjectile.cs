@@ -26,6 +26,7 @@ public class PhysicalProjectile : MonoBehaviour
     private Collider myCollider;
 
     public Rigidbody MyRigidbody { get => myRigidbody; set => myRigidbody = value; }
+    public Collider MyCollider { get => myCollider; set => myCollider = value; }
 
     private void Awake()
     {

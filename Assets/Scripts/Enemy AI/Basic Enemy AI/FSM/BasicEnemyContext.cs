@@ -802,43 +802,54 @@ public class BasicEnemyContext : MonoBehaviour
 
         myCurrentBehaviour.Execute();
 
+        if (currState is EnemyStateDead)
+            return;
+
         StartCoroutine(WaitUntilBehaviourThenCallWeaponEvent(desiredEvent));
     }
 
     private IEnumerator WaitUntilBehaviourThenCallWeaponEvent(WeaponEvent desiredEvent = WeaponEvent.NONE)
     {
+        if (currState is EnemyStateDead)
+            yield break;
+
+
+
         yield return new WaitUntil(() => CanUseBehaviour);
 
-        switch (desiredEvent)
-        {
-            case WeaponEvent.NONE:
-                break;
+        WeaponManager myWeaponManager = GetCurrentWeaponManager();
 
-            case WeaponEvent.ALL:
-                GetCurrentWeaponManager().WeaponHasChanged.Invoke();
-                GetCurrentWeaponManager().WeaponFinishedReloading.Invoke();
-                GetCurrentWeaponManager().WeaponHasShot.Invoke();
-                GetCurrentWeaponManager().WeaponStartedReloading.Invoke();
-                break;
+        if (myWeaponManager)
+            switch (desiredEvent)
+            {
+                case WeaponEvent.NONE:
+                    break;
 
-            case WeaponEvent.HASCHANGED:
-                GetCurrentWeaponManager().WeaponHasChanged.Invoke();
-                break;
+                case WeaponEvent.ALL:
+                    myWeaponManager.WeaponHasChanged.Invoke();
+                    myWeaponManager.WeaponFinishedReloading.Invoke();
+                    myWeaponManager.WeaponHasShot.Invoke();
+                    myWeaponManager.WeaponStartedReloading.Invoke();
+                    break;
 
-            case WeaponEvent.FINISHEDRELOADING:
-                GetCurrentWeaponManager().WeaponFinishedReloading.Invoke();
-                break;
+                case WeaponEvent.HASCHANGED:
+                    myWeaponManager.WeaponHasChanged.Invoke();
+                    break;
 
-            case WeaponEvent.HASSHOT:
-                GetCurrentWeaponManager().WeaponHasShot.Invoke();
-                break;
+                case WeaponEvent.FINISHEDRELOADING:
+                    myWeaponManager.WeaponFinishedReloading.Invoke();
+                    break;
 
-            case WeaponEvent.STARTEDRELOADING:
-                GetCurrentWeaponManager().WeaponStartedReloading.Invoke();
-                break;
+                case WeaponEvent.HASSHOT:
+                    myWeaponManager.WeaponHasShot.Invoke();
+                    break;
 
-            default: Debug.Log("AN ERROR HAS OCCURED"); break;
-        }
+                case WeaponEvent.STARTEDRELOADING:
+                    myWeaponManager.WeaponStartedReloading.Invoke();
+                    break;
+
+                default: Debug.Log("AN ERROR HAS OCCURED"); break;
+            }
     }
 
 

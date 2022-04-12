@@ -105,7 +105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8577326024213328246, guid: f7c7dc808ce6fe14a949282368fc7d44, type: 3}
       propertyPath: projectileSpeed
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8577326024213328246, guid: f7c7dc808ce6fe14a949282368fc7d44, type: 3}
       propertyPath: isStartAsCollider

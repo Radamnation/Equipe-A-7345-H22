@@ -181,7 +181,19 @@ MonoBehaviour:
       m_Calls: []
   onDeathEvents:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3831662558856893129}
+        m_TargetAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+        m_MethodName: StopAllCoroutines
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   isEnemy: 1
   activateEnemyOnTriggerEnter: 0
   myDrops:
@@ -367,7 +379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 4882625604399673255
+  uniqueID: 2227827222850864949
   points:
   - {x: -0.32, y: 0, z: -0.32}
   - {x: 0.32, y: 0, z: -0.32}
