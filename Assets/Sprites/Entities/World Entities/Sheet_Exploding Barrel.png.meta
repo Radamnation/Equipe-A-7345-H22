@@ -131,8 +131,8 @@ TextureImporter:
       name: Sheet_Exploding Barrel_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
+        x: 1
+        y: 69
         width: 32
         height: 32
       alignment: 9
@@ -152,8 +152,8 @@ TextureImporter:
       name: Sheet_Exploding Barrel_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 64
+        x: 35
+        y: 69
         width: 32
         height: 32
       alignment: 9
@@ -173,8 +173,8 @@ TextureImporter:
       name: Sheet_Exploding Barrel_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
+        x: 69
+        y: 69
         width: 32
         height: 32
       alignment: 9
@@ -194,8 +194,8 @@ TextureImporter:
       name: Sheet_Exploding Barrel_3
       rect:
         serializedVersion: 2
-        x: 96
-        y: 64
+        x: 103
+        y: 69
         width: 32
         height: 32
       alignment: 9
@@ -215,8 +215,8 @@ TextureImporter:
       name: Sheet_Exploding Barrel_4
       rect:
         serializedVersion: 2
-        x: 128
-        y: 64
+        x: 137
+        y: 69
         width: 32
         height: 32
       alignment: 9
@@ -236,8 +236,8 @@ TextureImporter:
       name: Sheet_Exploding Barrel_5
       rect:
         serializedVersion: 2
-        x: 160
-        y: 64
+        x: 171
+        y: 69
         width: 32
         height: 32
       alignment: 9
@@ -257,8 +257,8 @@ TextureImporter:
       name: Sheet_Exploding Barrel_6
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 35
+        y: 35
         width: 32
         height: 32
       alignment: 9
@@ -278,8 +278,8 @@ TextureImporter:
       name: Sheet_Exploding Barrel_7
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
+        x: 69
+        y: 35
         width: 32
         height: 32
       alignment: 9
@@ -299,8 +299,8 @@ TextureImporter:
       name: Sheet_Exploding Barrel_8
       rect:
         serializedVersion: 2
-        x: 96
-        y: 32
+        x: 103
+        y: 35
         width: 32
         height: 32
       alignment: 9
@@ -320,8 +320,8 @@ TextureImporter:
       name: Sheet_Exploding Barrel_9
       rect:
         serializedVersion: 2
-        x: 128
-        y: 32
+        x: 137
+        y: 35
         width: 32
         height: 32
       alignment: 9
@@ -341,8 +341,8 @@ TextureImporter:
       name: Sheet_Exploding Barrel_10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 1
+        y: 1
         width: 32
         height: 32
       alignment: 9
@@ -362,8 +362,8 @@ TextureImporter:
       name: Sheet_Exploding Barrel_11
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 35
+        y: 1
         width: 32
         height: 32
       alignment: 9
@@ -383,8 +383,8 @@ TextureImporter:
       name: Sheet_Exploding Barrel_12
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
+        x: 69
+        y: 1
         width: 32
         height: 32
       alignment: 9
@@ -404,8 +404,8 @@ TextureImporter:
       name: Sheet_Exploding Barrel_13
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
+        x: 103
+        y: 1
         width: 32
         height: 32
       alignment: 9
@@ -425,8 +425,8 @@ TextureImporter:
       name: Sheet_Exploding Barrel_14
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
+        x: 137
+        y: 1
         width: 32
         height: 32
       alignment: 9

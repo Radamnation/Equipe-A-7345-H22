@@ -131,8 +131,8 @@ TextureImporter:
       name: Practice Target _ Iddle _ 00
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 1
+        y: 1
         width: 32
         height: 32
       alignment: 9
@@ -142,7 +142,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93bb7fe93c9088c4f9764c164bc79f33
+      spriteID: 08a526b630735f749b1c4bf8a42d99b6
       internalID: 1346234633
       vertices: []
       indices: 
@@ -152,8 +152,8 @@ TextureImporter:
       name: Practice Target _ Death _ 00
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 35
+        y: 1
         width: 32
         height: 32
       alignment: 9
@@ -163,7 +163,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 001e09c3a2b13f8478a1917dbde9385d
+      spriteID: 9e5f62c209b91644eb5c9dd46f610cff
       internalID: 1043758650
       vertices: []
       indices: 
@@ -173,8 +173,8 @@ TextureImporter:
       name: Practice Target _ Death _ 01
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
+        x: 69
+        y: 1
         width: 32
         height: 32
       alignment: 9
@@ -184,7 +184,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fefbb8eeca6b9d04fb8bcf5871bc9f39
+      spriteID: 9a20c45ea35036b42942fcb28ed7541e
       internalID: -1616212005
       vertices: []
       indices: 
@@ -194,8 +194,8 @@ TextureImporter:
       name: Practice Target _ Death _ 02
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
+        x: 103
+        y: 1
         width: 32
         height: 32
       alignment: 9
@@ -205,7 +205,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a51f554f89ac0f49a8db126cb62dd07
+      spriteID: 89db64eb5d6ae254fa38186827892529
       internalID: 1510670454
       vertices: []
       indices: 
@@ -215,8 +215,8 @@ TextureImporter:
       name: Practice Target _ Death _ 03
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
+        x: 137
+        y: 1
         width: 32
         height: 32
       alignment: 9
@@ -226,7 +226,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7071a8409340c874ab88714b11cdede6
+      spriteID: 66ebd422bcac9eb46a5d94f1d152b470
       internalID: 954875089
       vertices: []
       indices: 
@@ -236,8 +236,8 @@ TextureImporter:
       name: Practice Target _ Death _ 04
       rect:
         serializedVersion: 2
-        x: 160
-        y: 0
+        x: 171
+        y: 1
         width: 32
         height: 32
       alignment: 9
@@ -247,7 +247,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51b7ef7da7f03d940948ebf62b960b23
+      spriteID: 1a3434d6ceaa98e49a49e6614e2d4418
       internalID: -488912191
       vertices: []
       indices: 
@@ -257,8 +257,8 @@ TextureImporter:
       name: Practice Target _ Death _ 05
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
+        x: 205
+        y: 1
         width: 32
         height: 32
       alignment: 9
@@ -268,7 +268,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 780b08c9dc60db143915932c4113a9d1
+      spriteID: 46475666d9093014d8fc99ff4fc07312
       internalID: -998797507
       vertices: []
       indices: 
@@ -278,8 +278,8 @@ TextureImporter:
       name: Practice Target _ Death _ 06
       rect:
         serializedVersion: 2
-        x: 224
-        y: 0
+        x: 239
+        y: 1
         width: 32
         height: 32
       alignment: 9
@@ -289,7 +289,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aedde3e9b4e70bd488df271752d43c28
+      spriteID: 595cd4f652606f44e94419d0c834c40c
       internalID: -1352826788
       vertices: []
       indices: 

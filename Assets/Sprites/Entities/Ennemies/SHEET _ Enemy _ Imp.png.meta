@@ -131,8 +131,8 @@ TextureImporter:
       name: Imp _ North _ 00
       rect:
         serializedVersion: 2
-        x: 0
-        y: 160
+        x: 1
+        y: 171
         width: 32
         height: 32
       alignment: 9
@@ -142,7 +142,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20692f41b1e542d489ed963a4dc70266
+      spriteID: f1e4b431860d2654996653ac283c58e3
       internalID: 937934405
       vertices: []
       indices: 
@@ -152,8 +152,8 @@ TextureImporter:
       name: Imp _ North _ 01
       rect:
         serializedVersion: 2
-        x: 32
-        y: 160
+        x: 35
+        y: 171
         width: 32
         height: 32
       alignment: 9
@@ -163,7 +163,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b269833071a2c0419cff0d6bdb0ea1c
+      spriteID: d6634512cd9d3374b9992fbb2243bb39
       internalID: -108970661
       vertices: []
       indices: 
@@ -173,8 +173,8 @@ TextureImporter:
       name: Imp _ North _ 02
       rect:
         serializedVersion: 2
-        x: 64
-        y: 160
+        x: 69
+        y: 171
         width: 32
         height: 32
       alignment: 9
@@ -184,7 +184,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65d6e152de03c3243a6d48a8d3943db1
+      spriteID: 8fab5ff3a062f084ebb601510eebc75f
       internalID: -1725427559
       vertices: []
       indices: 
@@ -194,8 +194,8 @@ TextureImporter:
       name: Imp _ North _ 03
       rect:
         serializedVersion: 2
-        x: 96
-        y: 160
+        x: 103
+        y: 171
         width: 32
         height: 32
       alignment: 9
@@ -205,7 +205,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3b15c4588d557bf4fbe4e02e6694e3d7
+      spriteID: 55e9a2915ba3ac945bbc4f3e55249087
       internalID: 1028445546
       vertices: []
       indices: 
@@ -215,8 +215,8 @@ TextureImporter:
       name: Imp _ South _ 00
       rect:
         serializedVersion: 2
-        x: 0
-        y: 128
+        x: 1
+        y: 137
         width: 32
         height: 32
       alignment: 9
@@ -226,7 +226,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e86f2abb6ea74cb4d951f0967bbaf419
+      spriteID: d712b7d48248f9748a6859e9cf192ffa
       internalID: -1527532386
       vertices: []
       indices: 
@@ -236,8 +236,8 @@ TextureImporter:
       name: Imp _ South _ 01
       rect:
         serializedVersion: 2
-        x: 32
-        y: 128
+        x: 35
+        y: 137
         width: 32
         height: 32
       alignment: 9
@@ -247,7 +247,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eebbde6b55728b846a09a46377a84ac3
+      spriteID: 64f3eb71747c47540a413e61b4825f5a
       internalID: 1474213050
       vertices: []
       indices: 
@@ -257,8 +257,8 @@ TextureImporter:
       name: Imp _ South _ 02
       rect:
         serializedVersion: 2
-        x: 64
-        y: 128
+        x: 69
+        y: 137
         width: 32
         height: 32
       alignment: 9
@@ -268,7 +268,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf56e2d71c506374c81fb6edd987941e
+      spriteID: 5f14e7ec7281de847bde40888d9ce216
       internalID: -1708348929
       vertices: []
       indices: 
@@ -278,8 +278,8 @@ TextureImporter:
       name: Imp _ South _ 03
       rect:
         serializedVersion: 2
-        x: 96
-        y: 128
+        x: 103
+        y: 137
         width: 32
         height: 32
       alignment: 9
@@ -289,7 +289,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c738503644430f6469bff8caec1a9f26
+      spriteID: 4829df7229eb1cc46b8f8712e083d629
       internalID: 1551056936
       vertices: []
       indices: 
@@ -299,8 +299,8 @@ TextureImporter:
       name: Imp _ East _ 00
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
+        x: 1
+        y: 103
         width: 32
         height: 32
       alignment: 9
@@ -310,7 +310,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19d3577263797a74e99b1cddb19df2d7
+      spriteID: 79d741ef4903ca34a921d2f7c09a124c
       internalID: -548983386
       vertices: []
       indices: 
@@ -320,8 +320,8 @@ TextureImporter:
       name: Imp _ East _ 01
       rect:
         serializedVersion: 2
-        x: 32
-        y: 96
+        x: 35
+        y: 103
         width: 32
         height: 32
       alignment: 9
@@ -331,7 +331,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 354c18e1a7a4598448056a18411138f7
+      spriteID: 3280ed9442e2ab649921b1cfb1301880
       internalID: 1062326557
       vertices: []
       indices: 
@@ -341,8 +341,8 @@ TextureImporter:
       name: Imp _ East _ 02
       rect:
         serializedVersion: 2
-        x: 64
-        y: 96
+        x: 69
+        y: 103
         width: 32
         height: 32
       alignment: 9
@@ -352,7 +352,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f4c139e63eef7f44846485a81d64f9e
+      spriteID: 51e5041eabb7ea741ae8953698eb7bae
       internalID: 1267841584
       vertices: []
       indices: 
@@ -362,8 +362,8 @@ TextureImporter:
       name: Imp _ East _ 03
       rect:
         serializedVersion: 2
-        x: 96
-        y: 96
+        x: 103
+        y: 103
         width: 32
         height: 32
       alignment: 9
@@ -373,7 +373,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb3f5823c3b78e942b039077564ee922
+      spriteID: bd107669db090ac478471415895272b7
       internalID: 1183715124
       vertices: []
       indices: 
@@ -383,8 +383,8 @@ TextureImporter:
       name: Imp _ East _ 04
       rect:
         serializedVersion: 2
-        x: 128
-        y: 96
+        x: 137
+        y: 103
         width: 32
         height: 32
       alignment: 9
@@ -394,7 +394,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3840a483c5b880e4a82f5e227f66c678
+      spriteID: cf0448969a1de7647b049b0a30019b4b
       internalID: -1439365946
       vertices: []
       indices: 
@@ -404,8 +404,8 @@ TextureImporter:
       name: Imp _ Attack _ 00
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
+        x: 1
+        y: 69
         width: 32
         height: 32
       alignment: 9
@@ -415,7 +415,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58cd8f6f009f1b044b2ceb5fb5317b72
+      spriteID: 6509cc074353ff6478f0a52d1cd5efaf
       internalID: -1681103874
       vertices: []
       indices: 
@@ -425,8 +425,8 @@ TextureImporter:
       name: Imp _ Attack _ 01
       rect:
         serializedVersion: 2
-        x: 32
-        y: 64
+        x: 35
+        y: 69
         width: 32
         height: 32
       alignment: 9
@@ -436,7 +436,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a830e51e46509e2429bc2ac58a71e88d
+      spriteID: 5470e6cdd29015744b9d99435b4263d0
       internalID: -1657869532
       vertices: []
       indices: 
@@ -446,8 +446,8 @@ TextureImporter:
       name: Imp _ Attack _ 02
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
+        x: 69
+        y: 69
         width: 32
         height: 32
       alignment: 9
@@ -457,7 +457,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64302a4da7dc8b141be9eebbffd15804
+      spriteID: 66a6bcb966c03484186df7438f11f5dd
       internalID: 1939869102
       vertices: []
       indices: 
@@ -467,8 +467,8 @@ TextureImporter:
       name: Imp _ Death _ 00
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 1
+        y: 35
         width: 32
         height: 32
       alignment: 9
@@ -478,7 +478,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19526d19dd8e88747b60045b9722c00c
+      spriteID: 20e715a360312a64db83ac252e614852
       internalID: 1227927730
       vertices: []
       indices: 
@@ -488,8 +488,8 @@ TextureImporter:
       name: Imp _ Death _ 01
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 35
+        y: 35
         width: 32
         height: 32
       alignment: 9
@@ -499,7 +499,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0790c8697f1034f48807cc452884afcf
+      spriteID: 07bae61dea75f6847bf2683666cd0a97
       internalID: -318002059
       vertices: []
       indices: 
@@ -509,8 +509,8 @@ TextureImporter:
       name: Imp _ Front
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 1
+        y: 1
         width: 32
         height: 32
       alignment: 9
@@ -520,7 +520,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fbc9722067f4de4f965fa77c3bf94ff
+      spriteID: 7d7caaf4d0c9bed439b83658010d386c
       internalID: -859627783
       vertices: []
       indices: 
@@ -530,8 +530,8 @@ TextureImporter:
       name: Imp _ Back
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 35
+        y: 1
         width: 32
         height: 32
       alignment: 9
@@ -541,7 +541,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b68994d5c411fd04ca9df9b8c54da6ed
+      spriteID: 7dfbd870e67186946bb881285e54bc86
       internalID: 637789875
       vertices: []
       indices: 
