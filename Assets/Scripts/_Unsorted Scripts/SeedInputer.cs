@@ -40,6 +40,7 @@ public class SeedInputer : MonoBehaviour
                 button.MyText.text = "X";
             }
         }
+        UpdateSeed();
     }
 
     public void UpdateSeed()

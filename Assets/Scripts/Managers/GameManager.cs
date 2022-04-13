@@ -121,6 +121,14 @@ public class GameManager : MonoBehaviour
             mySeed.GetComponentInChildren<TextMeshProUGUI>().text = RandomManager.instance.RoomGenerationRandom.Seed.ToString();
     }
 
+    public void UpdateSeedText()
+    {
+        GameObject mySeed = menuCanvas.Transform.GetChild(menuCanvas.Transform.childCount - 1).gameObject;
+
+        if (mySeed.activeSelf)
+            mySeed.GetComponentInChildren<TextMeshProUGUI>().text = RandomManager.instance.RoomGenerationRandom.Seed.ToString();
+    }
+
     public void ShowMenu()
     {
         menuCanvas.Transform.GetComponent<SelectMenu>().PanelToggle(0);

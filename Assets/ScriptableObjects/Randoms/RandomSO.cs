@@ -33,5 +33,6 @@ public class RandomSO : ScriptableObject
             seed = Random.Range(0, 1000000);
         }
         systemRandom = new System.Random(seed);
+        GameManager.instance.UpdateSeedText();
     }
 }
