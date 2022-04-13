@@ -3764,14 +3764,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 7164878429183469918, guid: bb6ddc53178fa434996aa6b913c91ecc, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7869666907003705467, guid: bb6ddc53178fa434996aa6b913c91ecc, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb6ddc53178fa434996aa6b913c91ecc, type: 3}
 --- !u!1001 &7801079552777217476
