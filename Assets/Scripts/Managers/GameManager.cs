@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -111,6 +112,15 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    public void ToggleSeed()
+    {
+        GameObject mySeed = menuCanvas.Transform.GetChild(menuCanvas.Transform.childCount-1).gameObject;
+        mySeed.SetActive(!mySeed.activeSelf);
+
+        if (mySeed.activeSelf)
+            mySeed.GetComponentInChildren<TextMeshProUGUI>().text = RandomManager.instance.RoomGenerationRandom.Seed.ToString();
+    }
+
     public void ShowMenu()
     {
         menuCanvas.Transform.GetComponent<SelectMenu>().PanelToggle(0);
@@ -123,12 +133,15 @@ public class GameManager : MonoBehaviour
 
     public void FakeLoading()
     {
+        if (PickableManager.instance)
+            PickableManager.instance.ResetPickableValues();
         LoadSceneAsync("FakeLoading", true);
     }
 
     public void ReturnToHub()
     {
         // Destroy(FindObjectOfType<PlayerContext>().gameObject);
+
         LoadScene("Hub_Sandbox");
         // Time.timeScale = 1;
     }
@@ -163,12 +176,13 @@ public class GameManager : MonoBehaviour
         MusicManager.instance.StopMusic();
         if (currentScene == "Hub_Sandbox")
         {
+            PickableManager.instance.ResetPickableValues();
             myWeaponsInventory.SetDefaultWeapons();
             mainWeaponHasChanged.Raise();
             secondaryWeaponHasChanged.Raise();
             meleeWeaponHasChanged.Raise();
         }
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Loading_Sandbox"));
+        //SceneManager.SetActiveScene(SceneManager.GetSceneByName("Loading_Sandbox"));
         SceneManager.UnloadSceneAsync(currentScene);
         StartCoroutine(LoadMainLevel());
     }
@@ -182,7 +196,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
 
         SceneManager.UnloadSceneAsync("Loading_Sandbox");
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Level_Sandbox"));
+        //SceneManager.SetActiveScene(SceneManager.GetSceneByName("Level_Sandbox"));
 
         loadingTube.GetComponent<Collider>().enabled = false;
     }

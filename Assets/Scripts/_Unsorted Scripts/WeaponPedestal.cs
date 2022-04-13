@@ -81,8 +81,6 @@ public class WeaponPedestal : MonoBehaviour
                 hubWeaponArray_Main.AddUnique(randomWeapons[randomIndex]); // Hub linear array update
             }
 
-
-
             pedestalWeapon = null;
             weaponInventory.CarriedMainWeapons.Add(temp);
             weaponInventory.EquippedMainWeapon = temp;

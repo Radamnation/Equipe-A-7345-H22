@@ -48,6 +48,8 @@ public class PlayerStateOptionMenu : IPlayerState
         GameManager.instance.SetMouseCursor_Manual(CursorLockMode.None, true);
         GameManager.instance.SetTimeScale(0.0f);
         GameManager.instance.ShowMenu();
+
+        GameManager.instance.ToggleSeed();
     }
 
     public void OnStateUpdate(PlayerContext context)
@@ -77,6 +79,7 @@ public class PlayerStateOptionMenu : IPlayerState
             GameManager.instance.SetMouseCursor_Manual(CursorLockMode.Locked, false);
             GameManager.instance.SetTimeScale(1.0f);
             GameManager.instance.QuitMenu();
+            GameManager.instance.ToggleSeed();
             return oldState;
         }
 

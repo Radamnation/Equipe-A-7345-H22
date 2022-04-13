@@ -52,4 +52,9 @@ public class PlayerDeathAnimCanvasHandlers : MonoBehaviour
         if (onDeathManager != null)
             onDeathManager.enabled = true;
     }
+
+    public void ShowDeathCue()
+    {
+        onDeathManager.transform.GetChild(0).gameObject.SetActive(true);
+    }
 }

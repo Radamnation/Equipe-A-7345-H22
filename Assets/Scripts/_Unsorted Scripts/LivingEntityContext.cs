@@ -106,7 +106,8 @@ public class LivingEntityContext : MonoBehaviour
 
     public void KnockBack(float knockback, Vector3 direction)
     {
-        myRigidbody.AddForce(knockback * direction, ForceMode.Impulse);
+        if (myRigidbody)
+            myRigidbody.AddForce(knockback * direction, ForceMode.Impulse);
     }
 
     public void TakeDamage(float damage)

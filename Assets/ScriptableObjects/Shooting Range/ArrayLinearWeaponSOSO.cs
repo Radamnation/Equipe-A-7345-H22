@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
+[Serializable]
 [CreateAssetMenu(menuName = "Scriptable/Data Structure/Array Linear WeaponSOs", fileName = "SO_myArrayLinearWeaponSOs")]
 public class ArrayLinearWeaponSOSO : ScriptableObject, IArrayLinear
 {

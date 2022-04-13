@@ -32,11 +32,8 @@ public class PickableManager : MonoBehaviour
             instance = this;
         else
             Destroy(this.gameObject);
-
-        currentHealth.Value = maxHealth.Value;
-        currentArmor.Value = 0;
-        currentCurrency.Value = 0;
     }
+
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +46,13 @@ public class PickableManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ResetPickableValues()
+    {
+        currentHealth.Value = maxHealth.Value;
+        currentArmor.Value = 0;
+        currentCurrency.Value = 0;
     }
 
     public void SellWeapon(WeaponSO weaponSO)

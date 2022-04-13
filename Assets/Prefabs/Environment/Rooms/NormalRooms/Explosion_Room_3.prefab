@@ -9008,7 +9008,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3992321305335836164, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
       propertyPath: locksOnEnter
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3992321305335836164, guid: 31e5846ffcd3a25459d4338606cec945, type: 3}
       propertyPath: willBeLocked

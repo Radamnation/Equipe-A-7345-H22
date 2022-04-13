@@ -365,7 +365,8 @@ public class PlayerContext : MonoBehaviour
             input.ShowMap = false;
 
             // EVENT GO HERE
-            FindObjectOfType<Minimap>().ToggleMap();
+            Minimap minimap = FindObjectOfType<Minimap>();
+            if (minimap) minimap.ToggleMap();
         }
     }
     #endregion

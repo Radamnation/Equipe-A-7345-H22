@@ -447,7 +447,7 @@ MonoBehaviour:
   weaponManagerTransform: {fileID: 2196409958474790961}
   desiredAngle: 1
   desiredAxis: {x: 0, y: 1, z: 0}
-  projectileSpeedModifier: 2
+  projectileSpeedModifier: 3
   isFullCircle: 1
   instantiate_PosModifier: {x: 0, y: 0, z: 0}
   instantiate_MultiplyMinusOne: 0
@@ -488,7 +488,7 @@ MonoBehaviour:
   weaponManagerTransform: {fileID: 2196409957755515385}
   desiredAngle: 25
   desiredAxis: {x: 0, y: 4, z: 0}
-  projectileSpeedModifier: 2
+  projectileSpeedModifier: 3
   isFullCircle: 0
   instantiate_PosModifier: {x: 0, y: 0.002, z: 0}
   instantiate_MultiplyMinusOne: 0
@@ -529,7 +529,7 @@ MonoBehaviour:
   weaponManagerTransform: {fileID: 2196409958474790961}
   desiredAngle: 1
   desiredAxis: {x: 0, y: 1, z: 0}
-  projectileSpeedModifier: 2.5
+  projectileSpeedModifier: 4
   isFullCircle: 0
   instantiate_PosModifier: {x: 0, y: -0.25, z: 0}
   instantiate_MultiplyMinusOne: 1
