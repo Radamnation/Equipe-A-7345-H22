@@ -59,7 +59,7 @@ public class ToggleAfterQtyOfBehaviour : AbstractBehaviour
         myContext.CanUseBehaviour = true;
     }
 
-    private void ManageToken()
+    public void ManageToken()
     {
         if ((noTokenToggleToken && noTokenCount >= desiredNoTokenCount) || (hasTokenToggleToken && tokenCount >= desiredTokenCount))
         {
@@ -80,13 +80,9 @@ public class ToggleAfterQtyOfBehaviour : AbstractBehaviour
         }
     }
 
-    private void ManageStateMachine()
+    public void ManageStateMachine()
     {
         if ((noTokenToggleState && noTokenCount >= desiredNoTokenCount) || (hasTokenToggleState && tokenCount >= desiredTokenCount))
-        {
-            Debug.Log($"Old state was : {myContext.CurrState}");
             myContext.ToggleState();
-            Debug.Log($"New state is : {myContext.CurrState}");
-        }
     }
 }

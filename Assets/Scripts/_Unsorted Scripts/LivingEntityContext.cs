@@ -25,6 +25,7 @@ public class LivingEntityContext : MonoBehaviour
     [SerializeField] private string takeDmgAnimStr;
 
     [Header("Events")]
+    [SerializeField] private UnityEvent onStartEvents;
     [SerializeField] private UnityEvent onTakeDamageEvents;
     [SerializeField] private UnityEvent onDeathEvents;
 
@@ -55,6 +56,12 @@ public class LivingEntityContext : MonoBehaviour
     public bool ActivateEnemyOnTriggerEnter { get => activateEnemyOnTriggerEnter; set => activateEnemyOnTriggerEnter = value; }
     public SpriteRenderer[] SpriteRenderer { get => spriteRenderer; set => spriteRenderer = value; }
 
+    public float CurrentHP { get => currentHP.Value; }
+    public float MaxHP { get => maxHP.Value; }
+
+    public float CurrentArmor { get => currentArmor.Value; }
+    public float MaxArmor { get => maxArmor.Value; }
+
 
     // SECTION - Method - Unity Specific =========================================================
     private void Start()
@@ -63,6 +70,8 @@ public class LivingEntityContext : MonoBehaviour
         spriteRenderer = GetComponentsInChildren<SpriteRenderer>();
         myRigidbody = GetComponent<Rigidbody>();
         myAudioSource = GetComponent<AudioSource>();
+
+        onStartEvents.Invoke();
     }
 
 

@@ -645,8 +645,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 73.6
-    width: 334.2
-    height: 404.6
+    width: 344.6
+    height: 405
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -656,21 +656,21 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: da425bfd08985dfd5ea968fd7ea968fd9ea968fd76c768fd96c768fd1ae768fd3ae768fd3cf968fd5cf968fd9e1b69fdbe1b69fdc63769fde63769fde4e86cfd3cf874fdd2f874fd161a75fd1a1a75fd2a1a75fd52527afd96527afdee7427fe94f482fe56f582fe1c5383fe62b083fe04e684fe5ec88bfe20c98bfeb4298cfefc868cfe9ebc8dfee427b8fe0430b8feb8e2eafed6eaeafee23a00ffdee60affd68f15ffe0fc2aff384e40ff3eba48ff82db48ff86db48ff96db48ff1e0c4bff640c4bff0c48b5ff2c48b5ff0649b5ff4a77b5ff4e77b5ff5e77b5ffa021b8fff421b8ff4c3bc6ff903bc6ffd4d2d0ff18d3d0ff526bdbff986bdbffea29dcffca2fdcffcc72dcffd472dcff1cbadcffbc09ddffc009ddffc409ddffc609ddff94a2deff5c31f9ff7c31f9ffaedbfaffcedbfaff5602fefff4ffffff942912009a291200808b1400ba8b14002ac2150064c21500c6f8160000f916009a951900d49519007c432800b6432800247a29003e7a29009ce72b00b6e72b009e2c3300f4983500ec3b390088c4470090b669006ed66900b2246a0024806a00024f77003c4f7700
+      m_ExpandedIDs: 30a0fbff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Boss _ ED-Cubus
-        m_OriginalName: Boss _ ED-Cubus
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 9508676
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -858,7 +858,7 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_SearchFilter:
-    m_NameFilter: basic
+    m_NameFilter: linear
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
@@ -870,13 +870,13 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/_Unsorted Scripts
+    - Assets/ScriptableObjects/Transforms
     m_Globs: []
-    m_OriginalText: basic
+    m_OriginalText: linear
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts/_Unsorted Scripts
+  - Assets/ScriptableObjects/Transforms
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\draik\Desktop\Equipe-A-7345-H22
   m_LockTracker:

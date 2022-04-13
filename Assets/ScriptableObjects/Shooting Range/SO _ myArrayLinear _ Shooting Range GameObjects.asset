@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: SO _ myArrayLinear _ Shooting Range GameObjects
   m_EditorClassIdentifier: 
   myArray:
-  - {fileID: 2196409958047259385, guid: 727b5603c002fad458cacb92d6d17e6b, type: 3}
+  - {fileID: 198941392135997500, guid: 28c19a4a718965e4cbeab4047eab33f0, type: 3}
+  - {fileID: 9004775643667086210, guid: 39a13e76ac853474cb4bf000c1a8342e, type: 3}
+  - {fileID: 193123509337260986, guid: 58941445b00781a4ca80ce9021e1543c, type: 3}

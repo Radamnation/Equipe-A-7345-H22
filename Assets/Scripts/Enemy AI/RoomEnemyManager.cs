@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using TMPro;
 
 public class RoomEnemyManager : MonoBehaviour
 {
     // SECTION - Field =========================================================
     [SerializeField] private bool isRoomShootingRange = false;
+
+    [SerializeField] private TransformSO bossHealthBarCanvas;
     
     [SerializeField]
     private string[] doNotManageTheseTags =
@@ -51,6 +54,12 @@ public class RoomEnemyManager : MonoBehaviour
     {
         if (name == "ShootingRangeCenter" && other.CompareTag("Player"))
         {
+            // TODO
+            //      - Should destroy instantiated prefab of health bar inside a horizontal layout so that...
+            //        multiple boss can easily destack (with a check for boss qty to not delete in the middle of a fight)
+            bossHealthBarCanvas.Transform.GetChild(0).gameObject.SetActive(false);
+            bossHealthBarCanvas.Transform.GetChild(1).gameObject.SetActive(false);
+
             other.GetComponent<LivingEntityContext>().FullHeal(); // Heal player in hub
             Reset();
         }

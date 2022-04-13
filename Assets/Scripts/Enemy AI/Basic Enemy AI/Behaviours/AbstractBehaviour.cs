@@ -80,7 +80,9 @@ public abstract class AbstractBehaviour : MonoBehaviour
 
     private IEnumerator ExecutionCoroutine()
     {
-        myContext.CanUseBehaviour = false; // IMPORTANT: Must be set back to true inside of CHILD'S BEHAVIOUR whenever behaviour ends
+        if (!isBypassCanUseBehaviour)
+            myContext.CanUseBehaviour = false; // IMPORTANT: Must be set back to true inside of CHILD'S BEHAVIOUR whenever behaviour ends
+        
         Behaviour();
         yield return new WaitUntil(() => myContext.CanUseBehaviour);
         myHitsObjs.Clear();
