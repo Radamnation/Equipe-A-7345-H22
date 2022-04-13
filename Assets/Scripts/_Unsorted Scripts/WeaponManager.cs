@@ -142,8 +142,7 @@ public class WeaponManager : MonoBehaviour
                 weaponAudioSource.PlayOneShot(weapon.EmptyClickSound);
             }
             fireRateDelay = weapon.FiringRate;
-        }
-            
+        }         
         return false;
     }
 

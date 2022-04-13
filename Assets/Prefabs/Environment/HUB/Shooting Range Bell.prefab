@@ -437,6 +437,9 @@ MonoBehaviour:
   anim: {fileID: 42904796347054777}
   deathAnimStr: 
   takeDmgAnimStr: OnHit
+  onStartEvents:
+    m_PersistentCalls:
+      m_Calls: []
   onTakeDamageEvents:
     m_PersistentCalls:
       m_Calls:
@@ -548,6 +551,11 @@ MonoBehaviour:
   quantityPerLine: 7
   myImagesPrefab: {fileID: 3671644349330340486, guid: bbff9026d7917e8499b6694c05fb29e0, type: 3}
   horizontalLayoutTransform: {fileID: 1104040359225651314}
+  myObjects:
+  - {fileID: 198941392135997500, guid: 28c19a4a718965e4cbeab4047eab33f0, type: 3}
+  - {fileID: 9004775643667086210, guid: 39a13e76ac853474cb4bf000c1a8342e, type: 3}
+  - {fileID: 193123509337260986, guid: 58941445b00781a4ca80ce9021e1543c, type: 3}
+  - {fileID: 2340426115854998733, guid: 08bed9ac0266a4f44929b65ace3727ec, type: 3}
 --- !u!1 &9054871363271921560
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,6 +728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRoomShootingRange: 1
+  bossHealthBarCanvas: {fileID: 11400000, guid: 641d7a6475d4a9a46b080486f1f2980f, type: 2}
   doNotManageTheseTags:
   - Practice Target
 --- !u!4 &3845450508836965805 stripped

@@ -41,6 +41,9 @@ public class CircularProjectileAttackBehaviour : AbstractBehaviour
     [Min(1)] [SerializeField] private int instantiationQuantity = 1;
     [Min(0.0f)] [SerializeField] private float instantiateEverySeconds = 0.14f;
 
+    [Header("Miscellaneous")]
+    [SerializeField] private AudioSource projectileAudioSource;
+
 
     private WeaponManager myWeaponManager;
     private Vector3 oldPosition;
@@ -77,11 +80,15 @@ public class CircularProjectileAttackBehaviour : AbstractBehaviour
         myWeaponManager = myContext.GetCurrentWeaponManager();
         oldPosition = weaponManagerTransform.localPosition;
         defaultTracksPlayer = myWeaponManager.TracksPlayer;
+
+        if (!projectileAudioSource)
+            projectileAudioSource = GetComponentInParent<AudioSource>();
+        if (!projectileAudioSource)
+            projectileAudioSource = GetComponent<AudioSource>();
     }
 
     private IEnumerator ExecuteBehaviour()
     {
-
         if (!myWeaponManager)
         {
             Debug.Log("Error | [WeaponManager.cs] not found");
@@ -120,6 +127,10 @@ public class CircularProjectileAttackBehaviour : AbstractBehaviour
         //Vector3 axis = new Vector3(0, 25, 0);
         //myTransform.Rotate(desiredRotation);
         float trueAngle = (isFullCircle) ? 360 / instantiationQuantity : desiredAngle;
+
+        //if (isFullCircle)
+            //myWeaponManager.transform.position = Vector3.zero;
+
         weaponManagerTransform.RotateAround(weaponManagerTransform.parent.position, desiredAxis, trueAngle);
     }
 
@@ -153,5 +164,9 @@ public class CircularProjectileAttackBehaviour : AbstractBehaviour
         //newProjectile.MyRigidbody.velocity = Vector3.zero;
         newProjectile.MyRigidbody.velocity = weaponManagerTransform.forward * projectileSpeedModifier;
         newProjectile.transform.parent = null;
+
+        // Play sound if set in inspector
+        if (projectileAudioSource != null)
+            projectileAudioSource.PlayOneShot(weapon.ShootingSound[Random.Range(0, weapon.ShootingSound.Length)]);
     }   
 }

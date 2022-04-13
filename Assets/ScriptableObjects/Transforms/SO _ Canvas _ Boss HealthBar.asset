@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f154196a838d15246a41bfefe1660af1, type: 3}
-  m_Name: SOPlayerCurrentHealth
+  m_Script: {fileID: 11500000, guid: 82a2e48b1ca3fde408e3527125ec762c, type: 3}
+  m_Name: SO _ Canvas _ Boss HealthBar
   m_EditorClassIdentifier: 
-  Value: 11081
+  Transform: {fileID: 0}

@@ -335,7 +335,12 @@ MonoBehaviour:
   isDistanceCurrWeaponBased: 1
   distance: 0
   validationType: 0
-  myDesiredRangeOfPositions: {fileID: 0}
+  myDesiredRangedOfPosition:
+  - {x: 0.96, y: 0, z: 0}
+  - {x: -0.96, y: 0, z: 0}
+  - {x: 0, y: 0, z: -0.96}
+  - {x: 0, y: 0, z: 0.96}
+  myDesiredRangeOfPositions: {fileID: 11400000, guid: 0e8553529365fda42a90dc895607f0d8, type: 2}
   moveAfterIddleTime: 1.5
 --- !u!1 &198941392135997500 stripped
 GameObject:

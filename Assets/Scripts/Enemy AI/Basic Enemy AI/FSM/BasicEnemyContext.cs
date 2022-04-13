@@ -317,6 +317,11 @@ public class BasicEnemyContext : MonoBehaviour
         myAIDestinationSetter.target = newTarget;
     }
 
+    public void SetTarget(Vector3 newPosition)
+    {
+        myAIDestinationSetter.target.position = newPosition;
+    }
+
     public void SetTargetNull()
     {
         myAIDestinationSetter.target = null;

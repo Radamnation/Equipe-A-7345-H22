@@ -66,8 +66,6 @@ public class ShootingRangeArrowUIHandlerWeaponPedestal : MonoBehaviour
 
     public void SetToUIVisual(bool isRight)
     {
-        Debug.Log($"Current index is: {availableItemsSO.CurrentIndex}");
-        Debug.Log($"Current count is: {availableItemsSO.Count}");
         if (!isRight)     // <-
         {
             if (availableItemsSO.CurrentIndex == 0)                                 // At min index
