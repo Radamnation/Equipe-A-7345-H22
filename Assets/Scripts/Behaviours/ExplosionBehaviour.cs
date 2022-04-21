@@ -20,6 +20,13 @@ public class ExplosionBehaviour : MonoBehaviour
 
                      private Collider[] collArray;
 
+    [SerializeField] private AudioClip myExplosionSFX;
+    private AudioSource myAudioSource;
+
+    private void Awake()
+    {
+        myAudioSource = GetComponent<AudioSource>();
+    }
 
     // SECTION - Method ============================================================
     private void FixedUpdate()
@@ -44,6 +51,11 @@ public class ExplosionBehaviour : MonoBehaviour
             if (hitObj.GetComponent<BuildingBlock>())
                 if (hitObj.GetComponent<BuildingBlock>().IsBreakable)
                     Destroy(hitObj.gameObject);
+        }
+
+        if (myAudioSource != null)
+        {
+            myAudioSource.PlayOneShot(myExplosionSFX);
         }
 
         // Manage object / sprite renderer
