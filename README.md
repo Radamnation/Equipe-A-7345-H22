@@ -46,7 +46,9 @@ Sébastien Lévesque: https://github.com/SebastienLevesque?tab=repositories <br 
 
 ... CREDITS<br />
 ... ... All sprites were made by the owners of the game<br />
-... ... Some sonds were made by René Adam-Riché (player's voice) <br />
+... ... Some sounds were made by René Adam-Riché (player's voice) <br />
+... ... ... Other sounds and music are from EnvatoElements.com <br />
 ... ... Float variables, Game event : https://www.youtube.com/watch?v=raQ3iHhE_Kk&t=2415s<br />
 ... ... 8-directional animation blend tree angle detection: https://www.youtube.com/watch?v=qcXEcZmZ8kA<br />
 ... ... Aron Granberg A* project: https://arongranberg.com/astar/download <br />
+... ... 
