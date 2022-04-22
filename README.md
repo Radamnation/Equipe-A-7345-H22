@@ -51,4 +51,4 @@ Sébastien Lévesque: https://github.com/SebastienLevesque?tab=repositories <br 
 ... ... Float variables, Game event : https://www.youtube.com/watch?v=raQ3iHhE_Kk&t=2415s<br />
 ... ... 8-directional animation blend tree angle detection: https://www.youtube.com/watch?v=qcXEcZmZ8kA<br />
 ... ... Aron Granberg A* project: https://arongranberg.com/astar/download <br />
-... ... 
+... ... Base sprite Shader graph (shadow): https://hananon.com/how-to-make-2d-sprite-cast-and-receive-shadow-in-3d-world-using-unity-shader-graph/
