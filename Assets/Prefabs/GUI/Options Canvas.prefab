@@ -834,7 +834,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BASE GAME SEED
+  m_text: CURRENT SEED
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 094a48d0226e77948963208cfed787da, type: 2}
   m_sharedMaterial: {fileID: -5844457750514529955, guid: 094a48d0226e77948963208cfed787da, type: 2}
